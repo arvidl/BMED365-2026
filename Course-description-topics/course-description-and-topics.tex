@@ -231,23 +231,30 @@ Upon completion of the course, the student should be able to:
 
 \subsection{Overview of Activities}
 
-The course is organized around four laboratories (Labs), a quick start course, and a team project. Table~\ref{tab:activities} provides an overview.
+The course is organized in two blocks. \textbf{Block 1} covers four laboratories (Labs 0--3), a quick start course, and a team project. \textbf{Block 2} covers computational imaging and modeling (Labs 4--5) and an individual project. Table~\ref{tab:activities} provides an overview.
 
 \begin{table}[htbp]
 \centering
 \caption{Overview of course activities}
 \label{tab:activities}
-\begin{tabular}{@{}llp{6cm}c@{}}
+\begin{tabular}{@{}llp{5.5cm}c@{}}
 \toprule
 \textbf{Activity} & \textbf{Topic} & \textbf{Description} & \textbf{Hours} \\
+\midrule
+\multicolumn{4}{l}{\textit{Block 1}} \\
 \midrule
 Quick Start & AI-assisted Python & Intro to Python and AI tools & 4 \\
 Lab 0 & Machine Learning & ML with scikit-learn and PyCaret & 6 \\
 Lab 1 & Network Science & Graph theory and PSN with NetworkX & 6 \\
 Lab 2 & Deep Learning & CNN and neural networks with PyTorch & 8 \\
 Lab 3 & Generative AI \& LLM & Transformers, prompting, ethics & 6 \\
-\midrule
 Team Project & Precision Medicine & Research plan for glioblastoma & 15 \\
+\midrule
+\multicolumn{4}{l}{\textit{Block 2}} \\
+\midrule
+Lab 4 & Comp.\ Imaging & MRI, imaging mass cytometry, segmentation & 6 \\
+Lab 5 & Comp.\ Modeling & Physiological models, ODEs, simulations & 6 \\
+Individual Project & Topic of Choice & Digital poster and speed presentation & 10 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -437,6 +444,92 @@ Students can use this as inspiration for the team project.
     \item Data management plan and ethics: 1.5--2.5 pages
     \item Written in English
     \item LaTeX template available on Overleaf
+\end{itemize}
+
+\subsection{Lab 4: Computational Imaging}
+
+Lab 4 introduces computational imaging with focus on medical imaging modalities, image processing, and AI-based analysis.
+
+\begin{table}[htbp]
+\centering
+\caption{Notebooks in Lab 4}
+\label{tab:lab4}
+\begin{tabular}{@{}clp{7cm}@{}}
+\toprule
+\textbf{No.} & \textbf{Notebook} & \textbf{Content} \\
+\midrule
+00 & Test installation & Verify environment and dependencies \\
+01 & Imaging intro & Basic concepts in digital imaging \\
+02 & MRI intro & Introduction to Magnetic Resonance Imaging \\
+03 & IMC intro & Introduction to Imaging Mass Cytometry \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Learning Objectives:}
+\begin{itemize}[nosep]
+    \item Understand fundamental concepts in computational imaging
+    \item Explain basic principles of MRI and common sequences
+    \item Describe imaging mass cytometry and its applications
+    \item Apply image segmentation techniques
+    \item Understand the role of AI in medical image analysis
+\end{itemize}
+
+\subsection{Lab 5: Computational Modeling}
+
+Lab 5 explores computational modeling in biomedicine, including physiological models described by ordinary differential equations (ODEs).
+
+\begin{table}[htbp]
+\centering
+\caption{Notebooks in Lab 5}
+\label{tab:lab5}
+\begin{tabular}{@{}clp{6.5cm}@{}}
+\toprule
+\textbf{No.} & \textbf{Notebook} & \textbf{Content} \\
+\midrule
+00 & Test LLM & Local LLM installation (DeepSeek-R1) \\
+01 & Action potentials & Hodgkin-Huxley model of neuronal firing \\
+02 & Tumor growth & Tumor growth and angiogenesis modeling \\
+03 & Cardiovascular flow & Blood flow, ECG, and pressure waveforms \\
+04 & Muscle force & Muscle force generation models \\
+05 & Cell signaling & Cell signaling and gene regulatory networks \\
+06 & Kidney filtration & LLM-assisted model generation \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Learning Objectives:}
+\begin{itemize}[nosep]
+    \item Understand the role of mathematical models in biomedicine
+    \item Describe and simulate the Hodgkin-Huxley model
+    \item Model tumor growth dynamics
+    \item Simulate cardiovascular flow and waveforms
+    \item Use AI/LLM to assist in model development
+\end{itemize}
+
+\subsection{Individual Project: Digital Poster and Speed Presentation}
+
+The individual project is completed between Block 1 and Block 2. Students work independently on a topic of their choice within the course scope.
+
+\textbf{Deliverables:}
+\begin{enumerate}[nosep]
+    \item \textbf{Digital poster:} Submitted through Mitt UiB
+    \item \textbf{Speed presentation:} 7-minute presentation + 3-minute discussion
+\end{enumerate}
+
+\textbf{Topic Selection:}
+\begin{itemize}[nosep]
+    \item Choose a topic covering computational imaging, modeling, or AI
+    \item Can be based on own research, a scientific article, or a methods review
+    \item Faculty guidance available for topic selection
+\end{itemize}
+
+\textbf{Assessment Criteria:}
+\begin{itemize}[nosep]
+    \item Scientific rigor and vocabulary
+    \item Balanced content (text, tables, figures)
+    \item Clear structure (introduction, methods, results, discussion, conclusions)
+    \item Engagement and time management
 \end{itemize}
 
 % =====================================================================
@@ -725,6 +818,60 @@ C & B03 & Describe \emph{segmentation} in medical image analysis \\
 I & B04 & Know about the BraTS challenge for brain tumor segmentation \\
 I & B05 & Describe radiomic features and quantitative imaging \\
 S & B06 & Know about nnU-Net and MONAI as tools \\
+\end{longtable}
+
+\subsection{Computational Imaging (BMED365)}
+
+\begin{longtable}{@{}clp{9cm}@{}}
+\toprule
+\textbf{Pri} & \textbf{No.} & \textbf{Topic} \\
+\midrule
+\endfirsthead
+\midrule
+\endhead
+\midrule
+\endfoot
+\bottomrule
+\endlastfoot
+C & Y01 & Explain fundamental concepts in \emph{computational imaging} \\
+C & Y02 & Describe the imaging pipeline: acquisition, processing, analysis \\
+C & Y03 & Understand \emph{digital image representation} (pixels, voxels, intensity) \\
+C & Y04 & Explain basic \emph{image processing} operations (filtering, enhancement) \\
+I & Y05 & Describe \emph{Imaging Mass Cytometry} (IMC) and its applications \\
+I & Y06 & Explain how IMC enables \emph{multiplexed tissue analysis} \\
+C & Y07 & Understand the role of \emph{AI in medical image analysis} \\
+I & Y08 & Describe \emph{image segmentation} approaches (classical vs. deep learning) \\
+I & Y09 & Know about \emph{MedSAM} (Segment Anything in Medical Images) \\
+S & Y10 & Discuss how \emph{LLMs are integrated} with medical imaging \\
+S & Y11 & Describe \emph{multimodal imaging} approaches (combining MRI, PET, IMC) \\
+\end{longtable}
+
+\subsection{Computational Modeling (BMED365)}
+
+\begin{longtable}{@{}clp{9cm}@{}}
+\toprule
+\textbf{Pri} & \textbf{No.} & \textbf{Topic} \\
+\midrule
+\endfirsthead
+\midrule
+\endhead
+\midrule
+\endfoot
+\bottomrule
+\endlastfoot
+C & Z01 & Explain the role of \emph{mathematical models} in biomedicine \\
+C & Z02 & Distinguish between \emph{mechanistic} and \emph{phenomenological} models \\
+C & Z03 & Describe \emph{ordinary differential equations} (ODEs) in biological systems \\
+C & Z04 & Explain the \emph{Hodgkin-Huxley model} of action potentials \\
+I & Z05 & Describe \emph{tumor growth models} (exponential, logistic, Gompertz) \\
+I & Z06 & Explain \emph{angiogenesis modeling} and its clinical relevance \\
+I & Z07 & Describe \emph{cardiovascular flow} models and hemodynamics \\
+I & Z08 & Understand the relationship between models and \emph{ECG/blood pressure} waveforms \\
+S & Z09 & Describe \emph{muscle force generation} models \\
+S & Z10 & Explain \emph{cell signaling pathways} and gene regulatory networks \\
+I & Z11 & Describe how to use \emph{LLMs to assist model development} \\
+S & Z12 & Know about \emph{systems biology} approaches and multi-scale modeling \\
+S & Z13 & Discuss \emph{model validation} and comparison with experimental data \\
 \end{longtable}
 
 \subsection{Practical Skills}
