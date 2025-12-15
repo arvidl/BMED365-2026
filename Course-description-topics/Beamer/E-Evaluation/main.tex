@@ -1,5 +1,5 @@
 % =====================================================================
-% ELMED219: Evaluering av ML-modeller (E01-E10)
+% BMED365: Evaluation of ML Models (E01-E10)
 % Beamer-presentasjon i widescreen (16:9)
 % =====================================================================
 \documentclass[aspectratio=169, 10pt]{beamer}
@@ -31,10 +31,10 @@
 % =====================================================================
 % TITTELINFO
 % =====================================================================
-\title{Evaluering av ML-modeller}
-\subtitle{ELMED219: Momentliste E01--E10}
-\author{ELMED219}
-\date{Vår 2026}
+\title{Evaluation of ML Models}
+\subtitle{BMED365: Topic List E01--E10}
+\author{BMED365}
+\date{Spring 2026}
 
 % =====================================================================
 % DOKUMENT
@@ -47,41 +47,41 @@
 \end{frame}
 
 % ---------------------------------------------------------------------
-\begin{frame}{Oversikt}
+\begin{frame}{Overview}
     \begin{enumerate}
-        \item \textbf{Confusion Matrix} (forvirringsmatrise)
+        \item \textbf{Confusion Matrix} (confusion matrix)
         \begin{itemize}
             \item E01--E02: TP, TN, FP, FN
         \end{itemize}
-        \item \textbf{Grunnleggende metrikker}
+        \item \textbf{Fundamental metrikker}
         \begin{itemize}
-            \item E03: Accuracy (nøyaktighet)
-            \item E04: Precision (presisjon)
-            \item E05: Recall / Sensitivity (sensitivitet)
-            \item E06: Specificity (spesifisitet)
+            \item E03: Accuracy (accuracy)
+            \item E04: Precision (precision)
+            \item E05: Recall / Sensitivity (sensitivity)
+            \item E06: Specificity (specificity)
         \end{itemize}
-        \item \textbf{Avanserte metrikker}
+        \item \textbf{Advanced metrikker}
         \begin{itemize}
             \item E07: F1-score
             \item E08: ROC-kurven og AUC
-            \item E09: Ubalanserte datasett
+            \item E09: Ubalanserte dataset
             \item E10: TRIPOD-retningslinjer
         \end{itemize}
     \end{enumerate}
 \end{frame}
 
 % =====================================================================
-\section{Confusion Matrix (forvirringsmatrise)}
+\section{Confusion Matrix (confusion matrix)}
 % =====================================================================
 
 % ---------------------------------------------------------------------
 % E01
 % ---------------------------------------------------------------------
-\begin{frame}{E01: Tolke en Confusion Matrix (forvirringsmatrise)}
+\begin{frame}{E01: Interpret en Confusion Matrix (confusion matrix)}
 
     \begin{columns}
         \begin{column}{0.45\textwidth}
-            \begin{block}{Hva er det?}
+            \begin{block}{What is it?}
                 Tabell: predikerte vs. faktiske klasser
             \end{block}
 
@@ -122,7 +122,7 @@
             
             \vspace{3mm}
             
-            \textbf{Eksempel:} Kreftscreening
+            \textbf{Example:} Kreftscreening
             \begin{itemize}
                 \item TP = Kreft oppdaget korrekt
                 \item FN = Oversett kreft (\textit{farlig!})
@@ -141,7 +141,7 @@
         \centering
         \begin{tabular}{@{}lp{5cm}p{5cm}@{}}
             \toprule
-            \textbf{Term} & \textbf{Definisjon} & \textbf{Medisinsk eksempel} \\
+            \textbf{Term} & \textbf{Definition} & \textbf{Medical example} \\
             \midrule
             \textbf{TP} & Syk pasient, modell sier syk & Kreft korrekt identifisert \\
             \textbf{TN} & Frisk pasient, modell sier frisk & Frisk person bekreftet frisk \\
@@ -153,8 +153,8 @@
     
     \vspace{5mm}
     
-    \begin{alertblock}{Kritisk spørsmål i medisin}
-        Hva er verst: \textbf{Falsk positiv} (FP) eller \textbf{Falsk negativ} (FN)?
+    \begin{alertblock}{Critical question i medisin}
+        What is verst: \textbf{Falsk positiv} (FP) or \textbf{Falsk negativ} (FN)?
         \begin{itemize}
             \item Screening: FN er farligere (oversett sykdom)
             \item Invasiv behandling: FP kan være farligere (unødvendig risiko)
@@ -164,15 +164,15 @@
 \end{frame}
 
 % =====================================================================
-\section{Grunnleggende metrikker (Accuracy, Precision, Recall, Specificity)}
+\section{Fundamental metrikker (Accuracy, Precision, Recall, Specificity)}
 % =====================================================================
 
 % ---------------------------------------------------------------------
 % E03
 % ---------------------------------------------------------------------
-\begin{frame}{E03: Accuracy (nøyaktighet)}
+\begin{frame}{E03: Accuracy (accuracy)}
 
-    \begin{block}{Definisjon}
+    \begin{block}{Definition}
         \[
         \text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN} = \frac{\text{Korrekte prediksjoner}}{\text{Alle prediksjoner}}
         \]
@@ -182,7 +182,7 @@
 
     \begin{columns}[T]
         \begin{column}{0.35\textwidth}
-            \textbf{Eksempel:}
+            \textbf{Example:}
             \begin{center}
                 \begin{tikzpicture}[scale=0.55]
                     \fill[green!30] (0,1) rectangle (1.5,2); \node at (0.75, 1.5) {85};
@@ -201,8 +201,8 @@
 
     \vspace{2mm}
 
-    \begin{alertblock}{Advarsel}
-        Høy accuracy kan være misvisende ved ubalanserte datasett!
+    \begin{alertblock}{Warning}
+        Høy accuracy kan være misvisende ved ubalanserte dataset!
     \end{alertblock}
 
 \end{frame}
@@ -210,9 +210,9 @@
 % ---------------------------------------------------------------------
 % E04
 % ---------------------------------------------------------------------
-\begin{frame}{E04: Precision (presisjon / PPV)}
+\begin{frame}{E04: Precision (precision / PPV)}
     
-    \begin{block}{Definisjon}
+    \begin{block}{Definition}
         \[
         \text{Precision} = \frac{TP}{TP + FP} = \frac{\text{Sanne positive}}{\text{Alle predikerte positive}}
         \]
@@ -230,12 +230,12 @@
             \begin{itemize}
                 \item Kostbar oppfølging av positive
                 \item Vil unngå falske alarmer
-                \item Eksempel: Sjelden sykdom
+                \item Example: Sjelden sykdom
             \end{itemize}
         \end{column}
         
         \begin{column}{0.45\textwidth}
-            \textbf{Eksempel:}
+            \textbf{Example:}
             \[
             \text{Precision} = \frac{85}{85 + 5} = 94.4\%
             \]
@@ -248,9 +248,9 @@
 % ---------------------------------------------------------------------
 % E05
 % ---------------------------------------------------------------------
-\begin{frame}{E05: Recall / Sensitivity (sensitivitet)}
+\begin{frame}{E05: Recall / Sensitivity (sensitivity)}
     
-    \begin{block}{Definisjon}
+    \begin{block}{Definition}
         \[
         \text{Recall} = \frac{TP}{TP + FN} = \frac{\text{Sanne positive}}{\text{Alle faktisk positive}}
         \]
@@ -268,16 +268,16 @@
             \begin{itemize}
                 \item Alvorlig konsekvens av å overse (FN)
                 \item Screening for farlig sykdom
-                \item Eksempel: Kreftscreening
+                \item Example: Kreftscreening
             \end{itemize}
         \end{column}
         
         \begin{column}{0.45\textwidth}
-            \textbf{Eksempel:}
+            \textbf{Example:}
             \[
             \text{Recall} = \frac{85}{85 + 10} = 89.5\%
             \]
-            \textit{``Vi fanger opp 89.5\% av alle krefttilfeller''}
+            \textit{``Vi fanger opp 89.5\% av alle krefttilfor''}
         \end{column}
     \end{columns}
     
@@ -292,9 +292,9 @@
 % ---------------------------------------------------------------------
 % E06
 % ---------------------------------------------------------------------
-\begin{frame}{E06: Specificity (spesifisitet)}
+\begin{frame}{E06: Specificity (specificity)}
     
-    \begin{block}{Definisjon}
+    \begin{block}{Definition}
         \[
         \text{Specificity} = \frac{TN}{TN + FP} = \frac{\text{Sanne negative}}{\text{Alle faktisk negative}}
         \]
@@ -312,12 +312,12 @@
             \begin{itemize}
                 \item Vil unngå unødvendige inngrep
                 \item Kostbar/risikabel behandling
-                \item Eksempel: Bekreftelsetester
+                \item Example: Bekreftelsetester
             \end{itemize}
         \end{column}
         
         \begin{column}{0.45\textwidth}
-            \textbf{Eksempel:}
+            \textbf{Example:}
             \[
             \text{Specificity} = \frac{900}{900 + 5} = 99.4\%
             \]
@@ -334,7 +334,7 @@
 \end{frame}
 
 % =====================================================================
-\section{Avanserte metrikker (F1-score, ROC/AUC, TRIPOD)}
+\section{Advanced metrikker (F1-score, ROC/AUC, TRIPOD)}
 % =====================================================================
 
 % ---------------------------------------------------------------------
@@ -342,7 +342,7 @@
 % ---------------------------------------------------------------------
 \begin{frame}{E07: F1-score}
     
-    \begin{block}{Definisjon}
+    \begin{block}{Definition}
         \[
         F1 = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}
         \]
@@ -351,7 +351,7 @@
     
     \vspace{3mm}
     
-    \textbf{Hvorfor harmonisk gjennomsnitt?}
+    \textbf{Why harmonisk gjennomsnitt?}
     \begin{itemize}
         \item Straffer ekstreme verdier hardere enn aritmetisk gjennomsnitt
         \item Precision = 100\%, Recall = 0\% $\rightarrow$ F1 = 0\% (ikke 50\%!)
@@ -363,14 +363,14 @@
         \begin{column}{0.48\textwidth}
             \textbf{Når bruke F1?}
             \begin{itemize}
-                \item Ubalanserte datasett
+                \item Ubalanserte dataset
                 \item Når både FP og FN er viktige
-                \item Sammenligne modeller
+                \item Compare modor
             \end{itemize}
         \end{column}
         
         \begin{column}{0.48\textwidth}
-            \textbf{Eksempel:}
+            \textbf{Example:}
             \[
             F1 = 2 \cdot \frac{0.944 \cdot 0.895}{0.944 + 0.895} = 0.92
             \]
@@ -445,13 +445,13 @@
 % ---------------------------------------------------------------------
 \begin{frame}{E09: Når accuracy er utilstrekkelig}
     
-    \textbf{Problemet med ubalanserte datasett:}
+    \textbf{Problemet med ubalanserte dataset:}
     
     \vspace{3mm}
     
     \begin{columns}
         \begin{column}{0.5\textwidth}
-            \textbf{Eksempel:} 1000 pasienter
+            \textbf{Example:} 1000 pasienter
             \begin{itemize}
                 \item 950 friske, 50 syke
                 \item Modell predikerer ALLE som friske
@@ -473,7 +473,7 @@
         \begin{column}{0.45\textwidth}
             \textbf{Løsninger:}
             \begin{itemize}
-                \item Bruk F1-score eller AUC
+                \item Bruk F1-score or AUC
                 \item Fokuser på recall for screening
                 \item Rapporter alle metrikker
                 \item Sammenlign med baseline
@@ -498,7 +498,7 @@
 % ---------------------------------------------------------------------
 \begin{frame}{E10: \href{https://www.tripod-statement.org/}{TRIPOD}-retningslinjer}
 
-    \begin{block}{Hva er TRIPOD?}
+    \begin{block}{What is TRIPOD?}
         \textbf{T}ransparent \textbf{R}eporting of a multivariable prediction model for \textbf{I}ndividual \textbf{P}rognosis \textbf{O}r \textbf{D}iagnosis
     \end{block}
     
@@ -509,7 +509,7 @@
     \begin{columns}
         \begin{column}{0.48\textwidth}
             \begin{enumerate}
-                \item Tydelig beskrivelse av studiepopulasjon
+                \item Tydelig describelse av studiepopulasjon
                 \item Definer utfall og prediktorer klart
                 \item Beskriv missing data håndtering
                 \item Rapporter modellutvikling detaljert
@@ -519,8 +519,8 @@
         \begin{column}{0.48\textwidth}
             \begin{enumerate}
                 \setcounter{enumi}{4}
-                \item Intern validering (kryssvalidering)
-                \item Ekstern validering hvis mulig
+                \item Intern validation (cross-validation)
+                \item Ekstern validation hvis mulig
                 \item Rapporter kalibrering og diskriminering
                 \item Diskuter begrensninger
             \end{enumerate}
@@ -529,16 +529,16 @@
     
     \vspace{5mm}
     
-    \begin{alertblock}{Hvorfor viktig?}
-        TRIPOD sikrer \textbf{reproduserbarhet} og \textbf{kvalitetskontroll} av prediksjonsmodeller i helseforskning.
+    \begin{alertblock}{Why viktig?}
+        TRIPOD sikrer \textbf{reproduserbarhet} og \textbf{kvalitetskontroll} av prediksjonsmodor i helseforskning.
     \end{alertblock}
     
 \end{frame}
 
 % ---------------------------------------------------------------------
-% Oppsummering
+% Summary
 % ---------------------------------------------------------------------
-\begin{frame}{Oppsummering: E01--E10}
+\begin{frame}{Summary: E01--E10}
 
     \begin{columns}[T]
         \begin{column}{0.35\textwidth}
@@ -571,7 +571,7 @@
 
     \vspace{3mm}
 
-    \begin{block}{\footnotesize Nøkkelpunkter}
+    \begin{block}{\footnotesize Key points}
         \footnotesize
         \begin{itemize}
             \item Velg metrikk basert på medisinsk kontekst (FN vs. FP konsekvenser)

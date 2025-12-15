@@ -1,6 +1,6 @@
 % =====================================================================
-% ELMED219: Nevrale nettverk og dyplæring
-% Beamer-presentasjon - Momentliste D01-D13
+% BMED365: Neural Networks og deep learning
+% Beamer-presentasjon - Topic List D01-D13
 % =====================================================================
 \documentclass[aspectratio=169, 10pt]{beamer}
 
@@ -30,32 +30,32 @@
 % =====================================================================
 % TITTELINFO
 % =====================================================================
-\title{Nevrale nettverk og Dyplæring}
-\subtitle{ELMED219: Momentliste D01--D13}
-\author{ELMED219}
-\date{Vår 2026}
+\title{Neural Networks and Deep Learning}
+\subtitle{BMED365: Topic List D01--D13}
+\author{BMED365}
+\date{Spring 2026}
 
 % =====================================================================
 % DOKUMENT
 % =====================================================================
 \begin{document}
 
-% Tittelside
+% Title page
 \begin{frame}
     \titlepage
 \end{frame}
 
-% Innholdsfortegnelse
-\begin{frame}{Oversikt}
+% Table of Contents
+\begin{frame}{Overview}
     \tableofcontents
 \end{frame}
 
 % =====================================================================
-% SEKSJON: Biologiske vs. kunstige nevroner
+% SEKSJON: Biological vs. Artificial Neurons
 % =====================================================================
-\section{Grunnleggende nevrale nettverk}
+\section{Basic Neural Networks}
 
-\begin{frame}{D01: Sammenligne biologiske og kunstige nevroner}
+\begin{frame}{D01: Compare biologiske og kunstige nevroner}
     \begin{columns}[T]
         \begin{column}{0.48\textwidth}
             \textbf{Biologisk nevron:}
@@ -80,22 +80,22 @@
     \end{columns}
     
     \vspace{0.5cm}
-    \begin{block}{Nøkkellikhet}
+    \begin{block}{Key similarity}
         Begge summerer inngående signaler og ``fyrer'' (aktiverer) hvis total stimulering overstiger en terskel.
     \end{block}
     
-    \begin{alertblock}{Viktig forskjell}
-        Kunstige nevroner er \textbf{kraftig forenklede modeller} -- de fanger ikke hjernens fulle kompleksitet.
+    \begin{alertblock}{Important difference}
+        Kunstige nevroner er \textbf{kraftig forenklede modor} -- de fanger ikke hjernens fulle kompleksitet.
     \end{alertblock}
 \end{frame}
 
-\begin{frame}{D02: Beskrive oppbygningen av et multilags perseptron (MLP)}
+\begin{frame}{D02: Describe oppbygningen av et multilags perseptron (MLP)}
     \begin{columns}[T]
         \begin{column}{0.55\textwidth}
             \textbf{MLP-arkitektur:}
             \begin{itemize}
                 \item \textbf{Inputlag:} Mottar features (ikke prosessering)
-                \item \textbf{Skjulte lag:} 1 eller flere lag med nevroner
+                \item \textbf{Skjulte lag:} 1 or flere lag med nevroner
                 \item \textbf{Outputlag:} Produserer prediksjon
             \end{itemize}
             
@@ -162,8 +162,8 @@
     \end{columns}
 \end{frame}
 
-\begin{frame}{D03: Forklare hva en aktiveringsfunksjon er (ReLU, sigmoid)}
-    \textbf{Hvorfor aktiveringsfunksjoner?} Uten dem: Hele nettverket = lineær transformasjon. Introduserer \textbf{ikke-linearitet}.
+\begin{frame}{D03: Explain hva en aktiveringsfunksjon er (ReLU, sigmoid)}
+    \textbf{Why aktiveringsfunksjoner?} Uten dem: Hele nettverket = lineær transformasjon. Introduserer \textbf{ikke-linearitet}.
 
     \vspace{0.2cm}
     \begin{columns}[T]
@@ -172,7 +172,7 @@
             \begin{itemize}
                 \item Output: $(0, 1)$
                 \item Problem: \textit{vanishing gradients}
-                \item Brukes i output for binær klassifisering
+                \item Brukes i output for binær classification
             \end{itemize}
         \end{column}
         \begin{column}{0.48\textwidth}
@@ -192,11 +192,11 @@
 \end{frame}
 
 % =====================================================================
-% SEKSJON: Trening av nevrale nettverk
+% SEKSJON: Training Neural Networks
 % =====================================================================
-\section{Trening av nevrale nettverk}
+\section{Training Neural Networks}
 
-\begin{frame}{D04: Forstå konseptet forward propagation}
+\begin{frame}{D04: Understand konseptet forward propagation}
     \textbf{Forward propagation = fremoverberegning}
     
     \begin{enumerate}
@@ -227,12 +227,12 @@
     \end{center}
     
     \vspace{0.3cm}
-    \begin{block}{Nøkkelpunkt}
-        Forward propagation beregner prediksjon -- ingen læring skjer her. Læring skjer ved backpropagation og oppdatering av vekter.
+    \begin{block}{Key point}
+        Forward propagation calculater prediksjon -- ingen læring skjer her. Læring skjer ved backpropagation og oppdatering av vekter.
     \end{block}
 \end{frame}
 
-\begin{frame}{D05: Forklare backpropagation på et konseptuelt nivå}
+\begin{frame}{D05: Explain backpropagation på et konseptuelt nivå}
     \textbf{Backpropagation = bakoverberegning av feil}
     
     \vspace{0.3cm}
@@ -246,7 +246,7 @@
     
     \vspace{0.3cm}
     \begin{alertblock}{Intuisjon}
-        Tenk deg at du justerer en kompleks maskin: Backpropagation forteller deg hvilke skruer (vekter) du skal skru på, og i hvilken retning, for å forbedre resultatet.
+        Tenk deg at du justerer en kompleks maskin: Backpropagation fortor deg hvilke skruer (vekter) du shall skru på, og i hvilken retning, for å forbedre resultatet.
     \end{alertblock}
     
     \vspace{0.3cm}
@@ -257,7 +257,7 @@
     \end{block}
 \end{frame}
 
-\begin{frame}{D06: Forstå gradient descent og læringsrate}
+\begin{frame}{D06: Understand gradient descent og læringsrate}
     \textbf{Gradient descent:}
     \begin{itemize}
         \item Optimiseringsalgoritme for å \textbf{minimere loss-funksjonen}
@@ -293,15 +293,15 @@
     
     \vspace{0.2cm}
     \begin{block}{\footnotesize Epoch}
-        \footnotesize En \textbf{epoch} = én gjennomgang av hele treningsdatasettet
+        \footnotesize En \textbf{epoch} = én gjennomgang av hele trainingsdatasetet
     \end{block}
 \end{frame}
 
-\begin{frame}{D07: Kjenne til loss functions (cross-entropy, MSE)}
+\begin{frame}{D07: Know about loss functions (cross-entropy, MSE)}
     \textbf{Loss function (tapsfunksjon):}
     \begin{itemize}
         \item Måler \textbf{hvor feil} modellens prediksjoner er
-        \item Målet: Minimere loss under trening
+        \item Målet: Minimere loss under training
     \end{itemize}
     
     \vspace{0.3cm}
@@ -312,7 +312,7 @@
             L = \frac{1}{n}\sum_{i=1}^{n}(y_i - \hat{y}_i)^2
             \]
             \begin{itemize}
-                \item Brukes for \textbf{regresjon}
+                \item Brukes for \textbf{regression}
                 \item Straffes hardt for store feil
                 \item Kontinuerlig output
             \end{itemize}
@@ -323,7 +323,7 @@
             L = -\sum_{i} y_i \log(\hat{y}_i)
             \]
             \begin{itemize}
-                \item Brukes for \textbf{klassifisering}
+                \item Brukes for \textbf{classification}
                 \item Binary: $-[y\log\hat{y} + (1-y)\log(1-\hat{y})]$
                 \item Måler avvik mellom sannsynlighetsfordelinger
             \end{itemize}
@@ -333,16 +333,16 @@
     \vspace{0.2cm}
     \begin{block}{\footnotesize Velge riktig loss}
         \footnotesize
-        \textbf{Regresjon:} MSE/MAE \quad \textbf{Binær:} Binary CE \quad \textbf{Multi-klasse:} Categorical CE
+        \textbf{Regression:} MSE/MAE \quad \textbf{Binær:} Binary CE \quad \textbf{Multi-klasse:} Categorical CE
     \end{block}
 \end{frame}
 
 % =====================================================================
-% SEKSJON: Konvolusjonelle nevrale nettverk
+% SEKSJON: Convolutional Neural Networks
 % =====================================================================
-\section{Konvolusjonelle nevrale nettverk (CNN)}
+\section{Convolutional Neural Networks (CNN)}
 
-\begin{frame}{D08: Beskrive et konvolusjonelt nevralt nettverk (CNN)}
+\begin{frame}{D08: Describe et konvolusjonelt nevralt nettverk (CNN)}
     \textbf{CNN = spesialisert for bildedata}
     
     \begin{itemize}
@@ -384,18 +384,18 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{D09: Forklare hva et konvolusjonsfilter gjør}
+\begin{frame}{D09: Explain hva et konvolusjonsfilter gjør}
     \textbf{Konvolusjonsfilter (kernel):}
     \begin{itemize}
         \item Liten matrise (f.eks. $3 \times 3$) som \textbf{glir over bildet}
-        \item Beregner punktprodukt mellom filter og bildepatch
+        \item Calculater punktprodukt mellom filter og bildepatch
         \item Produserer et \textbf{feature map}
     \end{itemize}
     
     \vspace{0.3cm}
     \begin{columns}[T]
         \begin{column}{0.55\textwidth}
-            \textbf{Eksempel: Kantdeteksjon}
+            \textbf{Example: Kantdeteksjon}
             \begin{center}
                 \small
                 $\begin{bmatrix} -1 & -1 & -1 \\ 0 & 0 & 0 \\ 1 & 1 & 1 \end{bmatrix}$
@@ -423,8 +423,8 @@
     \end{block}
 \end{frame}
 
-\begin{frame}{D10: Beskrive pooling-lag og deres funksjon}
-    \textbf{Pooling = nedskalering av feature maps}
+\begin{frame}{D10: Describe pooling-lag og deres funksjon}
+    \textbf{Pooling = nedshallering av feature maps}
 
     \vspace{0.2cm}
     \begin{columns}[T]
@@ -436,15 +436,15 @@
             \end{itemize}
 
             \vspace{0.2cm}
-            \textbf{Fordeler med pooling:}
+            \textbf{Advantages med pooling:}
             \begin{itemize}
                 \item \textbf{Reduserer beregning} -- færre parametre
                 \item \textbf{Translasjonsinvarians} -- litt skift påvirker ikke output
-                \item \textbf{Unngår overtilpasning} (overfitting)
+                \item \textbf{Unngår overfitting} (overfitting)
             \end{itemize}
         \end{column}
         \begin{column}{0.42\textwidth}
-            \textbf{Eksempel ($2 \times 2$ max pool):}
+            \textbf{Example ($2 \times 2$ max pool):}
             \begin{center}
                 $\begin{bmatrix} 1 & 3 \\ 2 & 4 \end{bmatrix} \rightarrow 4$
 
@@ -467,18 +467,18 @@
 % =====================================================================
 % SEKSJON: Regularisering og teknikker
 % =====================================================================
-\section{Regularisering og avanserte teknikker}
+\section{Regularization and Advanced Techniques}
 
-\begin{frame}{D11: Kjenne til batch normalization og dropout}
+\begin{frame}{D11: Know about batch normalization og dropout}
     \begin{columns}[T]
         \begin{column}{0.48\textwidth}
             \textbf{Batch Normalization:}
             \begin{itemize}
                 \item Normaliserer aktiveringer i hvert mini-batch
-                \item $\hat{x} = \frac{x - \mu}{\sigma}$, deretter skaler/skift
-                \item Fordeler:
+                \item $\hat{x} = \frac{x - \mu}{\sigma}$, deretter shaller/skift
+                \item Advantages:
                 \begin{itemize}
-                    \item Raskere trening
+                    \item Raskere training
                     \item Stabiliserer læring
                     \item Tillater høyere læringsrate
                 \end{itemize}
@@ -488,26 +488,26 @@
         \begin{column}{0.48\textwidth}
             \textbf{Dropout:}
             \begin{itemize}
-                \item ``Slår av'' tilfeldige nevroner under trening
+                \item ``Slår av'' tilfeldige nevroner under training
                 \item Typisk dropout rate: 0.2--0.5
-                \item Fordeler:
+                \item Advantages:
                 \begin{itemize}
-                    \item Reduserer \textbf{overtilpasning}
+                    \item Reduserer \textbf{overfitting}
                     \item Tvinger nettverk til å være robust
                     \item Fungerer som ensemble
                 \end{itemize}
-                \item Brukes kun under trening!
+                \item Brukes kun under training!
             \end{itemize}
         \end{column}
     \end{columns}
     
     \vspace{0.5cm}
     \begin{block}{Regulariseringsteknikker}
-        Både batch normalization og dropout hjelper med å unngå overtilpasning og forbedre generaliseringsevne.
+        Både batch normalization og dropout hjelper med å unngå overfitting og forbedre generaliseringsevne.
     \end{block}
 \end{frame}
 
-\begin{frame}{D12: Forstå konseptet transfer learning}
+\begin{frame}{D12: Understand konseptet transfer learning}
     \textbf{Transfer learning:}
     \begin{itemize}
         \item Gjenbruk en modell trent på ett problem til et nytt problem
@@ -524,16 +524,16 @@
     \end{enumerate}
     
     \vspace{0.3cm}
-    \begin{alertblock}{\footnotesize Hvorfor fungerer det?}
+    \begin{alertblock}{\footnotesize Why fungerer det?}
         \footnotesize Tidlige lag lærer \textbf{generelle features} (kanter, teksturer) som er nyttige for mange oppgaver. Kun de siste lagene er oppgavespesifikke.
     \end{alertblock}
 
-    \begin{block}{\footnotesize Eksempel i medisin}
+    \begin{block}{\footnotesize Example i medisin}
         \footnotesize Tren på millioner av naturlige bilder $\rightarrow$ Fintun på tusenvis av røntgenbilder $\rightarrow$ Bedre resultat enn å trene fra scratch!
     \end{block}
 \end{frame}
 
-\begin{frame}{D13: Kjenne til avanserte arkitekturer (ResNet, ViT)}
+\begin{frame}{D13: Know about advanced arkitekturer (ResNet, ViT)}
     \begin{columns}[T]
         \begin{column}{0.48\textwidth}
             \textbf{ResNet (Residual Networks):}
@@ -545,16 +545,16 @@
             \end{itemize}
             
             \vspace{0.2cm}
-            \textbf{Viktig bidrag:}
+            \textbf{Important bidrag:}
             \begin{itemize}
                 \item Løste problemet med degradering i dype nettverk
-                \item Standard for medisinsk bildeanalyse
+                \item Standard for medisinsk image analysis
             \end{itemize}
         \end{column}
         \begin{column}{0.48\textwidth}
             \textbf{ViT (Vision Transformer):}
             \begin{itemize}
-                \item Anvender transformer-arkitektur på bilder
+                \item Applyr transformer-arkitektur på bilder
                 \item Deler bilde i patches (``tokens'')
                 \item Bruker self-attention
                 \item Skalerer godt med data og compute
@@ -563,25 +563,25 @@
             \vspace{0.2cm}
             \textbf{Moderne trend:}
             \begin{itemize}
-                \item Overgår CNN på store datasett
-                \item Brukes i state-of-the-art modeller
+                \item Overgår CNN på store dataset
+                \item Brukes i state-of-the-art modor
             \end{itemize}
         \end{column}
     \end{columns}
     
     \vspace{0.3cm}
     \begin{block}{Andre viktige arkitekturer}
-        \textbf{U-Net}: Segmentering (medisinsk klassiker) | \textbf{EfficientNet}: Balansert skalering | \textbf{DenseNet}: Tette koblinger
+        \textbf{U-Net}: Segmentation (medisinsk klassiker) | \textbf{EfficientNet}: Balansert shallering | \textbf{DenseNet}: Tette koblinger
     \end{block}
 \end{frame}
 
 % =====================================================================
 % OPPSUMMERING
 % =====================================================================
-\section*{Oppsummering}
+\section*{Summary}
 
-\begin{frame}{Oppsummering: Dyplæring}
-    \textbf{Grunnleggende:}
+\begin{frame}{Summary: Deep Learning}
+    \textbf{Fundamental:}
     \begin{itemize}
         \item D01--D03: Nevroner, MLP, aktiveringsfunksjoner
         \item D04--D07: Forward/backprop, gradient descent, loss functions
@@ -602,7 +602,7 @@
     
     \vspace{0.3cm}
     \begin{block}{Lab 2 -- Praktisk erfaring}
-        Bygg, tren og evaluer CNN med PyTorch. Bruk Grad-CAM for å forstå modellbeslutninger.
+        Bygg, tren og evaluer CNN med PyTorch. Bruk Grad-CAM for å understand modellbeslutninger.
     \end{block}
 \end{frame}
 

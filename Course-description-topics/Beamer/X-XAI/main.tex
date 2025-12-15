@@ -1,6 +1,6 @@
 % =====================================================================
-% ELMED219: Forklarbar AI (XAI)
-% Beamer-presentasjon - Momentliste X01-X08
+% BMED365: Explainable AI (XAI)
+% Beamer-presentasjon - Topic List X01-X08
 % =====================================================================
 \documentclass[aspectratio=169, 10pt]{beamer}
 
@@ -33,90 +33,90 @@
 % =====================================================================
 % TITTELINFO
 % =====================================================================
-\title{Forklarbar AI (XAI)}
-\subtitle{ELMED219: Momentliste X01--X08}
-\author{ELMED219}
-\date{Vår 2026}
+\title{Explainable AI (XAI)}
+\subtitle{BMED365: Topic List X01--X08}
+\author{BMED365}
+\date{Spring 2026}
 
 % =====================================================================
 % DOKUMENT
 % =====================================================================
 \begin{document}
 
-% Tittelside
+% Title page
 \begin{frame}
     \titlepage
 \end{frame}
 
-% Innholdsfortegnelse
-\begin{frame}{Oversikt}
+% Table of Contents
+\begin{frame}{Overview}
     \begin{enumerate}
-        \item \textbf{Hvorfor forklarbarhet?}
+        \item \textbf{Why explainability?}
         \begin{itemize}
-            \item X01: Forklare hvorfor forklarbarhet er viktig i medisinsk AI
+            \item X01: Explain hvorfor explainability er viktig i medisinsk AI
         \end{itemize}
-        \item \textbf{Typer forklarbarhet}
+        \item \textbf{Typer explainability}
         \begin{itemize}
-            \item X02: Skille mellom global og lokal forklarbarhet
-            \item X03: Skille mellom ante-hoc og post-hoc forklarbarhet
+            \item X02: Skille mellom global og lokal explainability
+            \item X03: Skille mellom ante-hoc og post-hoc explainability
         \end{itemize}
         \item \textbf{XAI-metoder}
         \begin{itemize}
-            \item X04: Beskrive SHAP (SHapley Additive exPlanations)
-            \item X05: Beskrive LIME (Local Interpretable Model-agnostic Explanations)
-            \item X06: Forklare Grad-CAM for CNN-visualisering
+            \item X04: Describe SHAP (SHapley Additive exPlanations)
+            \item X05: Describe LIME (Local Interpretable Model-agnostic Explanations)
+            \item X06: Explain Grad-CAM for CNN-visualisering
         \end{itemize}
-        \item \textbf{Begrensninger og utfordringer}
+        \item \textbf{Limitations og utfordringer}
         \begin{itemize}
-            \item X07: Diskutere begrensninger ved XAI-metoder
-            \item X08: Kjenne til attention-visualisering i LLM
+            \item X07: Discuss begrensninger ved XAI-metoder
+            \item X08: Know about attention-visualisering i LLM
         \end{itemize}
     \end{enumerate}
 \end{frame}
 
 % =====================================================================
-% SEKSJON: Hvorfor forklarbarhet?
+% SEKSJON: Why explainability?
 % =====================================================================
-\section{Hvorfor forklarbarhet?}
+\section{Why explainability?}
 
-\begin{frame}{X01: Forklare hvorfor forklarbarhet er viktig i medisinsk AI}
+\begin{frame}{X01: Explain hvorfor explainability er viktig i medisinsk AI}
     \textbf{Utfordringen med ``\href{https://en.wikipedia.org/wiki/Black_box}{black box}'' AI:}
     \begin{itemize}
-        \item Komplekse modeller (dype nettverk, LLM) gir prediksjoner uten å forklare \textit{hvorfor}
-        \item I medisin er dette problematisk av flere grunner
+        \item Komplekse modor (dype nettverk, LLM) gir prediksjoner uten å explain \textit{hvorfor}
+        \item In medicine er dette problematisk av flere grunner
     \end{itemize}
     
     \vspace{0.2cm}
-    \textbf{Hvorfor forklarbarhet er kritisk i medisin:}
+    \textbf{Why explainability er kritisk i medisin:}
     \begin{enumerate}
         \item \textbf{Tillit:} Leger og pasienter må stole på anbefalingene
-        \item \textbf{Ansvar:} Ved feil -- hvem har ansvaret?
-        \item \textbf{Regulering:} EU AI Act krever forklarbarhet for høyrisiko-AI
-        \item \textbf{Læring:} Forstå hva modellen har lært (og feil-lært)
+        \item \textbf{Responsibility:} Ved feil -- hvem har responsibilityet?
+        \item \textbf{Regulation:} EU AI Act krever explainability for høyrisiko-AI
+        \item \textbf{Læring:} Understand hva modellen har lært (og feil-lært)
         \item \textbf{Feilsøking:} Identifisere bias og svakheter
-        \item \textbf{Klinisk integrasjon:} AI som beslutningsstøtte, ikke autonom
+        \item \textbf{Clinical integrasjon:} AI som beslutningsstøtte, ikke autonom
     \end{enumerate}
     
     {\footnotesize
-    \begin{alertblock}{Medisinsk praksis}
-        En lege som ikke kan forklare hvorfor de anbefaler en behandling vil miste pasientens tillit. Det samme gjelder AI.
+    \begin{alertblock}{Medical praksis}
+        En lege som ikke kan explain hvorfor de anbefaler en behandling vil miste pasientens tillit. Det samme gjelder AI.
     \end{alertblock}
     }
 \end{frame}
 
 % =====================================================================
-% SEKSJON: Typer forklarbarhet
+% SEKSJON: Typer explainability
 % =====================================================================
-\section{Typer forklarbarhet}
+\section{Typer explainability}
 
-\begin{frame}{X02: Skille mellom global og lokal forklarbarhet}
+\begin{frame}{X02: Skille mellom global og lokal explainability}
     \begin{columns}[T]
         \begin{column}{0.48\textwidth}
-            \textbf{Global forklarbarhet:}
+            \textbf{Global explainability:}
             \begin{itemize}
-                \item Forklarer modellens \textbf{generelle oppførsel}
+                \item Explainr modellens \textbf{generelle oppførsel}
                 \item ``Hvilke features er viktigst totalt sett?''
-                \item ``Hvordan påvirker alder prediksjonen generelt?''
+                \item ``How påvirker alder prediksjonen generelt?''
             \end{itemize}
             
             \vspace{0.2cm}
@@ -128,11 +128,11 @@
             \end{itemize}
         \end{column}
         \begin{column}{0.48\textwidth}
-            \textbf{Lokal forklarbarhet:}
+            \textbf{Lokal explainability:}
             \begin{itemize}
-                \item Forklarer én \textbf{spesifikk prediksjon}
-                \item ``Hvorfor fikk \textit{denne} pasienten høy risikoscore?''
-                \item ``Hvilke piksler påvirket klassifiseringen?''
+                \item Explainr én \textbf{spesifikk prediksjon}
+                \item ``Why fikk \textit{denne} pasienten høy risikoscore?''
+                \item ``Hvilke piksler påvirket classificationen?''
             \end{itemize}
             
             \vspace{0.2cm}
@@ -148,26 +148,26 @@
     \vspace{0.2cm}
     {\small
     \begin{block}{Begge er viktige}
-        \textbf{Global:} Forstå modellen som helhet, validere mot domenkunnskap \\
-        \textbf{Lokal:} Forklare beslutninger til pasienter og kollegaer
+        \textbf{Global:} Understand modellen som helhet, validere mot domenkunnskap \\
+        \textbf{Lokal:} Explain beslutninger til pasienter og kollegaer
     \end{block}
     }
 \end{frame}
 
-\begin{frame}{X03: Skille mellom ante-hoc og post-hoc forklarbarhet}
+\begin{frame}{X03: Skille mellom ante-hoc og post-hoc explainability}
     \begin{columns}[T]
         \begin{column}{0.48\textwidth}
             \textbf{\href{https://christophm.github.io/interpretable-ml-book/simple.html}{Ante-hoc} (innebygd):}
             \begin{itemize}
-                \item Forklarbarhet \textbf{bygget inn} i modellen
+                \item Explainability \textbf{bygget inn} i modellen
                 \item Modellen er designet for å være tolkbar
                 \item ``Interpretable by design''
             \end{itemize}
             
             \vspace{0.2cm}
-            \textbf{Eksempler:}
+            \textbf{Examples:}
             \begin{itemize}
-                \item Lineær regresjon (koeffisienter)
+                \item Lineær regression (koeffisienter)
                 \item Beslutningstrær (regler)
                 \item Attention-vekter (delvis)
             \end{itemize}
@@ -179,13 +179,13 @@
         \begin{column}{0.48\textwidth}
             \textbf{\href{https://christophm.github.io/interpretable-ml-book/agnostic.html}{Post-hoc} (etterpå):}
             \begin{itemize}
-                \item Forklaringsmetode \textbf{lagt til} etter trening
+                \item Forklaringsmetode \textbf{lagt til} etter training
                 \item Modellen er fortsatt en ``black box''
                 \item Separate verktøy for tolkning
             \end{itemize}
             
             \vspace{0.2cm}
-            \textbf{Eksempler:}
+            \textbf{Examples:}
             \begin{itemize}
                 \item SHAP, LIME
                 \item Grad-CAM
@@ -193,7 +193,7 @@
             \end{itemize}
             
             \vspace{0.2cm}
-            \textbf{Fordel:} Kan brukes på komplekse modeller \\
+            \textbf{Fordel:} Kan brukes på komplekse modor \\
             \textbf{Ulempe:} Approksimerer, kan være misvisende
         \end{column}
     \end{columns}
@@ -211,7 +211,7 @@
 % =====================================================================
 \section{XAI-metoder}
 
-\begin{frame}{X04: Beskrive SHAP (SHapley Additive exPlanations)}
+\begin{frame}{X04: Describe SHAP (SHapley Additive exPlanations)}
     \textbf{SHAP: Basert på spillteori}
     
     \begin{itemize}
@@ -220,7 +220,7 @@
     \end{itemize}
     
     \vspace{0.2cm}
-    \textbf{Hvordan SHAP fungerer:}
+    \textbf{How SHAP fungerer:}
     \begin{enumerate}
         \item For hver feature: Beregn gjennomsnittlig bidrag til prediksjon
         \item Tar hensyn til alle mulige kombinasjoner av features
@@ -254,17 +254,17 @@
     }
 \end{frame}
 
-\begin{frame}{X05: Beskrive LIME (Local Interpretable Model-agnostic Explanations)}
+\begin{frame}{X05: Describe LIME (Local Interpretable Model-agnostic Explanations)}
     \textbf{\href{https://github.com/marcotcr/lime}{LIME}: Lokal tilnærming med enkel modell}
     
     \vspace{0.2cm}
     \textbf{Hovedidé:}
     \begin{enumerate}
-        \item Velg én prediksjon å forklare
+        \item Velg én prediksjon å explain
         \item Generer \textbf{\href{https://en.wikipedia.org/wiki/Perturbation_theory}{perturberte}} (forstyrrede) versjoner av input
         \item Kjør den komplekse modellen på alle versjoner
         \item Tren en \textbf{enkel, tolkbar modell} (f.eks. lineær) lokalt
-        \item Bruk den enkle modellen til å forklare
+        \item Bruk den enkle modellen til å explain
     \end{enumerate}
     
     \vspace{0.2cm}
@@ -273,8 +273,8 @@
             \textbf{Styrker:}
             \begin{itemize}
                 \item Modell-agnostisk
-                \item Intuitivt forståelig
-                \item Fungerer for tekst, bilder, tabeller
+                \item Intuitivt understandelig
+                \item Fungerer for tekst, bilder, tabor
             \end{itemize}
         \end{column}
         \begin{column}{0.48\textwidth}
@@ -288,22 +288,22 @@
     \end{columns}
     
     {\footnotesize
-    \begin{block}{Eksempel: Tekstklassifisering}
-        LIME viser hvilke ord som bidro mest til klassifiseringen ``spam'' vs. ``ikke spam''
+    \begin{block}{Example: Tekstclassification}
+        LIME viser hvilke ord som bidro mest til classificationen ``spam'' vs. ``ikke spam''
     \end{block}
     }
 \end{frame}
 
-\begin{frame}{X06: Forklare Grad-CAM for CNN-visualisering}
+\begin{frame}{X06: Explain Grad-CAM for CNN-visualisering}
     \textbf{\href{https://arxiv.org/abs/1610.02391}{Grad-CAM}: Gradient-weighted Class Activation Mapping}
     
     \begin{itemize}
         \item Spesialisert for \textbf{konvolusjonelle nettverk (CNN)}
-        \item Viser \textbf{hvilke bildområder} som påvirket klassifiseringen
+        \item Viser \textbf{hvilke bildområder} som påvirket classificationen
     \end{itemize}
     
     \vspace{0.2cm}
-    \textbf{Hvordan det fungerer:}
+    \textbf{How det fungerer:}
     \begin{enumerate}
         \item Beregn gradienter av output m.h.p. feature maps i siste konvolusjonslag
         \item Vekt feature maps med gjennomsnittlig gradient
@@ -311,34 +311,34 @@
     \end{enumerate}
     
     \vspace{0.2cm}
-    \textbf{Medisinsk anvendelse:}
+    \textbf{Medical application:}
     \begin{itemize}
         \item Røntgen/CT: ``Modellen fokuserte på dette området for lungefunn''
         \item Dermatologi: ``Disse pikslene påvirket melanom-diagnosen''
-        \item Validering: Sjekk at modellen ser på riktig område!
+        \item Validation: Sjekk at modellen ser på riktig område!
     \end{itemize}
     
     {\footnotesize
-    \begin{alertblock}{Viktig innsikt}
+    \begin{alertblock}{Important innsikt}
         Grad-CAM kan avsløre om modellen bruker \textbf{spuriøse korrelasjoner} (f.eks. ser på tekst i bildet, ikke patologi)
     \end{alertblock}
     }
 \end{frame}
 
 % =====================================================================
-% SEKSJON: Begrensninger og utfordringer
+% SEKSJON: Limitations og utfordringer
 % =====================================================================
-\section{Begrensninger og utfordringer}
+\section{Limitations og utfordringer}
 
-\begin{frame}{X07: Diskutere begrensninger ved XAI-metoder}
+\begin{frame}{X07: Discuss begrensninger ved XAI-metoder}
     \textbf{XAI er ikke perfekt -- \href{https://arxiv.org/abs/2006.11371}{viktige begrensninger}:}
     
     \vspace{0.2cm}
     \begin{enumerate}
         \item \textbf{Forklaringer er approksimeringer}
         \begin{itemize}
-            \item Post-hoc metoder forklarer ikke den \textit{ekte} modellen
-            \item Kan være misvisende eller inkonsistente
+            \item Post-hoc metoder explainr ikke den \textit{ekte} modellen
+            \item Kan være misvisende or inkonsistente
         \end{itemize}
         
         \item \textbf{Ustabilitet}
@@ -349,35 +349,35 @@
         
         \item \textbf{Fortolkningsbyrde}
         \begin{itemize}
-            \item Hvem skal tolke forklaringene? Krever ekspertise
+            \item Hvem shall interpret forklaringene? Krever ekspertise
             \item Risiko for overtillit til forklaringer
         \end{itemize}
         
         \item \textbf{Beregningsmessig kost}
         \begin{itemize}
-            \item SHAP kan være svært treg for store modeller
+            \item SHAP kan være svært treg for store modor
         \end{itemize}
     \end{enumerate}
     
     \vspace{0.1cm}
     {\small
     \begin{block}{Husk}
-        XAI er et verktøy for innsikt, ikke en garanti for at modellen er ``riktig'' eller rettferdig.
+        XAI er et verktøy for innsikt, ikke en garanti for at modellen er ``riktig'' or rettferdig.
     \end{block}
     }
 \end{frame}
 
-\begin{frame}{X08: Kjenne til attention-visualisering i LLM}
+\begin{frame}{X08: Know about attention-visualisering i LLM}
     \textbf{\href{https://jalammar.github.io/illustrated-transformer/}{Attention-visualisering} i LLM: Innebygd ``forklaring''?}
     \vspace{-0.1cm}
     \begin{itemize}
-        \item Transformer-modeller bruker \textbf{\href{https://en.wikipedia.org/wiki/Attention_(machine_learning)}{self-attention}}
+        \item Transformer-modor bruker \textbf{\href{https://en.wikipedia.org/wiki/Attention_(machine_learning)}{self-attention}}
         \item Attention-vekter viser hvilke tokens modellen ``ser på''
         \item Kan visualiseres som heatmaps
     \end{itemize}
     
     \vspace{0.1cm}
-    \textbf{Eksempel:}
+    \textbf{Example:}
     \begin{center}
         \textit{``Pasienten har \textbf{diabetes} og tar \textbf{metformin}''}
     \end{center}
@@ -394,11 +394,11 @@
             \end{itemize}
         \end{column}
         \begin{column}{0.48\textwidth}
-            \textbf{Begrensninger:}
+            \textbf{Limitations:}
             \begin{itemize}
                 \item Attention $\neq$ forklaring
                 \item Mange lag, mange \href{https://en.wikipedia.org/wiki/Transformer_(deep_learning_architecture)}{``heads''}
-                \item Kan være vanskelig å tolke
+                \item Kan være vanskelig å interpret
                 \item Viser korrelasjon, ikke kausalitet
             \end{itemize}
         \end{column}
@@ -414,27 +414,27 @@
 % =====================================================================
 % OPPSUMMERING
 % =====================================================================
-\section*{Oppsummering}
+\section*{Summary}
 
-\begin{frame}{Oppsummering: Forklarbar AI (XAI)}
-    \textbf{Nøkkelpunkter:}
+\begin{frame}{Summary: Explainable AI (XAI)}
+    \textbf{Key points:}
     \begin{itemize}
-        \item \textbf{X01:} Forklarbarhet er kritisk i medisin (tillit, ansvar, regulering)
-        \item \textbf{X02:} Global vs. lokal forklarbarhet
+        \item \textbf{X01:} Explainability er kritisk i medisin (tillit, responsibility, regulation)
+        \item \textbf{X02:} Global vs. lokal explainability
         \item \textbf{X03:} Ante-hoc (innebygd) vs. post-hoc (etterpå)
         \item \textbf{X04:} SHAP -- spillteoretisk, konsistent
         \item \textbf{X05:} LIME -- lokal tilnærming, modell-agnostisk
         \item \textbf{X06:} Grad-CAM -- visualiser CNN-fokus i bilder
-        \item \textbf{X07:} Begrensninger -- approksimeringer, ustabilitet
+        \item \textbf{X07:} Limitations -- approksimeringer, ustabilitet
         \item \textbf{X08:} Attention-visualisering i LLM
     \end{itemize}
     
     \vspace{0.2cm}
     {\small
-    \begin{block}{Praktisk i Lab 2 og Lab 3}
+    \begin{block}{Practical in Lab 2 og Lab 3}
         \begin{itemize}
-            \item Lab 2: Bruk Grad-CAM for å tolke CNN-klassifisering
-            \item Lab 3: Diskuter forklarbarhet og transparens i LLM
+            \item Lab 2: Bruk Grad-CAM for å interpret CNN-classification
+            \item Lab 3: Diskuter explainability og transparens i LLM
         \end{itemize}
     \end{block}
     }

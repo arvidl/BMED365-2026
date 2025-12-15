@@ -1,6 +1,6 @@
 % =====================================================================
-% ELMED219: Medisinsk bildeanalyse
-% Beamer-presentasjon - Momentliste B01-B06
+% BMED365: Medical image analysis
+% Beamer-presentasjon - Topic List B01-B06
 % =====================================================================
 \documentclass[aspectratio=169, 10pt]{beamer}
 
@@ -28,32 +28,32 @@
 % =====================================================================
 % TITTELINFO
 % =====================================================================
-\title{Medisinsk Bildeanalyse}
-\subtitle{ELMED219: Momentliste B01--B06}
-\author{ELMED219}
-\date{Vår 2026}
+\title{Medical Image Analysis}
+\subtitle{BMED365: Topic List B01--B06}
+\author{BMED365}
+\date{Spring 2026}
 
 % =====================================================================
 % DOKUMENT
 % =====================================================================
 \begin{document}
 
-% Tittelside
+% Title page
 \begin{frame}
     \titlepage
 \end{frame}
 
-% Innholdsfortegnelse
-\begin{frame}{Oversikt}
+% Table of Contents
+\begin{frame}{Overview}
     \tableofcontents
 \end{frame}
 
 % =====================================================================
-% SEKSJON: MRI-grunnleggende
+% SEKSJON: MRI Fundamentals
 % =====================================================================
-\section{MRI-grunnleggende}
+\section{MRI Fundamentals}
 
-\begin{frame}{B01: Forklare grunnleggende MRI-prinsipper på et overordnet nivå}
+\begin{frame}{B01: Explain fundamental MRI-prinsipper på et overordnet nivå}
     \textbf{Magnetic Resonance Imaging (MRI):}
     
     \vspace{0.3cm}
@@ -66,7 +66,7 @@
     \end{enumerate}
     
     \vspace{0.3cm}
-    \textbf{Hvorfor MRI er viktig i medisin:}
+    \textbf{Why MRI er viktig i medisin:}
     \begin{columns}[T]
         \begin{column}{0.48\textwidth}
             \begin{itemize}
@@ -84,12 +84,12 @@
         \end{column}
     \end{columns}
     
-    \begin{block}{Relevans for AI}
-        MRI gir enorme datamengder -- ideell for AI-basert analyse, segmentering, og mønstergjenkjenning.
+    \begin{block}{Relevance for AI}
+        MRI gir enorme datamengder -- ideell for AI-basert analyse, segmentation, og mønstergjenkjenning.
     \end{block}
 \end{frame}
 
-\begin{frame}{B02: Kjenne til ulike MR-sekvenser (T1, T1+Gd, T2, FLAIR)}
+\begin{frame}{B02: Know about ulike MR-sekvenser (T1, T1+Gd, T2, FLAIR)}
     \textbf{Vanlige MR-sekvenser og deres kontrast:}
 
     \vspace{0.2cm}
@@ -97,7 +97,7 @@
         \footnotesize
         \begin{tabular}{lp{4cm}p{4.5cm}}
             \toprule
-            \textbf{Sekvens} & \textbf{Karakteristikker} & \textbf{Klinisk bruk} \\
+            \textbf{Sekvens} & \textbf{Karakteristikker} & \textbf{Clinical bruk} \\
             \midrule
             \textbf{T1-vektet} & CSF mørk, fett lyst, god anatomi & Anatomi \\
             \addlinespace
@@ -113,38 +113,38 @@
     \end{center}
 
     \vspace{0.2cm}
-    \begin{alertblock}{\footnotesize For AI-analyse}
-        \footnotesize Multiparametrisk MRI (flere sekvenser) gir komplementær informasjon som AI kan utnytte for bedre klassifisering.
+    \begin{alertblock}{\footnotesize For AI analysis}
+        \footnotesize Multiparametrisk MRI (flere sekvenser) gir komplementær informasjon som AI kan utnytte for bedre classification.
     \end{alertblock}
 \end{frame}
 
 % =====================================================================
-% SEKSJON: Segmentering
+% SEKSJON: Segmentation
 % =====================================================================
-\section{Segmentering}
+\section{Segmentation}
 
-\begin{frame}{B03: Beskrive segmentering i medisinsk bildeanalyse}
-    \textbf{Segmentering = identifisere og avgrense strukturer i bilde}
+\begin{frame}{B03: Describe segmentation i medisinsk image analysis}
+    \textbf{Segmentation = identifisere og avgrense strukturer i bilde}
     
     \vspace{0.3cm}
     \textbf{Oppgave:}
     \begin{itemize}
         \item Tilordne hver piksel/voksel til en \textbf{klasse} (f.eks. tumor, normalvev, bakgrunn)
-        \item Produserer et \textbf{segmenteringskart} (maske)
+        \item Produserer et \textbf{segmentationskart} (maske)
     \end{itemize}
     
     \vspace{0.3cm}
-    \textbf{Typer segmentering:}
+    \textbf{Typer segmentation:}
     \begin{columns}[T]
         \begin{column}{0.48\textwidth}
-            \textbf{Semantisk segmentering:}
+            \textbf{Semantisk segmentation:}
             \begin{itemize}
                 \item Klassifiser hver piksel
                 \item Alle tumorer = én klasse
             \end{itemize}
         \end{column}
         \begin{column}{0.48\textwidth}
-            \textbf{Instans-segmentering:}
+            \textbf{Instans-segmentation:}
             \begin{itemize}
                 \item Skiller individuelle objekter
                 \item Tumor 1, Tumor 2, ...
@@ -153,29 +153,29 @@
     \end{columns}
     
     \vspace{0.3cm}
-    \textbf{AI-metoder for segmentering:}
+    \textbf{AI-metoder for segmentation:}
     \begin{itemize}
         \item \textbf{U-Net:} Klassisk encoder-decoder arkitektur (medisinsk standard)
         \item \textbf{\href{https://github.com/MIC-DKFZ/nnUNet}{nnU-Net}:} Selvkonfigurerende, state-of-the-art
-        \item \textbf{Segment Anything (SAM):} Generell segmentering
+        \item \textbf{Segment Anything (SAM):} Generell segmentation
     \end{itemize}
 \end{frame}
 
-\begin{frame}{B04: Kjenne til BraTS-utfordringen for hjernesvulstsegmentering}
+\begin{frame}{B04: Know about BraTS-utfordringen for hjernesvulstsegmentation}
     \textbf{\href{https://www.synapse.org/brats}{BraTS} = Brain Tumor Segmentation Challenge}
 
     \vspace{0.2cm}
     \begin{columns}[T]
         \begin{column}{0.48\textwidth}
-            \textbf{Hva er BraTS?}
+            \textbf{What is BraTS?}
             \begin{itemize}
                 \item Årlig internasjonal konkurranse siden 2012
-                \item Benchmark for AI-segmentering av hjernesvulster
+                \item Benchmark for AI-segmentation av hjernesvulster
                 \item Multiparametrisk MRI (T1, T1+Gd, T2, FLAIR)
             \end{itemize}
 
             \vspace{0.2cm}
-            \textbf{Segmenteringsoppgave:}
+            \textbf{Segmentationsoppgave:}
             \begin{itemize}
                 \item \textbf{Whole tumor (WT):} All tumorvev
                 \item \textbf{Tumor core (TC):} Aktiv + nekrotisk
@@ -185,7 +185,7 @@
         \begin{column}{0.48\textwidth}
             \textbf{Betydning:}
             \begin{itemize}
-                \item Standardisert datasett for sammenligning
+                \item Standardisert dataset for sammenligning
                 \item Driver fremskritt innen medisinsk AI
                 \item Grunnlag for klinisk translasjon
             \end{itemize}
@@ -200,17 +200,17 @@
 \end{frame}
 
 % =====================================================================
-% SEKSJON: Kvantitativ avbildning
+% SEKSJON: Quantitative Imaging
 % =====================================================================
-\section{Kvantitativ avbildning}
+\section{Quantitative Imaging}
 
-\begin{frame}{B05: Beskrive radiomic features og kvantitativ avbildning}
+\begin{frame}{B05: Describe radiomic features og kvantitativ avbildning}
     \textbf{\href{https://pyradiomics.readthedocs.io/}{Radiomics} = kvantifisering av bildeegenskaper}
     
     \vspace{0.3cm}
-    \textbf{Hva er radiomic features?}
+    \textbf{What is radiomic features?}
     \begin{itemize}
-        \item Matematisk beskrivelse av tekstur, form, intensitet i bildet
+        \item Matematisk describelse av tekstur, form, intensitet i bildet
         \item Hundrevis av features fra én region of interest (ROI)
         \item ``Dype'' egenskaper ikke synlig for øyet
     \end{itemize}
@@ -245,7 +245,7 @@
     \end{columns}
     
     \vspace{0.3cm}
-    \begin{block}{Klinisk anvendelse}
+    \begin{block}{Clinical application}
         Radiomics kan predikere molekylære markører (IDH-status), prognose, og behandlingsrespons -- basert kun på standardbilder.
     \end{block}
 \end{frame}
@@ -253,16 +253,16 @@
 % =====================================================================
 % SEKSJON: Verktøy
 % =====================================================================
-\section{Verktøy for medisinsk bildeanalyse}
+\section{Tools for Medical Image Analysis}
 
-\begin{frame}{B06: Kjenne til nnU-Net og MONAI som verktøy}
+\begin{frame}{B06: Know about nnU-Net og MONAI som verktøy}
     \begin{columns}[T]
         \begin{column}{0.48\textwidth}
             \textbf{nnU-Net:}
             \begin{itemize}
                 \item ``No-new-Net'' -- selvkonfigurerende
                 \item Analyserer data og velger optimal konfigurasjon
-                \item Preprocessing, arkitektur, trening
+                \item Preprocessing, arkitektur, training
                 \item State-of-the-art på mange benchmarks
                 \item Krever kun data -- resten er automatisk
             \end{itemize}
@@ -294,7 +294,7 @@
     \end{columns}
     
     \vspace{0.2cm}
-    \begin{block}{\footnotesize Andre verktøy}
+    \begin{block}{\footnotesize Other tools}
         \footnotesize \textbf{3D Slicer:} Visualisering og analyse | \textbf{ITK/SimpleITK:} Bildebehandling | \textbf{Nipype:} Neuro-pipelines
     \end{block}
 \end{frame}
@@ -302,26 +302,26 @@
 % =====================================================================
 % OPPSUMMERING
 % =====================================================================
-\section*{Oppsummering}
+\section*{Summary}
 
-\begin{frame}{Oppsummering: Medisinsk Bildeanalyse}
-    \textbf{Nøkkelpunkter:}
+\begin{frame}{Summary: Medical Image Analysis}
+    \textbf{Key points:}
     \begin{itemize}
         \item \textbf{B01:} MRI-prinsipper -- magnetisering, RF-puls, relaksasjon, deteksjon
         \item \textbf{B02:} MR-sekvenser -- T1, T1+Gd, T2, FLAIR, DWI
-        \item \textbf{B03:} Segmentering -- klassifiser hver piksel, U-Net, nnU-Net
-        \item \textbf{B04:} BraTS -- benchmark for hjernesvulstsegmentering
+        \item \textbf{B03:} Segmentation -- klassifiser hver piksel, U-Net, nnU-Net
+        \item \textbf{B04:} BraTS -- benchmark for hjernesvulstsegmentation
         \item \textbf{B05:} Radiomics -- kvantitative features for prediksjon
         \item \textbf{B06:} Verktøy -- nnU-Net (automatisk), MONAI (fleksibelt)
     \end{itemize}
 
     \vspace{0.2cm}
-    \begin{block}{\footnotesize Teamprosjekt-relevans}
-        \footnotesize Medisinsk bildeanalyse er kjernen i teamprosjektet om glioblastom. Bruk kunnskapen om MRI, segmentering og radiomics.
+    \begin{block}{\footnotesize Team project relevance}
+        \footnotesize Medical image analysis er kjernen i teamprosjektet om glioblastom. Bruk kunnskapen om MRI, segmentation og radiomics.
     \end{block}
 
     \begin{block}{\footnotesize Lab 2}
-        \footnotesize Praktisk erfaring med CNN for bildeanalyse, inkludert medisinsk anvendelse (MR-demens).
+        \footnotesize Praktisk erfaring med CNN for image analysis, inkludert medisinsk applylse (MR-demens).
     \end{block}
 \end{frame}
 

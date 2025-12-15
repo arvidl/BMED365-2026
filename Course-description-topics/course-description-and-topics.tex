@@ -1,15 +1,15 @@
 % =====================================================================
-% ELMED219: Kunstig intelligens og beregningsorientert medisin
-% Emnebeskrivelse og momentliste - Våren 2026
+% BMED365: Computational Imaging, Modeling and AI in Biomedicine
+% Course Description and Topic List - Spring 2026
 % =====================================================================
 \documentclass[11pt,a4paper]{article}
 
 % =====================================================================
-% PAKKER
+% PACKAGES
 % =====================================================================
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[norsk]{babel}
+\usepackage[english]{babel}
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage{longtable}
@@ -31,13 +31,13 @@
 \usepackage{multicol}
 
 % =====================================================================
-% LAYOUT OG FORMATERING
+% LAYOUT AND FORMATTING
 % =====================================================================
 \geometry{margin=2.5cm}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0.5em}
 
-% Farger
+% Colors
 \definecolor{uibblue}{RGB}{0, 61, 115}
 \definecolor{uibred}{RGB}{175, 28, 44}
 \definecolor{lightgray}{RGB}{245, 245, 245}
@@ -53,7 +53,7 @@
     urlcolor=uibred
 }
 
-% Tittelformatering
+% Title formatting
 \titleformat{\section}{\Large\bfseries\color{uibblue}}{\thesection}{1em}{}
 \titleformat{\subsection}{\large\bfseries\color{uibblue!80}}{\thesubsection}{1em}{}
 \titleformat{\subsubsection}{\normalsize\bfseries\color{uibblue!60}}{\thesubsubsection}{1em}{}
@@ -61,12 +61,12 @@
 % Header/Footer
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{\small\textcolor{gray}{ELMED219 -- Våren 2026}}
-\fancyhead[R]{\small\textcolor{gray}{Emnebeskrivelse og momentliste}}
+\fancyhead[L]{\small\textcolor{gray}{BMED365 -- Spring 2026}}
+\fancyhead[R]{\small\textcolor{gray}{Course Description and Topic List}}
 \fancyfoot[C]{\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
 
-% Boksdefinisjoner
+% Box definitions
 \newtcolorbox{infobox}[1][]{
     colback=lightgray,
     colframe=uibblue,
@@ -84,23 +84,23 @@
 }
 
 % =====================================================================
-% DOKUMENT START
+% DOCUMENT START
 % =====================================================================
 \begin{document}
 
 % =====================================================================
-% TITTELSIDE
+% TITLE PAGE
 % =====================================================================
 \begin{titlepage}
 \centering
 \vspace*{0.5cm}
 
-{\Huge\bfseries\color{uibblue} ELMED219}\\[0.3cm]
-{\Large\bfseries Kunstig intelligens og beregningsorientert medisin}\\[0.6cm]
+{\Huge\bfseries\color{uibblue} BMED365}\\[0.3cm]
+{\Large\bfseries Computational Imaging, Modeling and AI in Biomedicine}\\[0.6cm]
 
 \rule{\textwidth}{1pt}\\[0.3cm]
-{\LARGE Emnebeskrivelse og momentliste}\\[0.2cm]
-{\large Våren 2026}\\[0.3cm]
+{\LARGE Course Description and Topic List}\\[0.2cm]
+{\large Spring 2026}\\[0.3cm]
 \rule{\textwidth}{1pt}
 
 \vspace{1cm}
@@ -112,11 +112,11 @@
     \tikzstyle{arrow} = [thick,->,>=stealth,uibblue]
     
     % Nodes
-    \node [block] (ml) {Maskinlæring\\(Lab 0)};
-    \node [block, right=of ml] (net) {Nettverk\\(Lab 1)};
-    \node [block, right=of net] (dl) {Dyplæring\\(Lab 2)};
-    \node [block, below=of net] (genai) {Generativ AI\\(Lab 3)};
-    \node [block, below=of genai] (team) {Teamprosjekt};
+    \node [block] (ml) {Machine Learning\\(Lab 0)};
+    \node [block, right=of ml] (net) {Networks\\(Lab 1)};
+    \node [block, right=of net] (dl) {Deep Learning\\(Lab 2)};
+    \node [block, below=of net] (genai) {Generative AI\\(Lab 3)};
+    \node [block, below=of genai] (team) {Team Project};
     
     % Arrows
     \draw [arrow] (ml) -- (net);
@@ -130,10 +130,10 @@
 \vspace{1cm}
 
 {\large
-\textbf{Institutt for biomedisin}\\
-Det medisinske fakultet\\
-Universitetet i Bergen\\[0.5cm]
-I samarbeid med\\
+\textbf{Department of Biomedicine}\\
+Faculty of Medicine\\
+University of Bergen\\[0.5cm]
+In collaboration with\\
 Mohn Medical Imaging and Visualization Center (MMIV)
 }
 
@@ -144,327 +144,327 @@ Mohn Medical Imaging and Visualization Center (MMIV)
 \vspace{0.5cm}
 
 {\normalsize
-\textbf{Kursansvarlig:} Arvid Lundervold\\[0.2cm]
-\textbf{Kursmateriale:} \url{https://github.com/arvidl/BMED365-2026}
+\textbf{Course Responsible:} Arvid Lundervold\\[0.2cm]
+\textbf{Course Material:} \url{https://github.com/arvidl/BMED365-2026}
 }
 
 \vfill
-{\footnotesize Desember 2025}
+{\footnotesize December 2025}
 
 \end{titlepage}
 
 % =====================================================================
-% INNHOLDSFORTEGNELSE
+% TABLE OF CONTENTS
 % =====================================================================
 \tableofcontents
 \newpage
 
 % =====================================================================
-% 1. INNLEDNING OG MOTIVASJON
+% 1. INTRODUCTION AND MOTIVATION
 % =====================================================================
-\section{Innledning og motivasjon}
+\section{Introduction and Motivation}
 
-\subsection{Hvorfor AI i medisin?}
+\subsection{Why AI in Medicine?}
 
-Kunstig intelligens (AI) og maskinlæring transformerer i økende grad helsetjenester og biomedisinsk forskning \citep{topol2019high}. Fra bildediagnostikk og prediksjon av sykdomsforløp til klinisk beslutningsstøtte og legemiddelutvikling -- AI-baserte verktøy blir stadig mer relevante for helsepersonell og forskere.
+Artificial intelligence (AI) and machine learning are increasingly transforming healthcare and biomedical research \citep{topol2019high}. From image diagnostics and disease progression prediction to clinical decision support and drug development -- AI-based tools are becoming increasingly relevant for healthcare professionals and researchers.
 
-\begin{infobox}[Kursets kjernespørsmål]
+\begin{infobox}[Core Questions of the Course]
 \begin{itemize}[nosep]
-    \item Hvordan fungerer maskinlæring og dyplæring?
-    \item Hvordan kan AI anvendes ansvarlig i medisin?
-    \item Hvilke muligheter og begrensninger har dagens AI-teknologi?
-    \item Hva betyr \emph{presisjonsmedisin} i praksis?
+    \item How do machine learning and deep learning work?
+    \item How can AI be applied responsibly in medicine?
+    \item What are the opportunities and limitations of current AI technology?
+    \item What does \emph{precision medicine} mean in practice?
 \end{itemize}
 \end{infobox}
 
-\subsection{Emnets plass i utdanningen}
+\subsection{The Course's Place in the Curriculum}
 
-ELMED219 er et valgfritt emne på 5 studiepoeng som tilbys til medisinstudenter og andre med interesse for AI i helsekontekst. Kurset er delt med BMED365 (Computational imaging, modelling and AI in biomedicine), som går over to blokker.
+BMED365 is an elective course worth 10 ECTS credits offered to students with interest in AI in a health context. The course consists of two blocks: Block 1 (January) is shared with ELMED219, and Block 2 (February) includes additional labs on computational imaging and modeling.
 
-\subsection{Læringsutbytte}
+\subsection{Learning Outcomes}
 
-Etter fullført emne skal studenten kunne:
+Upon completion of the course, the student should be able to:
 
-\subsubsection*{Kunnskap}
+\subsubsection*{Knowledge}
 \begin{itemize}[nosep]
-    \item Forklare grunnleggende prinsipper for maskinlæring, dyplæring og generativ AI
-    \item Beskrive nettverksanalyse og pasient-likhetsnettverk (PSN)
-    \item Gjøre rede for etiske og regulatoriske aspekter ved medisinsk AI
-    \item Forstå konsepter som \emph{forklarbar AI} (XAI) og \emph{trustworthy AI}
+    \item Explain fundamental principles of machine learning, deep learning, and generative AI
+    \item Describe network analysis and patient similarity networks (PSN)
+    \item Account for ethical and regulatory aspects of medical AI
+    \item Understand concepts such as \emph{explainable AI} (XAI) and \emph{trustworthy AI}
 \end{itemize}
 
-\subsubsection*{Ferdigheter}
+\subsubsection*{Skills}
 \begin{itemize}[nosep]
-    \item Anvende Python og Jupyter Notebooks for enkle ML-analyser
-    \item Bruke AI-verktøy (ChatGPT, Gemini, Claude) som lærings- og arbeidspartnere
-    \item Konstruere og analysere pasient-likhetsnettverk
-    \item Skrive en forskningsplan med LaTeX
+    \item Apply Python and Jupyter Notebooks for simple ML analyses
+    \item Use AI tools (ChatGPT, Gemini, Claude) as learning and work partners
+    \item Construct and analyze patient similarity networks
+    \item Write a research plan using LaTeX
 \end{itemize}
 
-\subsubsection*{Generell kompetanse}
+\subsubsection*{General Competence}
 \begin{itemize}[nosep]
-    \item Vurdere muligheter og begrensninger ved AI i klinisk praksis
-    \item Reflektere over etiske implikasjoner av AI-teknologi
-    \item Samarbeide tverrfaglig i prosjektgrupper
-    \item Kommunisere faglig om AI-relaterte temaer
+    \item Assess opportunities and limitations of AI in clinical practice
+    \item Reflect on ethical implications of AI technology
+    \item Collaborate interdisciplinarily in project groups
+    \item Communicate professionally about AI-related topics
 \end{itemize}
 
 % =====================================================================
-% 2. KURSSTRUKTUR OG INNHOLD
+% 2. COURSE STRUCTURE AND CONTENT
 % =====================================================================
-\section{Kursstruktur og innhold}
+\section{Course Structure and Content}
 
-\subsection{Oversikt over aktiviteter}
+\subsection{Overview of Activities}
 
-Kurset er organisert rundt fire laboratorier (Labs), et lynkurs og et teamprosjekt. Tabell~\ref{tab:aktiviteter} gir en oversikt.
+The course is organized around four laboratories (Labs), a quick start course, and a team project. Table~\ref{tab:activities} provides an overview.
 
 \begin{table}[htbp]
 \centering
-\caption{Oversikt over kursaktiviteter}
-\label{tab:aktiviteter}
+\caption{Overview of course activities}
+\label{tab:activities}
 \begin{tabular}{@{}llp{6cm}c@{}}
 \toprule
-\textbf{Aktivitet} & \textbf{Tema} & \textbf{Beskrivelse} & \textbf{Timer} \\
+\textbf{Activity} & \textbf{Topic} & \textbf{Description} & \textbf{Hours} \\
 \midrule
-Lynkurs & AI-assistert Python & Intro til Python og AI-verktøy & 4 \\
-Lab 0 & Maskinlæring & ML med scikit-learn og PyCaret & 6 \\
-Lab 1 & Nettverksvitenskap & Grafteori og PSN med NetworkX & 6 \\
-Lab 2 & Dyplæring & CNN og nevrale nettverk med PyTorch & 8 \\
-Lab 3 & Generativ AI \& LLM & Transformers, prompting, etikk & 6 \\
+Quick Start & AI-assisted Python & Intro to Python and AI tools & 4 \\
+Lab 0 & Machine Learning & ML with scikit-learn and PyCaret & 6 \\
+Lab 1 & Network Science & Graph theory and PSN with NetworkX & 6 \\
+Lab 2 & Deep Learning & CNN and neural networks with PyTorch & 8 \\
+Lab 3 & Generative AI \& LLM & Transformers, prompting, ethics & 6 \\
 \midrule
-Teamprosjekt & Presisjonsmedisin & Forskningsplan for glioblastom & 15 \\
+Team Project & Precision Medicine & Research plan for glioblastoma & 15 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-\subsection{Lynkurs: AI-assistert Python-programmering}
+\subsection{Quick Start: AI-Assisted Python Programming}
 
-Lynkurset er designet for studenter uten tidligere programmeringserfaring. Det gir en praktisk introduksjon til:
+The quick start course is designed for students without prior programming experience. It provides a practical introduction to:
 
 \begin{itemize}[nosep]
-    \item Google Colab og Jupyter Notebooks
-    \item Python-grunnlag: variabler, datatyper, lister, funksjoner
-    \item AI som programmeringspartner (Gemini/ChatGPT)
-    \item Smakebit fra Lab 0 (klassifisering) og Lab 1 (nettverk)
+    \item Google Colab and Jupyter Notebooks
+    \item Python basics: variables, data types, lists, functions
+    \item AI as a programming partner (Gemini/ChatGPT)
+    \item Preview of Lab 0 (classification) and Lab 1 (networks)
 \end{itemize}
 
-\subsection{Lab 0: Maskinlæring (ML)}
+\subsection{Lab 0: Machine Learning (ML)}
 
-Lab 0 gir en praktisk innføring i maskinlæring med fokus på klassifisering og evaluering.
+Lab 0 provides a practical introduction to machine learning with focus on classification and evaluation.
 
 \begin{table}[htbp]
 \centering
-\caption{Notebooks i Lab 0}
+\caption{Notebooks in Lab 0}
 \label{tab:lab0}
 \begin{tabular}{@{}clp{7cm}@{}}
 \toprule
-\textbf{Nr} & \textbf{Notebook} & \textbf{Innhold} \\
+\textbf{No.} & \textbf{Notebook} & \textbf{Content} \\
 \midrule
-01 & Enkle eksempler & Features, labels, trening, testing, decision trees \\
-02 & Binær klassifikasjon & Confusion matrix, ROC, precision, recall, F1-score \\
-03 & PyCaret hurtigguide & AutoML for rask prototyping \\
+01 & Simple examples & Features, labels, training, testing, decision trees \\
+02 & Binary classification & Confusion matrix, ROC, precision, recall, F1-score \\
+03 & PyCaret quick guide & AutoML for rapid prototyping \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-\textbf{Læringsmål:}
+\textbf{Learning Objectives:}
 \begin{itemize}[nosep]
-    \item Skille mellom supervised og unsupervised læring
-    \item Bruke train/test split og kryssvalidering
-    \item Tolke evalueringsmetrikker (accuracy, precision, recall, AUC)
-    \item Forstå TRIPOD-retningslinjer for medisinsk ML
+    \item Distinguish between supervised and unsupervised learning
+    \item Use train/test split and cross-validation
+    \item Interpret evaluation metrics (accuracy, precision, recall, AUC)
+    \item Understand TRIPOD guidelines for medical ML
 \end{itemize}
 
-\subsection{Lab 1: Nettverksvitenskap og PSN}
+\subsection{Lab 1: Network Science and PSN}
 
-Lab 1 introduserer grafteori og konseptet \emph{pasient-likhetsnettverk} (PSN) -- en tilnærming for å identifisere pasientsubgrupper basert på likhet.
+Lab 1 introduces graph theory and the concept of \emph{patient similarity networks} (PSN) -- an approach for identifying patient subgroups based on similarity.
 
 \begin{table}[htbp]
 \centering
-\caption{Notebooks i Lab 1}
+\caption{Notebooks in Lab 1}
 \label{tab:lab1}
 \begin{tabular}{@{}clp{6.5cm}@{}}
 \toprule
-\textbf{Nr} & \textbf{Notebook} & \textbf{Innhold} \\
+\textbf{No.} & \textbf{Notebook} & \textbf{Content} \\
 \midrule
-00 & Introduksjon & Grafteori, nabomatriser, sentralitetsmål \\
-01 & NetworkX tutorial & Opprette, manipulere, visualisere grafer \\
-02 & PSN med IRIS & Likhetsberegning, community detection \\
-03 & PSN med IBS-data & Klinisk anvendelse: hjerne og kognisjon \\
-04 & PSN med IQ-data & WAIS-IV og kognitive profiler \\
+00 & Introduction & Graph theory, adjacency matrices, centrality measures \\
+01 & NetworkX tutorial & Create, manipulate, visualize graphs \\
+02 & PSN with IRIS & Similarity calculation, community detection \\
+03 & PSN with IBS data & Clinical application: brain and cognition \\
+04 & PSN with IQ data & WAIS-IV and cognitive profiles \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-\textbf{Læringsmål:}
+\textbf{Learning Objectives:}
 \begin{itemize}[nosep]
-    \item Definere graf, node, kant, og forstå nabomatriser
-    \item Beregne sentralitetsmål (degree, betweenness, eigenvector)
-    \item Konstruere PSN fra kliniske data
-    \item Anvende Louvain-algoritmen for community detection
+    \item Define graph, node, edge, and understand adjacency matrices
+    \item Calculate centrality measures (degree, betweenness, eigenvector)
+    \item Construct PSN from clinical data
+    \item Apply the Louvain algorithm for community detection
 \end{itemize}
 
-\subsection{Lab 2: Dyplæring (DL)}
+\subsection{Lab 2: Deep Learning (DL)}
 
-Lab 2 utforsker dyplæring med fokus på nevrale nettverk, CNN og medisinsk bildeanalyse.
+Lab 2 explores deep learning with focus on neural networks, CNN, and medical image analysis.
 
 \begin{table}[htbp]
 \centering
-\caption{Notebooks i Lab 2 (prioritert)}
+\caption{Notebooks in Lab 2 (prioritized)}
 \label{tab:lab2}
 \begin{tabular}{@{}cclp{5.5cm}@{}}
 \toprule
-\textbf{Del} & \textbf{Pri} & \textbf{Notebook} & \textbf{Innhold} \\
+\textbf{Part} & \textbf{Pri} & \textbf{Notebook} & \textbf{Content} \\
 \midrule
-A & 1 & CNN-intro & Konseptuell intro til CNN \\
-A & 1 & MNIST-MLP & Din første DL-modell \\
-A & 1 & MNIST-CNN & CNN på håndskrevne sifre \\
+A & 1 & CNN-intro & Conceptual intro to CNN \\
+A & 1 & MNIST-MLP & Your first DL model \\
+A & 1 & MNIST-CNN & CNN on handwritten digits \\
 \midrule
-B & 1 & NN-intro & Biologiske vs. kunstige nevroner \\
-B & 1 & Læring i NN & Backpropagation, gradient descent \\
-B & 1 & Hjertesykdom & Klassifisering fra tabelldata \\
-B & 1 & EKG-arytmi & CNN på EKG-signaler \\
+B & 1 & NN-intro & Biological vs. artificial neurons \\
+B & 1 & Learning in NN & Backpropagation, gradient descent \\
+B & 1 & Heart disease & Classification from tabular data \\
+B & 1 & ECG-arrhythmia & CNN on ECG signals \\
 \midrule
-C & 2 & CNN-arkitektur & Miljøoppsett og arkitektur \\
-C & 2 & CNN-trening & Trening og lagring av modell \\
-C & 2 & CNN-testing & Evaluering og Grad-CAM (XAI) \\
+C & 2 & CNN-architecture & Environment setup and architecture \\
+C & 2 & CNN-training & Training and saving model \\
+C & 2 & CNN-testing & Evaluation and Grad-CAM (XAI) \\
 \midrule
-D & 2 & MR-demens & MRI-bildeanalyse for demens \\
+D & 2 & MRI-dementia & MRI image analysis for dementia \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-\textbf{Prioritetsnivåer:} 1 = kjerne, 2 = anbefalt, 3 = valgfri, 4 = avansert
+\textbf{Priority levels:} 1 = core, 2 = recommended, 3 = optional, 4 = advanced
 
-\textbf{Læringsmål:}
+\textbf{Learning Objectives:}
 \begin{itemize}[nosep]
-    \item Forklare oppbygningen av et nevralt nettverk
-    \item Forstå backpropagation og gradient descent
-    \item Bygge og trene CNN med PyTorch
-    \item Bruke Grad-CAM for å tolke modellbeslutninger
+    \item Explain the structure of a neural network
+    \item Understand backpropagation and gradient descent
+    \item Build and train CNN with PyTorch
+    \item Use Grad-CAM to interpret model decisions
 \end{itemize}
 
-\subsection{Lab 3: Generativ AI og Store Språkmodeller}
+\subsection{Lab 3: Generative AI and Large Language Models}
 
-Lab 3 dekker generativ AI og store språkmodeller (LLM) med fokus på medisinsk anvendelse, etikk og forklarbarhet.
+Lab 3 covers generative AI and large language models (LLM) with focus on medical applications, ethics, and explainability.
 
 \begin{table}[htbp]
 \centering
-\caption{Notebooks i Lab 3}
+\caption{Notebooks in Lab 3}
 \label{tab:lab3}
 \begin{tabular}{@{}ccp{6cm}c@{}}
 \toprule
-\textbf{Nr} & \textbf{Prioritet} & \textbf{Tema} & \textbf{Tid} \\
+\textbf{No.} & \textbf{Priority} & \textbf{Topic} & \textbf{Time} \\
 \midrule
-01 & \textcolor{corecolor}{Kjerne} & Introduksjon til generativ AI & 45 min \\
-02 & \textcolor{corecolor}{Kjerne} & Transformer-arkitekturen & 60 min \\
-03 & \textcolor{corecolor}{Kjerne} & LLM grunnleggende (tokens, temp.) & 45 min \\
-04 & \textcolor{corecolor}{Kjerne} & Prompt engineering & 90 min \\
+01 & \textcolor{corecolor}{Core} & Introduction to generative AI & 45 min \\
+02 & \textcolor{corecolor}{Core} & Transformer architecture & 60 min \\
+03 & \textcolor{corecolor}{Core} & LLM fundamentals (tokens, temp.) & 45 min \\
+04 & \textcolor{corecolor}{Core} & Prompt engineering & 90 min \\
 \midrule
-05 & \textcolor{recommendedcolor}{Viktig} & Forklarbar AI (XAI) & 60 min \\
-06 & \textcolor{recommendedcolor}{Viktig} & AI-etikk i medisin & 60 min \\
+05 & \textcolor{recommendedcolor}{Important} & Explainable AI (XAI) & 60 min \\
+06 & \textcolor{recommendedcolor}{Important} & AI ethics in medicine & 60 min \\
 \midrule
-07 & \textcolor{optionalcolor}{Valgfri} & Trustworthy AI & 60 min \\
-08 & \textcolor{optionalcolor}{Valgfri} & Nevrosymbolsk AI + Agentisk AI & 90 min \\
-09 & \textcolor{optionalcolor}{Valgfri} & ChatGPT/Claude API & 60 min \\
+07 & \textcolor{optionalcolor}{Optional} & Trustworthy AI & 60 min \\
+08 & \textcolor{optionalcolor}{Optional} & Neurosymbolic AI + Agentic AI & 90 min \\
+09 & \textcolor{optionalcolor}{Optional} & ChatGPT/Claude API & 60 min \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-\textbf{NB:} Notebook 08 (Nevrosymbolsk AI) inneholder en omfattende \textbf{case study om hjernesvulster (gliom)} som demonstrerer:
+\textbf{Note:} Notebook 08 (Neurosymbolic AI) contains a comprehensive \textbf{case study on brain tumors (glioma)} that demonstrates:
 \begin{itemize}[nosep]
-    \item Nevrosymbolsk klassifikasjon basert på WHO 2021 CNS-klassifikasjon
-    \item Integrasjon av MRI-analyse (nevral) med kunnskapsgrafer (symbolsk)
-    \item Agentisk AI som orkestrerer klinisk arbeidsflyt
+    \item Neurosymbolic classification based on WHO 2021 CNS classification
+    \item Integration of MRI analysis (neural) with knowledge graphs (symbolic)
+    \item Agentic AI orchestrating clinical workflow
 \end{itemize}
 
-\textbf{Læringsmål:}
+\textbf{Learning Objectives:}
 \begin{itemize}[nosep]
-    \item Forklare self-attention og transformer-arkitekturen
-    \item Forstå forskjellen mellom \emph{prompt engineering} og \emph{context engineering}
-    \item Anvende prompt engineering-teknikker (zero-shot, few-shot, CoT)
-    \item Anvende modellspesifikke prompting-teknikker for GPT-5.2, Claude Opus 4.5 og Gemini 3
-    \item Vurdere XAI-metoder som SHAP og LIME
-    \item Diskutere AI-etikk, bias, og EU AI Act
-    \item Forstå nevrosymbolsk integrasjon av nevrale og symbolske metoder
-    \item Beskrive agentisk AI og dens rolle i klinisk beslutningsstøtte
+    \item Explain self-attention and transformer architecture
+    \item Understand the difference between \emph{prompt engineering} and \emph{context engineering}
+    \item Apply prompt engineering techniques (zero-shot, few-shot, CoT)
+    \item Apply model-specific prompting techniques for GPT-5.2, Claude Opus 4.5, and Gemini 3
+    \item Evaluate XAI methods such as SHAP and LIME
+    \item Discuss AI ethics, bias, and EU AI Act
+    \item Understand neurosymbolic integration of neural and symbolic methods
+    \item Describe agentic AI and its role in clinical decision support
 \end{itemize}
 
-\subsection{Teamprosjekt: Presisjonsmedisin ved glioblastom}
+\subsection{Team Project: Precision Medicine for Glioblastoma}
 
-Teamprosjektet er en sentral del av kurset der studenter i tverrfaglige grupper utarbeider en forskningsplan (søknadsskisse) for et tenkt prosjekt om AI og avbildning ved hjernesvulst.
+The team project is a central part of the course where students in interdisciplinary groups develop a research plan (grant proposal sketch) for a hypothetical project on AI and imaging for brain tumors.
 
-\begin{warningbox}[Viktig om teamprosjektet]
-Oppgaven går ut på å \textbf{skrive en forskningsplan} -- ikke å faktisk gjennomføre prosjektet med koding eller dataanalyse.
+\begin{warningbox}[Important about the team project]
+The task is to \textbf{write a research plan} -- not to actually implement the project with coding or data analysis.
 \end{warningbox}
 
-\textbf{Fokusområder:}
+\textbf{Focus Areas:}
 \begin{enumerate}[nosep]
-    \item Bildeteknologier og modaliteter (MRI, PET)
-    \item Bildeavledede biomarkører for glioblastom
-    \item Maskinlæringsteknikker (segmentering, klassifisering)
-    \item Datahåndteringsplan og etiske betraktninger
+    \item Imaging technologies and modalities (MRI, PET)
+    \item Image-derived biomarkers for glioblastoma
+    \item Machine learning techniques (segmentation, classification)
+    \item Data management plan and ethical considerations
 \end{enumerate}
 
-\begin{infobox}[Relevant bakgrunn: Gliom-casestudien]
-Notebook 08 i Lab 3 inneholder en omfattende nevrosymbolsk AI-casestudie for gliomklassifikasjon basert på WHO 2021 CNS-klassifikasjon. Denne demonstrerer:
+\begin{infobox}[Relevant Background: The Glioma Case Study]
+Notebook 08 in Lab 3 contains a comprehensive neurosymbolic AI case study for glioma classification based on WHO 2021 CNS classification. This demonstrates:
 \begin{itemize}[nosep]
-    \item Integrasjon av MRI-segmentering (BraTS) med molekylære markører (IDH, MGMT, 1p/19q)
-    \item Kunnskapsgrafer for behandlingsanbefalinger
-    \item Agentisk AI for orkestrering av klinisk arbeidsflyt
+    \item Integration of MRI segmentation (BraTS) with molecular markers (IDH, MGMT, 1p/19q)
+    \item Knowledge graphs for treatment recommendations
+    \item Agentic AI for orchestrating clinical workflow
 \end{itemize}
-Studenter kan bruke denne som inspirasjon for teamprosjektet.
+Students can use this as inspiration for the team project.
 \end{infobox}
 
-\textbf{Rapportstruktur:}
+\textbf{Report Structure:}
 \begin{itemize}[nosep]
-    \item Forskningsplan: 3--5 sider (bakgrunn, mål, metoder, evaluering)
-    \item Datahåndteringsplan og etikk: 1.5--2.5 sider
-    \item Skrives på engelsk (felles med BMED365)
-    \item LaTeX-mal tilgjengelig på Overleaf
+    \item Research plan: 3--5 pages (background, objectives, methods, evaluation)
+    \item Data management plan and ethics: 1.5--2.5 pages
+    \item Written in English
+    \item LaTeX template available on Overleaf
 \end{itemize}
 
 % =====================================================================
-% 3. DETALJERT MOMENTLISTE
+% 3. DETAILED TOPIC LIST
 % =====================================================================
-\section{Detaljert momentliste}
+\section{Detailed Topic List}
 
-Denne seksjonen gir en utfyllende momentliste organisert etter tema. Momentene er merket med prioritet: \textbf{K} = kjerne (obligatorisk), \textbf{V} = viktig (anbefalt), \textbf{U} = utdypende (valgfritt).
+This section provides a comprehensive topic list organized by theme. Topics are marked with priority: \textbf{C} = core (mandatory), \textbf{I} = important (recommended), \textbf{S} = supplementary (optional).
 
-\subsection{Maskinlæring -- grunnleggende konsepter}
+\subsection{Machine Learning -- Fundamental Concepts}
 
 \begin{longtable}{@{}clp{9cm}@{}}
 \toprule
-\textbf{Pri} & \textbf{Nr} & \textbf{Moment} \\
+\textbf{Pri} & \textbf{No.} & \textbf{Topic} \\
 \midrule
 \endfirsthead
-\multicolumn{3}{c}{\textit{Fortsettelse fra forrige side}} \\
+\multicolumn{3}{c}{\textit{Continued from previous page}} \\
 \toprule
-\textbf{Pri} & \textbf{Nr} & \textbf{Moment} \\
+\textbf{Pri} & \textbf{No.} & \textbf{Topic} \\
 \midrule
 \endhead
 \midrule
-\multicolumn{3}{r}{\textit{Fortsetter på neste side}} \\
+\multicolumn{3}{r}{\textit{Continues on next page}} \\
 \endfoot
 \bottomrule
 \endlastfoot
-K & M01 & Definere \emph{maskinlæring} og skille fra tradisjonell programmering \\
-K & M02 & Forklare forskjellen mellom \emph{supervised} og \emph{unsupervised} læring \\
-K & M03 & Beskrive konseptene \emph{features} (input) og \emph{labels} (output) \\
-K & M04 & Forklare hvorfor vi deler data i \emph{trenings-} og \emph{testsett} \\
-K & M05 & Definere \emph{overfitting} og \emph{underfitting} \\
-K & M06 & Forstå \emph{bias-variance trade-off} \\
-V & M07 & Beskrive k-fold \emph{kryssvalidering} og dens fordeler \\
-V & M08 & Forklare hva en \emph{baseline-modell} er og hvorfor den er viktig \\
-K & M09 & Skille mellom \emph{klassifisering} og \emph{regresjon} \\
-V & M10 & Kjenne til enkle modeller: beslutningstre, k-NN, logistisk regresjon \\
+C & M01 & Define \emph{machine learning} and distinguish from traditional programming \\
+C & M02 & Explain the difference between \emph{supervised} and \emph{unsupervised} learning \\
+C & M03 & Describe the concepts of \emph{features} (input) and \emph{labels} (output) \\
+C & M04 & Explain why we split data into \emph{training} and \emph{test sets} \\
+C & M05 & Define \emph{overfitting} and \emph{underfitting} \\
+C & M06 & Understand \emph{bias-variance trade-off} \\
+I & M07 & Describe k-fold \emph{cross-validation} and its advantages \\
+I & M08 & Explain what a \emph{baseline model} is and why it is important \\
+C & M09 & Distinguish between \emph{classification} and \emph{regression} \\
+I & M10 & Know simple models: decision tree, k-NN, logistic regression \\
 \end{longtable}
 
-\subsection{Evaluering av ML-modeller}
+\subsection{Evaluation of ML Models}
 
 \begin{longtable}{@{}clp{9cm}@{}}
 \toprule
-\textbf{Pri} & \textbf{Nr} & \textbf{Moment} \\
+\textbf{Pri} & \textbf{No.} & \textbf{Topic} \\
 \midrule
 \endfirsthead
 \midrule
@@ -473,23 +473,23 @@ V & M10 & Kjenne til enkle modeller: beslutningstre, k-NN, logistisk regresjon \
 \endfoot
 \bottomrule
 \endlastfoot
-K & E01 & Tolke en \emph{confusion matrix} (forvirringsmatrise) \\
-K & E02 & Definere TP, TN, FP, FN i medisinsk kontekst \\
-K & E03 & Beregne og tolke \emph{accuracy} (nøyaktighet) \\
-K & E04 & Beregne og tolke \emph{precision} (presisjon, PPV) \\
-K & E05 & Beregne og tolke \emph{recall/sensitivity} (sensitivitet) \\
-K & E06 & Beregne og tolke \emph{specificity} (spesifisitet) \\
-V & E07 & Beregne og tolke \emph{F1-score} \\
-K & E08 & Forstå ROC-kurven og AUC som mål på modellkvalitet \\
-V & E09 & Forklare når accuracy er utilstrekkelig (ubalanserte datasett) \\
-V & E10 & Kjenne til TRIPOD-retningslinjer for rapportering \\
+C & E01 & Interpret a \emph{confusion matrix} \\
+C & E02 & Define TP, TN, FP, FN in medical context \\
+C & E03 & Calculate and interpret \emph{accuracy} \\
+C & E04 & Calculate and interpret \emph{precision} (PPV) \\
+C & E05 & Calculate and interpret \emph{recall/sensitivity} \\
+C & E06 & Calculate and interpret \emph{specificity} \\
+I & E07 & Calculate and interpret \emph{F1-score} \\
+C & E08 & Understand ROC curve and AUC as measures of model quality \\
+I & E09 & Explain when accuracy is insufficient (imbalanced datasets) \\
+I & E10 & Know TRIPOD guidelines for reporting \\
 \end{longtable}
 
-\subsection{Grafteori og nettverksvitenskap}
+\subsection{Graph Theory and Network Science}
 
 \begin{longtable}{@{}clp{9cm}@{}}
 \toprule
-\textbf{Pri} & \textbf{Nr} & \textbf{Moment} \\
+\textbf{Pri} & \textbf{No.} & \textbf{Topic} \\
 \midrule
 \endfirsthead
 \midrule
@@ -498,23 +498,23 @@ V & E10 & Kjenne til TRIPOD-retningslinjer for rapportering \\
 \endfoot
 \bottomrule
 \endlastfoot
-K & N01 & Definere hva en \emph{graf} er (noder og kanter) \\
-K & N02 & Skille mellom \emph{rettet} og \emph{urettet} graf \\
-K & N03 & Skille mellom \emph{vektet} og \emph{uvektet} graf \\
-K & N04 & Representere en graf som \emph{nabomatrise} (adjacency matrix) \\
-K & N05 & Beregne \emph{degree centrality} og tolke resultatet \\
-V & N06 & Beregne \emph{betweenness centrality} og tolke resultatet \\
-V & N07 & Beregne \emph{eigenvector centrality} og tolke resultatet \\
-V & N08 & Forklare \emph{clustering coefficient} \\
-V & N09 & Beskrive \emph{community detection} og Louvain-algoritmen \\
-K & N10 & Kjenne til NetworkX-biblioteket for Python \\
+C & N01 & Define what a \emph{graph} is (nodes and edges) \\
+C & N02 & Distinguish between \emph{directed} and \emph{undirected} graphs \\
+C & N03 & Distinguish between \emph{weighted} and \emph{unweighted} graphs \\
+C & N04 & Represent a graph as an \emph{adjacency matrix} \\
+C & N05 & Calculate \emph{degree centrality} and interpret the result \\
+I & N06 & Calculate \emph{betweenness centrality} and interpret the result \\
+I & N07 & Calculate \emph{eigenvector centrality} and interpret the result \\
+I & N08 & Explain \emph{clustering coefficient} \\
+I & N09 & Describe \emph{community detection} and the Louvain algorithm \\
+C & N10 & Know the NetworkX library for Python \\
 \end{longtable}
 
-\subsection{Pasient-likhetsnettverk (PSN)}
+\subsection{Patient Similarity Networks (PSN)}
 
 \begin{longtable}{@{}clp{9cm}@{}}
 \toprule
-\textbf{Pri} & \textbf{Nr} & \textbf{Moment} \\
+\textbf{Pri} & \textbf{No.} & \textbf{Topic} \\
 \midrule
 \endfirsthead
 \midrule
@@ -523,21 +523,21 @@ K & N10 & Kjenne til NetworkX-biblioteket for Python \\
 \endfoot
 \bottomrule
 \endlastfoot
-K & P01 & Forklare konseptet \emph{pasient-likhetsnettverk} (PSN) \\
-K & P02 & Beskrive hvordan PSN kan støtte \emph{presisjonsmedisin} \\
-K & P03 & Beregne likhet mellom pasienter (Euklidsk, Manhattan, Gower) \\
-V & P04 & Konstruere et PSN fra en pasient-feature-matrise \\
-V & P05 & Velge terskelverdi for kantoppretting i PSN \\
-V & P06 & Identifisere pasientsubgrupper via community detection \\
-U & P07 & Diskutere fordeler og begrensninger ved PSN-tilnærmingen \\
-U & P08 & Kjenne til multimodal PSN (integrering av ulike datatyper) \\
+C & P01 & Explain the concept of \emph{patient similarity networks} (PSN) \\
+C & P02 & Describe how PSN can support \emph{precision medicine} \\
+C & P03 & Calculate similarity between patients (Euclidean, Manhattan, Gower) \\
+I & P04 & Construct a PSN from a patient-feature matrix \\
+I & P05 & Choose threshold value for edge creation in PSN \\
+I & P06 & Identify patient subgroups via community detection \\
+S & P07 & Discuss advantages and limitations of the PSN approach \\
+S & P08 & Know about multimodal PSN (integration of different data types) \\
 \end{longtable}
 
-\subsection{Nevrale nettverk og dyplæring}
+\subsection{Neural Networks and Deep Learning}
 
 \begin{longtable}{@{}clp{9cm}@{}}
 \toprule
-\textbf{Pri} & \textbf{Nr} & \textbf{Moment} \\
+\textbf{Pri} & \textbf{No.} & \textbf{Topic} \\
 \midrule
 \endfirsthead
 \midrule
@@ -546,26 +546,26 @@ U & P08 & Kjenne til multimodal PSN (integrering av ulike datatyper) \\
 \endfoot
 \bottomrule
 \endlastfoot
-K & D01 & Sammenligne biologiske og kunstige nevroner \\
-K & D02 & Beskrive oppbygningen av et \emph{multilags perseptron} (MLP) \\
-K & D03 & Forklare hva en \emph{aktiveringsfunksjon} er (ReLU, sigmoid) \\
-K & D04 & Forstå konseptet \emph{forward propagation} \\
-K & D05 & Forklare \emph{backpropagation} på et konseptuelt nivå \\
-K & D06 & Forstå \emph{gradient descent} og læringsrate \\
-V & D07 & Kjenne til \emph{loss functions} (cross-entropy, MSE) \\
-K & D08 & Beskrive et \emph{konvolusjonelt nevralt nettverk} (CNN) \\
-K & D09 & Forklare hva et \emph{konvolusjonsfilter} gjør \\
-K & D10 & Beskrive \emph{pooling-lag} og deres funksjon \\
-V & D11 & Kjenne til \emph{batch normalization} og \emph{dropout} \\
-V & D12 & Forstå konseptet \emph{transfer learning} \\
-U & D13 & Kjenne til avanserte arkitekturer (ResNet, ViT) \\
+C & D01 & Compare biological and artificial neurons \\
+C & D02 & Describe the structure of a \emph{multilayer perceptron} (MLP) \\
+C & D03 & Explain what an \emph{activation function} is (ReLU, sigmoid) \\
+C & D04 & Understand the concept of \emph{forward propagation} \\
+C & D05 & Explain \emph{backpropagation} at a conceptual level \\
+C & D06 & Understand \emph{gradient descent} and learning rate \\
+I & D07 & Know about \emph{loss functions} (cross-entropy, MSE) \\
+C & D08 & Describe a \emph{convolutional neural network} (CNN) \\
+C & D09 & Explain what a \emph{convolution filter} does \\
+C & D10 & Describe \emph{pooling layers} and their function \\
+I & D11 & Know about \emph{batch normalization} and \emph{dropout} \\
+I & D12 & Understand the concept of \emph{transfer learning} \\
+S & D13 & Know about advanced architectures (ResNet, ViT) \\
 \end{longtable}
 
-\subsection{Generativ AI og store språkmodeller}
+\subsection{Generative AI and Large Language Models}
 
 \begin{longtable}{@{}clp{9cm}@{}}
 \toprule
-\textbf{Pri} & \textbf{Nr} & \textbf{Moment} \\
+\textbf{Pri} & \textbf{No.} & \textbf{Topic} \\
 \midrule
 \endfirsthead
 \midrule
@@ -574,33 +574,33 @@ U & D13 & Kjenne til avanserte arkitekturer (ResNet, ViT) \\
 \endfoot
 \bottomrule
 \endlastfoot
-K & G01 & Definere \emph{generativ AI} og skille fra diskriminativ AI \\
-K & G02 & Forklare \emph{self-attention}-mekanismen på et konseptuelt nivå \\
-K & G03 & Beskrive transformer-arkitekturen (encoder-decoder) \\
-K & G04 & Forklare hva \emph{tokens} er og hvordan tokenisering fungerer \\
-K & G05 & Forstå konseptet \emph{kontekstvindu} (context window) \\
-K & G06 & Forklare hva \emph{temperature} betyr i tekstgenerering \\
-K & G07 & Anvende \emph{zero-shot} prompting \\
-K & G08 & Anvende \emph{few-shot} prompting \\
-V & G09 & Anvende \emph{Chain-of-Thought} (CoT) prompting \\
-V & G10 & Beskrive god praksis for \emph{systemprompts} \\
-K & G11 & Definere \emph{hallusinering} og dens implikasjoner \\
-V & G12 & Kjenne til GPT-5.2, Claude Opus 4.5, Gemini 3 og deres styrker \\
-U & G13 & Forklare konseptet \emph{grunnmodell} (foundation model) \\
-U & G14 & Beskrive RAG (Retrieval-Augmented Generation) \\
-V & G15 & Forstå forskjellen mellom \emph{prompt engineering} og \emph{context engineering} \\
-V & G16 & Beskrive komponentene i context engineering (system prompt, RAG, verktøy, samtalehistorikk) \\
-V & G17 & Anvende modellspesifikke prompting-teknikker for GPT-5.2, Claude og Gemini \\
-V & G18 & Håndtere usikkerhet og hallusinasjonsrisiko i medisinske prompts \\
-U & G19 & Bruke strukturert ekstraksjon fra medisinske dokumenter (JSON-skjema) \\
-U & G20 & Sammenligne modellstyrker for ulike medisinske oppgaver \\
+C & G01 & Define \emph{generative AI} and distinguish from discriminative AI \\
+C & G02 & Explain the \emph{self-attention} mechanism at a conceptual level \\
+C & G03 & Describe the transformer architecture (encoder-decoder) \\
+C & G04 & Explain what \emph{tokens} are and how tokenization works \\
+C & G05 & Understand the concept of \emph{context window} \\
+C & G06 & Explain what \emph{temperature} means in text generation \\
+C & G07 & Apply \emph{zero-shot} prompting \\
+C & G08 & Apply \emph{few-shot} prompting \\
+I & G09 & Apply \emph{Chain-of-Thought} (CoT) prompting \\
+I & G10 & Describe best practices for \emph{system prompts} \\
+C & G11 & Define \emph{hallucination} and its implications \\
+I & G12 & Know about GPT-5.2, Claude Opus 4.5, Gemini 3 and their strengths \\
+S & G13 & Explain the concept of \emph{foundation model} \\
+S & G14 & Describe RAG (Retrieval-Augmented Generation) \\
+I & G15 & Understand the difference between \emph{prompt engineering} and \emph{context engineering} \\
+I & G16 & Describe components of context engineering (system prompt, RAG, tools, conversation history) \\
+I & G17 & Apply model-specific prompting techniques for GPT-5.2, Claude, and Gemini \\
+I & G18 & Handle uncertainty and hallucination risk in medical prompts \\
+S & G19 & Use structured extraction from medical documents (JSON schema) \\
+S & G20 & Compare model strengths for different medical tasks \\
 \end{longtable}
 
-\subsection{Forklarbar AI (XAI)}
+\subsection{Explainable AI (XAI)}
 
 \begin{longtable}{@{}clp{9cm}@{}}
 \toprule
-\textbf{Pri} & \textbf{Nr} & \textbf{Moment} \\
+\textbf{Pri} & \textbf{No.} & \textbf{Topic} \\
 \midrule
 \endfirsthead
 \midrule
@@ -609,21 +609,21 @@ U & G20 & Sammenligne modellstyrker for ulike medisinske oppgaver \\
 \endfoot
 \bottomrule
 \endlastfoot
-K & X01 & Forklare hvorfor forklarbarhet er viktig i medisinsk AI \\
-K & X02 & Skille mellom \emph{global} og \emph{lokal} forklarbarhet \\
-V & X03 & Skille mellom \emph{ante-hoc} og \emph{post-hoc} forklarbarhet \\
-V & X04 & Beskrive SHAP (SHapley Additive exPlanations) \\
-V & X05 & Beskrive LIME (Local Interpretable Model-agnostic Explanations) \\
-V & X06 & Forklare Grad-CAM for CNN-visualisering \\
-V & X07 & Diskutere begrensninger ved XAI-metoder \\
-U & X08 & Kjenne til attention-visualisering i LLM \\
+C & X01 & Explain why explainability is important in medical AI \\
+C & X02 & Distinguish between \emph{global} and \emph{local} explainability \\
+I & X03 & Distinguish between \emph{ante-hoc} and \emph{post-hoc} explainability \\
+I & X04 & Describe SHAP (SHapley Additive exPlanations) \\
+I & X05 & Describe LIME (Local Interpretable Model-agnostic Explanations) \\
+I & X06 & Explain Grad-CAM for CNN visualization \\
+I & X07 & Discuss limitations of XAI methods \\
+S & X08 & Know about attention visualization in LLM \\
 \end{longtable}
 
-\subsection{Trustworthy AI og robusthet}
+\subsection{Trustworthy AI and Robustness}
 
 \begin{longtable}{@{}clp{9cm}@{}}
 \toprule
-\textbf{Pri} & \textbf{Nr} & \textbf{Moment} \\
+\textbf{Pri} & \textbf{No.} & \textbf{Topic} \\
 \midrule
 \endfirsthead
 \midrule
@@ -632,20 +632,20 @@ U & X08 & Kjenne til attention-visualisering i LLM \\
 \endfoot
 \bottomrule
 \endlastfoot
-K & T01 & Definere \emph{trustworthy AI} iht. EU-retningslinjer \\
-V & T02 & Forklare konseptet \emph{robusthet} i ML \\
-V & T03 & Beskrive \emph{distributional shift} og dens konsekvenser \\
-V & T04 & Forklare forskjellen mellom epistemisk og aleatorisk usikkerhet \\
-V & T05 & Beskrive \emph{human-in-the-loop} (HITL) systemer \\
-V & T06 & Diskutere viktigheten av kontinuerlig monitorering \\
-U & T07 & Kjenne til adversarial attacks \\
+C & T01 & Define \emph{trustworthy AI} according to EU guidelines \\
+I & T02 & Explain the concept of \emph{robustness} in ML \\
+I & T03 & Describe \emph{distributional shift} and its consequences \\
+I & T04 & Explain the difference between epistemic and aleatoric uncertainty \\
+I & T05 & Describe \emph{human-in-the-loop} (HITL) systems \\
+I & T06 & Discuss the importance of continuous monitoring \\
+S & T07 & Know about adversarial attacks \\
 \end{longtable}
 
-\subsection{AI-etikk og regulering}
+\subsection{AI Ethics and Regulation}
 
 \begin{longtable}{@{}clp{9cm}@{}}
 \toprule
-\textbf{Pri} & \textbf{Nr} & \textbf{Moment} \\
+\textbf{Pri} & \textbf{No.} & \textbf{Topic} \\
 \midrule
 \endfirsthead
 \midrule
@@ -654,22 +654,22 @@ U & T07 & Kjenne til adversarial attacks \\
 \endfoot
 \bottomrule
 \endlastfoot
-K & A01 & Diskutere de fire bioetiske prinsippene i AI-kontekst \\
-K & A02 & Identifisere typer bias i medisinske AI-systemer \\
-K & A03 & Forklare personvernhensyn ved bruk av LLM \\
-K & A04 & Beskrive hovedtrekkene i EU AI Act \\
-V & A05 & Forklare risikoklassifisering i EU AI Act \\
-V & A06 & Diskutere krav til høyrisiko AI i helsevesenet \\
-K & A07 & Reflektere over ansvarsfordeling når AI feiler \\
-V & A08 & Kjenne til GDPR-relevante aspekter ved AI \\
-U & A09 & Diskutere algoritmisk rettferdighet (fairness) \\
+C & A01 & Discuss the four bioethical principles in AI context \\
+C & A02 & Identify types of bias in medical AI systems \\
+C & A03 & Explain privacy concerns when using LLM \\
+C & A04 & Describe main features of EU AI Act \\
+I & A05 & Explain risk classification in EU AI Act \\
+I & A06 & Discuss requirements for high-risk AI in healthcare \\
+C & A07 & Reflect on responsibility distribution when AI fails \\
+I & A08 & Know about GDPR-relevant aspects of AI \\
+S & A09 & Discuss algorithmic fairness \\
 \end{longtable}
 
-\subsection{Nevrosymbolsk AI og Agentisk AI}
+\subsection{Neurosymbolic AI and Agentic AI}
 
 \begin{longtable}{@{}clp{9cm}@{}}
 \toprule
-\textbf{Pri} & \textbf{Nr} & \textbf{Moment} \\
+\textbf{Pri} & \textbf{No.} & \textbf{Topic} \\
 \midrule
 \endfirsthead
 \midrule
@@ -678,24 +678,24 @@ U & A09 & Diskutere algoritmisk rettferdighet (fairness) \\
 \endfoot
 \bottomrule
 \endlastfoot
-U & S01 & Kontrastere symbolsk og konneksjonistisk AI \\
-U & S02 & Forklare konseptet \emph{nevrosymbolsk integrasjon} \\
-U & S03 & Beskrive hva en \emph{kunnskapsgraf} er \\
-U & S04 & Kjenne til medisinske ontologier (SNOMED CT, ICD, WHO CNS-klassifikasjon) \\
-U & S05 & Diskutere potensielle fordeler med nevrosymbolsk AI i medisin \\
-U & S06 & Beskrive hvordan nevrosymbolsk AI kan kombinere MRI-analyse (nevral) med WHO-klassifikasjon (symbolsk) for gliomdiagnostikk \\
-U & S07 & Forklare hvordan kunnskapsgrafer kan validere nevrale prediksjoner \\
-U & S08 & Definere \emph{agentisk AI} og dens kjerneegenskaper (planlegging, verktøybruk, refleksjon) \\
-U & S09 & Beskrive hvordan en AI-agent kan orkestrere en klinisk arbeidsflyt (PACS, litteratursøk, biobank) \\
-U & S10 & Forklare konseptet \emph{human-in-the-loop} i agentiske systemer \\
-U & S11 & Diskutere etiske utfordringer med autonome AI-agenter i helsevesenet \\
+S & S01 & Contrast symbolic and connectionist AI \\
+S & S02 & Explain the concept of \emph{neurosymbolic integration} \\
+S & S03 & Describe what a \emph{knowledge graph} is \\
+S & S04 & Know about medical ontologies (SNOMED CT, ICD, WHO CNS classification) \\
+S & S05 & Discuss potential advantages of neurosymbolic AI in medicine \\
+S & S06 & Describe how neurosymbolic AI can combine MRI analysis (neural) with WHO classification (symbolic) for glioma diagnostics \\
+S & S07 & Explain how knowledge graphs can validate neural predictions \\
+S & S08 & Define \emph{agentic AI} and its core properties (planning, tool use, reflection) \\
+S & S09 & Describe how an AI agent can orchestrate a clinical workflow (PACS, literature search, biobank) \\
+S & S10 & Explain the concept of \emph{human-in-the-loop} in agentic systems \\
+S & S11 & Discuss ethical challenges with autonomous AI agents in healthcare \\
 \end{longtable}
 
-\subsection{Medisinsk bildeanalyse}
+\subsection{Medical Image Analysis}
 
 \begin{longtable}{@{}clp{9cm}@{}}
 \toprule
-\textbf{Pri} & \textbf{Nr} & \textbf{Moment} \\
+\textbf{Pri} & \textbf{No.} & \textbf{Topic} \\
 \midrule
 \endfirsthead
 \midrule
@@ -704,19 +704,19 @@ U & S11 & Diskutere etiske utfordringer med autonome AI-agenter i helsevesenet \
 \endfoot
 \bottomrule
 \endlastfoot
-K & B01 & Forklare grunnleggende MRI-prinsipper på et overordnet nivå \\
-V & B02 & Kjenne til ulike MR-sekvenser (T1, T2, FLAIR) \\
-K & B03 & Beskrive \emph{segmentering} i medisinsk bildeanalyse \\
-V & B04 & Kjenne til BraTS-utfordringen for hjernesvulstsegmentering \\
-V & B05 & Beskrive radiomic features og kvantitativ avbildning \\
-U & B06 & Kjenne til nnU-Net og MONAI som verktøy \\
+C & B01 & Explain basic MRI principles at a high level \\
+I & B02 & Know about different MR sequences (T1, T2, FLAIR) \\
+C & B03 & Describe \emph{segmentation} in medical image analysis \\
+I & B04 & Know about the BraTS challenge for brain tumor segmentation \\
+I & B05 & Describe radiomic features and quantitative imaging \\
+S & B06 & Know about nnU-Net and MONAI as tools \\
 \end{longtable}
 
-\subsection{Praktiske ferdigheter}
+\subsection{Practical Skills}
 
 \begin{longtable}{@{}clp{9cm}@{}}
 \toprule
-\textbf{Pri} & \textbf{Nr} & \textbf{Moment} \\
+\textbf{Pri} & \textbf{No.} & \textbf{Topic} \\
 \midrule
 \endfirsthead
 \midrule
@@ -725,197 +725,197 @@ U & B06 & Kjenne til nnU-Net og MONAI som verktøy \\
 \endfoot
 \bottomrule
 \endlastfoot
-K & F01 & Kjøre Jupyter Notebooks i Google Colab \\
-K & F02 & Bruke Python-variabler, lister og enkle funksjoner \\
-V & F03 & Importere og bruke biblioteker (numpy, pandas, matplotlib) \\
-V & F04 & Lese og inspisere datasett med pandas \\
-V & F05 & Trene en enkel modell med scikit-learn \\
-V & F06 & Visualisere resultater med matplotlib \\
-V & F07 & Bruke NetworkX for enkel nettverksanalyse \\
-U & F08 & Bygge og trene en modell med PyTorch \\
-K & F09 & Bruke AI-verktøy (ChatGPT, Claude, Gemini) som kodehjelp \\
-V & F10 & Skrive enkle dokumenter med LaTeX/Overleaf \\
-V & F11 & Komponere effektive prompts for medisinske oppgaver \\
-V & F12 & Anvende context engineering med system prompts, RAG og verktøy \\
-V & F13 & Velge riktig LLM-modell basert på oppgavetype \\
-U & F14 & Sammenligne output fra ulike LLM-er for kvalitetsvurdering \\
+C & F01 & Run Jupyter Notebooks in Google Colab \\
+C & F02 & Use Python variables, lists, and simple functions \\
+I & F03 & Import and use libraries (numpy, pandas, matplotlib) \\
+I & F04 & Read and inspect datasets with pandas \\
+I & F05 & Train a simple model with scikit-learn \\
+I & F06 & Visualize results with matplotlib \\
+I & F07 & Use NetworkX for simple network analysis \\
+S & F08 & Build and train a model with PyTorch \\
+C & F09 & Use AI tools (ChatGPT, Claude, Gemini) as coding help \\
+I & F10 & Write simple documents with LaTeX/Overleaf \\
+I & F11 & Compose effective prompts for medical tasks \\
+I & F12 & Apply context engineering with system prompts, RAG, and tools \\
+I & F13 & Choose the right LLM model based on task type \\
+S & F14 & Compare output from different LLMs for quality assessment \\
 \end{longtable}
 
 % =====================================================================
-% 4. VERKTØY OG RESSURSER
+% 4. TOOLS AND RESOURCES
 % =====================================================================
-\section{Verktøy og ressurser}
+\section{Tools and Resources}
 
-\subsection{Programvare og plattformer}
+\subsection{Software and Platforms}
 
 \begin{table}[htbp]
 \centering
-\caption{Programvare og verktøy brukt i kurset}
+\caption{Software and tools used in the course}
 \label{tab:software}
 \begin{tabular}{@{}llp{6cm}@{}}
 \toprule
-\textbf{Verktøy} & \textbf{Type} & \textbf{Bruksområde} \\
+\textbf{Tool} & \textbf{Type} & \textbf{Use Area} \\
 \midrule
-Google Colab & Plattform & Kjøre Jupyter Notebooks i nettleseren \\
-Python 3.10+ & Programmeringsspråk & All koding i kurset \\
-scikit-learn & Bibliotek & Maskinlæring (Lab 0) \\
-NetworkX & Bibliotek & Nettverksanalyse (Lab 1) \\
-PyTorch & Rammeverk & Dyplæring (Lab 2) \\
-tiktoken & Bibliotek & Tokenisering (Lab 3) \\
-PyCaret & Bibliotek & AutoML (Lab 0) \\
-Overleaf & Plattform & LaTeX-redigering (Teamprosjekt) \\
+Google Colab & Platform & Run Jupyter Notebooks in browser \\
+Python 3.10+ & Programming language & All coding in the course \\
+scikit-learn & Library & Machine learning (Lab 0) \\
+NetworkX & Library & Network analysis (Lab 1) \\
+PyTorch & Framework & Deep learning (Lab 2) \\
+tiktoken & Library & Tokenization (Lab 3) \\
+PyCaret & Library & AutoML (Lab 0) \\
+Overleaf & Platform & LaTeX editing (Team project) \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-\subsection{AI-assistenter}
+\subsection{AI Assistants}
 
 \begin{table}[htbp]
 \centering
-\caption{AI-verktøy tilgjengelig for studenter}
+\caption{AI tools available for students}
 \label{tab:aitools}
 \begin{tabular}{@{}llp{6cm}@{}}
 \toprule
-\textbf{Verktøy} & \textbf{Tilgang} & \textbf{Bruksområde} \\
+\textbf{Tool} & \textbf{Access} & \textbf{Use Area} \\
 \midrule
-ChatGPT & Gratis/Plus & Generell AI-assistent, kodehjelp \\
-Claude & Gratis/Pro & Tekstanalyse, akademisk skriving \\
-Gemini & Innebygd i Colab & Kodegenerering og forklaring \\
-NotebookLM & Gratis (Google) & Dokumentanalyse \\
-chat.uib.no & UiB-innlogging & UiB-intern AI-tjeneste \\
-Medical AI GPT & ChatGPT Plus & Tilpasset for ELMED219/BMED365 \\
+ChatGPT & Free/Plus & General AI assistant, coding help \\
+Claude & Free/Pro & Text analysis, academic writing \\
+Gemini & Built into Colab & Code generation and explanation \\
+NotebookLM & Free (Google) & Document analysis \\
+chat.uib.no & UiB login & UiB internal AI service \\
+Medical AI GPT & ChatGPT Plus & Customized for BMED365 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-\subsection{Anbefalt lesning}
+\subsection{Recommended Reading}
 
-\textbf{Bøker og ressurser (fritt tilgjengelig):}
+\textbf{Books and resources (freely available):}
 \begin{itemize}[nosep]
     \item \citet{barabasi2016network}: \emph{Network Science} -- \url{http://networksciencebook.com}
     \item \citet{molnar2022interpretable}: \emph{Interpretable Machine Learning} -- \url{https://christophm.github.io/interpretable-ml-book/}
     \item \citet{goodfellow2016deep}: \emph{Deep Learning} -- \url{https://www.deeplearningbook.org}
 \end{itemize}
 
-\textbf{Nøkkelartikler:}
+\textbf{Key articles:}
 \begin{itemize}[nosep]
-    \item \citet{lundervold2019overview}: Deep learning i medisinsk bildebehandling
-    \item \citet{vaswani2017attention}: Transformer-arkitekturen
-    \item \citet{singhal2023large}: LLM og klinisk kunnskap
-    \item \citet{morley2020ethics}: Etikk i AI og helse
-    \item \citet{garcez2020neurosymbolic}: Nevrosymbolsk AI -- den tredje bølgen
-    \item \citet{louis2021who}: WHO 2021 CNS-klassifikasjon (gliomer)
+    \item \citet{lundervold2019overview}: Deep learning in medical image processing
+    \item \citet{vaswani2017attention}: Transformer architecture
+    \item \citet{singhal2023large}: LLM and clinical knowledge
+    \item \citet{morley2020ethics}: Ethics in AI and health
+    \item \citet{garcez2020neurosymbolic}: Neurosymbolic AI -- the third wave
+    \item \citet{louis2021who}: WHO 2021 CNS classification (gliomas)
 \end{itemize}
 
-\textbf{Avansert (valgfritt):}
+\textbf{Advanced (optional):}
 \begin{itemize}[nosep]
-    \item \citet{nicholson2020knowledge}: Kunnskapsgrafer i biomedisin
-    \item \citet{xi2023rise}: Agentisk AI med store språkmodeller
+    \item \citet{nicholson2020knowledge}: Knowledge graphs in biomedicine
+    \item \citet{xi2023rise}: Agentic AI with large language models
 \end{itemize}
 
 % =====================================================================
-% 5. VURDERING OG EKSAMEN
+% 5. ASSESSMENT AND EXAM
 % =====================================================================
-\section{Vurdering og eksamen}
+\section{Assessment and Exam}
 
-\subsection{Vurderingsformer}
+\subsection{Assessment Forms}
 
-Emnet vurderes med bestått/ikke bestått basert på:
+The course is assessed with pass/fail based on:
 
 \begin{enumerate}
-    \item \textbf{Teamprosjekt (gruppebasert):} Forskningsplan som beskrevet i seksjon 2.7
-    \item \textbf{Digital hjemmeeksamen (individuell):} 2-timers eksamen på Inspera
+    \item \textbf{Team project (group-based):} Research plan as described in section 2.7
+    \item \textbf{Digital home exam (individual):} 2-hour exam on Inspera
 \end{enumerate}
 
-\subsection{Eksamenformat}
+\subsection{Exam Format}
 
 \begin{itemize}[nosep]
-    \item 8 flervalgsoppgaver (MCQ) med 5 alternativer, 2 korrekte svar per oppgave
-    \item 2 fritekst-essayspørsmål
-    \item Alle hjelpemidler tillatt (må spesifiseres i besvarelsen)
-    \item AI-verktøy tillatt for å forstå og forklare medisinsk AI
+    \item 8 multiple choice questions (MCQ) with 5 alternatives, 2 correct answers per question
+    \item 2 free-text essay questions
+    \item All aids allowed (must be specified in the answer)
+    \item AI tools allowed to understand and explain medical AI
 \end{itemize}
 
-\subsection{Eksamensemner}
+\subsection{Exam Topics}
 
-Følgende emner kan bli dekket i eksamen:
+The following topics may be covered in the exam:
 
 \begin{multicols}{2}
 \begin{itemize}[nosep]
     \item Multimodal data
-    \item Grunnleggende maskinlæring
-    \item Åpen vitenskap
-    \item MRI-teknologi
-    \item Generativ AI
-    \item Store språkmodeller (LLM)
-    \item Biomarkører
-    \item Dyplæring og overfitting
-    \item Pasient-likhetsnettverk (PSN)
-    \item Ligningen $y \approx f(\mathbf{X}, \theta)$
-    \item ML i diagnostikk
-    \item AI-etikk og regulering
-    \item Nevrosymbolsk AI
-    \item Agentisk AI
+    \item Basic machine learning
+    \item Open science
+    \item MRI technology
+    \item Generative AI
+    \item Large language models (LLM)
+    \item Biomarkers
+    \item Deep learning and overfitting
+    \item Patient similarity networks (PSN)
+    \item The equation $y \approx f(\mathbf{X}, \theta)$
+    \item ML in diagnostics
+    \item AI ethics and regulation
+    \item Neurosymbolic AI
+    \item Agentic AI
 \end{itemize}
 \end{multicols}
 
 % =====================================================================
-% 6. TIMEPLAN (FORKORTET)
+% 6. SCHEDULE (ABBREVIATED)
 % =====================================================================
-\section{Foreløpig timeplan}
+\section{Preliminary Schedule}
 
 \begin{table}[htbp]
 \centering
-\caption{Timeplan ELMED219 -- Januar 2026}
-\label{tab:timeplan}
+\caption{Schedule BMED365 -- January-February 2026}
+\label{tab:schedule}
 \begin{tabular}{@{}cllll@{}}
 \toprule
-\textbf{Uke} & \textbf{Dato} & \textbf{Tid} & \textbf{Aktivitet} & \textbf{Sted} \\
+\textbf{Week} & \textbf{Date} & \textbf{Time} & \textbf{Activity} & \textbf{Location} \\
 \midrule
-2 & Ma 05.01 & 10:15--14:00 & Intro, SW-installasjon & Hist 1 \\
-2 & On 07.01 & 14:15--16:00 & Verktøy, team, Lab 0 & Hist 1 \\
-2 & Fr 09.01 & 10:15--13:00 & Lab 0, Lab 1 & Hist 1 \\
-3 & Ti 13.01 & 09:15--13:00 & Lynkurs AI-Python & Hist 1 \\
-3 & Fr 16.01 & 08:15--13:00 & Lab 2 (Dyplæring) & Hist 1 \\
-4 & Ti 20.01 & 08:15--12:00 & Lab 3 (GenAI+LLM) & Hist 1 \\
-4 & Ti 20.01 & 13:15--16:00 & Teamprosjekt veiledning & Hist 1 \\
-5 & Ti 27.01 & 08:15--10:00 & Team-presentasjoner & Hist 1 \\
-5 & Fr 30.01 & 11:00--13:00 & \textbf{HJEMMEEKSAMEN} & Inspera \\
+2 & Mon 05.01 & 10:15--14:00 & Intro, SW installation & Hist 1 \\
+2 & Wed 07.01 & 14:15--16:00 & Tools, team, Lab 0 & Hist 1 \\
+2 & Fri 09.01 & 10:15--13:00 & Lab 0, Lab 1 & Hist 1 \\
+3 & Tue 13.01 & 09:15--13:00 & Quick Start AI-Python & Hist 1 \\
+3 & Fri 16.01 & 08:15--13:00 & Lab 2 (Deep Learning) & Hist 1 \\
+4 & Tue 20.01 & 08:15--12:00 & Lab 3 (GenAI+LLM) & Hist 1 \\
+4 & Tue 20.01 & 13:15--16:00 & Team project guidance & Hist 1 \\
+5 & Tue 27.01 & 08:15--10:00 & Team presentations & Hist 1 \\
+5 & Fri 30.01 & 11:00--13:00 & \textbf{HOME EXAM} & Inspera \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 % =====================================================================
-% 7. KONTAKTINFORMASJON
+% 7. CONTACT INFORMATION
 % =====================================================================
-\section{Kontaktinformasjon}
+\section{Contact Information}
 
 \begin{description}
-    \item[Kursansvarlig:] Arvid Lundervold, Institutt for biomedisin, UiB\\
+    \item[Course Responsible:] Arvid Lundervold, Department of Biomedicine, UiB\\
     \url{https://www.uib.no/en/persons/Arvid.Lundervold}
     
-    \item[Administrative henvendelser:] Studieseksjonen ved Institutt for biomedisin\\
-    E-post: studie.biomed@uib.no
+    \item[Administrative inquiries:] Study section at Department of Biomedicine\\
+    E-mail: studie.biomed@uib.no
     
-    \item[Kursmateriale:] \url{https://github.com/arvidl/BMED365-2026}
+    \item[Course Material:] \url{https://github.com/arvidl/BMED365-2026}
     
-    \item[MittUiB:] \url{https://mitt.uib.no/courses/50716} (kun påmeldte)
+    \item[MittUiB:] \url{https://mitt.uib.no/courses/50716} (enrolled only)
 \end{description}
 
 % =====================================================================
-% REFERANSER
+% REFERENCES
 % =====================================================================
 \newpage
 \bibliographystyle{apalike}
 \bibliography{referanser}
 
 % =====================================================================
-% APPENDIKS: FIGURER
+% APPENDIX: FIGURES
 % =====================================================================
 \appendix
-\section{Illustrasjoner}
+\section{Illustrations}
 
-\subsection{Kursstruktur}
+\subsection{Course Structure}
 
 \begin{figure}[htbp]
 \centering
@@ -926,35 +926,35 @@ Følgende emner kan bli dekket i eksamen:
     arrow/.style={thick,->,>=stealth,uibblue}
 ]
     % Row 1: Labs
-    \node[box] (lynkurs) {Lynkurs\\{\footnotesize AI-assistert Python}};
-    \node[box, right=of lynkurs] (lab0) {Lab 0\\{\footnotesize Maskinlæring}};
-    \node[box, right=of lab0] (lab1) {Lab 1\\{\footnotesize Nettverksvitenskap}};
-    \node[box, right=of lab1] (lab2) {Lab 2\\{\footnotesize Dyplæring}};
+    \node[box] (quickstart) {Quick Start\\{\footnotesize AI-assisted Python}};
+    \node[box, right=of quickstart] (lab0) {Lab 0\\{\footnotesize Machine Learning}};
+    \node[box, right=of lab0] (lab1) {Lab 1\\{\footnotesize Network Science}};
+    \node[box, right=of lab1] (lab2) {Lab 2\\{\footnotesize Deep Learning}};
     
     % Row 2
-    \node[box, below=1.5cm of lab0, xshift=1.8cm] (lab3) {Lab 3\\{\footnotesize Generativ AI}};
+    \node[box, below=1.5cm of lab0, xshift=1.8cm] (lab3) {Lab 3\\{\footnotesize Generative AI}};
     
     % Row 3
-    \node[box, below=1.5cm of lab3] (team) {Teamprosjekt\\{\footnotesize Glioblastom}};
+    \node[box, below=1.5cm of lab3] (team) {Team Project\\{\footnotesize Glioblastoma}};
     
     % Row 4
-    \node[box, below=1.5cm of team, fill=uibred!10, draw=uibred] (eksamen) {Eksamen\\{\footnotesize MCQ + Essay}};
+    \node[box, below=1.5cm of team, fill=uibred!10, draw=uibred] (exam) {Exam\\{\footnotesize MCQ + Essay}};
     
     % Arrows
-    \draw[arrow] (lynkurs) -- (lab0);
+    \draw[arrow] (quickstart) -- (lab0);
     \draw[arrow] (lab0) -- (lab1);
     \draw[arrow] (lab1) -- (lab2);
     \draw[arrow] (lab0) |- (lab3);
     \draw[arrow] (lab1) -- (lab3);
     \draw[arrow] (lab2) |- (lab3);
     \draw[arrow] (lab3) -- (team);
-    \draw[arrow] (team) -- (eksamen);
+    \draw[arrow] (team) -- (exam);
 \end{tikzpicture}
-\caption{Kursstruktur og progresjon i ELMED219}
-\label{fig:kursstruktur}
+\caption{Course structure and progression in BMED365}
+\label{fig:coursestructure}
 \end{figure}
 
-\subsection{AI i medisin -- hovedtemaer}
+\subsection{AI in Medicine -- Main Topics}
 
 \begin{figure}[htbp]
 \centering
@@ -966,38 +966,30 @@ Følgende emner kan bli dekket i eksamen:
     level 1/.append style={level distance=4cm, sibling angle=72},
     level 2/.append style={level distance=2.5cm, sibling angle=45}
 ]
-    \node[concept] {AI i\\Medisin}
-        child [concept color=blue!30] { node {Maskin-\\læring}
-            child { node {Klassifisering} }
-            child { node {Evaluering} }
+    \node[concept] {AI in\\Medicine}
+        child [concept color=blue!30] { node {Machine\\Learning}
+            child { node {Classification} }
+            child { node {Evaluation} }
         }
-        child [concept color=green!30] { node {Nettverk}
-            child { node {Grafteori} }
+        child [concept color=green!30] { node {Networks}
+            child { node {Graph Theory} }
             child { node {PSN} }
         }
-        child [concept color=orange!30] { node {Dyp-\\læring}
+        child [concept color=orange!30] { node {Deep\\Learning}
             child { node {CNN} }
-            child { node {Bilder} }
+            child { node {Images} }
         }
-        child [concept color=red!30] { node {Generativ\\AI}
+        child [concept color=red!30] { node {Generative\\AI}
             child { node {LLM} }
             child { node {Prompting} }
         }
-        child [concept color=purple!30] { node {Etikk \&\\Tillit}
+        child [concept color=purple!30] { node {Ethics \&\\Trust}
             child { node {XAI} }
-            child { node {Regulering} }
+            child { node {Regulation} }
         };
 \end{tikzpicture}
-\caption{Hovedtemaer i ELMED219: AI og beregningsorientert medisin}
-\label{fig:temaer}
+\caption{Main topics in BMED365: Computational Imaging, Modeling and AI in Biomedicine}
+\label{fig:topics}
 \end{figure}
 
 \end{document}
-
-
-
-
-
-
-
-

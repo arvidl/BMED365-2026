@@ -1,6 +1,6 @@
 % =====================================================================
-% ELMED219: AI-etikk og regulering
-% Beamer-presentasjon - Momentliste A01-A09
+% BMED365: AI Ethics og regulation
+% Beamer-presentasjon - Topic List A01-A09
 % =====================================================================
 \documentclass[aspectratio=169, 10pt]{beamer}
 
@@ -28,33 +28,33 @@
 % =====================================================================
 % TITTELINFO
 % =====================================================================
-\title{AI-etikk og Regulering}
-\subtitle{ELMED219: Momentliste A01--A09}
-\author{ELMED219}
-\date{Vår 2026}
+\title{AI Ethics and Regulation}
+\subtitle{BMED365: Topic List A01--A09}
+\author{BMED365}
+\date{Spring 2026}
 
 % =====================================================================
 % DOKUMENT
 % =====================================================================
 \begin{document}
 
-% Tittelside
+% Title page
 \begin{frame}
     \titlepage
 \end{frame}
 
-% Innholdsfortegnelse
-\begin{frame}{Oversikt}
+% Table of Contents
+\begin{frame}{Overview}
     \tableofcontents
 \end{frame}
 
 % =====================================================================
-% SEKSJON: Bioetikk og AI
+% SEKSJON: Bioethics og AI
 % =====================================================================
-\section{Bioetikk og AI}
+\section{Bioethics og AI}
 
-\begin{frame}{A01: Diskutere de fire bioetiske prinsippene i AI-kontekst}
-    \textbf{\href{https://en.wikipedia.org/wiki/Principlism}{Beauchamp \& Childress' fire prinsipper}:}
+\begin{frame}{A01: Discuss de fire bioetiske prinsippene i AI-kontekst}
+    \textbf{\href{https://en.wikipedia.org/wiki/Principlism}{Beauchamp \& Childress' Four Principles}:}
     
     \vspace{0.3cm}
     \begin{columns}[T]
@@ -69,7 +69,7 @@
             \vspace{0.3cm}
             \textbf{2. Velgjørenhet} (Gjøre godt)
             \begin{itemize}
-                \item AI skal forbedre pasientutfall
+                \item AI shall forbedre pasientutfall
                 \item Validert og effektiv
                 \item Tilgjengelig for alle
             \end{itemize}
@@ -83,18 +83,18 @@
             \end{itemize}
             
             \vspace{0.3cm}
-            \textbf{4. Rettferdighet} (Rettferdig fordeling)
+            \textbf{4. Fairness} (Rettferdig fordeling)
             \begin{itemize}
                 \item Lik tilgang til AI-forbedret helse
                 \item Unngå systematisk diskriminering
-                \item Representativ treningsdata
+                \item Representativ trainingsdata
             \end{itemize}
         \end{column}
     \end{columns}
     
     \vspace{0.3cm}
     \begin{block}{Utfordring}
-        Prinsippene kan komme i konflikt -- f.eks. effektivitet (velgjørenhet) vs. personvern (autonomi)
+        Prinsippene kan komme i konflikt -- f.eks. effektivitet (velgjørenhet) vs. privacy (autonomi)
     \end{block}
 \end{frame}
 
@@ -104,22 +104,22 @@
     \vspace{0.3cm}
     \textbf{Kilder til bias:}
     \begin{enumerate}
-        \item \textbf{Historisk bias:} Treningsdata reflekterer historisk urettferdighet
+        \item \textbf{Historisk bias:} Trainingsdata reflekterer historisk ufairness
         \begin{itemize}
-            \item Eksempel: Underrepresentasjon av minoriteter i kliniske studier
+            \item Example: Underrepresentasjon av minoriteter i kliniske studier
         \end{itemize}
         
-        \item \textbf{Representasjonsbias:} Skjev pasientpopulasjon i treningsdata
+        \item \textbf{Representasjonsbias:} Skjev pasientpopulasjon i trainingsdata
         \begin{itemize}
-            \item Eksempel: Modell trent på kun hvite pasienter
+            \item Example: Modell trent på kun hvite pasienter
         \end{itemize}
         
         \item \textbf{Målbias:} Feil proxy-variabler
         \begin{itemize}
-            \item Eksempel: Bruk av helsekostnader som mål på sykdom (korrelerer med rase)
+            \item Example: Bruk av helsekostnader som mål på sykdom (korrelerer med rase)
         \end{itemize}
         
-        \item \textbf{Evalueringsbias:} Testdata er ikke representativ
+        \item \textbf{Evaluationsbias:} Testdata er ikke representativ
         
         \item \textbf{Aggregeringsbias:} En modell for alle, ignorerer subgrupper
     \end{enumerate}
@@ -129,8 +129,8 @@
     \end{alertblock}
 \end{frame}
 
-\begin{frame}{A03: Forklare personvernhensyn ved bruk av LLM}
-    \textbf{Personvernutfordringer med LLM:}
+\begin{frame}{A03: Explain privacyhensyn ved bruk av LLM}
+    \textbf{Privacyutfordringer med LLM:}
     
     \vspace{0.3cm}
     \begin{columns}[T]
@@ -167,8 +167,8 @@
     \end{columns}
     
     \vspace{0.3cm}
-    \begin{alertblock}{Viktig regel}
-        \textbf{Aldri} legg inn pasientdata i ChatGPT, Claude eller andre offentlige LLM!
+    \begin{alertblock}{Important rule}
+        \textbf{Aldri} legg inn pasientdata i ChatGPT, Claude or andre offentlige LLM!
     \end{alertblock}
 \end{frame}
 
@@ -177,18 +177,18 @@
 % =====================================================================
 \section{EU AI Act}
 
-\begin{frame}{A04: Beskrive hovedtrekkene i EU AI Act}
+\begin{frame}{A04: Describe hovedtrekkene i EU AI Act}
     \textbf{\href{https://artificialintelligenceact.eu/}{EU AI Act} (vedtatt 2024):}
     \begin{itemize}
-        \item Verdens første omfattende AI-regulering
+        \item Verdens første omfattende AI-regulation
         \item Risikobasert tilnærming
-        \item Gjelder alle som tilbyr eller bruker AI i EU
+        \item Gjelder alle som tilbyr or bruker AI i EU
     \end{itemize}
     
     \vspace{0.3cm}
-    \textbf{Hovedprinsipper:}
+    \textbf{Main principleer:}
     \begin{enumerate}
-        \item \textbf{Risikoklassifisering:} AI-systemer kategoriseres etter risiko
+        \item \textbf{Risikoclassification:} AI-systemer kategoriseres etter risiko
         \item \textbf{Krav proporsjonale med risiko:} Høyere risiko = strengere krav
         \item \textbf{Transparens:} Brukere må informeres om AI-bruk
         \item \textbf{Menneskers tilsyn:} Human-in-the-loop for høyrisiko
@@ -202,7 +202,7 @@
     \end{block}
 \end{frame}
 
-\begin{frame}{A05: Forklare risikoklassifisering i EU AI Act}
+\begin{frame}{A05: Explain risikoclassification i EU AI Act}
     \textbf{Fire risikonivåer:}
     
     \vspace{0.3cm}
@@ -214,7 +214,7 @@
         
         \item \textbf{Høy risiko} (STRENGE KRAV)
         \begin{itemize}
-            \item Medisinsk utstyr og diagnostikk
+            \item Medical utstyr og diagnostikk
             \item Kritisk infrastruktur, utdanning, arbeidsmarked
             \item Krever risikovurdering, dokumentasjon, menneskelig tilsyn
         \end{itemize}
@@ -232,12 +232,12 @@
         \end{itemize}
     \end{enumerate}
     
-    \begin{alertblock}{Medisinsk AI}
+    \begin{alertblock}{Medical AI}
         De fleste medisinske AI-systemer vil klassifiseres som \textbf{høy risiko}.
     \end{alertblock}
 \end{frame}
 
-\begin{frame}{A06: Diskutere krav til høyrisiko AI i helsevesenet}
+\begin{frame}{A06: Discuss krav til høyrisiko AI i helsevesenet}
     \textbf{Krav til høyrisiko AI-systemer:}
     
     \vspace{0.3cm}
@@ -269,23 +269,23 @@
     \textbf{Spesifikt for medisinsk AI:}
     \begin{itemize}
         \item Koordineres med \href{https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32017R0745}{MDR} (Medical Devices Regulation)
-        \item Klinisk evidens og validering kreves
-        \item Krav om forklarbarhet og robusthet
+        \item Clinical evidens og validation kreves
+        \item Krav om explainability og robustness
     \end{itemize}
 \end{frame}
 
 % =====================================================================
-% SEKSJON: Ansvar og rettferdighet
+% SEKSJON: Responsibility and Fairness
 % =====================================================================
-\section{Ansvar og rettferdighet}
+\section{Responsibility and Fairness}
 
-\begin{frame}{A07: Reflektere over ansvarsfordeling når AI feiler}
-    \textbf{Hvem er ansvarlig når AI tar feil?}
+\begin{frame}{A07: Reflektere over responsibilitysfordeling når AI feiler}
+    \textbf{Hvem er responsibilitylig når AI tar feil?}
     
     \vspace{0.3cm}
-    \textbf{Potensielle ansvarlige:}
+    \textbf{Potensielle responsibilitylige:}
     \begin{itemize}
-        \item \textbf{AI-utvikleren:} Design, trening, validering
+        \item \textbf{AI-utvikleren:} Design, training, validation
         \item \textbf{Helseinstitusjonen:} Innkjøp, implementering, opplæring
         \item \textbf{Klinikeren:} Bruker AI, tar endelig beslutning
         \item \textbf{Pasienten:} Samtykker til AI-bruk?
@@ -296,8 +296,8 @@
         \begin{column}{0.48\textwidth}
             \textbf{Problemstillinger:}
             \begin{itemize}
-                \item AI som ``black box'' -- vanskelig å forstå feil
-                \item Delt ansvar $\rightarrow$ utvannet ansvar?
+                \item AI som ``black box'' -- vanskelig å understand feil
+                \item Delt responsibility $\rightarrow$ utvannet responsibility?
                 \item Automatiseringsbias -- overtillit til AI
             \end{itemize}
         \end{column}
@@ -305,18 +305,18 @@
             \textbf{Rettslig utvikling:}
             \begin{itemize}
                 \item AI Liability Directive (EU)
-                \item Produktansvar utvidet til AI
+                \item Produktresponsibility utvidet til AI
                 \item Bevisbyrde kan legges på AI-leverandør
             \end{itemize}
         \end{column}
     \end{columns}
     
-    \begin{block}{Hovedprinsipp}
-        Kliniker har fortsatt det endelige ansvaret -- AI er et \textbf{verktøy}, ikke en erstatning.
+    \begin{block}{Main principle}
+        Kliniker har fortsatt det endelige responsibilityet -- AI er et \textbf{verktøy}, ikke en erstatning.
     \end{block}
 \end{frame}
 
-\begin{frame}{A08: Kjenne til GDPR-relevante aspekter ved AI}
+\begin{frame}{A08: Know about GDPR-relevante aspekter ved AI}
     \textbf{\href{https://gdpr.eu/}{GDPR} og AI i helse:}
     
     \vspace{0.3cm}
@@ -333,20 +333,20 @@
     \begin{itemize}
         \item \textbf{Art. 22:} Rett til å ikke bli utsatt for automatiserte beslutninger
         \item \textbf{Art. 9:} Helsedata er ``spesiell kategori'' -- ekstra beskyttet
-        \item \textbf{Art. 35:} \href{https://gdpr.eu/data-protection-impact-assessment-template/}{DPIA} (personvernkonsekvensvurdering) for høyrisiko
+        \item \textbf{Art. 35:} \href{https://gdpr.eu/data-protection-impact-assessment-template/}{DPIA} (privacykonsekvensvurdering) for høyrisiko
     \end{itemize}
     
     \vspace{0.3cm}
-    \begin{alertblock}{Viktig}
-        Pasientdata brukt til AI-trening/bruk krever lovlig grunnlag og ofte DPIA.
+    \begin{alertblock}{Important}
+        Pasientdata brukt til AI-training/bruk krever lovlig grunnlag og ofte DPIA.
     \end{alertblock}
 \end{frame}
 
-\begin{frame}{A09: Diskutere algoritmisk rettferdighet (fairness)}
+\begin{frame}{A09: Discuss algoritmisk fairness (fairness)}
     \textbf{Fairness i ML: Ingen universell definisjon}
     
     \vspace{0.3cm}
-    \textbf{Ulike rettferdighetsdefinisjoner:}
+    \textbf{Ulike fairnesssdefinisjoner:}
     \begin{enumerate}
         \item \textbf{Demografisk paritet:} Lik andel positive prediksjoner per gruppe
         \item \textbf{Equalised odds:} Lik TPR og FPR per gruppe
@@ -363,7 +363,7 @@
     \end{itemize}
     
     \vspace{0.3cm}
-    \begin{block}{Medisinsk eksempel}
+    \begin{block}{Medical example}
         Skal en risikomodell gi lik score til en 30-åring og 70-åring med samme symptomer? Alder er en risikofaktor -- er det diskriminering?
     \end{block}
 \end{frame}
@@ -371,14 +371,14 @@
 % =====================================================================
 % OPPSUMMERING
 % =====================================================================
-\section*{Oppsummering}
+\section*{Summary}
 
-\begin{frame}{Oppsummering: AI-etikk og Regulering}
-    \textbf{Bioetikk og bias:}
+\begin{frame}{Summary: AI Ethics and Regulation}
+    \textbf{Bioethics og bias:}
     \begin{itemize}
         \item A01: Fire bioetiske prinsipper i AI-kontekst
-        \item A02: Typer bias -- historisk, representasjons-, mål-, evaluerings-
-        \item A03: Personvernhensyn ved LLM
+        \item A02: Typer bias -- historisk, representasjons-, mål-, evaluations-
+        \item A03: Privacyhensyn ved LLM
     \end{itemize}
     
     \textbf{EU AI Act:}
@@ -386,16 +386,16 @@
         \item A04--A06: Risikobasert tilnærming, høyrisiko-krav for medisin
     \end{itemize}
     
-    \textbf{Ansvar og rettferdighet:}
+    \textbf{Responsibility and Fairness:}
     \begin{itemize}
-        \item A07: Ansvarsfordeling -- komplekst, kliniker har endelig ansvar
+        \item A07: Responsibilitysfordeling -- komplekst, kliniker har endelig responsibility
         \item A08: GDPR -- spesialbeskyttelse for helsedata
-        \item A09: Algoritmisk rettferdighet -- ingen enkel løsning
+        \item A09: Algoritmisk fairness -- ingen enkel løsning
     \end{itemize}
     
     \vspace{0.3cm}
-    \begin{block}{Praktisk i Lab 3}
-        Diskuter etiske implikasjoner av LLM, bias-analyse, og personvernhensyn.
+    \begin{block}{Practical in Lab 3}
+        Diskuter etiske implikasjoner av LLM, bias-analyse, og privacyhensyn.
     \end{block}
 \end{frame}
 

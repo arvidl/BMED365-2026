@@ -1,5 +1,5 @@
 % =====================================================================
-% ELMED219: Grafteori og nettverksvitenskap (N01-N10)
+% BMED365: Graph Theory og network science (N01-N10)
 % Beamer-presentasjon i widescreen (16:9)
 % =====================================================================
 \documentclass[aspectratio=169, 10pt]{beamer}
@@ -31,10 +31,10 @@
 % =====================================================================
 % TITTELINFO
 % =====================================================================
-\title{Grafteori og Nettverksvitenskap}
-\subtitle{ELMED219: Momentliste N01--N10}
-\author{ELMED219}
-\date{Vår 2026}
+\title{Graph Theory og Network Science}
+\subtitle{BMED365: Topic List N01--N10}
+\author{BMED365}
+\date{Spring 2026}
 
 % =====================================================================
 % DOKUMENT
@@ -47,11 +47,11 @@
 \end{frame}
 
 % ---------------------------------------------------------------------
-\begin{frame}{Oversikt}
+\begin{frame}{Overview}
     \begin{enumerate}
-        \item \textbf{Grunnleggende grafteori}
+        \item \textbf{Fundamental graph theory}
         \begin{itemize}
-            \item N01: Hva er en graf? (Noder og kanter)
+            \item N01: What is en graf? (Noder og kanter)
             \item N02: Rettet vs. ikke-rettet graf
             \item N03: Vektet vs. ikke-vektet graf
             \item N04: Nabomatrise (adjacency matrix)
@@ -72,17 +72,17 @@
 \end{frame}
 
 % =====================================================================
-\section{Grunnleggende grafteori}
+\section{Fundamental graph theory}
 % =====================================================================
 
 % ---------------------------------------------------------------------
 % N01
 % ---------------------------------------------------------------------
-\begin{frame}{N01: Hva er en graf? (Noder og kanter)}
+\begin{frame}{N01: What is en graf? (Noder og kanter)}
     
     \begin{columns}
         \begin{column}{0.45\textwidth}
-            \begin{block}{Definisjon}
+            \begin{block}{Definition}
                 En \textbf{graf} $G = (V, E)$ består av:
                 \begin{itemize}
                     \item $V$: mengde av \textbf{noder} (vertices)
@@ -92,7 +92,7 @@
             
             \vspace{3mm}
             
-            \textbf{Medisinsk eksempel:}
+            \textbf{Medical example:}
             \begin{itemize}
                 \item Noder = Pasienter
                 \item Kanter = Likhet mellom pasienter
@@ -134,7 +134,7 @@
             \begin{itemize}
                 \item Kantene har ingen retning
                 \item $A - B$ betyr gjensidig forbindelse
-                \item Eksempel: Pasient-likhetsnettverk (PSN)
+                \item Example: Patient Similarity Networks (PSN)
             \end{itemize}
             
             \begin{center}
@@ -154,7 +154,7 @@
             \begin{itemize}
                 \item Kantene har retning
                 \item $A \rightarrow B \neq B \rightarrow A$
-                \item Eksempel: Gen-regulatoriske nettverk
+                \item Example: Gen-regulatoriske nettverk
             \end{itemize}
             
             \begin{center}
@@ -178,8 +178,8 @@
     
     \vspace{1mm}
     
-    \begin{block}{\footnotesize Medisinsk kontekst}
-        \footnotesize PSN (pasient-likhetsnettverk) er vanligvis \textbf{ikke-rettet}: likhet mellom pasient A og B er symmetrisk.
+    \begin{block}{\footnotesize Medical kontekst}
+        \footnotesize PSN (patient similarity networks) er vanligvis \textbf{ikke-rettet}: likhet mellom pasient A og B er symmetrisk.
     \end{block}
     
 \end{frame}
@@ -194,7 +194,7 @@
             \textbf{Ikke-vektet graf:}
             \begin{itemize}
                 \item Alle kanter er ``like''
-                \item Binær: forbindelse eller ikke
+                \item Binær: forbindelse or ikke
             \end{itemize}
             
             \begin{center}
@@ -229,9 +229,9 @@
     
     \vspace{3mm}
     
-    \begin{block}{I PSN (pasient-likhetsnettverk)}
+    \begin{block}{I PSN (patient similarity networks)}
         \footnotesize
-        Vekten representerer \textbf{likhet (similaritet)} mellom pasienter, beregnet fra kliniske variabler.\\[2pt]
+        Vekten representerer \textbf{likhet (similaritet)} mellom pasienter, calculatet fra kliniske variabler.\\[2pt]
         \textbf{Høyere vekt} ($w$) = mer like pasienter (lignende symptomer, biomarkører, forløp, BMI, samme kjønn, \ldots).\\
         \textbf{Lavere vekt} = mindre like pasienter.\\
         Ofte brukes en \textbf{terskelverdi} for å filtrere bort svake koblinger (f.eks. $w < 0.5$).
@@ -280,7 +280,7 @@
             
             \begin{itemize}
                 \item $A_{ij} = 1$ hvis kant mellom node $i$ og $j$
-                \item $A_{ij} = 0$ ellers
+                \item $A_{ij} = 0$ ors
                 \item Symmetrisk for ikke-rettede grafer
             \end{itemize}
         \end{column}
@@ -305,7 +305,7 @@
     
     \begin{columns}
         \begin{column}{0.5\textwidth}
-            \begin{block}{Definisjon}
+            \begin{block}{Definition}
                 \textbf{Degree} = antall kanter til en node
                 \[
                 C_D(v) = \frac{\deg(v)}{n-1}
@@ -319,7 +319,7 @@
             \begin{itemize}
                 \item Høy degree = mange forbindelser
                 \item ``Hub'' i nettverket
-                \item Enkel å beregne
+                \item Enkel å calculate
             \end{itemize}
         \end{column}
         
@@ -355,7 +355,7 @@
     
     \vspace{1mm}
     
-    \begin{block}{\footnotesize Medisinsk relevans}
+    \begin{block}{\footnotesize Medical relevans}
         \footnotesize I PSN: Pasienter med høy grad-sentralitet ligner på mange andre $\rightarrow$ ``typiske'' pasienter.
     \end{block}
     
@@ -368,7 +368,7 @@
     
     \begin{columns}
         \begin{column}{0.5\textwidth}
-            \begin{block}{Definisjon}
+            \begin{block}{Definition}
                 Andel korteste stier som går gjennom en node
                 \[
                 C_B(v) = \sum_{s \neq v \neq t} \frac{\sigma_{st}(v)}{\sigma_{st}}
@@ -457,7 +457,7 @@
             
             \textbf{Forskjell fra degree:}
             \begin{itemize}
-                \item Degree: teller bare antall naboer
+                \item Degree: tor bare antall naboer
                 \item Eigenvector: vekter naboer etter deres viktighet
             \end{itemize}
         \end{column}
@@ -484,7 +484,7 @@
     
     \vspace{1mm}
     
-    \begin{block}{\footnotesize Kjent anvendelse}
+    \begin{block}{\footnotesize Kjent applylse}
         \footnotesize \href{https://en.wikipedia.org/wiki/PageRank}{Google PageRank} er en variant av eigenvector centrality!
     \end{block}
     
@@ -495,7 +495,7 @@
 % ---------------------------------------------------------------------
 \begin{frame}{N08: \href{https://en.wikipedia.org/wiki/Clustering_coefficient}{Clustering Coefficient} (klyngekoeffisient)}
     
-    \begin{block}{Definisjon}
+    \begin{block}{Definition}
         Hvor mye naboene til en node er koblet til hverandre
         \[
         C_i = \frac{\text{antall kanter mellom naboer}}{\text{maks mulige kanter mellom naboer}}
@@ -538,7 +538,7 @@
     
     \vspace{1mm}
     
-    \begin{block}{\footnotesize Medisinsk relevans}
+    \begin{block}{\footnotesize Medical relevans}
         \footnotesize Høy clustering i PSN kan indikere tette pasientsubgrupper (fenotyper).
     \end{block}
     
@@ -658,13 +658,13 @@
 \end{frame}
 
 % ---------------------------------------------------------------------
-% Oppsummering
+% Summary
 % ---------------------------------------------------------------------
-\begin{frame}{Oppsummering: N01--N10}
+\begin{frame}{Summary: N01--N10}
     
     \begin{columns}
         \begin{column}{0.48\textwidth}
-            \textbf{Grafteori-grunnlag:}
+            \textbf{Graph Theory-grunnlag:}
             \begin{itemize}
                 \item Graf $G = (V, E)$: noder ($V$) + kanter ($E$)
                 \item Rettet vs. ikke-rettet
@@ -703,7 +703,7 @@
     \vspace{5mm}
     
     \begin{block}{Neste steg}
-        Bruk disse konseptene til å bygge \textbf{pasient-likhetsnettverk} (PSN)!
+        Bruk disse konseptene til å bygge \textbf{patient similarity networks} (PSN)!
     \end{block}
     
 \end{frame}

@@ -1,6 +1,6 @@
 % =====================================================================
-% ELMED219: Pasient-likhetsnettverk (PSN)
-% Beamer-presentasjon - Momentliste P01-P08
+% BMED365: Patient Similarity Networks (PSN)
+% Beamer-presentasjon - Topic List P01-P08
 % =====================================================================
 \documentclass[aspectratio=169, 10pt]{beamer}
 
@@ -33,32 +33,32 @@
 % =====================================================================
 % TITTELINFO
 % =====================================================================
-\title{Pasient-likhetsnettverk (PSN)}
-\subtitle{ELMED219: Momentliste P01--P08}
-\author{ELMED219}
-\date{Vår 2026}
+\title{Patient Similarity Networks (PSN)}
+\subtitle{BMED365: Topic List P01--P08}
+\author{BMED365}
+\date{Spring 2026}
 
 % =====================================================================
 % DOKUMENT
 % =====================================================================
 \begin{document}
 
-% Tittelside
+% Title page
 \begin{frame}
     \titlepage
 \end{frame}
 
-% Innholdsfortegnelse
-\begin{frame}{Oversikt}
+% Table of Contents
+\begin{frame}{Overview}
     \begin{enumerate}
-        \item \textbf{Grunnleggende om PSN}
+        \item \textbf{Fundamental om PSN}
         \begin{itemize}
-            \item P01: Forklare konseptet pasient-likhetsnettverk (PSN)
-            \item P02: Beskrive hvordan PSN kan støtte presisjonsmedisin
+            \item P01: Explain konseptet patient similarity networks (PSN)
+            \item P02: Describe hvordan PSN kan støtte precisionsmedisin
         \end{itemize}
         \item \textbf{Likhetsberegning}
         \begin{itemize}
-            \item P03: Beregne likhet (similaritet) mellom pasienter
+            \item P03: Calculate likhet (similaritet) mellom pasienter
             \item P04: Konstruere et PSN fra en pasient-feature-matrise
             \item P05: Velge terskelverdi for kantoppretting i PSN
         \end{itemize}
@@ -66,27 +66,27 @@
         \begin{itemize}
             \item P06: Identifisere pasientsubgrupper via community detection
         \end{itemize}
-        \item \textbf{Avanserte temaer}
+        \item \textbf{Advanced temaer}
         \begin{itemize}
-            \item P07: Fordeler og begrensninger ved PSN-tilnærmingen
+            \item P07: Advantages og begrensninger ved PSN-tilnærmingen
             \item P08: Multimodal PSN (integrering av ulike datatyper)
         \end{itemize}
     \end{enumerate}
 \end{frame}
 
 % =====================================================================
-% SEKSJON: Grunnleggende om PSN
+% SEKSJON: Fundamental om PSN
 % =====================================================================
-\section{Grunnleggende om PSN}
+\section{Fundamental om PSN}
 
-\begin{frame}{P01: Forklare konseptet \href{https://en.wikipedia.org/wiki/Patient_similarity_network}{pasient-likhetsnettverk (PSN)}}
+\begin{frame}{P01: Explain konseptet \href{https://en.wikipedia.org/wiki/Patient_similarity_network}{patient similarity networks (PSN)}}
     \begin{columns}[T]
         \begin{column}{0.55\textwidth}
-            \textbf{Hva er et pasient-likhetsnettverk?}
+            \textbf{What is et patient similarity networks?}
             \begin{itemize}
                 \item En \textbf{graf} der hver node representerer en pasient
                 \item \textbf{Kanter} forbinder pasienter som ligner hverandre
-                \item Likhet basert på kliniske variabler (symptomer, vitalia, demografi), biomarkører, genetikk, avbildning, livsstilsfaktorer
+                \item Likhet basert på kliniske variabler (symptomer, vitalia, demografi), biomarkører, genethics, avbildning, livsstilsfaktorer
             \end{itemize}
             
             \vspace{0.2cm}
@@ -129,13 +129,13 @@
     \end{columns}
 \end{frame}
 
-\begin{frame}{P02: Beskrive hvordan PSN kan støtte \href{https://en.wikipedia.org/wiki/Precision_medicine}{presisjonsmedisin}}
-    \begin{block}{Presisjonsmedisin}
+\begin{frame}{P02: Describe hvordan PSN kan støtte \href{https://en.wikipedia.org/wiki/Precision_medicine}{precisionsmedisin}}
+    \begin{block}{Precisionsmedisin}
         Tilpasse behandling til den individuelle pasienten basert på deres unike profil -- ikke ``one size fits all''
     \end{block}
     
     \vspace{0.3cm}
-    \textbf{PSN støtter presisjonsmedisin ved å:}
+    \textbf{PSN støtter precisionsmedisin ved å:}
     \begin{enumerate}
         \item \textbf{Identifisere subgrupper} -- Finne pasienter med lignende sykdomsmekanismer
         \item \textbf{Predikere behandlingsrespons} -- ``Pasienter som ligner deg responderte godt på X''
@@ -144,7 +144,7 @@
     \end{enumerate}
     
     \vspace{0.3cm}
-    \begin{alertblock}{Eksempel: IBS-studien}
+    \begin{alertblock}{Example: IBS-studien}
         I Lab 1 bruker vi PSN på IBS-pasienter for å undersøke sammenhenger mellom mage-tarmsymptomer, hjerneavbildning (MRI) og kognitive funksjoner.
     \end{alertblock}
 \end{frame}
@@ -154,7 +154,7 @@
 % =====================================================================
 \section{Likhetsberegning}
 
-\begin{frame}{P03: Beregne likhet (\href{https://en.wikipedia.org/wiki/Similarity_measure}{similaritet}) mellom pasienter}
+\begin{frame}{P03: Calculate likhet (\href{https://en.wikipedia.org/wiki/Similarity_measure}{similaritet}) mellom pasienter}
     \textbf{Vanlige similaritets-/avstandsmål:}
     \vspace{-1mm}
     \begin{columns}[T]
@@ -168,7 +168,7 @@
             \footnotesize
             \begin{itemize}\setlength{\itemsep}{0pt}
                 \item Rett linje mellom punkter i $\mathbb{R}^n$
-                \item Følsom for skala
+                \item Følsom for shalla
                 \item God for kontinuerlige data
             \end{itemize}
             \normalsize
@@ -252,7 +252,7 @@
 \end{frame}
 
 \begin{frame}{P05: Velge \href{https://en.wikipedia.org/wiki/Threshold_model}{terskelverdi} for kantoppretting i PSN}
-    \begin{block}{\footnotesize Definisjon}
+    \begin{block}{\footnotesize Definition}
         \footnotesize \textbf{Terskel} $\tau$: Kant opprettes mellom pasient $i$ og $j$ hvis similaritet $s_{ij} > \tau$.
     \end{block}
     
@@ -276,7 +276,7 @@
     \begin{columns}[T]
         \begin{column}{0.48\textwidth}
             \begin{alertblock}{\scriptsize For mange kanter}
-                \scriptsize Mister subgruppestruktur, vanskelig å tolke
+                \scriptsize Mister subgruppestruktur, vanskelig å interpret
             \end{alertblock}
         \end{column}
         \begin{column}{0.48\textwidth}
@@ -306,11 +306,11 @@
             \begin{enumerate}\setlength{\itemsep}{0pt}
                 \item Optimaliserer \textbf{modularitet} -- intern tetthet vs. eksterne koblinger
                 \item Hierarkisk: Finner grupper på flere nivåer
-                \item Rask og skalerbar
+                \item Rask og shallerbar
             \end{enumerate}
             
             \vspace{2mm}
-            \textbf{Klinisk tolkning:}
+            \textbf{Clinical tolkning:}
             \begin{itemize}\setlength{\itemsep}{0pt}
                 \item Hver community = potensiell pasientsubtype
                 \item Undersøk karakteristika for hver gruppe
@@ -331,28 +331,28 @@
 \end{frame}
 
 % =====================================================================
-% SEKSJON: Avanserte temaer
+% SEKSJON: Advanced temaer
 % =====================================================================
-\section{Avanserte temaer}
+\section{Advanced temaer}
 
-\begin{frame}{P07: Fordeler og begrensninger ved PSN-tilnærmingen}
+\begin{frame}{P07: Advantages og begrensninger ved PSN-tilnærmingen}
     \begin{columns}[T]
         \begin{column}{0.48\textwidth}
-            \textbf{\textcolor{green!60!black}{Fordeler:}}
+            \textbf{\textcolor{green!60!black}{Advantages:}}
             \begin{itemize}
                 \item \faCheck~Intuitivt og visuelt
                 \item \faCheck~Integrasjon av ulike datatyper
                 \item \faCheck~Ingen antakelse om underliggende fordelinger
                 \item \faCheck~Oppdager ikke-lineære sammenhenger
-                \item \faCheck~Nettverksanalyse-verktøy kan anvendes
+                \item \faCheck~Nettverksanalyse-verktøy kan applys
                 \item \faCheck~Pasient-sentrert perspektiv
             \end{itemize}
         \end{column}
         \begin{column}{0.48\textwidth}
-            \textbf{\textcolor{uibred}{Begrensninger:}}
+            \textbf{\textcolor{uibred}{Limitations:}}
             \begin{itemize}
                 \item \faTimes~Valg av likhetsmål og terskel er kritisk
-                \item \faTimes~Skalerer dårlig til store datasett
+                \item \faTimes~Skalerer dårlig til store dataset
                 \item \faTimes~Manglende data kan være problematisk
                 \item \faTimes~Tolkningsutfordringer
                 \item \faTimes~Ikke alltid replikerbart
@@ -362,7 +362,7 @@
     \end{columns}
     
     \vspace{0.5cm}
-    \begin{block}{Oppsummering}
+    \begin{block}{Summary}
         PSN er et kraftig verktøy for eksplorativ analyse og hypotesegenerering, men resultater bør valideres med uavhengige data og metoder.
     \end{block}
 \end{frame}
@@ -371,7 +371,7 @@
     \textbf{Multimodal PSN:}
     \begin{itemize}\setlength{\itemsep}{0pt}
         \item Kombinerer data fra \textbf{flere kilder/modaliteter}
-        \item Eksempler: Klinikk + Genetikk + Avbildning
+        \item Examples: Klinikk + Genethics + Avbildning
     \end{itemize}
     
     \vspace{1mm}
@@ -384,9 +384,9 @@
     
     \vspace{1mm}
     \footnotesize
-    \textbf{Eksempel fra Lab 1 (IBS-studie):}
+    \textbf{Example fra Lab 1 (IBS-studie):}
     \begin{itemize}\setlength{\itemsep}{0pt}
-        \item \textbf{Kliniske data:} Symptomscorer, demografi
+        \item \textbf{Clinicale data:} Symptomscorer, demografi
         \item \textbf{MRI-data:} Hjerneavbildning (konnektivitet, volum)
         \item \textbf{Kognitive data:} Testresultater
         \item $\rightarrow$ Integrert PSN for helhetlig pasientprofilering
@@ -402,18 +402,18 @@
 % =====================================================================
 % OPPSUMMERING
 % =====================================================================
-\section*{Oppsummering}
+\section*{Summary}
 
-\begin{frame}{Oppsummering: PSN}
-    \textbf{Nøkkelpunkter:}
+\begin{frame}{Summary: PSN}
+    \textbf{Key points:}
     \begin{itemize}
         \item \textbf{P01:} PSN = Graf der noder er pasienter, kanter er similaritet
-        \item \textbf{P02:} Støtter presisjonsmedisin via subgruppeidentifikasjon
+        \item \textbf{P02:} Støtter precisionsmedisin via subgruppeidentifikasjon
         \item \textbf{P03:} Similaritetsmål: Euklidsk, Manhattan, Gower
         \item \textbf{P04:} Konstruksjon: Feature-matrise $\rightarrow$ Similaritet $\rightarrow$ Terskling $\rightarrow$ Graf
         \item \textbf{P05:} Terskelvalg er kritisk for nettverksstruktur
         \item \textbf{P06:} Community detection (Louvain) for subgrupper
-        \item \textbf{P07:} Fordeler vs. begrensninger må avveies
+        \item \textbf{P07:} Advantages vs. begrensninger må avveies
         \item \textbf{P08:} Multimodal PSN integrerer heterogene data
     \end{itemize}
     
