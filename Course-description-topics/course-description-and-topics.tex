@@ -105,26 +105,41 @@
 
 \vspace{1cm}
 
-\begin{tikzpicture}[node distance=1.4cm, auto]
+\begin{tikzpicture}[node distance=1.2cm, auto]
     % Styles
     \tikzstyle{block} = [rectangle, draw=uibblue, fill=uibblue!10, 
-        text width=2.8cm, text centered, rounded corners, minimum height=0.9cm, font=\small]
+        text width=2.6cm, text centered, rounded corners, minimum height=0.85cm, font=\small]
+    \tikzstyle{block2} = [rectangle, draw=uibblue!70!black, fill=uibblue!20, 
+        text width=2.6cm, text centered, rounded corners, minimum height=0.85cm, font=\small]
     \tikzstyle{arrow} = [thick,->,>=stealth,uibblue]
     
-    % Nodes
+    % Block 1 nodes (top row)
     \node [block] (ml) {Machine Learning\\(Lab 0)};
     \node [block, right=of ml] (net) {Networks\\(Lab 1)};
     \node [block, right=of net] (dl) {Deep Learning\\(Lab 2)};
     \node [block, below=of net] (genai) {Generative AI\\(Lab 3)};
-    \node [block, below=of genai] (team) {Team Project};
     
-    % Arrows
+    % Block 2 nodes (right column)
+    \node [block2, right=of dl] (compimg) {Comp.\ Imaging\\(Lab 4)};
+    \node [block2, below=of compimg] (compmod) {Comp.\ Modeling\\(Lab 5)};
+    
+    % Team/Individual projects
+    \node [block, below=of genai, xshift=-1.5cm] (team) {Team Project};
+    \node [block2, below=of genai, xshift=1.5cm] (indiv) {Individual Project};
+    
+    % Block 1 arrows
     \draw [arrow] (ml) -- (net);
     \draw [arrow] (net) -- (dl);
     \draw [arrow] (ml) |- (genai);
     \draw [arrow] (dl) |- (genai);
     \draw [arrow] (net) -- (genai);
     \draw [arrow] (genai) -- (team);
+    
+    % Block 2 arrows
+    \draw [arrow] (dl) -- (compimg);
+    \draw [arrow] (compimg) -- (compmod);
+    \draw [arrow] (compmod) |- (indiv);
+    \draw [arrow] (genai) -- (indiv);
 \end{tikzpicture}
 
 \vspace{1cm}
@@ -134,7 +149,7 @@
 Faculty of Medicine\\
 University of Bergen\\[0.5cm]
 In collaboration with\\
-Mohn Medical Imaging and Visualization Center (MMIV)
+Mohn Medical Imaging and Visualization Centre (MMIV)
 }
 
 \vspace{0.8cm}
