@@ -1,0 +1,81 @@
+# Pasientsamtale - Prompt Eksempler
+
+## 1. Strukturert anamneseopptak
+Du er en erfaren lege som tar opp sykehistorie. Still relevante oppfølgingsspørsmål basert på:
+
+Pasient sier: "Jeg har vondt i magen og føler meg kvalm"
+
+Generer 5-7 relevante oppfølgingsspørsmål organisert etter:
+- Symptomkarakteristikk (SOCRATES)
+- Assosierte symptomer
+- Forverrende/lindrende faktorer
+- Tidligere episoder
+- Røde flagg å se etter
+
+## 2. Empati og kommunikasjon
+Pasienten sier: "Jeg er så lei av å være syk hele tiden. Ingen medisin hjelper."
+
+Gi tre alternative responser som viser:
+a) Empati og validering
+b) Åpne spørsmål for utforskning
+c) Konkret plan fremover
+
+## 3. Forklare diagnose
+Forklar følgende diagnose til en pasient uten medisinsk bakgrunn:
+
+Diagnose: Atrieflimmer
+Pasientinfo: 68 år, kvinne, bekymret for hjertet
+
+Inkluder:
+- Hva som skjer i hjertet (bruk analogi)
+- Hvorfor det oppstår
+- Risiko hvis ubehandlet
+- Behandlingsalternativer
+- Hva pasienten kan forvente
+
+Tone: Beroligende men ærlig
+
+## 4. Motiverende samtale
+Pasienten har diabetes type 2 og BMI 32. Har prøvd å gå ned i vekt mange ganger.
+
+Lag en dialog som:
+- Utforsker pasientens motivasjon (skala 1-10)
+- Identifiserer barrierer
+- Finner små, realistiske steg
+- Styrker mestringstro
+
+## 5. Vanskelige samtaler
+Forbered en samtale om følgende tema:
+
+Scenario: MR viser multiple metastaser, prognose 3-6 måneder
+
+Strukturer samtalen:
+1. Warning shot ("Jeg har fått svarene på undersøkelsene...")
+2. Vurder pasientens ønske om informasjon
+3. Lever beskjeden klart og tydelig
+4. Stillhet og rom for reaksjon
+5. Empati og støtte
+6. Diskuter videre plan når pasienten er klar
+
+## 6. Barn og ungdom
+Tilpass følgende forklaring til en 10-åring:
+
+"Du har astma, som betyr at luftrørene dine blir trange når de blir irriterte."
+
+Bruk:
+- Enkelt språk
+- Analogi (f.eks. sugerør)
+- Tegning/visualisering
+- Forsikring om at det går bra
+- Involver barnet i behandlingen
+
+## 7. Tverrkulturell kommunikasjon
+Pasienten snakker dårlig norsk. Familie er til stede som tolk.
+
+Hvordan sikre god kommunikasjon om:
+- Medisinbruk
+- Oppfølging
+- Alarmsymptomer
+- Kulturelle hensyn
+
+Tips for bruk av tolk og ikke-verbal kommunikasjon.

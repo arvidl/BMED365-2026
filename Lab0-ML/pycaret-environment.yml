@@ -1,0 +1,75 @@
+# ============================================================================
+# PyCaret Environment for ELMED219-2026 Lab0-ML
+# ============================================================================
+#
+# VIKTIG: PyCaret har mange avhengigheter som kan konflikte med TensorFlow,
+# PyTorch og andre pakker i hovedmiljøet. Vi anbefaler derfor et separat miljø.
+#
+# Installasjon:
+#   conda env create -f pycaret-environment.yml
+#   conda activate pycaret-elmed219
+#
+# For å kjøre Jupyter med dette miljøet:
+#   conda activate pycaret-elmed219
+#   jupyter notebook
+#
+# ============================================================================
+
+name: pycaret-elmed219
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python=3.10
+  - pip
+  
+  # Jupyter
+  - jupyter>=1.0.0
+  - ipywidgets>=8.0.0
+  - notebook>=6.5.0
+  
+  # Core scientific computing
+  - numpy>=1.24.0,<2.0.0
+  - pandas>=2.0.0,<2.1.0
+  - scipy>=1.10.0
+  - matplotlib>=3.7.0
+  - seaborn>=0.12.0
+  
+  # Scikit-learn (PyCaret-kompatibel versjon)
+  - scikit-learn>=1.3.0,<1.4.0
+  
+  # Pip-installerte pakker
+  - pip:
+      # PyCaret med full støtte
+      - pycaret[full]>=3.0.0
+      
+      # Profileringsverktøy (valgfritt, men nyttig)
+      - ydata-profiling>=4.0.0
+      
+      # Plotly for interaktive plott
+      - plotly>=5.15.0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

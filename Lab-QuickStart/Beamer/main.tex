@@ -1,0 +1,247 @@
+\documentclass[aspectratio=169]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[norsk]{babel}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\usetheme{Madrid}
+\usecolortheme{beaver}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+    literate={æ}{{\ae}}1 {ø}{{\o}}1 {å}{{\aa}}1 {Æ}{{\AE}}1 {Ø}{{\O}}1 {Å}{{\AA}}1
+}
+\lstset{style=mystyle}
+
+\title{Lab-Lynkurs: Introduksjon til AI og Python}
+\subtitle{ELMED219-2026: Kunstig intelligens og beregningsorientert medisin}
+\author{ELMED219}
+\date{Vår 2026}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}{Oversikt}
+    \tableofcontents
+\end{frame}
+
+\section{Introduksjon til Kurset}
+\begin{frame}{Velkommen til ELMED219}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \textbf{Mål for kurset:}
+        \begin{itemize}
+            \item Forstå grunnleggende AI-konsepter.
+            \item Anvende maskinlæring på medisinske data.
+            \item Bli kjent med Python som verktøy.
+            \item Reflektere over etikk og 'trustworthy AI'.
+        \end{itemize}
+        
+        \column{0.5\textwidth}
+        \textbf{Struktur:}
+        \begin{itemize}
+            \item \textbf{Lab 0:} ML med PyCaret (Automl).
+            \item \textbf{Lab 1:} Nettverksanalyse (PSN).
+            \item \textbf{Lab 2:} Deep Learning (Bilder/EEG).
+            \item \textbf{Lab 3:} Generativ AI (LLM).
+            \item \textbf{Prosjekt:} Gruppearbeid.
+        \end{itemize}
+    \end{columns}
+\end{frame}
+
+\section{Python for Medisinere}
+\begin{frame}{Hvorfor Python?}
+    \begin{columns}
+        \column{0.6\textwidth}
+        Python har blitt de-facto standarden innen AI og Data Science.
+        \begin{itemize}
+            \item \textbf{Lesbarhet:} Syntaksen ligner på engelsk pseudo-kode.
+            \item \textbf{Økosystem:} Enorme biblioteker for alt fra statistikk til bildeanalyse.
+            \item \textbf{Community:} Stor støtte og mange eksempler på nettet (Stack Overflow, ChatGPT).
+        \end{itemize}
+        \vspace{0.5cm}
+        \textit{"Python is executable pseudocode."}
+        
+        \column{0.4\textwidth}
+        \begin{block}{Prompt}
+            \scriptsize\textit{"En vennlig, stilisert pythonslange som slynger seg rundt et medisinsk kors, 3d render, søt, ren bakgrunn, høy kvalitet, medisinsk blått og hvitt fargeskjema."}
+        \end{block}
+        \centering
+        \includegraphics[width=0.6\textwidth]{images/python_medisin.pdf}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Python vs. Andre språk}
+    \begin{table}[]
+        \centering
+        \small
+        \begin{tabular}{@{}lll@{}}
+            \toprule
+            \textbf{Språk} & \textbf{Fordeler} & \textbf{Ulemper} \\ \midrule
+            \textbf{Python} & Enkelt, AI-standard, fleksibelt & Tregere enn C++, GIL \\
+            \textbf{R} & Fantastisk for statistikk & Mindre støtte for Deep Learning \\
+            \textbf{MATLAB} & Industri-standard ingeniørfag & Dyrt, proprietært \\
+            \textbf{C++} & Ekstremt raskt & Høy læringskurve, komplekst \\ \bottomrule
+        \end{tabular}
+    \end{table}
+    \vspace{0.5cm}
+    I ELMED219 bruker vi Python fordi bibliotekene (PyTorch, Scikit-learn) er best utviklet her.
+\end{frame}
+
+\section{Jupyter Notebooks}
+\begin{frame}{Jupyter Notebook Miljøet}
+    \begin{columns}
+        \column{0.5\textwidth}
+        En \textbf{Notebook} (.ipynb) kombinerer:
+        \begin{enumerate}
+            \item \textbf{Kjørbar kode} (Python celler).
+            \item \textbf{Rik tekst} (Markdown, LaTeX formler).
+            \item \textbf{Visualiseringer} (Plot direkte i dokumentet).
+        \end{enumerate}
+        Dette fremmer \textit{reproduserbar forskning}.
+        
+        \column{0.5\textwidth}
+        \begin{block}{Prompt}
+            \scriptsize\textit{"Futuristisk kodegrensesnitt med visualisering av medisinske data, holografisk, blått og hvitt tema, Python-kodesnutter som svever i luften, rent og moderne."}
+        \end{block}
+        \centering
+        \includegraphics[width=0.6\textwidth]{images/coding_interface.pdf}
+    \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Markdown og LaTeX i Jupyter}
+    Vi kan skrive formler direkte i tekst-celler ved å bruke \$:
+    \vspace{0.5cm}
+    
+    \textbf{Eksempel:}
+    \begin{verbatim}
+    Massemiddelverdien er gitt ved $\mu = \frac{1}{n} \sum x_i$
+    \end{verbatim}
+    
+    \textbf{Resultat:}
+    Massemiddelverdien er gitt ved $\mu = \frac{1}{n} \sum x_i$
+    
+    \vspace{0.5cm}
+    Dette er nyttig for å dokumentere matematiske metoder i lab-rapportene.
+\end{frame}
+
+\section{Viktige Biblioteker}
+\begin{frame}{NumPy: Numerisk Python}
+    Grunnlaget for all vitenskapelig beregning i Python.
+    \begin{itemize}
+        \item Introduserer \texttt{ndarray} (n-dimensjonale arrays).
+        \item Mye raskere enn vanlige Python-lister pga. C-implementasjon og vektorisering.
+    \end{itemize}
+    
+    \vspace{0.5cm}
+    \begin{block}{Matematisk operasjon}
+        Hvis $A$ og $B$ er matriser, vil \texttt{A * B} i NumPy ofte være elementvis multiplikasjon, mens \texttt{A @ B} er matrisemultiplikasjon.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Pandas: Databehandling}
+    Hovedverktøyet for tabulære data (som Excel, men kraftigere).
+    
+    \begin{columns}
+        \column{0.5\textwidth}
+        \begin{lstlisting}[language=Python]
+import pandas as pd
+
+# Read data
+df = pd.read_csv('pasientdata.csv')
+
+# Inspect first rows
+print(df.head())
+
+# Statistics
+print(df.describe())
+        \end{lstlisting}
+        
+        \column{0.5\textwidth}
+        \textbf{Viktige begreper:}
+        \begin{itemize}
+            \item \texttt{DataFrame}: Hele tabellen.
+            \item \texttt{Series}: En kolonne.
+            \item \texttt{.loc[]}: Hente data ved navn.
+            \item \texttt{.iloc[]}: Hente data ved indeks (posisjon).
+        \end{itemize}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Matplotlib \& Seaborn: Visualisering}
+    \begin{itemize}
+        \item \textbf{Matplotlib:} "Bestefaren" til plotting. Kraftig, men kan være omstendelig.
+        \item \textbf{Seaborn:} Bygger på Matplotlib. Vakrere standard-design, enklere for statistiske plott.
+    \end{itemize}
+    
+    \begin{center}
+        \textit{En god visualisering kan erstatte tusen tall.}
+    \end{center}
+    Vi skal bruke disse til å visualisere forvirringsmatriser, treningskurver og feature importance.
+\end{frame}
+
+\section{Notebook Gjennomgang}
+\begin{frame}{Oversikt over `lynkurs-ai-python.ipynb`}
+    Notebooken er delt inn i følgende seksjoner:
+    \begin{enumerate}
+        \item \textbf{Python Basics:} Variabler, lister, løkker, funksjoner.
+        \item \textbf{Numpy:} Vektorer og matriser.
+        \item \textbf{Pandas:} Laste og utforske et "Heart Disease" datasett.
+        \item \textbf{Visualisering:} Plotting av histogrammer og korrelasjoner.
+        \item \textbf{Scikit-learn intro:} En enkel lineær regresjonsmodell.
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]{Tips for Lab-arbeid}
+    \begin{itemize}
+        \item \textbf{Kjør cellene i rekkefølge!} Variabler må defineres før de brukes.
+        \item \textbf{Tab-completion:} Trykk \texttt{Tab} for å se tilgjengelige funksjoner.
+        \item \textbf{Hjelp:} Bruk \texttt{?} bak en funksjon for dokumentasjon.
+        \begin{lstlisting}[language=Python]
+pd.read_csv?
+        \end{lstlisting}
+        \item \textbf{Restart Kernel:} Hvis ting henger seg opp, start kjernen på nytt (Kernel -> Restart).
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Veien Videre}
+    Når dere er ferdige med lynkurset, er dere klare for \textbf{Lab 0}, hvor vi skal begynne med ekte maskinlæring ved hjelp av PyCaret.
+    
+    \vspace{1cm}
+    \centering
+    \textbf{Lykke til med kodingen!}
+\end{frame}
+
+\end{document}
+
+
+
+
+
+
+

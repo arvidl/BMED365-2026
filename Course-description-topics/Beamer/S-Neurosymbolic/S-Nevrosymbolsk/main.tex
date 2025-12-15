@@ -1,0 +1,452 @@
+% =====================================================================
+% ELMED219: Nevrosymbolsk AI og Agentisk AI
+% Beamer-presentasjon - Momentliste S01-S11
+% =====================================================================
+\documentclass[aspectratio=169, 10pt]{beamer}
+
+% =====================================================================
+% PAKKER
+% =====================================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[norsk]{babel}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows, positioning, calc}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{fontawesome5}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue,
+    citecolor=blue
+}
+
+% =====================================================================
+% TEMA OG FARGER
+% =====================================================================
+\usetheme{Madrid}
+\usecolortheme{beaver}
+
+% =====================================================================
+% TITTELINFO
+% =====================================================================
+\title{Nevrosymbolsk AI og Agentisk AI}
+\subtitle{ELMED219: Momentliste S01--S11}
+\author{ELMED219}
+\date{Vår 2026}
+
+% =====================================================================
+% DOKUMENT
+% =====================================================================
+\begin{document}
+
+% Tittelside
+\begin{frame}
+    \titlepage
+\end{frame}
+
+% Innholdsfortegnelse
+\begin{frame}{Oversikt}
+    \begin{enumerate}
+        \item \textbf{Grunnleggende paradigmer}
+        \begin{itemize}
+            \item S01: Kontrastere symbolsk og konneksjonistisk AI
+            \item S02: Forklare konseptet nevrosymbolsk integrasjon
+        \end{itemize}
+        \item \textbf{Kunnskapsgrafer og ontologier}
+        \begin{itemize}
+            \item S03: Beskrive hva en kunnskapsgraf er
+            \item S04: Kjenne til medisinske ontologier
+            \item S05: Diskutere fordeler med nevrosymbolsk AI i medisin
+        \end{itemize}
+        \item \textbf{Case: Nevrosymbolsk gliomdiagnose}
+        \begin{itemize}
+            \item S06: Nevrosymbolsk AI for gliomdiagnostikk
+            \item S07: Forklare hvordan kunnskapsgrafer kan validere prediksjoner
+        \end{itemize}
+        \item \textbf{Agentisk AI}
+        \begin{itemize}
+            \item S08: Definere agentisk AI og dens kjerneegenskaper
+            \item S09: Beskrive hvordan en AI-agent kan orkestrere klinisk arbeidsflyt
+            \item S10--S11: Human-in-the-loop og etiske utfordringer
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+% =====================================================================
+% SEKSJON: Symbolsk vs. Konneksjonistisk AI
+% =====================================================================
+\section{Grunnleggende paradigmer}
+
+\begin{frame}{S01: Kontrastere symbolsk og konneksjonistisk AI}
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \textbf{\href{https://en.wikipedia.org/wiki/Symbolic_artificial_intelligence}{Symbolsk AI} (GOFAI):}
+            \begin{itemize}
+                \item ``Good Old-Fashioned AI''
+                \item Eksplisitte regler og symboler
+                \item Logisk resonnering
+                \item Kunnskapsrepresentasjon
+                \item Ekspert-systemer
+            \end{itemize}
+            
+            \vspace{0.3cm}
+            \textbf{Styrker:}
+            \begin{itemize}
+                \item Forklarbar
+                \item Presise resonnementer
+                \item Kodifiserer ekspertkunnskap
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \textbf{\href{https://en.wikipedia.org/wiki/Connectionism}{Konneksjonistisk AI}:}
+            \begin{itemize}
+                \item Nevrale nettverk, dyplæring
+                \item Lærer fra data
+                \item Subsymbolsk representasjon
+                \item Mønstergjenkjenning
+                \item ``Black box''
+            \end{itemize}
+            
+            \vspace{0.3cm}
+            \textbf{Styrker:}
+            \begin{itemize}
+                \item Lærer komplekse mønstre
+                \item Håndterer støy og usikkerhet
+                \item Skalerer med data
+            \end{itemize}
+        \end{column}
+    \end{columns}
+    
+    \vspace{0.15cm}
+    \begin{block}{Historisk perspektiv}
+        AI har svingt mellom disse paradigmene -- se \href{https://en.wikipedia.org/wiki/AI_winter}{AI-vintrene}. Nå: Kan vi kombinere dem?
+    \end{block}
+\end{frame}
+
+\begin{frame}{S02: Forklare konseptet nevrosymbolsk integrasjon}
+    \textbf{\href{https://en.wikipedia.org/wiki/Neuro-symbolic_AI}{Nevrosymbolsk AI} = det beste fra to verdener}
+    
+    \vspace{0.2cm}
+    \textbf{Hovedidé:}
+    \begin{itemize}
+        \item Kombiner \textbf{nevralt} (læring fra data, mønstergjenkjenning)
+        \item med \textbf{symbolsk} (resonnering, kunnskap, forklarbarhet)
+    \end{itemize}
+    
+    \vspace{0.2cm}
+    \textbf{Integrasjonsmønstre:}
+    \begin{enumerate}
+        \item \textbf{Neural $\rightarrow$ Symbolic:} Nevralt nettverk produserer symboler for resonnering
+        \item \textbf{Symbolic $\rightarrow$ Neural:} Symbolsk kunnskap guider nevralt nettverk
+        \item \textbf{Hybrid:} Tett integrasjon der begge informerer hverandre
+    \end{enumerate}
+    
+    \vspace{0.2cm}
+    {\small
+    \begin{block}{Eksempel: Medisinsk diagnose (hjernetumor)}
+        \textbf{Nevral:} CNN analyserer MR-bilde, identifiserer tumor-features \\
+        \textbf{Symbolsk:} Regelbasert klassifikasjon iht. \href{https://www.who.int/publications/i/item/9789240021310}{WHO-kriterier} \\
+        \textbf{Integrert:} Kombinerer bildefunn med kliniske regler for diagnose
+    \end{block}
+    }
+\end{frame}
+
+% =====================================================================
+% SEKSJON: Kunnskapsgrafer
+% =====================================================================
+\section{Kunnskapsgrafer og ontologier}
+
+\begin{frame}{S03: Beskrive hva en kunnskapsgraf er}
+    \textbf{\href{https://en.wikipedia.org/wiki/Knowledge_graph}{Kunnskapsgraf} (Knowledge Graph):}
+    \begin{itemize}
+        \item Strukturert representasjon av kunnskap som en \textbf{graf}
+        \item Noder = \textbf{entiteter} (personer, sykdommer, legemidler)
+        \item Kanter = \textbf{relasjoner} (``behandles med'', ``forårsaker'')
+    \end{itemize}
+    
+    \vspace{0.1cm}
+    \textbf{Trippel-representasjon:}
+    \begin{center}
+        (Subjekt, Predikat, Objekt) -- \textit{(Diabetes, behandles\_med, Metformin)}
+    \end{center}
+    
+    \vspace{0.1cm}
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \textbf{Anvendelser:}
+            \begin{itemize}
+                \item \href{https://en.wikipedia.org/wiki/Google_Knowledge_Graph}{Google Knowledge Graph}
+                \item Medisinsk beslutningsstøtte
+                \item Legemiddelinteraksjoner
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \textbf{Fordeler:}
+            \begin{itemize}
+                \item Maskinlesbar kunnskap
+                \item Resonnering over relasjoner
+                \item \href{https://en.wikipedia.org/wiki/Linked_data}{Linked Data}
+            \end{itemize}
+        \end{column}
+    \end{columns}
+    
+    \vspace{0.05cm}
+    {\scriptsize
+    \begin{block}{Teknologier}
+        \href{https://en.wikipedia.org/wiki/Resource_Description_Framework}{RDF}, \href{https://en.wikipedia.org/wiki/Web_Ontology_Language}{OWL}, \href{https://en.wikipedia.org/wiki/SPARQL}{SPARQL}, \href{https://en.wikipedia.org/wiki/SHACL}{SHACL} -- standarder for kunnskapsrepresentasjon, spørring og validering
+    \end{block}
+    }
+\end{frame}
+
+\begin{frame}{S04: Kjenne til medisinske ontologier}
+    \textbf{\href{https://en.wikipedia.org/wiki/Ontology_(information_science)}{Ontologi} = formell spesifikasjon av begreper og relasjoner i et domene}
+    
+    \vspace{0.3cm}
+    \textbf{Viktige medisinske ontologier/terminologier:}
+    \begin{center}
+        \footnotesize
+        \begin{tabular}{lp{5cm}l}
+            \toprule
+            \textbf{Navn} & \textbf{Beskrivelse} & \textbf{Anvendelse} \\
+            \midrule
+            \href{https://www.snomed.org/}{SNOMED CT} & Kliniske termer, 350 000+ begreper & \href{https://en.wikipedia.org/wiki/Electronic_health_record}{EPJ}, klassifisering \\
+            \href{https://www.who.int/standards/classifications/classification-of-diseases}{ICD-10/11} & Internasjonal sykdomsklassifikasjon & Rapportering, statistikk \\
+            \href{https://loinc.org/}{LOINC} & Laboratorieundersøkelser & Labresultater \\
+            \href{https://www.nlm.nih.gov/research/umls/rxnorm/}{RxNorm} & Legemidler & Forskrivning \\
+            \midrule
+            \href{https://www.who.int/publications/i/item/9789240021310}{WHO CNS 2021} & CNS-tumorklassifikasjon & Gliomdiagnose \\
+            \bottomrule
+        \end{tabular}
+    \end{center}
+    
+    \vspace{0.3cm}
+    \begin{block}{\href{https://www.who.int/publications/i/item/9789240021310}{WHO 2021 CNS-klassifikasjon}}
+        Integrerer histologiske og molekylære kriterier. Eksempel: \href{https://en.wikipedia.org/wiki/IDH1}{IDH-mutant} \href{https://en.wikipedia.org/wiki/Astrocytoma}{astrocytom} krever både histologi \textbf{og} IDH-mutasjonsstatus.
+    \end{block}
+\end{frame}
+
+\begin{frame}{S05: Diskutere fordeler med nevrosymbolsk AI i medisin}
+    \textbf{Potensielle fordeler:}
+    
+    \vspace{0.3cm}
+    \begin{enumerate}
+        \item \textbf{\href{https://en.wikipedia.org/wiki/Explainable_artificial_intelligence}{Forklarbarhet}:} Symbolsk komponent gir tolkbare resonnementer
+        
+        \item \textbf{Dataholdighet:} Symbolsk kunnskap kompenserer for lite data
+        
+        \item \textbf{\href{https://en.wikipedia.org/wiki/Robustness_(computer_science)}{Robusthet}:} Regelbaserte begrensninger forhindrer absurde prediksjoner
+        
+        \item \textbf{Oppdaterbarhet:} Ny medisinsk kunnskap legges til som regler/fakta
+        
+        \item \textbf{Samsvar med retningslinjer:} Kode WHO-kriterier, guidelines direkte
+        
+        \item \textbf{Validering:} Sjekk om prediksjoner er konsistente med kjent kunnskap
+    \end{enumerate}
+    
+    \vspace{0.3cm}
+    \begin{alertblock}{Hvorfor dette er viktig i medisin}
+        Medisin er et domene der ekspertkunnskap er rik, forklarbarhet er kritisk, og feil kan være fatale. Ren dyplæring er ofte utilstrekkelig.
+    \end{alertblock}
+\end{frame}
+
+% =====================================================================
+% SEKSJON: Case: Gliomdiagnose
+% =====================================================================
+\section{Case: Nevrosymbolsk gliomdiagnose}
+
+\begin{frame}{S06: Nevrosymbolsk AI for gliomdiagnostikk}
+    \textbf{Case study fra Lab 3, Notebook 08:}
+    
+    \vspace{0.3cm}
+    \textbf{Problemet:}
+    \begin{itemize}
+        \item Gliom-klassifikasjon krever både \textbf{bildeanalyse} (MRI) og \textbf{molekylære markører} (IDH, MGMT, 1p/19q)
+        \item WHO 2021 krever integrasjon av flere informasjonskilder
+    \end{itemize}
+    
+    \vspace{0.3cm}
+    \textbf{Nevrosymbolsk løsning:}
+    \begin{enumerate}
+        \item \textbf{Nevral komponent:} CNN segmenterer tumor i MRI (BraTS)
+        \item \textbf{Symbolsk komponent:} WHO-kriterier kodet som kunnskapsgraf
+        \item \textbf{Integrasjon:} Regelbasert klassifikator bruker CNN-output + molekylære markører
+    \end{enumerate}
+    
+    \vspace{0.3cm}
+    \begin{block}{Resultat}
+        Diagnose som er både \textbf{bildebasert} (CNN) og \textbf{kriteriekonform} (WHO) -- med forklarbar resonnering.
+    \end{block}
+\end{frame}
+
+\begin{frame}{S07: Forklare hvordan kunnskapsgrafer kan validere nevro-onkologiske prediksjoner}
+    \textbf{Validering av \href{https://en.wikipedia.org/wiki/Neuro-oncology}{nevro-onkologiske} prediksjoner med symbolsk kunnskap:}
+    
+    \vspace{0.2cm}
+    \textbf{Scenario:}
+    \begin{itemize}
+        \item CNN predikerer: ``Glioblastom med IDH-mutasjon''
+        \item Kunnskapsgraf inneholder: ``Glioblastom er per definisjon IDH-villtype (WHO 2021)''
+        \item \textbf{Konflikt detektert!}
+    \end{itemize}
+    
+    \vspace{0.15cm}
+    \textbf{Valideringsmekanismer:}
+    \begin{enumerate}
+        \item \textbf{Konsistenssjekk:} Er prediksjonen logisk konsistent?
+        \item \textbf{Regelvalidering:} Oppfyller prediksjonen nødvendige kriterier?
+        \item \textbf{Plausibilitetssjekk:} Er kombinasjonen av funn realistisk?
+    \end{enumerate}
+    
+    {\small
+    \begin{alertblock}{Verdi}
+        Fanger opp potensielle CNN-feil \textbf{før} de når kliniker. Øker tilliten til systemet.
+    \end{alertblock}
+    }
+\end{frame}
+
+% =====================================================================
+% SEKSJON: Agentisk AI
+% =====================================================================
+\section{Agentisk AI}
+
+\begin{frame}{S08: Definere agentisk AI og dens kjerneegenskaper}
+    \textbf{\href{https://en.wikipedia.org/wiki/Agentic_AI}{Agentisk AI} = AI som handler autonomt mot mål}
+    
+    \vspace{0.2cm}
+    \textbf{Kjerneegenskaper:}
+    \begin{enumerate}
+        \item \textbf{Autonomi:} Handler (gjerne iterativt) uten kontinuerlig menneskelig input
+        \item \textbf{Målrettet:} Jobber mot definerte mål
+        \item \textbf{Planlegging:} Bryter ned komplekse mål i deloppgaver
+        \item \textbf{Verktøybruk:} Kan bruke eksterne verktøy (API, databaser)
+        \item \textbf{Refleksjon:} Evaluerer egen fremgang, justerer strategi
+        \item \textbf{Minne:} Husker kontekst over flere interaksjoner og iterasjoner
+    \end{enumerate}
+    
+    \vspace{0.2cm}
+    \textbf{LLM-baserte agenter:}
+    \begin{itemize}
+        \item LLM som ``hjerne'' og ``orkestrator'' -- resonnerer og planlegger
+        \item Verktøy-kall (\href{https://platform.openai.com/docs/guides/function-calling}{function calling}) for handlinger
+        \item Eksempler: \href{https://github.com/Significant-Gravitas/AutoGPT}{AutoGPT}, \href{https://www.langchain.com/}{LangChain}, \href{https://docs.anthropic.com/claude/docs/tool-use}{Claude tool use}, \href{https://openai.com/index/introducing-gpt-4o-with-computer-use/}{OpenAI Operator}, \href{https://www.crewai.com/}{CrewAI}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{S09: Beskrive hvordan en AI-agent kan orkestrere klinisk arbeidsflyt}
+    \textbf{Eksempel: Agentisk AI for gliomutredning}
+    
+    \vspace{0.2cm}
+    \textbf{Scenario:} Lege ber om ``Utred ny MR for mulig gliom''
+    
+    \vspace{0.2cm}
+    \textbf{Agenten kan:}
+    \begin{enumerate}
+        \item \faSearch~\textbf{Hent data:} Koble til \href{https://en.wikipedia.org/wiki/Picture_archiving_and_communication_system}{PACS}, laste ned MR-bilder
+        \item \faBrain~\textbf{Analyser:} Kjør \href{https://www.synapse.org/brats}{BraTS-segmentering}, beregn tumorvolum
+        \item \faBookMedical~\textbf{Litteratur:} Søk \href{https://pubmed.ncbi.nlm.nih.gov/}{PubMed} for relevante studier
+        \item \faDatabase~\textbf{Biobank:} Sjekk om molekylær analyse er tilgjengelig
+        \item \faFile*~\textbf{Klassifiser:} Bruk WHO-kriterier for tentativ diagnose
+        \item \faClipboard~\textbf{Rapporter:} Generer strukturert rapport for \href{https://en.wikipedia.org/wiki/Multidisciplinary_team}{MDT-møte}
+    \end{enumerate}
+    
+    \vspace{0.1cm}
+    {\small
+    \begin{block}{Orkestrering}
+        Agenten \textbf{koordinerer} flere AI-systemer og datakilder mot ett klinisk mål -- uten at legen må gjøre hvert steg manuelt.
+    \end{block}
+    }
+\end{frame}
+
+\begin{frame}{S10: Forklare konseptet human-in-the-loop i agentiske systemer}
+    \textbf{\href{https://en.wikipedia.org/wiki/Human-in-the-loop}{Human-in-the-loop} (HITL) i agentisk AI:}
+    
+    \vspace{0.3cm}
+    \begin{itemize}
+        \item Selv autonome agenter trenger \textbf{\href{https://en.wikipedia.org/wiki/Human_oversight_of_AI}{menneskelig tilsyn}}
+        \item Spesielt viktig for beslutninger med store konsekvenser
+    \end{itemize}
+    
+    \vspace{0.3cm}
+    \textbf{Implementeringsmønstre:}
+    \begin{enumerate}
+        \item \textbf{Godkjenningspunkter:} Agent pauser for godkjenning før kritiske handlinger
+        \item \textbf{Konfidensterskel:} Menneske involveres når agent er usikker
+        \item \textbf{\href{https://en.wikipedia.org/wiki/Audit_trail}{Audit trail}:} Alle handlinger logges for review
+        \item \textbf{\href{https://en.wikipedia.org/wiki/Override}{Overstyring} (Overriding):} Menneske kan avbryte eller korrigere agent
+    \end{enumerate}
+    
+    \vspace{0.3cm}
+    \begin{alertblock}{I medisinsk kontekst}
+        Agent kan samle data og foreslå diagnose, men \textbf{legen} tar endelig beslutning. Agenten er en ``superkraftig assistent'', ikke en autonom beslutningstaker.
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{S11: Diskutere etiske utfordringer med autonome AI-agenter i helsevesenet}
+    \textbf{Etiske utfordringer:}
+    
+    \vspace{0.3cm}
+    \begin{enumerate}
+        \item \textbf{Ansvar:} Hvem er ansvarlig når en agent gjør feil?
+        \begin{itemize}
+            \item Utvikler? Sykehus? Lege som ``slapp løs'' agenten?
+        \end{itemize}
+        
+        \item \textbf{Autonomi og kontroll:} Hvor mye autonomi er for mye?
+        \begin{itemize}
+            \item Risiko for utilsiktet handling
+        \end{itemize}
+        
+        \item \textbf{Transparens:} Kan vi forstå hvorfor agenten tok beslutningene?
+        
+        \item \textbf{Sikkerhet:} Agenter med tilgang til systemer = angrepsflate
+        
+        \item \textbf{Dehumanisering:} Risiko for å redusere menneskelig kontakt i helse
+        
+        \item \textbf{Overtillit:} ``\href{https://en.wikipedia.org/wiki/Automation_bias}{Automation bias}'' -- blindt stole på agenten
+    \end{enumerate}
+    
+    \vspace{0.3cm}
+    \begin{block}{Prinsipper for ansvarlig agentisk AI}
+        Gradvis autonomi, robust HITL, klar ansvarsfordeling, omfattende testing, kontinuerlig overvåking
+    \end{block}
+\end{frame}
+
+% =====================================================================
+% OPPSUMMERING
+% =====================================================================
+\section*{Oppsummering}
+
+\begin{frame}{Oppsummering: Nevrosymbolsk AI og Agentisk AI}
+    \textbf{Nevrosymbolsk AI:}
+    \begin{itemize}
+        \item S01--S02: Kombinerer nevralt (læring) og symbolsk (resonnering)
+        \item S03--S04: Kunnskapsgrafer og medisinske ontologier
+        \item S05--S07: Fordeler i medisin, case gliomdiagnose, validering
+    \end{itemize}
+    
+    \vspace{0.3cm}
+    \textbf{Agentisk AI:}
+    \begin{itemize}
+        \item S08: Autonome, målrettede AI-systemer med planlegging
+        \item S09: Orkestrering av kliniske arbeidsflyter
+        \item S10--S11: HITL og etiske utfordringer
+    \end{itemize}
+    
+    \vspace{0.3cm}
+    \begin{block}{Lab 3, Notebook 08}
+        Utforsk en detaljert case study som demonstrerer nevrosymbolsk gliomklassifikasjon og agentisk orkestrering.
+    \end{block}
+\end{frame}
+
+\end{document}
+
+
+
+
+
+
+

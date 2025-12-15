@@ -1,0 +1,44 @@
+name: bmed365imc
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - ipython
+  - ipykernel
+  - ipywidgets
+  - pandas
+  - matplotlib
+  - seaborn
+  - jupyter
+  - jupyterlab
+  - git
+  - pip
+  - pip:
+    - gdown
+    - readimc
+    - steinbock
+    - napari[all]
+    - napari-imc
+    - nibabel
+    - scikit-learn
+    - scikit-image
+    - tiffile
+
+
+
+## Configure the Conda-environment bmed365imc for data analysis and computational imaging related to IMC (only once):
+# conda env create -f environment-imc.yml
+
+## To make a BMED365IMC kernel (optional):
+# python -m ipykernel install --user --name bmed365imc --display-name "BMED365IMC"
+
+## To activate the bmed365imc conda environment:
+# conda activate bmed365imc
+
+## To update the bmed365imc conda environment:
+# conda env update -f environment-imc.yml
+
+## To remove and reinstall the bmed365imc environment (if installation problems):
+# conda deactivate
+# conda env remove -n bmed365imc
+# conda env create -f environment-imc.yml

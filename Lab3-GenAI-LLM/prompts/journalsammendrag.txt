@@ -1,0 +1,110 @@
+# Journalsammendrag - Prompt Eksempler
+
+## 1. Akuttjournal sammendrag
+Sammenfatt følgende akuttjournal til 3-5 hovedpunkter:
+
+02:45 - Innkommet med ambulanse, brystsmerter og dyspné
+02:50 - Triage rød, EKG tatt, viser ST-elevasjon inferiort
+03:00 - Morfin 5mg iv, Seloken 5mg iv, ASA 300mg po
+03:15 - Til PCI-lab, stent i RCA
+05:30 - Tilbake intensiv, stabil hemodynamisk
+08:00 - Overført hjerteovervåkning
+
+Sammendrag skal inneholde:
+- Innleggelsesårsak
+- Hovedfunn
+- Behandling
+- Status nå
+
+## 2. Langtidssammendrag
+Lag et sammendrag av pasientens siste 12 måneder:
+
+Mars 2023: Diagnostisert KOLS GOLD stadium 2
+Juni 2023: Innlagt exacerbasjon, antibiotika + prednisolon
+September 2023: Startet LABA/LAMA kombinasjon
+November 2023: Ny exacerbasjon, kort innleggelse
+Januar 2024: Røykeslutt, henvist lungerehabilitering
+Mars 2024: Kontroll - bedret lungefunksjon og livskvalitet
+
+Fokuser på:
+- Sykdomsutvikling
+- Behandlingsrespons
+- Positive endringer
+- Videre plan
+
+## 3. Tverrfaglig sammendrag
+Kombiner notater fra ulike faggrupper:
+
+LEGE: "Hjertesvikt med EF 35%, optimalisert medisinsk behandling"
+SYKEPLEIER: "Tungpustet ved lett aktivitet, ødemer kommer tilbake kveldstid"
+FYSIOTERAPEUT: "6-min gangtest: 220m, må pausere x2"
+ERNÆRINGSFYSIOLOG: "Følger saltrestriksjon, vekt stabil"
+
+Lag helhetlig bilde som inkluderer:
+- Medisinsk status
+- Funksjonsnivå
+- Behandlingsplan
+- Tverrfaglige tiltak
+
+## 4. Overflyttingssammendrag
+Pasient flyttes fra sykehus til kommunal rehabilitering.
+
+Relevant info:
+- Hoftebrudd operert for 5 dager siden
+- Kan gå 20m med rullator
+- Bor alene, 2. etasje uten heis
+- Kognitiv svikt, MMSE 22/30
+- Medisinliste: 8 preparater
+
+Lag sammendrag for mottakende institusjon med:
+- Funksjonsevne nå
+- Hjelpebehov
+- Rehabiliteringsmål
+- Særlige hensyn
+- Medisinering
+
+## 5. Årskontroll-sammendrag
+Diabetes type 2, årlig kontroll:
+
+Data fra siste år:
+- HbA1c: 7.2 → 6.8 → 7.0 → 6.9%
+- Vekt: 92 → 89 → 88 → 89 kg
+- BT: Gjennomsnitt 135/82
+- Øyebunnsundersøkelse: Normal
+- Fotundersøkelse: Normal sensibilitet
+- U-albumin: Lett forhøyet
+
+Lag strukturert sammendrag:
+1. Måloppnåelse
+2. Positive trender
+3. Bekymringsområder
+4. Justert behandlingsplan
+
+## 6. Psykisk helse sammendrag
+Sammenfatt 6 mnd behandling for depresjon:
+
+- Start: PHQ-9 score 18 (moderat-alvorlig)
+- Behandling: Sertralin + 8 samtaler KAT
+- Nå: PHQ-9 score 7 (mild)
+- Fungering: Tilbake 50% jobb, økt sosial aktivitet
+
+Vektlegg:
+- Symptomutviling
+- Behandlingsrespons
+- Funksjonsforbedring
+- Risikofaktorer
+- Videre plan
+
+## 7. Kompleks multimorbidet
+75 år gammel med:
+- Hjertesvikt
+- Diabetes type 2
+- Nyresvikt stadium 3
+- Mild kognitiv svikt
+- 12 medisiner totalt
+
+Lag prioritert sammendrag som:
+- Identifiserer hovedproblem
+- Vurderer interaksjoner mellom sykdommer
+- Foreslår forenkling hvor mulig
+- Fokuserer på livskvalitet vs. sykdomskontroll

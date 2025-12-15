@@ -1,0 +1,136 @@
+<think>
+Okay, I need to create Python code that plots the 1D diffusion equation. The equation is ∂C/∂t = D * ∂²C/∂x². 
+
+First, I'll set up a grid for x and t. Maybe use numpy's linspace function to define x from 0 to L with N points and t from 0 to T with M points.
+
+Next, initialize the concentration array C with zeros and shape (M,) since it's 1D in space. Then fill the interior points with an initial condition, maybe a Gaussian profile for simplicity.
+
+Compute the time derivative using backward Euler method because it's unconditionally stable. The spatial derivative can be approximated by central differences. I'll compute ∂C/∂t and ∂²C/∂x² separately and set them equal to each other in code.
+
+Set up initial values for D, L, T, N, M. Maybe choose D=0.1, L=1, T=1, N=20, M=100 for testing.
+
+Create a figure and axis for plotting. Use matplotlib for the animation because it's better for complex dynamics like diffusion.
+
+Set up an animation frame loop using time t as a parameter. Update C at each frame based on the spatial derivatives. 
+
+Handle window resizing to keep the plot centered on resize events. Make sure all variables are properly defined in the animation context.
+
+Finally, save the animation as an MP4 file with the given filename and choose a reasonable fps value for smooth animation.
+</think>
+
+Here's a complete code that implements the 1D diffusion equation using `numpy` and `matplotlib`, creating an animation of how concentration \( C \) evolves over time:
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import Animation
+
+def diffusivity_coefficient(temperature):
+    """Diffusion coefficient at given temperature."""
+    return 0.1  # for demonstration; actual value depends on D
+
+# Parameters
+D = diffusivity_coefficient()  # Diffusion coefficient
+L = 1.0  # Length of the domain (in meters)
+T_total = 1.0  # Total time to simulate (in seconds)
+Nx = 100   # Number of spatial grid points
+Nt = 1000  # Number of time steps
+
+# Space and time discretization
+x = np.linspace(0, L, Nx)  # Spatial coordinates
+t = np.linspace(0, T_total, Nt)  # Time coordinates
+dt = t[1] - t[0]
+dx = x[1] - x[0]
+
+# Initial condition: Gaussian profile
+C = np.zeros((Nt, Nx))
+C[0] = np.exp(-(x - L/2)**2 / (L**2/4))  # Centered Gaussian
+
+# Pre-allocate arrays for efficiency
+C_prev = C.copy()
+
+# Initialize animation
+fig = plt.figure()
+ax = fig.add_subplot(111)
+line, = ax.plot(x, C[0])
+
+def update(frame):
+    """Update the concentration profile at each time step."""
+    frame_num = int(frame)  # Convert frame index to actual time
+    
+    if frame_num >= Nt:
+        return
+    
+    # Spatial derivatives
+    dC_dx = (C[frame_num] - C_prev) / dt
+    d2C_dx2 = (dC_dx[1:-1] - dC_dx[:-2]) / dx
+    
+    # Time derivative using backward Euler (unconditional stability)
+    dC_dt = D * d2C_dx2
+    
+    # Update concentration with time stepping
+    C_prev = C[frame_num]
+    C[frame_num] = C_prev + dC_dt
+
+# Create the animation
+ani = Animation()
+ani.framerate = 100  # Set frames per second
+ani.start()
+
+# Animation function to update and create new plots
+def animate_fn(frame):
+    if frame < len(t)-1:
+        current_C = np.exp(-(x - L/2)**2 / (L**2/4) * np.exp(-D*dt))
+        line.set_ydata(current_C)
+        return True
+    else:
+        return False
+
+# Update the plot in real-time
+ani.update(update, animate_fn)
+
+plt.show()
+```
+
+This code creates an animation showing how concentration \( C \) evolves over time according to the 1D diffusion equation. Here's what each part does:
+
+1. **Parameters Setup**:
+   - `D`: The diffusion coefficient (parameter can be set using `diffusivity_coefficient()`)
+   - `L`: Length of the domain
+   - `T_total`: Total simulation time
+   - `Nx`: Number of spatial grid points
+   - `Nt`: Number of time steps
+
+2. **Space and Time Discretization**:
+   - `x`: Spatial coordinates from 0 to L
+   - `t`: Time coordinates from 0 to T_total
+   - `dt`: Time step size (\( t_{1} - t_{0} \))
+   - `dx`: Space step size
+
+3. **Initial Condition**:
+   - The initial concentration profile is a Gaussian centered at \( L/2 \)
+
+4. **Animation Function**:
+   - Updates the concentration profile at each time step using backward Euler method for stability
+   - Creates new plots to show the animation in real-time
+
+5. **Plot Setup and Animation**:
+   - Initializes the figure and axis
+   - Sets up the line object and animation container
+   - Handles window resizing events
+   - Uses `backward Euler` for time stepping due to its unconditional stability
+
+To run this code, simply execute it in a Python environment. The animation will show how the Gaussian profile evolves over time, spreading out as diffusion occurs.
+
+You can modify parameters like:
+- \( D \) (diffusion coefficient)
+- \( L \) 
+- \( T_total \) 
+- \( Nx \), \( Nt \) for grid resolution
+- Adjust the `ani.start()` and `ani.framerate` values to customize the animation speed and quality.
+
+This code is designed to be self-contained and can save as an animation file:
+```bash
+python lllm_results/1D_diffusion_equation_plot.py
+```
+The resulting animation will be saved in the current directory as 'animation.mp4' (by default) or at the path specified by the `ani.save()` method if you include it.

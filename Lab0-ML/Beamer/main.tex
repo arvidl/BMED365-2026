@@ -1,0 +1,226 @@
+\documentclass[aspectratio=169]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[norsk]{babel}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{amsmath}
+
+\usetheme{Madrid}
+\usecolortheme{beaver}
+
+\title{Lab 0: Maskinlæring og PyCaret}
+\subtitle{ELMED219-2026}
+\author{ELMED219}
+\date{Vår 2026}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}{Oversikt}
+    \tableofcontents
+\end{frame}
+
+\section{Introduksjon til Maskinlæring}
+\begin{frame}{Hva er Maskinlæring (ML)?}
+    \begin{columns}
+        \column{0.6\textwidth}
+        Maskinlæring er studiet av dataalgoritmer som forbedrer seg automatisk gjennom erfaring.
+        
+        \vspace{0.5cm}
+        \textbf{Formell definisjon (Tom Mitchell):}
+        Et dataprogram sies å lære fra erfaring \textbf{E} med hensyn til en oppgave \textbf{T} og ytelsesmål \textbf{P}, hvis ytelsen på T, målt ved P, forbedres med erfaring E.
+        
+        \vspace{0.5cm}
+        \textit{I medisin:} 
+        \begin{itemize}
+            \item \textbf{T}: Diagnostisere en sykdom.
+            \item \textbf{E}: Historiske pasientdata.
+            \item \textbf{P}: Nøyaktighet (Accuracy).
+        \end{itemize}
+        
+        \column{0.4\textwidth}
+        \begin{block}{Prompt}
+            \scriptsize\textit{"Et rent, horisontalt flytdiagram som illustrerer maskinlærings-pipelinen på hvit bakgrunn. Steg fra venstre mot høyre: 1) Rådata (database-ikon), 2) preprosessering (tannhjul), 3) Trening (hjerne-chip ikon), 4) Evaluering (forstørrelsesglass på graf), 5) Utrulling (sky). Stilen er moderne, 'Corporate Memphis' men strengt profesjonell og medisinsk-teknisk. Høy kvalitet, vektorstil."}
+        \end{block}
+        \centering
+        \includegraphics[width=0.9\textwidth]{images/ml_pipeline.pdf}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{ML-Paradigmer}
+    \begin{itemize}
+        \item \textbf{Veiledet Læring (Supervised Learning):}
+        Vi har input data $X$ og fasit (labels) $y$. Målet er å lære en funksjon $f: X \rightarrow y$.
+        \begin{itemize}
+            \item \textit{Klassifikasjon:} $y$ er en kategori (Syk/Frisk).
+            \item \textit{Regresjon:} $y$ er et kontinuerlig tall (Blodtrykk, Liggetid).
+        \end{itemize}
+        
+        \item \textbf{Ikke-veiledet Læring (Unsupervised Learning):}
+        Vi har kun input data $X$. Målet er å finne struktur i dataene.
+        \begin{itemize}
+            \item \textit{Klynging (Clustering):} Finne pasientgrupper.
+            \item \textit{Dimensjonsreduksjon:} Forenkle komplekse data.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\section{Klassifikasjon vs. Regresjon}
+\begin{frame}{Klassifikasjon vs. Regresjon}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \textbf{Klassifikasjon}
+        \begin{itemize}
+            \item Diskret output.
+            \item Eks: Diagnoser (ICD-10 koder).
+            \item Algoritmer: Logistic Regression, Decision Trees, Random Forest, SVM.
+        \end{itemize}
+        
+        \column{0.5\textwidth}
+        \textbf{Regresjon}
+        \begin{itemize}
+            \item Kontinuerlig output.
+            \item Eks: Tid til hendelse, dosering.
+            \item Algoritmer: Linear Regression, Random Forest Regressor, XGBoost.
+        \end{itemize}
+    \end{columns}
+    
+    \vspace{0.5cm}
+    \begin{block}{Prompt}
+        \scriptsize\textit{"Delt skjerm vitenskapelig illustrasjon. Venstre side merket 'Klassifikasjon': Et spredningsplott hvor en linje skiller røde prikker fra blå prikker. Høyre side merket 'Regresjon': Et spredningsplott med en glatt kurve som tilpasses gjennom datapunktene. Ren, hvit bakgrunn, tydelige farger, høy oppløsning, lærebok-kvalitet."}
+    \end{block}
+    \centering
+    \includegraphics[width=0.7\textwidth]{images/class_vs_reg.pdf}
+\end{frame}
+
+\section{Evaluering av Modeller}
+\begin{frame}{Hvordan måler vi suksess?}
+    For klassifikasjon bruker vi en \textbf{Forvirringsmatrise (Confusion Matrix)}:
+    
+    \begin{table}[]
+        \centering
+        \begin{tabular}{|c|c|c|}
+            \hline
+             & \textbf{Predikert Positiv} & \textbf{Predikert Negativ} \\ \hline
+            \textbf{Faktisk Positiv} & True Positive (TP) & False Negative (FN) \\ \hline
+            \textbf{Faktisk Negativ} & False Positive (FP) & True Negative (TN) \\ \hline
+        \end{tabular}
+    \end{table}
+    
+    \vspace{0.2cm}
+    \begin{itemize}
+        \item \textbf{Accuracy:} $\frac{TP + TN}{Total}$ (Kan være misvisende ved ubalanserte data!)
+        \item \textbf{Precision:} $\frac{TP}{TP + FP}$ (Hvor mange av de vi kalte syke, er faktisk syke?)
+        \item \textbf{Recall (Sensitivitet):} $\frac{TP}{TP + FN}$ (Hvor mange av de syke fant vi?)
+        \item \textbf{F1-Score:} Harmonisk gjennomsnitt av Precision og Recall.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Bias-Variance Tradeoff}
+    En sentral utfordring i ML er balansen mellom \textit{bias} og \textit{varians}.
+    
+    \begin{columns}
+        \column{0.5\textwidth}
+        \textbf{Underfitting (Høy Bias):}
+        \begin{itemize}
+            \item Modellen er for enkel.
+            \item Fanger ikke opp mønsteret i dataene.
+            \item Dårlig på både trening og test.
+        \end{itemize}
+        
+        \column{0.5\textwidth}
+        \textbf{Overfitting (Høy Varians):}
+        \begin{itemize}
+            \item Modellen er for kompleks.
+            \item Lærer "støy" i treningsdataene.
+            \item God på trening, dårlig på test.
+        \end{itemize}
+    \end{columns}
+    \vspace{0.5cm}
+    \textit{Målet er å finne "sweet spot" som generaliserer godt til nye data.}
+\end{frame}
+
+\section{PyCaret}
+\begin{frame}{PyCaret: Automatisert ML}
+    PyCaret er et "low-code" bibliotek som automatiserer store deler av ML-flyten.
+    
+    \begin{itemize}
+        \item \textbf{setup():} Initialiserer miljøet, håndterer manglende verdier, koder kategoriske variabler, splitter data.
+        \item \textbf{compare\_models():} Trener og evaluerer mange algoritmer side-om-side.
+        \item \textbf{create\_model():} Trener en spesifikk modell.
+        \item \textbf{tune\_model():} Optimaliserer hyperparametere automatisk.
+        \item \textbf{plot\_model():} Genererer standardiserte figurer (ROC, Feature Importance).
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Eksempel på PyCaret-kode}
+    \begin{verbatim}
+from pycaret.classification import *
+
+# 1. Setup
+exp = setup(data=diabetes_df, target='Class variable', session_id=123)
+
+# 2. Sammenlign modeller
+best_model = compare_models()
+
+# 3. Analyser
+evaluate_model(best_model)
+
+# 4. Prediker
+predictions = predict_model(best_model, data=new_data)
+    \end{verbatim}
+\end{frame}
+
+\section{Notebooks og Oppgaver}
+\begin{frame}{Oversikt over Lab 0 Notebooks}
+    \begin{enumerate}
+        \item \textbf{01-Enkle\_eksempler.ipynb}:
+        \begin{itemize}
+            \item Manuell implementasjon av enkle ML-konsepter.
+            \item Forstå beslutningstrær og logistisk regresjon "under panseret".
+        \end{itemize}
+        
+        \item \textbf{02-Binaer\_klassifikasjon.ipynb}:
+        \begin{itemize}
+            \item Klassifisere Pima Indians Diabetes datasett.
+            \item Fokus på datautforskning (EDA) og modellvalidering.
+        \end{itemize}
+        
+        \item \textbf{03-PyCaret\_hurtigguide.ipynb}:
+        \begin{itemize}
+            \item Effektiv ML-flyt med PyCaret på samme datasett.
+            \item Sammenligning av hvor mye tid man sparer!
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}{Viktige Læringspunkter}
+    \begin{itemize}
+        \item \textbf{Data er viktigst:} "Garbage in, garbage out". Bruk tid på å forstå dataene.
+        \item \textbf{Validering:} Stol aldri på trenings-score alene. Bruk kryssvalidering eller et hold-out testsett.
+        \item \textbf{Base-rate:} Sjekk alltid om modellen slår en enkel gjetning (f.eks. "alle er friske").
+        \item \textbf{Tolkbarhet:} Noen ganger er en enkel modell (Lineær Regresjon) bedre enn en kompleks (Black Box) hvis vi trenger å forstå \textit{hvorfor}.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Oppsummering}
+    I dag har vi lagt grunnlaget for resten av kurset.
+    \begin{itemize}
+        \item Vi har definert ML.
+        \item Vi har sett på forskjellen mellom klassifikasjon og regresjon.
+        \item Vi har introdusert PyCaret som et kraftig verktøy.
+    \end{itemize}
+    
+    I neste lab (Lab 1) skal vi se på hvordan vi kan bruke \textbf{Nettverksvitenskap} til å finne pasienter som ligner på hverandre (PSN).
+\end{frame}
+
+\end{document}
+
+
+
+
+
+
+

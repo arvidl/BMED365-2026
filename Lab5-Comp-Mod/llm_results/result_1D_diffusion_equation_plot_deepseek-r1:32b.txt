@@ -1,0 +1,434 @@
+<think>
+Okay, so I need to write Python code that plots the solution of the 1D diffusion equation. The equation is given as ∂C/∂t = D ∂²C/∂x². Hmm, right, this is a partial differential equation that describes how concentration C diffuses over time t in one spatial dimension x with diffusion coefficient D.
+
+First, I remember that solving PDEs numerically often involves discretization methods like finite difference. So, I'll probably use the finite difference method here. Let me think about how to set this up.
+
+I should start by defining some parameters: the number of grid points in space (nx), time steps (nt), the spatial domain from 0 to L, and a small enough time step dt so that the solution remains stable. Oh, right, stability is crucial here. The Courant-Friedrichs-Lewy (CFL) condition will help determine the maximum allowable time step for stability.
+
+Next, I need initial conditions. A common choice is a Gaussian profile because it's smooth and decays rapidly, which makes sense for a diffusion problem. So, I'll set up an initial concentration profile that's a Gaussian centered somewhere in the domain.
+
+Boundary conditions are important too. For simplicity, I can assume Dirichlet boundary conditions where C=0 at both ends of the domain. That means no flux through the boundaries or perhaps fixed concentrations there.
+
+Now, setting up the grid: I'll create an array x for spatial points and another array for time steps. The solution will be a 2D array where each row represents the concentration profile at a specific time step.
+
+For the finite difference approximation, I need to discretize both time and space. The spatial second derivative can be approximated using central differences: (C[i+1] - 2*C[i] + C[i-1])/dx². The time derivative will be forward difference: (C_new - C_old)/dt.
+
+Putting this together, the update formula for each time step becomes:
+C_new[i] = C_old[i] + D * dt / dx² * (C_old[i+1] - 2*C_old[i] + C_old[i-1])
+
+I need to loop over each time step and apply this update. But wait, I have to handle the boundaries correctly. At each time step, I should set C[0] and C[-1] to zero before updating the interior points.
+
+After computing the solution at each time step, I might want to store it so I can plot it later. Alternatively, for memory efficiency, maybe only keep the current and next time steps. But since we're plotting multiple frames, storing all solutions makes sense.
+
+Once all time steps are computed, I'll use matplotlib to visualize the results. It's nice to create an animation that shows how the concentration evolves over time. This can be done with matplotlib's FuncAnimation function or by using a loop to update the plot at each step.
+
+Let me outline the steps in code:
+
+1. Import necessary libraries: numpy for numerical operations and matplotlib.pyplot for plotting.
+2. Define parameters: nx, nt, L, D, dx, dt. Compute dx as L/(nx-1) since we include both endpoints. Choose a small enough dt to satisfy the stability condition, which for the diffusion equation is dt <= dx²/(2D). So maybe set dt = 0.9 * dx²/(2D).
+3. Initialize the concentration array C with Gaussian initial conditions.
+4. Set up boundary conditions: C[0] and C[-1] are zero.
+5. Create a figure for plotting.
+6. Use a loop over time steps:
+   a. Compute the next time step using the finite difference formula.
+   b. Update the plot to show the new concentration profile.
+7. After all steps, display the animation.
+
+Wait, but in each time step, when updating C_new from C_old, we have to make sure that during the computation of the interior points, we don't overwrite the values before they're used. So perhaps using a copy or separate arrays for current and next time step is better. Alternatively, since Python handles it with proper indexing.
+
+Let me think about potential issues: if I update C in place, then when computing C[i], the updated C[i-1] and C[i+1] might already be changed from their previous values, leading to incorrect results. So yes, using two separate arrays or a copy is essential. Alternatively, compute all updates into a new array before assigning it back.
+
+So maybe create a new array C_new each time step based on the current C_old.
+
+Alternatively, use a single array and update from a temporary copy. In Python, for small nx, this isn't too bad. So perhaps at each step:
+
+C_temp = C.copy()
+for i in 1 to nx-2:
+    C[i] = C_temp[i] + D * dt / dx**2 * (C_temp[i+1] - 2*C_temp[i] + C_temp[i-1])
+
+Yes, that should prevent overwriting issues.
+
+Also, for plotting, I can create a line object and update its ydata at each time step to avoid redrawing the entire plot every time, which is more efficient.
+
+Let me structure the code:
+
+Import numpy as np, matplotlib.pyplot as plt, and maybe matplotlib.animation as animation or use FuncAnimation.
+
+Define parameters:
+nx = 101
+nt = 200
+L = 1.0
+D = 0.1
+dx = L / (nx - 1)
+dt = 0.9 * dx**2 / (2*D)
+
+Initialize x: x = np.linspace(0, L, nx)
+
+Initial condition:
+C = np.exp(-4*np.log(2)*((x-0.5)/0.1)**2) or something similar.
+
+Wait, let me make sure the initial Gaussian is correctly normalized and centered at 0.5 with a width of 0.1.
+
+So C0 = exp(- (x - 0.5)^2 / (2*sigma^2)), but perhaps just using a squared term for simplicity.
+
+Set boundary conditions: C[0] = C[-1] = 0.
+
+Plot setup:
+fig, ax = plt.subplots()
+line, = ax.plot(x, C)
+ax.set_ylim([0, 1.1])
+
+Then loop over nt steps:
+
+for n in range(nt):
+    # Save current state for plotting
+    if n % 10 == 0:  # Plot every 10 steps to reduce number of frames
+        plt.plot(x, C, label=f't = {n*dt:.2f}')
+    
+    # Update concentration
+    C_new = C.copy()
+    for i in range(1, nx-1):
+        laplacian = (C[i+1] - 2*C[i] + C[i-1]) / dx**2
+        C_new[i] = C[i] + D * dt * laplacian
+    C = C_new
+
+Wait, but this will overwrite C in each step. Alternatively, perhaps use a temporary array to compute the next state.
+
+Wait no, because if I do:
+
+C_new = np.zeros(nx)
+for i in 1 to nx-2:
+    C_new[i] = C[i] + D*dt*( (C[i+1]-2*C[i]+C[i-1])/dx² )
+C = C_new.copy()
+
+But also setting boundary conditions at each step.
+
+Hmm, perhaps the way I have it is correct. Also, in each iteration, set C[0] and C[-1] to zero before updating the interior points.
+
+Wait no: in the initial setup, we set C[0] and C[-1] to zero as part of the boundary conditions. Then, during each time step, we compute the new interior points based on the old values, then update all points at once.
+
+Alternatively, perhaps after computing the new interior points, reapply the boundary conditions for C_new. So:
+
+for n in range(nt):
+    # Save current state
+    if n % 10 == 0:
+        plt.plot(x, C, label=f't = {n*dt:.2f}')
+    
+    C_temp = C.copy()
+    C = np.zeros(nx)
+    C[0] = 0
+    C[-1] = 0
+    for i in range(1, nx-1):
+        laplacian = (C_temp[i+1] - 2*C_temp[i] + C_temp[i-1]) / dx**2
+        C[i] = C_temp[i] + D*dt*laplacian
+
+Wait, that might not be correct because after setting C to zero and then updating the interior. Hmm.
+
+Alternatively, I can create a new array each time step:
+
+for n in range(nt):
+    # Create new concentration profile
+    C_new = np.zeros(nx)
+    C_new[0] = 0
+    C_new[-1] = 0
+    for i in range(1, nx-1):
+        laplacian = (C[i+1] - 2*C[i] + C[i-1])/dx**2
+        C_new[i] = C[i] + D*dt*laplacian
+    # Update to new concentration
+    C = C_new.copy()
+
+Wait, but in this case, when computing laplacian for C_new[i], it uses the old values from C. So yes, that should be correct.
+
+But I'm not sure if it's the best way. Maybe using NumPy operations would be more efficient and cleaner.
+
+Alternatively:
+
+C = np.zeros(nx)
+x = np.linspace(0, L, nx)
+# Initial condition
+C = np.exp(-4*np.log(2)*((x-0.5)/0.1)**2)
+C[0] = 0
+C[-1] = 0
+
+for n in range(nt):
+    # Save current state for plotting every few steps
+    if n % 10 == 0:
+        plt.plot(x, C, label=f't={n*dt:.2f}')
+    
+    # Compute laplacian
+    laplacian = (C[2:] - 2*C[1:-1] + C[:-2])/dx**2
+    # Update interior points
+    C[1:-1] += D*dt*laplacian
+
+This way, using NumPy slicing to compute the laplacian and update all interior points at once. This is more efficient.
+
+So perhaps this approach would be better.
+
+Therefore, in code:
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Parameters
+nx = 101
+nt = 200
+L = 1.0
+D = 0.1
+dx = L / (nx - 1)
+dt = 0.9 * dx**2 / (2*D)
+
+x = np.linspace(0, L, nx)
+
+# Initial condition
+C = np.exp(-4*np.log(2)*((x-0.5)/0.1)**2)
+C[0] = C[-1] = 0
+
+plt.figure()
+for n in range(nt):
+    if n % 10 == 0:
+        plt.plot(x, C, label=f't={n*dt:.2f}')
+    
+    # Compute laplacian
+    laplacian = (C[2:] - 2*C[1:-1] + C[:-2]) / dx**2
+    # Update concentration
+    C[1:-1] += D * dt * laplacian
+
+plt.xlabel('x')
+plt.ylabel('Concentration')
+plt.legend()
+plt.show()
+
+Wait, but when I plot inside the loop, it will keep adding lines to the same figure. So after nt steps, which is 200, and plotting every 10 steps, that's 20 lines, which might be a bit much for a legend. Alternatively, maybe create a new plot each time or use an animation.
+
+But perhaps in this case, just showing the initial and final states isn't enough; it would be better to have an animation.
+
+Alternatively, adjust the code to collect all the data first and then plot.
+
+Wait, but for nt=200, even with 1e5 steps, it's manageable if we collect all the data. However, with nx=101 points and nt=200, storing all solutions would require a 2D array of size (201, 101), which is not too bad.
+
+So perhaps first run the simulation, store each time step, then plot them in an animation.
+
+Alternatively, let's see:
+
+Create a list to hold all concentration profiles over time:
+
+concentrations = [C.copy()]
+times = [0.0]
+
+for n in range(1, nt+1):
+    # Compute laplacian
+    laplacian = (C[2:] - 2*C[1:-1] + C[:-2]) / dx**2
+    # Update concentration
+    C[1:-1] += D * dt * laplacian
+    concentrations.append(C.copy())
+    times.append(n*dt)
+
+Then, after the loop, we have all the time steps stored.
+
+But for 200 steps, that's manageable.
+
+Then, to plot these as an animation:
+
+import matplotlib.animation as animation
+
+fig = plt.figure()
+ax = fig.add_subplot(111)
+line, = ax.plot(x, concentrations[0])
+ax.set_ylim([0, 1.1])
+ax.set_xlabel('x')
+ax.set_ylabel('Concentration')
+
+def animate(i):
+    line.set_ydata(concentrations[i])
+    return line,
+
+ani = animation.FuncAnimation(fig, animate, frames=len(concentrations), interval=50)
+plt.show()
+
+Alternatively, using plt.imshow to plot a 2D color map.
+
+But perhaps for simplicity, I'll stick with the line plot and update it each time step. However, given that nt is small (200 steps), this should be manageable.
+
+So putting it all together:
+
+Here's the revised code:
+
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+
+nx = 101
+nt = 200
+L = 1.0
+D = 0.1
+dx = L / (nx - 1)
+dt = 0.9 * dx**2 / (2*D)
+
+x = np.linspace(0, L, nx)
+
+# Initial condition
+C = np.exp(-4*np.log(2)*((x-0.5)/0.1)**2)
+C[0] = C[-1] = 0
+
+concentrations = [C.copy()]
+times = [0.0]
+
+for n in range(nt):
+    laplacian = (C[2:] - 2*C[1:-1] + C[:-2]) / dx**2
+    C[1:-1] += D * dt * laplacian
+    concentrations.append(C.copy())
+    times.append((n+1)*dt)
+
+fig, ax = plt.subplots()
+line, = ax.plot(x, concentrations[0])
+ax.set_xlabel('x')
+ax.set_ylabel('Concentration')
+ax.set_title('Diffusion Process')
+
+def update(frame):
+    line.set_ydata(concentrations[frame])
+    return line,
+
+ani = FuncAnimation(fig, update, frames=range(len(concentrations)), interval=50)
+plt.show()
+
+But I think the way to make it work properly is to have all the data ready before starting the animation. So yes, in this code, we precompute all time steps and store them in a list.
+
+Wait, but let me test this:
+
+- We initialize C with initial condition.
+- Then for each step from 0 to nt-1, compute laplacian, update C[1:-1], then append the new state to concentrations. So after nt iterations, we have nt+1 states (including initial).
+
+Yes.
+
+But in the animation code, frames=range(len(concentrations)), which is 201 frames for nt=200.
+
+Wait no: n runs from 0 to nt-1 (since range(nt) is 0..nt-1), so after the loop, concentrations has len(nt+1). So yes, 200 steps result in 201 states.
+
+Hence, when creating the animation with frames=range(len(concentrations)), it will correctly show all time steps.
+
+Alternatively, perhaps to make the animation smoother, use a higher number of frames and smaller dt. But given the parameters here, it's acceptable.
+
+So this code should simulate the diffusion process and animate the concentration profile over time.
+
+Another thing: The initial condition is set with C[0] = C[-1] = 0, which makes sense for Dirichlet boundary conditions (zero flux at boundaries? Or fixed concentrations). Wait no: in this case, we have C=0 at x=0 and x=L. So it's a fixed concentration of zero at both ends.
+
+Alternatively, if the problem requires Neumann boundary conditions (no flux), we wouldn't set C[0] or C[-1], but in our code above, those are fixed. Wait no: actually, in each time step, only C[1:-1] is updated. So for the next time step, the boundaries remain at zero.
+
+So this seems correct.
+
+But wait, let me think about it again.
+
+In a finite difference method, when solving the heat equation (or diffusion equation), with Dirichlet boundary conditions, we fix the values of C at x=0 and x=L to be zero. So in each time step, we only compute the interior points. Thus, yes, in our code above, that's what is being done: boundaries are kept fixed.
+
+Thus, this seems correct.
+
+Testing this code:
+
+Run it; if everything works, we should see an animation of a Gaussian peak diffusing outwards, staying zero at the ends.
+
+But perhaps I can adjust the initial condition to be more like a step function or something else for clarity. Alternatively, use a simpler initial condition such as C=0 except in the middle point.
+
+Wait no: in our code, it's using a Gaussian profile. So let me compute:
+
+At x=0.5, we have ((x-0.5)/0.1) is zero, so exponential of 0 is 1. Thus, initial peak at x=0.5 with width 0.1.
+
+Thus, the code should correctly show this diffusing outwards.
+
+Potential issues:
+
+- The time step dt must satisfy stability condition for explicit method: for diffusion equation, the stability condition is (D*dt)/(dx^2) <= 0.5. In our case, D=0.1, dt=0.9*(dx)^2/(2*0.1)=0.9*dx²/(0.2) = 4.5 dx².
+
+Wait no: Wait the code sets dt as 0.9 * dx^2 / (2*D), which is:
+
+dt = 0.9 * dx**2 / (2*D)
+
+So compute (D*dt)/(dx^2):
+
+= D/(dx²) * (0.9*dx²)/(2D) ) 
+
+Simplify: (D * 0.9 dx²) / (2 D dx²)) )
+
+Wait, no:
+
+Wait, dt = (0.9 * dx²) / (2D)
+
+So, D*dt/dx² = D*(0.9 dx² / 2D)/dx² = (0.9/2 )= 0.45 < 0.5.
+
+Which is just under the stability limit of 0.5. So this should be stable.
+
+Thus, the code should work without blowing up.
+
+Testing: It's always a good idea to test with known solutions or simpler cases.
+
+In conclusion, this Python code simulates and animates the diffusion process with Dirichlet boundary conditions using an explicit finite difference method.
+</think>
+
+To solve the 1D diffusion equation numerically, we can use an explicit finite difference method. This approach discretizes both space and time to approximate the solution at discrete points.
+
+### Approach
+The diffusion equation is given by:
+
+\[ \frac{\partial C}{\partial t} = D \frac{\partial^2 C}{\partial x^2} \]
+
+where \( C(x,t) \) is the concentration, \( D \) is the diffusion coefficient, and \( x \) and \( t \) are space and time variables, respectively.
+
+1. **Discretization**: We discretize the spatial domain into a grid with spacing \( dx \) and the temporal domain with time steps \( dt \).
+2. **Boundary Conditions**: Dirichlet boundary conditions are applied, meaning the concentration at the boundaries (x=0 and x=L) is fixed at zero.
+3. **Finite Difference Scheme**: The second derivative in space is approximated using a central difference scheme:
+   \[ \frac{\partial^2 C}{\partial x^2} \approx \frac{C_{i+1} - 2C_i + C_{i-1}}{(dx)^2} \]
+4. **Time Integration**: Using an explicit Euler method, the time derivative is integrated forward in time:
+   \[ C^{n+1}_i = C^n_i + dt \cdot D \cdot \frac{C^n_{i+1} - 2C^n_i + C^n_{i-1}}{(dx)^2} \]
+5. **Stability Condition**: Ensure the stability of the numerical scheme by satisfying:
+   \[ \frac{D \cdot dt}{(dx)^2} \leq 0.5 \]
+
+### Solution Code
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+
+# Parameters
+L = 1.0  # Length of the domain
+Nx = 50   # Number of spatial points
+D = 0.1   # Diffusion coefficient
+
+# Discretization
+x = np.linspace(0, L, Nx)
+dx = x[1] - x[0]
+dt = 0.9 * dx**2 / (2 * D)  # Time step satisfying stability condition
+
+# Initial condition: Gaussian pulse centered at x=0.5
+C = np.exp(-4 * np.log(2) * ((x - 0.5)/0.1)**2)
+C[0] = C[-1] = 0.0  # Dirichlet boundary conditions
+
+concentrations = [C.copy()]
+
+# Time evolution
+for _ in range(200):  # Number of time steps
+    laplacian = (C[2:] - 2*C[1:-1] + C[:-2]) / dx**2
+    C[1:-1] += D * dt * laplacian
+    concentrations.append(C.copy())
+
+# Animation setup
+fig, ax = plt.subplots()
+line, = ax.plot(x, concentrations[0], color='blue')
+ax.set_xlabel('x')
+ax.set_ylabel('Concentration (C)')
+ax.set_title('Diffusion Process Over Time')
+
+def update(frame):
+    line.set_ydata(concentrations[frame])
+    return line,
+
+ani = FuncAnimation(fig, update, frames=len(concentrations), interval=50)
+plt.show()
+```
+
+### Explanation
+1. **Initialization**: The domain is discretized into 50 points from 0 to 1.0. The initial concentration profile is a Gaussian pulse centered at x=0.5 with a width of 0.1.
+2. **Boundary Conditions**: Concentration at both ends (x=0 and x=1) is fixed at zero.
+3. **Time Evolution**: For each time step, the Laplacian of the concentration field is computed using central differences. The concentration values are updated explicitly for all interior points while keeping the boundary values fixed.
+4. **Animation**: The evolution of the concentration profile over time is visualized using matplotlib's animation functionality, showing how the Gaussian pulse diffuses across the domain.
+
+This approach provides a clear and intuitive way to understand how diffusion progresses in one dimension under given initial and boundary conditions.

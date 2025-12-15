@@ -1,0 +1,5 @@
+<think>
+
+</think>
+
+Cell segmentation is a fundamental task in biological image analysis, aiming to identify and isolate individual cells within microscopic images. It involves using various image processing and machine learning techniques to separate cells from the background and distinguish them from one another. Accurate cell segmentation is crucial for downstream analyses, such as cell counting, morphology studies, and gene expression profiling. Techniques commonly used include thresholding, edge detection, region-based methods, and deep learning models like U-Net. The choice of method depends on image quality, cell density, and specific research requirements.

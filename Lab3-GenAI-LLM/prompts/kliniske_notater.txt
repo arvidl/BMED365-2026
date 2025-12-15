@@ -1,0 +1,72 @@
+# Kliniske Notater - Prompt Eksempler
+
+## 1. SOAP-notat generering
+Generer et SOAP-notat basert på følgende konsultasjon:
+
+Pasient: 45 år gammel kvinne
+Henvendelsesårsak: Hodepine og svimmelhet
+Symptomer: Intermitterende hodepine siste 2 uker, svimmelhet ved rask reisning
+Undersøkelse: BT 135/85, puls 72, ingen nevrologiske utfall
+Tidligere sykdom: Migrene i familien
+Medisiner: Paracetamol ved behov
+
+Format:
+S (Subjektivt):
+O (Objektivt):
+A (Assessment/Vurdering):
+P (Plan):
+
+## 2. Sammendrag av lang journal
+Du er en medisinsk sekretær. Sammenfatt følgende journalnotater til et kort sammendrag på maks 150 ord:
+
+[Lang journaltekst her - eksempel:]
+15.03.2024: Pasienten kommer for kontroll av diabetes type 2. HbA1c 7.8%, opp fra 7.2% sist.
+Har sluttet med daglige turer pga knesmerter. Vekt opp 3 kg siste 3 mnd. Metformin 1000mg x2 fortsetter.
+Henviser fysioterapi for kne. Ernæringsveiledning tilbudt.
+
+22.03.2024: Telefon - spør om nye tabletter for diabetes. Informert om å vente til neste kontroll.
+Fornøyd med fysioterapi.
+
+29.03.2024: Akutt time - urinveisinfeksjon. Dysuri og frekvens. U-stix: Leukocytter+++, nitritt+.
+Selexid 200mg x3 i 5 dager. Kontroll-urin om 1 uke.
+
+## 3. Epikrise-mal
+Lag en epikrise for følgende innleggelse:
+
+Innleggelsesårsak: Akutte brystsmerter
+Hoveddiagnose: NSTEMI
+Bidiagnoser: Diabetes type 2, Hypertensjon
+Behandling: PCI av LAD, medisinsk optimalisering
+Videre plan: Kardiologisk poliklinikk om 3 mnd
+
+Inkluder seksjoner for:
+- Innleggelsesårsak
+- Sykehistorie
+- Funn og undersøkelser
+- Behandling under innleggelse
+- Medisinering ved utskrivelse
+- Videre oppfølging
+
+## 4. Kvalitetssikring av notater
+Gjennomgå følgende journalnotat og:
+1. Korriger eventuelle inkonsistenser
+2. Sjekk medisindoseringer
+3. Foreslå manglende informasjon
+
+Notat:
+"Pas 67 år m/ hjertesvikt kommer til ktr. NYHA klasse III. Bruker Enalapril 20mg x1,
+Metoprolol 50mg x2, Furosemid 40mg x1. BT 145/90, puls 88, vekt 85kg (opp 2kg fra sist).
+Ødemer begge ankler. Øker Furosemid til 80mg x2. Kontroll 2 uker."
+
+## 5. Pasientvennlig oversettelse
+Oversett følgende journaltekst til språk pasienten forstår:
+
+"Pasienten presenterer med intermitterende claudicatio og parestesier i underekstremitetene
+bilateralt. ABI 0.7 høyre, 0.75 venstre indikerer moderat perifer karsykdom.
+Anbefaler konservativ behandling med platehemmer og statiner, samt supervised exercise therapy."
+
+Forklar:
+- Hva diagnosen betyr
+- Hvorfor symptomene oppstår
+- Hva behandlingen går ut på
+- Hva pasienten selv kan gjøre
