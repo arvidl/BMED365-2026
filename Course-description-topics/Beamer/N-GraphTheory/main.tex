@@ -5,11 +5,11 @@
 \documentclass[aspectratio=169, 10pt]{beamer}
 
 % =====================================================================
-% PAKKER
+% PACKAGES
 % =====================================================================
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[norsk]{babel}
+\usepackage[english]{babel}
 \usepackage{graphicx}
 \usepackage{tikz}
 \usepackage{booktabs}
@@ -19,17 +19,17 @@
 \hypersetup{colorlinks=true, linkcolor=blue, urlcolor=blue}
 
 % =====================================================================
-% TEMA OG FARGER
+% THEME AND COLORS
 % =====================================================================
 \usetheme{Madrid}
 \usecolortheme{beaver}
 
-% Farger for TikZ-diagrammer
+% Colotherwise for TikZ diagrams
 \definecolor{uibblue}{RGB}{0, 61, 115}
 \definecolor{uibred}{RGB}{175, 28, 44}
 
 % =====================================================================
-% TITTELINFO
+% TITLE INFO
 % =====================================================================
 \title{Graph Theory og Network Science}
 \subtitle{BMED365: Topic List N01--N10}
@@ -37,7 +37,7 @@
 \date{Spring 2026}
 
 % =====================================================================
-% DOKUMENT
+% DOCUMENT
 % =====================================================================
 \begin{document}
 
@@ -49,36 +49,36 @@
 % ---------------------------------------------------------------------
 \begin{frame}{Overview}
     \begin{enumerate}
-        \item \textbf{Fundamental graph theory}
+        \item \textbf{Fundamental Graph Theory}
         \begin{itemize}
-            \item N01: What is en graf? (Noder og kanter)
-            \item N02: Rettet vs. ikke-rettet graf
-            \item N03: Vektet vs. ikke-vektet graf
-            \item N04: Nabomatrise (adjacency matrix)
+            \item N01: What is a graph? (Nodes and edges)
+            \item N02: Directed vs. undirected graph
+            \item N03: Weighted vs. unweighted graph
+            \item N04: Adjacency matrix
         \end{itemize}
-        \item \textbf{Sentralitetsmål}
+        \item \textbf{Centrality Measures}
         \begin{itemize}
-            \item N05: Degree Centrality (grad-sentralitet)
-            \item N06: Betweenness Centrality (mellomliggenhet)
-            \item N07: Eigenvector Centrality (egenvektor-sentralitet)
-            \item N08: Clustering Coefficient (klyngekoeffisient)
+            \item N05: Degree Centrality
+            \item N06: Betweenness Centrality
+            \item N07: Eigenveccounts Centrality
+            \item N08: Clustering Coefficient
         \end{itemize}
-        \item \textbf{Community detection og verktøy}
+        \item \textbf{Community Detection and Tools}
         \begin{itemize}
-            \item N09: Community Detection og Louvain-algoritmen
-            \item N10: NetworkX-biblioteket for Python
+            \item N09: Community Detection and the Louvain algorithm
+            \item N10: The NetworkX library for Python
         \end{itemize}
     \end{enumerate}
 \end{frame}
 
 % =====================================================================
-\section{Fundamental graph theory}
+\section{Fundamental Graph Theory}
 % =====================================================================
 
 % ---------------------------------------------------------------------
 % N01
 % ---------------------------------------------------------------------
-\begin{frame}{N01: What is en graf? (Noder og kanter)}
+\begin{frame}{N01: What is a graph? (Nodes and edges)}
     
     \begin{columns}
         \begin{column}{0.45\textwidth}
@@ -95,7 +95,7 @@
             \textbf{Medical example:}
             \begin{itemize}
                 \item Noder = Pasienter
-                \item Kanter = Likhet mellom pasienter
+                \item Kanter = Likhet mellom patienter
             \end{itemize}
         \end{column}
         
@@ -126,7 +126,7 @@
 % ---------------------------------------------------------------------
 % N02
 % ---------------------------------------------------------------------
-\begin{frame}{N02: Rettet vs. ikke-rettet graf}
+\begin{frame}{N02: Directed vs. undirected graph}
     
     \begin{columns}
         \begin{column}{0.48\textwidth}
@@ -154,7 +154,7 @@
             \begin{itemize}
                 \item Kantene har retning
                 \item $A \rightarrow B \neq B \rightarrow A$
-                \item Example: Gen-regulatoriske nettverk
+                \item Example: Gen-regulacountsiske nettverk
             \end{itemize}
             
             \begin{center}
@@ -178,8 +178,8 @@
     
     \vspace{1mm}
     
-    \begin{block}{\footnotesize Medical kontekst}
-        \footnotesize PSN (patient similarity networks) er vanligvis \textbf{ikke-rettet}: likhet mellom pasient A og B er symmetrisk.
+    \begin{block}{\footnotesize Medical context}
+        \footnotesize PSN (patient similarity networks) er commonvis \textbf{ikke-rettet}: likhet mellom patient A og B er symmetrisk.
     \end{block}
     
 \end{frame}
@@ -187,7 +187,7 @@
 % ---------------------------------------------------------------------
 % N03
 % ---------------------------------------------------------------------
-\begin{frame}{N03: Vektet vs. ikke-vektet graf}
+\begin{frame}{N03: Weighted vs. unweighted graph}
     
     \begin{columns}
         \begin{column}{0.48\textwidth}
@@ -212,7 +212,7 @@
             \textbf{Vektet graf:}
             \begin{itemize}
                 \item Kanter har numeriske vekter
-                \item Representerer styrke/avstand/likhet
+                \item Representerer strength/avstand/likhet
             \end{itemize}
             
             \begin{center}
@@ -231,10 +231,10 @@
     
     \begin{block}{I PSN (patient similarity networks)}
         \footnotesize
-        Vekten representerer \textbf{likhet (similaritet)} mellom pasienter, calculatet fra kliniske variabler.\\[2pt]
-        \textbf{Høyere vekt} ($w$) = mer like pasienter (lignende symptomer, biomarkører, forløp, BMI, samme kjønn, \ldots).\\
-        \textbf{Lavere vekt} = mindre like pasienter.\\
-        Ofte brukes en \textbf{terskelverdi} for å filtrere bort svake koblinger (f.eks. $w < 0.5$).
+        Vekten representerer \textbf{likhet (similaritet)} mellom patienter, calculatet fra clinicale variabler.\\[2pt]
+        \textbf{Høyere vekt} ($w$) = mer like patienter (lignende symptoms, biomarkerer, forløp, BMI, samme kjønn, \ldots).\\
+        \textbf{Lavere vekt} = mindre like patienter.\\
+        Ofte brukes en \textbf{threshold value} to filtrere bort svake koblinger (e.g. $w < 0.5$).
     \end{block}
     
 \end{frame}
@@ -242,7 +242,7 @@
 % ---------------------------------------------------------------------
 % N04
 % ---------------------------------------------------------------------
-\begin{frame}{N04: Nabomatrise (\href{https://en.wikipedia.org/wiki/Adjacency_matrix}{adjacency matrix})}
+\begin{frame}{N04: Adjacency Matrix (\href{https://en.wikipedia.org/wiki/Adjacency_matrix}{adjacency matrix})}
     
     \begin{columns}
         \begin{column}{0.4\textwidth}
@@ -266,7 +266,7 @@
         \end{column}
         
         \begin{column}{0.55\textwidth}
-            \textbf{Nabomatrise $A$:}
+            \textbf{Adjacency Matrix $A$:}
             
             \[
             A = \begin{pmatrix}
@@ -280,7 +280,7 @@
             
             \begin{itemize}
                 \item $A_{ij} = 1$ hvis kant mellom node $i$ og $j$
-                \item $A_{ij} = 0$ ors
+                \item $A_{ij} = 0$ otherwise
                 \item Symmetrisk for ikke-rettede grafer
             \end{itemize}
         \end{column}
@@ -295,13 +295,13 @@
 \end{frame}
 
 % =====================================================================
-\section{Sentralitetsmål}
+\section{Centrality Measures}
 % =====================================================================
 
 % ---------------------------------------------------------------------
 % N05
 % ---------------------------------------------------------------------
-\begin{frame}{N05: \href{https://en.wikipedia.org/wiki/Degree_centrality}{Degree Centrality} (grad-sentralitet)}
+\begin{frame}{N05: \href{https://en.wikipedia.org/wiki/Degree_centrality}{Degree Centrality} (degree centrality)}
     
     \begin{columns}
         \begin{column}{0.5\textwidth}
@@ -355,8 +355,8 @@
     
     \vspace{1mm}
     
-    \begin{block}{\footnotesize Medical relevans}
-        \footnotesize I PSN: Pasienter med høy grad-sentralitet ligner på mange andre $\rightarrow$ ``typiske'' pasienter.
+    \begin{block}{\footnotesize Medical relevance}
+        \footnotesize I PSN: Pasienter med høy degree centrality ligner på mange andre $\rightarrow$ ``typiske'' patienter.
     \end{block}
     
 \end{frame}
@@ -364,7 +364,7 @@
 % ---------------------------------------------------------------------
 % N06
 % ---------------------------------------------------------------------
-\begin{frame}{N06: \href{https://en.wikipedia.org/wiki/Betweenness_centrality}{Betweenness Centrality} (mellomliggenhet)}
+\begin{frame}{N06: \href{https://en.wikipedia.org/wiki/Betweenness_centrality}{Betweenness Centrality} (betweenness)}
     
     \begin{columns}
         \begin{column}{0.5\textwidth}
@@ -436,10 +436,10 @@
 % ---------------------------------------------------------------------
 % N07
 % ---------------------------------------------------------------------
-\begin{frame}{N07: \href{https://en.wikipedia.org/wiki/Eigenvector_centrality}{Eigenvector Centrality} (egenvektor-sentralitet)}
+\begin{frame}{N07: \href{https://en.wikipedia.org/wiki/Eigenveccounts_centrality}{Eigenveccounts Centrality} (eigenveccounts centrality)}
     
     \begin{block}{Idé}
-        En node er viktig hvis den er koblet til \textbf{andre viktige noder}
+        En node er important hvis den er koblet til \textbf{andre importante noder}
     \end{block}
     
     \vspace{2mm}
@@ -451,14 +451,14 @@
             x_i = \frac{1}{\lambda} \sum_{j \in N(i)} x_j
             \]
             
-            Matriseform: $\mathbf{Ax} = \lambda \mathbf{x}$ (\href{https://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectors}{egenvektor}-ligning)
+            Matriseform: $\mathbf{Ax} = \lambda \mathbf{x}$ (\href{https://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectotherwise}{egenvekcounts}-ligning)
             
             \vspace{2mm}
             
-            \textbf{Forskjell fra degree:}
+            \textbf{Fotherwisekjell fra degree:}
             \begin{itemize}
-                \item Degree: tor bare antall naboer
-                \item Eigenvector: vekter naboer etter deres viktighet
+                \item Degree: counts bare antall naboer
+                \item Eigenveccounts: vekter naboer etter deres importanthet
             \end{itemize}
         \end{column}
         
@@ -478,14 +478,14 @@
                 \end{tikzpicture}
             \end{center}
             
-            \textit{A har høyest eigenvector centrality}
+            \textit{A har høyest eigenveccounts centrality}
         \end{column}
     \end{columns}
     
     \vspace{1mm}
     
     \begin{block}{\footnotesize Kjent applylse}
-        \footnotesize \href{https://en.wikipedia.org/wiki/PageRank}{Google PageRank} er en variant av eigenvector centrality!
+        \footnotesize \href{https://en.wikipedia.org/wiki/PageRank}{Google PageRank} er en variant av eigenveccounts centrality!
     \end{block}
     
 \end{frame}
@@ -493,7 +493,7 @@
 % ---------------------------------------------------------------------
 % N08
 % ---------------------------------------------------------------------
-\begin{frame}{N08: \href{https://en.wikipedia.org/wiki/Clustering_coefficient}{Clustering Coefficient} (klyngekoeffisient)}
+\begin{frame}{N08: \href{https://en.wikipedia.org/wiki/Clustering_coefficient}{Clustering Coefficient} (clustering coefficient)}
     
     \begin{block}{Definition}
         Hvor mye naboene til en node er koblet til hverandre
@@ -538,8 +538,8 @@
     
     \vspace{1mm}
     
-    \begin{block}{\footnotesize Medical relevans}
-        \footnotesize Høy clustering i PSN kan indikere tette pasientsubgrupper (fenotyper).
+    \begin{block}{\footnotesize Medical relevance}
+        \footnotesize Høy clustering i PSN kan indikere tette patient subgroups (fenotyper).
     \end{block}
     
 \end{frame}
@@ -565,7 +565,7 @@
             \begin{enumerate}
                 \item Start: hver node = egen gruppe
                 \item Flytt noder til nabogrupper som øker \textbf{modularitet}
-                \item Gjenta til ingen forbedring
+                \item Gjenta til ingen improvement
                 \item Aggreger og repeter hierarkisk
             \end{enumerate}
             
@@ -619,7 +619,7 @@
 \begin{frame}{N10: \href{https://networkx.org/}{NetworkX}-biblioteket for Python}
     
     \begin{block}{NetworkX}
-        Python-bibliotek for å opprette, manipulere og analysere grafer
+        Python-bibliotek to opprette, manipulere og analysere grafer
     \end{block}
     
     \vspace{2mm}
@@ -633,10 +633,10 @@
             \texttt{\small G = nx.Graph()} \\
             \texttt{\small G.add\_edge('A', 'B', weight=0.8)} \\
             \texttt{\small G.add\_edge('B', 'C', weight=0.5)} \\[2mm]
-            \texttt{\small \# Sentralitetsmål} \\
+            \texttt{\small \# Centrality Measures} \\
             \texttt{\small nx.degree\_centrality(G)} \\
             \texttt{\small nx.betweenness\_centrality(G)} \\
-            \texttt{\small nx.eigenvector\_centrality(G)} \\
+            \texttt{\small nx.eigenveccounts\_centrality(G)} \\
             \texttt{\small nx.clustering(G)}
         \end{column}
         
@@ -664,21 +664,21 @@
     
     \begin{columns}
         \begin{column}{0.48\textwidth}
-            \textbf{Graph Theory-grunnlag:}
+            \textbf{Graph Theory-grunnlayers:}
             \begin{itemize}
                 \item Graf $G = (V, E)$: noder ($V$) + kanter ($E$)
                 \item Rettet vs. ikke-rettet
                 \item Vektet vs. ikke-vektet
-                \item Nabomatrise-representasjon
+                \item Adjacency Matrix-representasjon
             \end{itemize}
             
             \vspace{3mm}
             
-            \textbf{Sentralitetsmål:}
+            \textbf{Centrality Measures:}
             \begin{itemize}
                 \item Degree: antall forbindelser
                 \item Betweenness: bro-rolle
-                \item Eigenvector: viktige naboer
+                \item Eigenveccounts: importante naboer
             \end{itemize}
         \end{column}
         
@@ -702,7 +702,7 @@
     
     \vspace{5mm}
     
-    \begin{block}{Neste steg}
+    \begin{block}{Next steps}
         Bruk disse konseptene til å bygge \textbf{patient similarity networks} (PSN)!
     \end{block}
     

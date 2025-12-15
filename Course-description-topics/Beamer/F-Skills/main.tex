@@ -5,11 +5,11 @@
 \documentclass[aspectratio=169, 10pt]{beamer}
 
 % =====================================================================
-% PAKKER
+% PACKAGES
 % =====================================================================
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[norsk]{babel}
+\usepackage[english]{babel}
 \usepackage{graphicx}
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric, arrows, positioning, calc}
@@ -21,7 +21,7 @@
 \usepackage{hyperref}
 \hypersetup{colorlinks=true, linkcolor=blue, urlcolor=blue}
 
-% Kodeformatering
+% Code formatting
 \definecolor{codebg}{rgb}{0.95,0.95,0.92}
 \lstset{
     basicstyle=\ttfamily\footnotesize,
@@ -31,13 +31,13 @@
 }
 
 % =====================================================================
-% TEMA OG FARGER
+% THEME AND COLORS
 % =====================================================================
 \usetheme{Madrid}
 \usecolortheme{beaver}
 
 % =====================================================================
-% TITTELINFO
+% TITLE INFO
 % =====================================================================
 \title{Practical Skills}
 \subtitle{BMED365: Topic List F01--F14}
@@ -45,7 +45,7 @@
 \date{Spring 2026}
 
 % =====================================================================
-% DOKUMENT
+% DOCUMENT
 % =====================================================================
 \begin{document}
 
@@ -66,18 +66,18 @@
         \item \textbf{Network Analysis with NetworkX}
         (\href{https://networkx.org/}{NetworkX})
         \item \textbf{Deep Learning with PyTorch}
-        (\href{https://pytorch.org/}{PyTorch})
+        (\href{https://pycountsch.org/}{PyTorch})
         \item \textbf{AI Tools and LaTeX}
         (\href{https://chat.openai.com/}{ChatGPT}, \href{https://gemini.google.com/}{Gemini}, \href{https://claude.ai/}{Claude}, \href{https://www.overleaf.com/}{Overleaf})
     \end{enumerate}
 \end{frame}
 
 % =====================================================================
-% SEKSJON: Jupyter og Colab
+% SECTION: Jupyter og Colab
 % =====================================================================
 \section{Jupyter Notebooks and Google Colab}
 
-\begin{frame}{F01: Kjøre Jupyter Notebooks i Google Colab}
+\begin{frame}{F01: Run Jupyter Notebooks in Google Colab}
     \textbf{What is Jupyter Notebooks?}
     \begin{itemize}
         \item Interaktive dokumenter som kombinerer kode, tekst og visualiseringer
@@ -90,7 +90,7 @@
     \begin{itemize}
         \item Gratis sky-basert Jupyter-miljø fra Google
         \item Ingen installasjon -- kjører i nettleseren
-        \item Gratis GPU-tilgang (viktig for deep learning!)
+        \item Gratis GPU-tilgang (important for deep learning!)
         \item Integrert med Google Drive
     \end{itemize}
     
@@ -108,11 +108,11 @@
 \end{frame}
 
 % =====================================================================
-% SEKSJON: Python Fundamentals
+% SECTION: Python Fundamentals
 % =====================================================================
 \section{Python Fundamentals}
 
-\begin{frame}[fragile]{F02: Bruke Python-variabler, lister og enkle funksjoner}
+\begin{frame}[fragile]{F02: Use Python variables, lists, and simple functions}
     \textbf{Variabler:}
     \begin{lstlisting}[language=Python]
 alder = 45          # int
@@ -123,9 +123,9 @@ er_syk = True       # bool
     
     \textbf{Lister:}
     \begin{lstlisting}[language=Python]
-symptomer = ["hodepine", "kvalme", "tretthet"]
-verdier = [1.2, 3.4, 5.6, 7.8]
-symptomer.append("feber")  # Legg til element
+symptoms = ["hodepine", "kvalme", "tretthet"]
+valueer = [1.2, 3.4, 5.6, 7.8]
+symptoms.append("feber")  # Legg til element
     \end{lstlisting}
     
     \textbf{Funksjoner:}
@@ -137,7 +137,7 @@ bmi = beregn_bmi(70, 1.75)  # -> 22.9
     \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{F03: Importere og bruke biblioteker (numpy, pandas, matplotlib)}
+\begin{frame}[fragile]{F03: Import and use libraries (numpy, pandas, matplotlib)}
     \textbf{Import av biblioteker:}
     \begin{lstlisting}[language=Python]
 import numpy as np
@@ -163,7 +163,7 @@ mean = np.mean(arr)
             \textbf{Pandas:}
             \begin{itemize}
                 \item Datamanipulering
-                \item DataFrames (tabor)
+                \item DataFrames (tables)
                 \item CSV, Excel I/O
             \end{itemize}
             \begin{lstlisting}[language=Python]
@@ -174,37 +174,37 @@ df.head()
     \end{columns}
 \end{frame}
 
-\begin{frame}[fragile]{F04: Lese og inspisere dataset med pandas}
-    \textbf{Lese data:}
+\begin{frame}[fragile]{F04: Read and inspect datasets with pandas}
+    \textbf{Reading data:}
     \begin{lstlisting}[language=Python]
-df = pd.read_csv("pasienter.csv")
+df = pd.read_csv("patients.csv")
     \end{lstlisting}
     
-    \textbf{Inspisere data:}
+    \textbf{Inspecting data:}
     \begin{lstlisting}[language=Python]
-df.head()        # Første 5 rader
-df.info()        # Kolonnetyper, nullverdier
-df.describe()    # Statistikk for numeriske kolonner
-df.shape         # (antall rader, antall kolonner)
-df.columns       # Kolonnenavn
+df.head()        # First 5 rows
+df.info()        # Column types, null values
+df.describe()    # Statistics for numeric columns
+df.shape         # (number of rows, number of columns)
+df.columns       # Column names
     \end{lstlisting}
     
-    \textbf{Filtrering og utvalg:}
+    \textbf{Filtering and selection:}
     \begin{lstlisting}[language=Python]
-# Velg kolonner
-df[["alder", "diagnose"]]
+# Select columns
+df[["age", "diagnosis"]]
 
-# Filtrer rader
-eldre = df[df["alder"] > 65]
+# Filter rows
+elderly = df[df["age"] > 65]
     \end{lstlisting}
 \end{frame}
 
 % =====================================================================
-% SEKSJON: Machine Learning with scikit-learn
+% SECTION: Machine Learning with scikit-learn
 % =====================================================================
 \section{Machine Learning with scikit-learn}
 
-\begin{frame}[fragile]{F05: Trene en enkel modell med scikit-learn}
+\begin{frame}[fragile]{F05: Train a simple model with scikit-learn}
     \textbf{Typisk ML-workflow:}
     \begin{lstlisting}[language=Python]
 from sklearn.model_selection import train_test_split
@@ -229,7 +229,7 @@ print(f"Accuracy: {accuracy_score(y_test, y_pred):.2f}")
     \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{F06: Visualisere resultater med matplotlib}
+\begin{frame}[fragile]{F06: Visualize results with matplotlib}
     \textbf{Fundamental plotting:}
     \begin{lstlisting}[language=Python]
 import matplotlib.pyplot as plt
@@ -262,16 +262,16 @@ plt.show()
     
     \vspace{0.2cm}
     \begin{block}{\footnotesize \href{https://seaborn.pydata.org/}{Seaborn}}
-        \footnotesize \texttt{import seaborn as sns} -- Penere visualiseringer med enkel kode!
+        \footnotesize \texttt{import seaborn as sns} -- Penere visualiseringer med simple kode!
     \end{block}
 \end{frame}
 
 % =====================================================================
-% SEKSJON: Nettverksanalyse
+% SECTION: Nettverksanalyse
 % =====================================================================
 \section{Network Analysis with NetworkX}
 
-\begin{frame}[fragile]{F07: Bruke \href{https://networkx.org/}{NetworkX} for enkel nettverksanalyse}
+\begin{frame}[fragile]{F07: Bruke \href{https://networkx.org/}{NetworkX} for simple nettverksanalyse}
     \textbf{Opprett og manipuler grafer:}
     \begin{lstlisting}[language=Python]
 import networkx as nx
@@ -296,15 +296,15 @@ plt.show()
 \end{frame}
 
 % =====================================================================
-% SEKSJON: Deep Learning
+% SECTION: Deep Learning
 % =====================================================================
 \section{Deep Learning with PyTorch}
 
-\begin{frame}[fragile]{F08: Bygge og trene en modell med \href{https://pytorch.org/}{PyTorch}}
+\begin{frame}[fragile]{F08: Bygge og trene en modell med \href{https://pycountsch.org/}{PyTorch}}
     \textbf{Enkel MLP i PyTorch:}
     \begin{lstlisting}[language=Python,basicstyle=\ttfamily\scriptsize]
-import torch
-import torch.nn as nn
+import countsch
+import countsch.nn as nn
 
 class SimpleMLP(nn.Module):
     def __init__(self, input_size, hidden_size, num_classes):
@@ -328,25 +328,25 @@ model = SimpleMLP(784, 128, 10)  # MNIST-eksempel
 \end{frame}
 
 % =====================================================================
-% SEKSJON: AI-verktøy
+% SECTION: AI-verktøy
 % =====================================================================
 \section{AI Tools and LaTeX}
 
-\begin{frame}{F09: Bruke AI-verktøy (\href{https://chat.openai.com/}{ChatGPT}, \href{https://gemini.google.com/}{Gemini}, \href{https://claude.ai/}{Claude}) som kodehjelp}
+\begin{frame}{F09: Use AI tools as coding assistants}
     \begin{columns}[T]
         \begin{column}{0.52\textwidth}
             \textbf{Useful applications:}
             \begin{itemize}
                 \item \faCode~\textbf{Explain kode:} ``Hva gjør denne funksjonen?''
                 \item \faBug~\textbf{Feilsøking:} ``Why får jeg feilmeldingen?''
-                \item \faLightbulb~\textbf{Forslag:} ``Gjør dette mer effektivt?''
+                \item \faLightbulb~\textbf{Fotherwiselayers:} ``Gjør dette mer effektivt?''
                 \item \faPuzzlePiece~\textbf{Generere kode:} ``Skriv en funksjon...''
             \end{itemize}
         \end{column}
         \begin{column}{0.45\textwidth}
             \textbf{Tip for effective use:}
             \begin{enumerate}
-                \item Vær \textbf{spesifikk} i spørsmålene
+                \item Vær \textbf{spesifikk} i spørsgoalene
                 \item Inkluder \textbf{kontekst}
                 \item \textbf{Verifiser} alltid AI-kode
                 \item Bruk som \textbf{læringsverktøy}
@@ -357,11 +357,11 @@ model = SimpleMLP(784, 128, 10)  # MNIST-eksempel
     \vspace{0.1cm}
     \begin{block}{\footnotesize AI-drevne IDE-er (Integrated Development Environment)}
         \scriptsize
-        \textbf{IDE} = Editor + kompilator + debugger + verktøy i ett.
-        \textbf{AI-drevet IDE} = IDE med LLM-agenter som kan planlegge, skrive, teste og validere kode autonomt.\\
-        \textit{Betydning for medisinsk/biomedisinsk forskning:} Senker terskelen for å utvikle analyseverktøy, akselererer prototyping av ML-modor, og muliggjør raskere oversettelse fra forskning til klinikk.\\[3pt]
+        \textbf{IDE} = Edicounts + kompilacounts + debugger + verktøy i ett.
+        \textbf{AI-drevet IDE} = IDE med LLM-agenter that can planlegge, skrive, teste og validere kode autonomt.\\
+        \textit{Betydning for medical/biomedical fotherwisekning:} Senker terskelen to utvikle analyseverktøy, akselererer prototyping av ML-models, og muliggjør raskere oversettelse fra fotherwisekning til klinikk.\\[3pt]
         \begin{tabular}{@{}ll@{}}
-        \href{https://www.cursor.com/}{Cursor}, \href{https://windsurf.com/}{Windsurf} & Editor med agenter, plan mode \\
+        \href{https://www.cursor.com/}{Cursor}, \href{https://windsurf.com/}{Windsurf} & Edicounts med agenter, plan mode \\
         \href{https://antigravity.dev/}{Google Antigravity} & Agent-first, multi-modell (Gemini 3) \\
         \href{https://replit.com/}{Replit Agent} & Sky-basert IDE med AI-agent \\
         \href{https://lovable.dev/}{Lovable} & Naturlig språk $\rightarrow$ full-stack app \\
@@ -408,7 +408,7 @@ model = SimpleMLP(784, 128, 10)  # MNIST-eksempel
 \begin{abstract} ... \end{abstract}
 % Innledning
 \section{Introduction}
-Bakgrunn og mål \cite{smith2024}.
+Bakgrunn og goal \cite{smith2024}.
 % Materiale og metoder
 \section{Methods}
 Datainnsamling og analyse.
@@ -423,7 +423,7 @@ CNN & 0.92 & 0.88 \\ \bottomrule
 \end{table}
 % Diskusjon
 \section{Discussion}
-Implikasjoner og begrensninger.
+Implikasjoner og limitationer.
 \bibliography{refs}
 \end{document}
             \end{lstlisting}
@@ -433,13 +433,13 @@ Implikasjoner og begrensninger.
             \tiny
             \begin{itemize}
                 \item \href{https://journals.plos.org/plosmedicine/s/latex}{PLOS Medicine}
-                \item \href{https://www.nature.com/nature/for-authors/formatting-guide}{Nature / Nat. Med.}
-                \item \href{https://academic.oup.com/bioinformatics/pages/instructions_for_authors}{Bioinformatics}
-                \item \href{https://www.thelancet.com/pb/assets/raw/Lancet/authors/tl-info-for-authors.pdf}{The Lancet}
-                \item \href{https://www.bmj.com/about-bmj/resources-authors}{BMJ}
+                \item \href{https://www.nature.com/nature/for-authotherwise/formatting-guide}{Nature / Nat. Med.}
+                \item \href{https://academic.oup.com/bioinformatics/pages/instructions_for_authotherwise}{Bioinformatics}
+                \item \href{https://www.thelancet.com/pb/assets/raw/Lancet/authotherwise/tl-info-for-authotherwise.pdf}{The Lancet}
+                \item \href{https://www.bmj.com/about-bmj/resources-authotherwise}{BMJ}
                 \item \href{https://www.elsevier.com/researcher/author/policies-and-guidelines/latex-instructions}{Elsevier (mange)}
                 \item \href{https://www.springer.com/gp/livingreviews/latex-templates}{Springer Nature}
-                \item \href{https://www.mdpi.com/authors/latex}{MDPI (open access)}
+                \item \href{https://www.mdpi.com/authotherwise/latex}{MDPI (open access)}
                 \item \href{https://ieee-dataport.org/sites/default/files/analysis/27/IEEE-Reference-Guide.pdf}{IEEE JBHI}
                 \item \href{https://www.jmlr.org/format/format.html}{JMLR}
                 \item \href{https://www.frontiersin.org/guidelines/author-guidelines}{Frontiers}
@@ -451,14 +451,14 @@ Implikasjoner og begrensninger.
 \end{frame}
 
 % =====================================================================
-% SEKSJON: Context Engineering
+% SECTION: Context Engineering
 % =====================================================================
 \section{Context Engineering for LLM}
 
-\begin{frame}{F11: Komponere effektive prompts for medisinske oppgaver}
-    \textbf{Fra Prompt Engineering til Context Engineering:}
+\begin{frame}{F11: Compose effective prompts for medical tasks}
+    \textbf{From Prompt Engineering to Context Engineering:}
     \begin{itemize}
-        \item \textbf{Prompt engineering:} Utforme gode spørsmål og instruksjoner
+        \item \textbf{Prompt engineering:} Utforme gode spørsgoal og instruksjoner
         \item \textbf{Context engineering:} Designe \textit{hele konteksten} modellen bruker
     \end{itemize}
     
@@ -466,19 +466,19 @@ Implikasjoner og begrensninger.
     \textbf{Komponenter i context engineering:}
     \begin{enumerate}
         \item \textbf{System prompt:} Rolle og fundamental instruksjoner
-        \item \textbf{Bruker-prompt:} Det spesifikke spørsmålet
+        \item \textbf{Bruker-prompt:} Det spesifikke spørsgoalet
         \item \textbf{Hentet kontekst (RAG):} Journaler, retningslinjer, artikler
-        \item \textbf{Verktøy:} Laboratoriesøk, legemiddeldatabase, ICD-10
-        \item \textbf{Samtalehistorikk:} Tidligere dialog i konsultasjonen
-        \item \textbf{Strukturerte data:} JSON med lab-verdier, vitale tegn
+        \item \textbf{Verktøy:} Laboracountsiesøk, drugdatabase, ICD-10
+        \item \textbf{Samtalehiscountsikk:} Tidligere dialog i konsultasjonen
+        \item \textbf{Strukturerte data:} JSON med lab-valueer, vitale tegn
     \end{enumerate}
     
-    \begin{block}{\footnotesize Medical betydning}
+    \begin{block}{\footnotesize Medical significance}
         \footnotesize Rik kontekst = mer relevante, personaliserte og trygge AI-svar
     \end{block}
 \end{frame}
 
-\begin{frame}{F12: Apply context engineering i praksis}
+\begin{frame}{F12: Apply context engineering in practice}
     \textbf{Example: Enkel prompt vs. rik kontekst}
     
     \vspace{0.2cm}
@@ -486,7 +486,7 @@ Implikasjoner og begrensninger.
         \begin{column}{0.45\textwidth}
             \begin{alertblock}{\footnotesize Enkel prompt}
                 \scriptsize
-                \texttt{What is behandlingen for hjertesvikt?}
+                \texttt{What is treatmenten for hjertesvikt?}
                 
                 \vspace{0.1cm}
                 $\rightarrow$ Generelt svar, ikke personalisert
@@ -498,7 +498,7 @@ Implikasjoner og begrensninger.
                 \texttt{System: Clinical beslutningsstøtte} \\
                 \texttt{Pasient: 72 år, eGFR 45, Warfarin} \\
                 \texttt{RAG: ESC Guidelines 2023} \\
-                \texttt{Spørsmål: Behandlingsendringer?}
+                \texttt{Spørsgoal: Behandlingsendringer?}
                 
                 \vspace{0.1cm}
                 $\rightarrow$ Personalisert, evidensbasert svar
@@ -517,8 +517,8 @@ Implikasjoner og begrensninger.
     \end{tabular}
 \end{frame}
 
-\begin{frame}{F13: Velge riktig LLM-modell for oppgaven}
-    \textbf{Modellstyrker for medisinske oppgaver:}
+\begin{frame}{F13: Choose the right LLM model for the task}
+    \textbf{Modellstrengthr for medicale taskr:}
     
     \vspace{0.2cm}
     \footnotesize
@@ -530,9 +530,9 @@ Implikasjoner og begrensninger.
         Etiske dilemmaer & Claude Opus 4.5 & Nyansert resonnering \\
         Image Analysis & Gemini 3 & Multimodal fra grunn av \\
         Lang journalanalyse & Claude Opus 4.5 & 200K tokens kontekst \\
-        Oppdatert forskning & Gemini 3 & Integrert sanntidssøk \\
+        Oppdatert fotherwisekning & Gemini 3 & Integrert sanntidssøk \\
         Verktøyintegrasjon & GPT-5.2 & God API for funksjoner \\
-        Pasientkommunikasjon & Claude Opus 4.5 & Empatisk, pasientsentrert \\
+        Pasientkommunikasjon & Claude Opus 4.5 & Empatisk, patientsentrert \\
         Beregninger & Gemini 3 & Sterk på vitenskap \\
         \bottomrule
     \end{tabular}
@@ -540,12 +540,12 @@ Implikasjoner og begrensninger.
     \vspace{0.2cm}
     \normalsize
     \begin{block}{\footnotesize Practical recommendation}
-        \footnotesize For kritiske oppgaver: Test på flere modor og sammenlign output
+        \footnotesize For criticale taskr: Test på flere models og sammenlign output
     \end{block}
 \end{frame}
 
-\begin{frame}{F14: Compare output fra ulike LLM-er}
-    \textbf{Evaluationskriterier for medisinsk LLM-output:}
+\begin{frame}{F14: Compare output from different LLMs}
+    \textbf{Evaluationskriterier for medical LLM-output:}
     
     \vspace{0.2cm}
     \begin{columns}[T]
@@ -560,17 +560,17 @@ Implikasjoner og begrensninger.
                       {\scriptsize Følges format-instruksjoner?}
                 \item \textbf{Sikkerhetsatferd} \\
                       {\scriptsize Henvises til lege ved behov?}
-                \item \textbf{Clinical nytte} \\
+                \item \textbf{Clinical utility} \\
                       {\scriptsize Er svaret praktisk anvendbart?}
             \end{enumerate}
         \end{column}
         \begin{column}{0.48\textwidth}
-            \textbf{Praktisk fremgangsmåte:}
+            \textbf{Praktisk progresssmåte:}
             \begin{enumerate}
                 \item Definer testcase med fasit
-                \item Send samme prompt til 2--3 modor
-                \item Vurder mot kriteriene (1--5 shalla)
-                \item Dokumenter styrker/svakheter
+                \item Send samme prompt til 2--3 models
+                \item Vurder mot kriteriene (1--5 scale)
+                \item Dokumenter strengthr/weaknesser
                 \item Velg modell for produksjon
             \end{enumerate}
             
@@ -583,7 +583,7 @@ Implikasjoner og begrensninger.
 \end{frame}
 
 % =====================================================================
-% OPPSUMMERING
+% SUMMARY
 % =====================================================================
 \section*{Summary}
 

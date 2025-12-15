@@ -5,11 +5,11 @@
 \documentclass[aspectratio=169, 10pt]{beamer}
 
 % =====================================================================
-% PAKKER
+% PACKAGES
 % =====================================================================
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[norsk]{babel}
+\usepackage[english]{babel}
 \usepackage{graphicx}
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric, arrows, positioning, calc}
@@ -20,13 +20,13 @@
 \hypersetup{colorlinks=true, linkcolor=blue, urlcolor=blue}
 
 % =====================================================================
-% TEMA OG FARGER
+% THEME AND COLORS
 % =====================================================================
 \usetheme{Madrid}
 \usecolortheme{beaver}
 
 % =====================================================================
-% TITTELINFO
+% TITLE INFO
 % =====================================================================
 \title{Medical Image Analysis}
 \subtitle{BMED365: Topic List B01--B06}
@@ -34,7 +34,7 @@
 \date{Spring 2026}
 
 % =====================================================================
-% DOKUMENT
+% DOCUMENT
 % =====================================================================
 \begin{document}
 
@@ -49,11 +49,11 @@
 \end{frame}
 
 % =====================================================================
-% SEKSJON: MRI Fundamentals
+% SECTION: MRI Fundamentals
 % =====================================================================
 \section{MRI Fundamentals}
 
-\begin{frame}{B01: Explain fundamental MRI-prinsipper på et overordnet nivå}
+\begin{frame}{B01: Explain fundamental MRI principles at a high level}
     \textbf{Magnetic Resonance Imaging (MRI):}
     
     \vspace{0.3cm}
@@ -62,11 +62,11 @@
         \item \textbf{Magnetisering:} Sterk magnetfelt justerer hydrogenatomer (protoner)
         \item \textbf{RF-puls:} Radiofrekvens-puls ``vipper'' protonene
         \item \textbf{Relaksasjon:} Protoner returnerer til likevekt, sender ut signal
-        \item \textbf{Deteksjon:} Signal måles og rekonstrueres til bilde
+        \item \textbf{Deteksjon:} Signal goales og rekonstrueres til bilde
     \end{enumerate}
     
     \vspace{0.3cm}
-    \textbf{Why MRI er viktig i medisin:}
+    \textbf{Why MRI er important i medisin:}
     \begin{columns}[T]
         \begin{column}{0.48\textwidth}
             \begin{itemize}
@@ -89,8 +89,8 @@
     \end{block}
 \end{frame}
 
-\begin{frame}{B02: Know about ulike MR-sekvenser (T1, T1+Gd, T2, FLAIR)}
-    \textbf{Vanlige MR-sekvenser og deres kontrast:}
+\begin{frame}{B02: Know about different MR sequences (T1, T1+Gd, T2, FLAIR)}
+    \textbf{Vanlige MR-sekvenser and their kontrast:}
 
     \vspace{0.2cm}
     \begin{center}
@@ -107,7 +107,7 @@
             \addlinespace
             \textbf{FLAIR} & T2-lik, men CSF mørk & Lesjoner nær ventrikler, MS-plakk \\
             \addlinespace
-            \textbf{DWI} & Diffusjon av vannmolekyler & Akutt hjerneslag (innen minutter!) \\
+            \textbf{DWI} & Diffusjon av vannmolekyler & Akutt hjerneslayers (innen minutter!) \\
             \bottomrule
         \end{tabular}
     \end{center}
@@ -119,17 +119,17 @@
 \end{frame}
 
 % =====================================================================
-% SEKSJON: Segmentation
+% SECTION: Segmentation
 % =====================================================================
 \section{Segmentation}
 
-\begin{frame}{B03: Describe segmentation i medisinsk image analysis}
-    \textbf{Segmentation = identifisere og avgrense strukturer i bilde}
+\begin{frame}{B03: Describe segmentation in medical image analysis}
+    \textbf{Segmentation = identify og avgrense strukturer i bilde}
     
     \vspace{0.3cm}
     \textbf{Oppgave:}
     \begin{itemize}
-        \item Tilordne hver piksel/voksel til en \textbf{klasse} (f.eks. tumor, normalvev, bakgrunn)
+        \item Tilordne hver piksel/voksel til en \textbf{klasse} (e.g. tumor, normalvev, bakgrunn)
         \item Produserer et \textbf{segmentationskart} (maske)
     \end{itemize}
     
@@ -155,13 +155,13 @@
     \vspace{0.3cm}
     \textbf{AI-metoder for segmentation:}
     \begin{itemize}
-        \item \textbf{U-Net:} Klassisk encoder-decoder arkitektur (medisinsk standard)
+        \item \textbf{U-Net:} Klassisk encoder-decoder arkitektur (medical standard)
         \item \textbf{\href{https://github.com/MIC-DKFZ/nnUNet}{nnU-Net}:} Selvkonfigurerende, state-of-the-art
         \item \textbf{Segment Anything (SAM):} Generell segmentation
     \end{itemize}
 \end{frame}
 
-\begin{frame}{B04: Know about BraTS-utfordringen for hjernesvulstsegmentation}
+\begin{frame}{B04: Know about the BraTS challenge for brain tumor segmentation}
     \textbf{\href{https://www.synapse.org/brats}{BraTS} = Brain Tumor Segmentation Challenge}
 
     \vspace{0.2cm}
@@ -175,7 +175,7 @@
             \end{itemize}
 
             \vspace{0.2cm}
-            \textbf{Segmentationsoppgave:}
+            \textbf{Segmentationstask:}
             \begin{itemize}
                 \item \textbf{Whole tumor (WT):} All tumorvev
                 \item \textbf{Tumor core (TC):} Aktiv + nekrotisk
@@ -186,8 +186,8 @@
             \textbf{Betydning:}
             \begin{itemize}
                 \item Standardisert dataset for sammenligning
-                \item Driver fremskritt innen medisinsk AI
-                \item Grunnlag for klinisk translasjon
+                \item Driver fremskritt innen medical AI
+                \item Grunnlayers for clinical translasjon
             \end{itemize}
 
             \vspace{0.2cm}
@@ -200,17 +200,17 @@
 \end{frame}
 
 % =====================================================================
-% SEKSJON: Quantitative Imaging
+% SECTION: Quantitative Imaging
 % =====================================================================
 \section{Quantitative Imaging}
 
-\begin{frame}{B05: Describe radiomic features og kvantitativ avbildning}
+\begin{frame}{B05: Describe radiomic features and quantitative imaging}
     \textbf{\href{https://pyradiomics.readthedocs.io/}{Radiomics} = kvantifisering av bildeegenskaper}
     
     \vspace{0.3cm}
     \textbf{What is radiomic features?}
     \begin{itemize}
-        \item Matematisk describelse av tekstur, form, intensitet i bildet
+        \item Matematisk description av tekstur, form, intensitet i bildet
         \item Hundrevis av features fra én region of interest (ROI)
         \item ``Dype'' egenskaper ikke synlig for øyet
     \end{itemize}
@@ -221,7 +221,7 @@
         \begin{column}{0.32\textwidth}
             \textbf{Intensitet:}
             \begin{itemize}
-                \item Gjennomsnitt
+                \item Average
                 \item Standardavvik
                 \item Histogram-features
             \end{itemize}
@@ -246,16 +246,16 @@
     
     \vspace{0.3cm}
     \begin{block}{Clinical application}
-        Radiomics kan predikere molekylære markører (IDH-status), prognose, og behandlingsrespons -- basert kun på standardbilder.
+        Radiomics kan predikere molekylære markører (IDH-status), prognosis, og treatmentsrespons -- basert kun på standardbilder.
     \end{block}
 \end{frame}
 
 % =====================================================================
-% SEKSJON: Verktøy
+% SECTION: Verktøy
 % =====================================================================
 \section{Tools for Medical Image Analysis}
 
-\begin{frame}{B06: Know about nnU-Net og MONAI som verktøy}
+\begin{frame}{B06: Know about nnU-Net and MONAI as tools}
     \begin{columns}[T]
         \begin{column}{0.48\textwidth}
             \textbf{nnU-Net:}
@@ -264,13 +264,13 @@
                 \item Analyserer data og velger optimal konfigurasjon
                 \item Preprocessing, arkitektur, training
                 \item State-of-the-art på mange benchmarks
-                \item Krever kun data -- resten er automatisk
+                \item Krever kun data -- resten er automatic
             \end{itemize}
             
             \vspace{0.3cm}
             \textbf{Styrke:}
             \begin{itemize}
-                \item Minimal manuell tuning
+                \item Minimal manual tuning
                 \item Reproduserbar baseline
             \end{itemize}
         \end{column}
@@ -279,7 +279,7 @@
             \begin{itemize}
                 \item Medical Open Network for AI
                 \item PyTorch-basert rammeverk
-                \item Spesialisert for medisinsk avbildning
+                \item Spesialisert for medical avbildning
                 \item Transformasjoner, nettverk, metrikker
                 \item Aktiv utvikler-community
             \end{itemize}
@@ -287,7 +287,7 @@
             \vspace{0.3cm}
             \textbf{Styrke:}
             \begin{itemize}
-                \item Fleksibilitet for forskning
+                \item Fleksibilitet for fotherwisekning
                 \item Ferdigbygde komponenter
             \end{itemize}
         \end{column}
@@ -295,12 +295,12 @@
     
     \vspace{0.2cm}
     \begin{block}{\footnotesize Other tools}
-        \footnotesize \textbf{3D Slicer:} Visualisering og analyse | \textbf{ITK/SimpleITK:} Bildebehandling | \textbf{Nipype:} Neuro-pipelines
+        \footnotesize \textbf{3D Slicer:} Visualisering og analyse | \textbf{ITK/SimpleITK:} Imagetreatment | \textbf{Nipype:} Neuro-pipelines
     \end{block}
 \end{frame}
 
 % =====================================================================
-% OPPSUMMERING
+% SUMMARY
 % =====================================================================
 \section*{Summary}
 
@@ -311,8 +311,8 @@
         \item \textbf{B02:} MR-sekvenser -- T1, T1+Gd, T2, FLAIR, DWI
         \item \textbf{B03:} Segmentation -- klassifiser hver piksel, U-Net, nnU-Net
         \item \textbf{B04:} BraTS -- benchmark for hjernesvulstsegmentation
-        \item \textbf{B05:} Radiomics -- kvantitative features for prediksjon
-        \item \textbf{B06:} Verktøy -- nnU-Net (automatisk), MONAI (fleksibelt)
+        \item \textbf{B05:} Radiomics -- kvantitative features for prediction
+        \item \textbf{B06:} Verktøy -- nnU-Net (automatic), MONAI (fleksibelt)
     \end{itemize}
 
     \vspace{0.2cm}
@@ -321,7 +321,7 @@
     \end{block}
 
     \begin{block}{\footnotesize Lab 2}
-        \footnotesize Praktisk erfaring med CNN for image analysis, inkludert medisinsk applylse (MR-demens).
+        \footnotesize Praktisk erfaring med CNN for image analysis, inkludert medical applylse (MR-demens).
     \end{block}
 \end{frame}
 

@@ -5,11 +5,11 @@
 \documentclass[aspectratio=169, 10pt]{beamer}
 
 % =====================================================================
-% PAKKER
+% PACKAGES
 % =====================================================================
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[norsk]{babel}
+\usepackage[english]{babel}
 \usepackage{graphicx}
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric, arrows, positioning, shapes.symbols}
@@ -20,17 +20,17 @@
 \hypersetup{colorlinks=true, linkcolor=blue, urlcolor=blue}
 
 % =====================================================================
-% TEMA OG FARGER
+% THEME AND COLORS
 % =====================================================================
 \usetheme{Madrid}
 \usecolortheme{beaver}
 
-% Farger for TikZ-diagrammer
+% Colotherwise for TikZ diagrams
 \definecolor{uibblue}{RGB}{0, 61, 115}
 \definecolor{uibred}{RGB}{175, 28, 44}
 
 % =====================================================================
-% TITTELINFO
+% TITLE INFO
 % =====================================================================
 \title{Machine Learning -- Fundamental Concepts}
 \subtitle{BMED365: Topic List M01--M10}
@@ -38,7 +38,7 @@
 \date{Spring 2026}
 
 % =====================================================================
-% DOKUMENT
+% DOCUMENT
 % =====================================================================
 \begin{document}
 
@@ -56,15 +56,15 @@
     \begin{enumerate}
         \item \textbf{What is machine learning?}
         \begin{itemize}
-            \item M01: Definition og skille fra tradisjonell programmering
-            \item M02: Supervised vs. Unsupervised læring
+            \item M01: Definition og distinguish from tradisjonell programmering
+            \item M02: Supervised vs. Unsupervised learning
             \item M03: Features og Labels
         \end{itemize}
-        \item \textbf{Validation og modelltyper}
+        \item \textbf{Validation and Model Types}
         \begin{itemize}
             \item M04--M05: Trainings-/test set, overfitting/underfitting
             \item M06--M07: Bias-Variance trade-off, K-fold cross-validation
-            \item M08--M10: Baseline, classification vs. regression, enkle modor
+            \item M08--M10: Baseline, classification vs. regression, enkle models
         \end{itemize}
     \end{enumerate}
 \end{frame}
@@ -76,7 +76,7 @@
 % ---------------------------------------------------------------------
 % M01
 % ---------------------------------------------------------------------
-\begin{frame}{M01: Define \href{https://en.wikipedia.org/wiki/Machine_learning}{machine learning} og skille fra tradisjonell programmering}
+\begin{frame}{M01: Define \href{https://en.wikipedia.org/wiki/Machine_learning}{machine learning} og distinguish from tradisjonell programmering}
 
     \begin{columns}
         \begin{column}{0.48\textwidth}
@@ -91,7 +91,7 @@
             \vspace{2mm}
             \textbf{Machine Learning:}
             \begin{itemize}
-                \item Lærer regler fra data automatisk
+                \item Lærer regler fra data automatic
                 \item Mønstergjenkjenning, statistisk
                 \item Input + Output $\rightarrow$ Regler (modell)
                 \item Skalerer med datamengde
@@ -104,9 +104,9 @@
                 \textit{``A computer program is said to \textbf{\textit{learn from experience}} E with respect to some task T and some performance measure P, if its performance on T, as measured by P, improves with experience E.''}
             \end{block}
 
-            \begin{block}{\scriptsize Definition (Tom Mitchell, 1997) -- på norsk}
+            \begin{block}{\scriptsize Definition (Tom Mitchell, 1997) -- in Norwegian}
                 \scriptsize
-                \textit{``Et dataprogram sies å \textbf{\textit{lære av erfaring}} E med hensyn til en oppgave T og et ytelsesmål P, dersom dets ytelse på T, målt ved P, forbedres med erfaring E.''}
+                \textit{``Et dataprogram sies å \textbf{\textit{lære av erfaring}} E med hensyn til en task T og et ytelsesgoal P, dersom dets ytelse på T, goalt ved P, forbedres med erfaring E.''}
             \end{block}
         \end{column}
     \end{columns}
@@ -125,8 +125,8 @@
                 \item Data har \textbf{labels} (fasit/merkelapper)
                 \item Modellen lærer input$\rightarrow$output-mapping
                 \item Typer: Classification, regression
-                \item Medical: Diagnostisering, prognose
-                \item Krever manuell annotering av data
+                \item Medical: Diagnostisering, prognosis
+                \item Krever manual annotering av data
             \end{itemize}
         \end{column}
 
@@ -137,7 +137,7 @@
                 \item Finner skjulte mønstre/strukturer
                 \item Typer: Klynging, dimensjonsreduksjon
                 \item Medical: Pasient-subgrupper
-                \item Ingen fasit -- utforskende analyse
+                \item Ingen fasit -- utfotherwisekende analyse
             \end{itemize}
         \end{column}
     \end{columns}
@@ -147,10 +147,10 @@
         \scriptsize
         Kombinerer få merkede eksempler med mange umerkede. Nyttig når annotering er dyrt/tidkrevende.\\[2pt]
         \textbf{Prinsipper:}
-        \textit{Smoothness} -- nærliggende datapunkter har ofte samme label. \textit{Tabulært:} pasienter med like lab-verdier har ofte samme diagnose. \textit{Bilde:} MR-snitt med lignende pikselintensiteter viser lignende patologi.
-        \textit{Cluster} -- data grupperer seg naturlig; punkter i samme klynge tilhører ofte samme klasse. \textit{Tabulært:} pasienter med diabetes klynger seg i feature-rommet. \textit{Bilde:} hjerne-MR av friske vs. Alzheimer danner separate klynger.
-        \href{https://en.wikipedia.org/wiki/Manifold_hypothesis}{\textit{Manifold}} -- et 256$\times$256 bilde = 65536 piksler, men meningsfull variasjon bestemmes av få faktorer (anatomi, patologi). Bildene ``fyller'' ikke hele rommet, men ligger på en lavdim. flate.\\[2pt]
-        \textbf{Applications:} Medical bildesegmentation, tekstclassification, talegjenkjenning, legemiddeloppdagelse, genomikk.
+        \textit{Smoothness} -- nærliggende datapunkter har ofte samme label. \textit{Tabulært:} patienter med like lab-valueer har ofte samme diagnosis. \textit{Image:} MR-snitt med lignende pikselintensiteter viser lignende patologi.
+        \textit{Cluster} -- data grupperer seg naturlig; punkter i samme klynge tilhører ofte samme klasse. \textit{Tabulært:} patienter med diabetes klynger seg i feature-rommet. \textit{Image:} hjerne-MR av friske vs. Alzheimer danner separate klynger.
+        \href{https://en.wikipedia.org/wiki/Manifold_hypothesis}{\textit{Manifold}} -- et 256$\times$256 bilde = 65536 piksler, men meningsfull variasjon bestemmes av få fakcountser (anatomi, patologi). Imagene ``fyller'' ikke hele rommet, men ligger på en lavdim. flate.\\[2pt]
+        \textbf{Applications:} Medical bildesegmentation, tekstclassification, talegjenkjenning, drugoppdagelse, genomikk.
     \end{block}
 
 \end{frame}
@@ -169,7 +169,7 @@
     \end{block}
 
     \vspace{2mm}
-    \textbf{Example -- Hjertesykdomsprediksjon (tabulære data):}
+    \textbf{Example -- Hjertediseasesprediction (tabulære data):}
 
     \begin{table}
         \centering
@@ -188,7 +188,7 @@
     \begin{center}
         \footnotesize
         \textcolor{uibblue}{\textbf{Features} $\mathbf{X}$ (kolonner = variabler)} \hspace{1cm} \textcolor{uibred}{\textbf{Label} $y$}\\
-        Rader = observasjoner/pasienter, Kolonner = variabler $\rightarrow$ \textbf{Matrise}
+        Rader = observasjoner/patienter, Kolonner = variabler $\rightarrow$ \textbf{Matrise}
     \end{center}
 
 \end{frame}
@@ -198,12 +198,12 @@
 % ---------------------------------------------------------------------
 \begin{frame}{M04: Why \href{https://en.wikipedia.org/wiki/Training,_validation,_and_test_data_sets\#Training_data_set}{training set} og \href{https://en.wikipedia.org/wiki/Training,_validation,_and_test_data_sets\#Test_data_set}{test set}?}
 
-    \textbf{Problemet:} How vet vi om modellen generaliserer til nye data?
+    \textbf{Problemet:} How do we know om modellen generaliserer til nye data?
 
     \vspace{2mm}
     \begin{columns}
         \begin{column}{0.55\textwidth}
-            \begin{block}{\footnotesize Løsningen: Data-splitting}
+            \begin{block}{\footnotesize The solution: Data-splitting}
                 \footnotesize
                 \begin{enumerate}
                     \item Del datasetet i to (or tre) deler
@@ -249,7 +249,7 @@
         \begin{column}{0.32\textwidth}
             \textbf{Underfitting:}
             \begin{itemize}
-                \item For enkel modell
+                \item For simple modell
                 \item Høy bias
                 \item Dårlig på training og test
             \end{itemize}
@@ -268,9 +268,9 @@
         \end{column}
 
         \begin{column}{0.32\textwidth}
-            \textbf{God tilpasning:}
+            \textbf{God adaptation:}
             \begin{itemize}
-                \item Riktig kompleksitet
+                \item Riktig complexitet
                 \item Balanse
                 \item Generaliserer godt
             \end{itemize}
@@ -291,7 +291,7 @@
         \begin{column}{0.32\textwidth}
             \textbf{Overfitting:}
             \begin{itemize}
-                \item For kompleks modell
+                \item For complex modell
                 \item Høy varians
                 \item Lærer støy i dataene
             \end{itemize}
@@ -312,7 +312,7 @@
 
     \vspace{3mm}
     \begin{block}{\footnotesize Kjennetegn på overfitting}
-        \footnotesize Stor forskjell mellom trainings- og test-\href{https://en.wikipedia.org/wiki/Evaluation_of_machine_learning_models}{ytelse} (performance). \textbf{Ytelse} = mål på hvor godt modellen presterer (f.eks. accuracy, F1).
+        \footnotesize Scounts fotherwisekjell mellom trainings- og test-\href{https://en.wikipedia.org/wiki/Evaluation_of_machine_learning_models}{ytelse} (performance). \textbf{Ytelse} = goal på hvor godt modellen presterer (e.g. accuracy, F1).
     \end{block}
 
 \end{frame}
@@ -322,7 +322,7 @@
 % ---------------------------------------------------------------------
 \begin{frame}{M06: \href{https://en.wikipedia.org/wiki/Bias\%E2\%80\%93variance_tradeoff}{Bias-Variance Trade-off}}
 
-    \textbf{Totalt prediksjonsfeil:}
+    \textbf{Totalt predictionsfeil:}
     \[ \text{MSE} = \underbrace{\text{Bias}^2}_{\text{systematisk feil}} + \underbrace{\text{Varians}}_{\text{tilfeldig feil}} + \underbrace{\sigma^2}_{\text{irreducible}} \]
 
     \vspace{1mm}
@@ -364,14 +364,14 @@
         \end{column}
     \end{columns}
 
-    \begin{block}{\scriptsize Målet}
+    \begin{block}{\scriptsize The goal}
         \scriptsize Finn balansen som minimerer \textbf{total feil} på nye data. $\sigma^2$ = støy i data (kan ikke reduseres).
     \end{block}
 
 \end{frame}
 
 % =====================================================================
-\section{Validation og modelltyper}
+\section{Validation and Model Types}
 % =====================================================================
 
 % ---------------------------------------------------------------------
@@ -379,15 +379,15 @@
 % ---------------------------------------------------------------------
 \begin{frame}{M07: \href{https://en.wikipedia.org/wiki/Cross-validation_(statistics)\#k-fold_cross-validation}{K-fold cross-validation}}
     
-    \textbf{Problem:} Ett enkelt train/test-split kan gi tilfeldige resultater
+    \textbf{Problem:} Ett simplet train/test-split kan gi tilfeldige resulter
     
     \vspace{3mm}
     
-    \textbf{Løsning: K-fold Cross-Validation}
+    \textbf{Solution: K-fold Cross-Validation}
     \begin{enumerate}
-        \item Del data i $k$ like store deler (``folds'')
+        \item Del data i $k$ like scountse deler (``folds'')
         \item For hver fold: bruk den som test, resten som training
-        \item Gjennomsnitt av alle $k$ evaluationer
+        \item Average av alle $k$ evaluationer
     \end{enumerate}
     
     \vspace{3mm}
@@ -437,8 +437,8 @@
 % ---------------------------------------------------------------------
 \begin{frame}{M08: \href{https://en.wikipedia.org/wiki/Baseline_(machine_learning)}{Baseline model}}
 
-    \begin{block}{\footnotesize What is en baseline?}
-        \footnotesize En \textbf{enkel referansemodell} som vår ML-modell må slå for å være nyttig.
+    \begin{block}{\footnotesize What is a baseline?}
+        \footnotesize En \textbf{simple referansemodell} som vår ML-modell må slå to være nyttig.
     \end{block}
 
     \vspace{2mm}
@@ -449,14 +449,14 @@
         \begin{itemize}
             \item Dataset med 90\% friske, 10\% syke $\rightarrow$ baseline accuracy = 90\%
         \end{itemize}
-        \item \textbf{Regression:} Prediker alltid gjennomsnittsverdien
-        \item \textbf{Tidsserie:} Bruk forrige verdi som prediksjon
+        \item \textbf{Regression:} Prediker alltid gjennomsnittsvalueen
+        \item \textbf{Tidsserie:} Bruk forrige value som prediction
     \end{itemize}
 
     \vspace{2mm}
-    \begin{alertblock}{\footnotesize Why viktig?}
+    \begin{alertblock}{\footnotesize Why important?}
         \footnotesize
-        90\% accuracy høres imponerende ut, men ikke hvis baseline er 90\%! Viser om ML tilfører \textbf{faktisk verdi}. Avslører ubalanserte dataset.
+        90\% accuracy høres imponerende ut, men ikke hvis baseline er 90\%! Viser om ML tilfører \textbf{faktisk value}. Avslører ubalanserte dataset.
     \end{alertblock}
 
 \end{frame}
@@ -491,7 +491,7 @@
         \begin{column}{0.48\textwidth}
             \textbf{\faChartLine\ Regression:}
             \begin{itemize}
-                \item Predikerer \textbf{kontinuerlige verdier}
+                \item Predikerer \textbf{kontinuerlige valueer}
                 \item Numeriske utfall
                 \item Examples:
                 \begin{itemize}
@@ -515,13 +515,13 @@
 % ---------------------------------------------------------------------
 % M10
 % ---------------------------------------------------------------------
-\begin{frame}{M10: Enkle ML-modor}
+\begin{frame}{M10: Simple ML models}
 
     \begin{columns}
         \begin{column}{0.32\textwidth}
             \textbf{\href{https://en.wikipedia.org/wiki/Decision_tree_learning}{Beslutningstre}:}
             \begin{itemize}
-                \item Serier av ja/nei-spørsmål
+                \item Serier av ja/nei-spørsgoal
                 \item Lett å interpret
                 \item Kan overtilpasse
             \end{itemize}
@@ -541,7 +541,7 @@
         \end{column}
         
         \begin{column}{0.32\textwidth}
-            \textbf{\href{https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm}{k-Nearest Neighbors}:}
+            \textbf{\href{https://en.wikipedia.org/wiki/K-nearest_neighbotherwise_algorithm}{k-Nearest Neighbotherwise}:}
             \begin{itemize}
                 \item Finn $k$ mest like eksempler
                 \item Majoritetsvotering
@@ -585,7 +585,7 @@
     \vspace{5mm}
     
     \begin{block}{Tip}
-        Start alltid med enkle modor før du prøver komplekse!
+        Start alltid med enkle models før du prøver complexe!
     \end{block}
     
 \end{frame}
@@ -614,7 +614,7 @@
                 \item Cross-validation
                 \item Sammenlign med baseline
                 \item Classification $\neq$ Regression
-                \item Start enkelt
+                \item Start simplet
                 \item Bias-varians-balanse
             \end{itemize}
         \end{column}
@@ -623,8 +623,8 @@
             \scriptsize
             \begin{itemize}\setlength{\itemsep}{0pt}
                 \item LLM-agenter for dataanalyse
-                \item Multimodale modor (tekst+bilde)
-                \item RAG + kliniske retningslinjer
+                \item Multimodale models (tekst+bilde)
+                \item RAG + clinicale retningslinjer
                 \item Automatisert ML-pipeline
                 \item Human-in-the-loop AI
             \end{itemize}
@@ -632,16 +632,16 @@
     \end{columns}
 
     \vspace{0mm}
-    \begin{block}{\scriptsize Medical relevans -- ML-applylser i helse, medisin og bioteknologi}
+    \begin{block}{\scriptsize Medical relevance -- ML-applylser i helse, medisin og bioteknologi}
         \scriptsize
-        \textbf{Diagnostikk:} Bildediagnostikk (radiologi, patologi, oftalmologi, dermatologi), biomarkørdeteksjon, EKG/EEG-analyse.\\
-        \textbf{Prognose:} Overlevelse (OS), progresjonsfri overlevelse (PFS), reinnleggelse, mortalitetsrisiko, sykdomsprogresjon.\\
-        \textbf{Terapi:} Terapivalg, doseoptimalisering, behandlingsrespons, stråleplanlegging, kirurgisk navigasjon.\\
-        \textbf{Legemiddel:} Drugability, målidentifikasjon, ADMET-prediksjon, virtual screening, de novo molekyldesign.\\
+        \textbf{Diagnostikk:} Imagediagnostikk (radiologi, patologi, oftalmologi, dermatologi), biomarkerdeteksjon, EKG/EEG-analyse.\\
+        \textbf{Prognose:} Overlevelse (OS), progresjonsfri overlevelse (PFS), reinnleggelse, mortalitetsrisiko, diseasesprogresjon.\\
+        \textbf{Terapi:} Terapivalg, doseoptimalisering, treatmentsrespons, stråleplanlegging, kirurgisk navigasjon.\\
+        \textbf{Legemiddel:} Drugability, goalidentifikasjon, ADMET-prediction, virtual screening, de novo molekyldesign.\\
         \textbf{Helsesystem:} Ressursallokering, kapasitetsplanlegging, triagering, ventelisteoptimering, utbruddsdeteksjon.\\
         \textbf{Genomikk/biotek:} Variantclassification, genekspresjon, proteinstruktur (AlphaFold), single-cell, CRISPR off-target.\\
-        \textbf{Psykiatri/nevrologi:} Stemningsanalyse, talemarkører, nevrodegenerasjon, anfallsprediksjon.\\
-        \textbf{Folkehelse:} Epidemiologisk modoring, vaksinestrategi, sosiale determinanter, helseøkonomi (QALY/DALY).
+        \textbf{Psykiatri/nevrologi:} Stemningsanalyse, talemarkører, nevrodegenerasjon, anfallsprediction.\\
+        \textbf{Folkehelse:} Epidemiologisk modelsing, vaksinestrategi, sosiale determinanter, helseøkonomi (QALY/DALY).
     \end{block}
     
     \vspace{-1mm}

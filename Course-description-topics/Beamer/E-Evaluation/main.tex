@@ -5,11 +5,11 @@
 \documentclass[aspectratio=169, 10pt]{beamer}
 
 % =====================================================================
-% PAKKER
+% PACKAGES
 % =====================================================================
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[norsk]{babel}
+\usepackage[english]{babel}
 \usepackage{graphicx}
 \usepackage{tikz}
 \usepackage{booktabs}
@@ -19,17 +19,17 @@
 \hypersetup{colorlinks=true, linkcolor=blue, urlcolor=blue}
 
 % =====================================================================
-% TEMA OG FARGER
+% THEME AND COLORS
 % =====================================================================
 \usetheme{Madrid}
 \usecolortheme{beaver}
 
-% Farger for TikZ-diagrammer
+% Colotherwise for TikZ diagrams
 \definecolor{uibblue}{RGB}{0, 61, 115}
 \definecolor{uibred}{RGB}{175, 28, 44}
 
 % =====================================================================
-% TITTELINFO
+% TITLE INFO
 % =====================================================================
 \title{Evaluation of ML Models}
 \subtitle{BMED365: Topic List E01--E10}
@@ -37,7 +37,7 @@
 \date{Spring 2026}
 
 % =====================================================================
-% DOKUMENT
+% DOCUMENT
 % =====================================================================
 \begin{document}
 
@@ -55,10 +55,10 @@
         \end{itemize}
         \item \textbf{Fundamental metrikker}
         \begin{itemize}
-            \item E03: Accuracy (accuracy)
+            \item E03: Accuracy
             \item E04: Precision (precision)
-            \item E05: Recall / Sensitivity (sensitivity)
-            \item E06: Specificity (specificity)
+            \item E05: Recall / Sensitivity
+            \item E06: Specificity
         \end{itemize}
         \item \textbf{Advanced metrikker}
         \begin{itemize}
@@ -77,7 +77,7 @@
 % ---------------------------------------------------------------------
 % E01
 % ---------------------------------------------------------------------
-\begin{frame}{E01: Interpret en Confusion Matrix (confusion matrix)}
+\begin{frame}{E01: Interpret a confusion matrix}
 
     \begin{columns}
         \begin{column}{0.45\textwidth}
@@ -135,7 +135,7 @@
 % ---------------------------------------------------------------------
 % E02
 % ---------------------------------------------------------------------
-\begin{frame}{E02: TP, TN, FP, FN i medisinsk kontekst}
+\begin{frame}{E02: TP, TN, FP, FN in a medical context}
     
     \begin{table}
         \centering
@@ -143,10 +143,10 @@
             \toprule
             \textbf{Term} & \textbf{Definition} & \textbf{Medical example} \\
             \midrule
-            \textbf{TP} & Syk pasient, modell sier syk & Kreft korrekt identifisert \\
-            \textbf{TN} & Frisk pasient, modell sier frisk & Frisk person bekreftet frisk \\
-            \textbf{FP} & Frisk pasient, modell sier syk & Unødvendig biopsi \\
-            \textbf{FN} & Syk pasient, modell sier frisk & \textcolor{uibred}{Oversett kreft} \\
+            \textbf{TP} & Syk patient, modell sier syk & Kreft korrekt identifisert \\
+            \textbf{TN} & Frisk patient, modell sier frisk & Frisk person bekreftet frisk \\
+            \textbf{FP} & Frisk patient, modell sier syk & Unødvendig biopsi \\
+            \textbf{FN} & Syk patient, modell sier frisk & \textcolor{uibred}{Oversett kreft} \\
             \bottomrule
         \end{tabular}
     \end{table}
@@ -156,8 +156,8 @@
     \begin{alertblock}{Critical question i medisin}
         What is verst: \textbf{Falsk positiv} (FP) or \textbf{Falsk negativ} (FN)?
         \begin{itemize}
-            \item Screening: FN er farligere (oversett sykdom)
-            \item Invasiv behandling: FP kan være farligere (unødvendig risiko)
+            \item Screening: FN er farligere (oversett disease)
+            \item Invasiv treatment: FP can be farligere (unødvendig risiko)
         \end{itemize}
     \end{alertblock}
     
@@ -170,11 +170,11 @@
 % ---------------------------------------------------------------------
 % E03
 % ---------------------------------------------------------------------
-\begin{frame}{E03: Accuracy (accuracy)}
+\begin{frame}{E03: Accuracy}
 
     \begin{block}{Definition}
         \[
-        \text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN} = \frac{\text{Korrekte prediksjoner}}{\text{Alle prediksjoner}}
+        \text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN} = \frac{\text{Korrekte predictioner}}{\text{Alle predictioner}}
         \]
     \end{block}
 
@@ -202,7 +202,7 @@
     \vspace{2mm}
 
     \begin{alertblock}{Warning}
-        Høy accuracy kan være misvisende ved ubalanserte dataset!
+        Høy accuracy can be misvisende ved ubalanserte dataset!
     \end{alertblock}
 
 \end{frame}
@@ -210,7 +210,7 @@
 % ---------------------------------------------------------------------
 % E04
 % ---------------------------------------------------------------------
-\begin{frame}{E04: Precision (precision / PPV)}
+\begin{frame}{E04: Precision (PPV)}
     
     \begin{block}{Definition}
         \[
@@ -220,17 +220,17 @@
     
     \vspace{3mm}
     
-    \textbf{Spørsmål:} ``Av alle modellen sier er positive, hvor mange er faktisk positive?''
+    \textbf{Spørsgoal:} ``Av alle modellen sier er positive, hvor mange er faktisk positive?''
     
     \vspace{3mm}
     
     \begin{columns}
         \begin{column}{0.5\textwidth}
-            \textbf{Høy precision viktig når:}
+            \textbf{Høy precision important når:}
             \begin{itemize}
                 \item Kostbar oppfølging av positive
                 \item Vil unngå falske alarmer
-                \item Example: Sjelden sykdom
+                \item Example: Sjelden disease
             \end{itemize}
         \end{column}
         
@@ -239,7 +239,7 @@
             \[
             \text{Precision} = \frac{85}{85 + 5} = 94.4\%
             \]
-            \footnotesize\textit{``94\% av flaggede pasienter er faktisk syke''}
+            \footnotesize\textit{``94\% av flayersgede patienter er faktisk syke''}
         \end{column}
     \end{columns}
     
@@ -248,7 +248,7 @@
 % ---------------------------------------------------------------------
 % E05
 % ---------------------------------------------------------------------
-\begin{frame}{E05: Recall / Sensitivity (sensitivity)}
+\begin{frame}{E05: Recall / Sensitivity}
     
     \begin{block}{Definition}
         \[
@@ -258,16 +258,16 @@
     
     \vspace{3mm}
     
-    \textbf{Spørsmål:} ``Av alle som faktisk er positive, hvor mange fanger modellen opp?''
+    \textbf{Spørsgoal:} ``Av alle som faktisk er positive, hvor mange fanger modellen opp?''
     
     \vspace{3mm}
     
     \begin{columns}
         \begin{column}{0.5\textwidth}
-            \textbf{Høy recall viktig når:}
+            \textbf{Høy recall important når:}
             \begin{itemize}
                 \item Alvorlig konsekvens av å overse (FN)
-                \item Screening for farlig sykdom
+                \item Screening for farlig disease
                 \item Example: Kreftscreening
             \end{itemize}
         \end{column}
@@ -292,7 +292,7 @@
 % ---------------------------------------------------------------------
 % E06
 % ---------------------------------------------------------------------
-\begin{frame}{E06: Specificity (specificity)}
+\begin{frame}{E06: Specificity}
     
     \begin{block}{Definition}
         \[
@@ -302,16 +302,16 @@
     
     \vspace{3mm}
     
-    \textbf{Spørsmål:} ``Av alle som faktisk er negative, hvor mange identifiserer modellen korrekt?''
+    \textbf{Spørsgoal:} ``Av alle som faktisk er negative, hvor mange identifiserer modellen korrekt?''
     
     \vspace{3mm}
     
     \begin{columns}
         \begin{column}{0.5\textwidth}
-            \textbf{Høy specificity viktig når:}
+            \textbf{Høy specificity important når:}
             \begin{itemize}
                 \item Vil unngå unødvendige inngrep
-                \item Kostbar/risikabel behandling
+                \item Kostbar/risikabel treatment
                 \item Example: Bekreftelsetester
             \end{itemize}
         \end{column}
@@ -328,7 +328,7 @@
     \vspace{2mm}
 
     \begin{alertblock}{\footnotesize Trade-off}
-        \footnotesize Høy sensitivity $\leftrightarrow$ Lav specificity (og omvendt). Justering av terskelverdi påvirker begge.
+        \footnotesize Høy sensitivity $\leftrightarrow$ Lav specificity (og omvendt). Justering av threshold value påvirker begge.
     \end{alertblock}
 
 \end{frame}
@@ -353,7 +353,7 @@
     
     \textbf{Why harmonisk gjennomsnitt?}
     \begin{itemize}
-        \item Straffer ekstreme verdier hardere enn aritmetisk gjennomsnitt
+        \item Straffer ekstreme valueer hardere enn aritmetisk gjennomsnitt
         \item Precision = 100\%, Recall = 0\% $\rightarrow$ F1 = 0\% (ikke 50\%!)
     \end{itemize}
     
@@ -364,8 +364,8 @@
             \textbf{Når bruke F1?}
             \begin{itemize}
                 \item Ubalanserte dataset
-                \item Når både FP og FN er viktige
-                \item Compare modor
+                \item Når både FP og FN er importante
+                \item Compare models
             \end{itemize}
         \end{column}
         
@@ -400,7 +400,7 @@
                 \item Arealet under ROC-kurven
                 \item Verdi mellom 0 og 1
                 \item AUC = 0.5: tilfeldig gjetting
-                \item AUC = 1.0: perfekt klassifikator
+                \item AUC = 1.0: perfekt klassifikacounts
             \end{itemize}
         \end{column}
         
@@ -434,7 +434,7 @@
     
     \vspace{3mm}
     
-    \begin{block}{Tommelfingerregel}
+    \begin{block}{Rule of thumb}
         AUC $>$ 0.9: Utmerket \quad AUC 0.8--0.9: God \quad AUC 0.7--0.8: OK \quad AUC $<$ 0.7: Svak
     \end{block}
     
@@ -443,7 +443,7 @@
 % ---------------------------------------------------------------------
 % E09
 % ---------------------------------------------------------------------
-\begin{frame}{E09: Når accuracy er utilstrekkelig}
+\begin{frame}{E09: When accuracy is insufficient}
     
     \textbf{Problemet med ubalanserte dataset:}
     
@@ -451,7 +451,7 @@
     
     \begin{columns}
         \begin{column}{0.5\textwidth}
-            \textbf{Example:} 1000 pasienter
+            \textbf{Example:} 1000 patienter
             \begin{itemize}
                 \item 950 friske, 50 syke
                 \item Modell predikerer ALLE som friske
@@ -471,7 +471,7 @@
         \end{column}
         
         \begin{column}{0.45\textwidth}
-            \textbf{Løsninger:}
+            \textbf{Solutioner:}
             \begin{itemize}
                 \item Bruk F1-score or AUC
                 \item Fokuser på recall for screening
@@ -504,13 +504,13 @@
     
     \vspace{3mm}
     
-    \textbf{Hovedpunkter for rapportering av ML i medisin:}
+    \textbf{Main points for rapportering av ML i medisin:}
     
     \begin{columns}
         \begin{column}{0.48\textwidth}
             \begin{enumerate}
-                \item Tydelig describelse av studiepopulasjon
-                \item Definer utfall og prediktorer klart
+                \item Tydelig description av studiepopulasjon
+                \item Definer utfall og predikcountser klart
                 \item Beskriv missing data håndtering
                 \item Rapporter modellutvikling detaljert
             \end{enumerate}
@@ -522,15 +522,15 @@
                 \item Intern validation (cross-validation)
                 \item Ekstern validation hvis mulig
                 \item Rapporter kalibrering og diskriminering
-                \item Diskuter begrensninger
+                \item Diskuter limitationer
             \end{enumerate}
         \end{column}
     \end{columns}
     
     \vspace{5mm}
     
-    \begin{alertblock}{Why viktig?}
-        TRIPOD sikrer \textbf{reproduserbarhet} og \textbf{kvalitetskontroll} av prediksjonsmodor i helseforskning.
+    \begin{alertblock}{Why important?}
+        TRIPOD sikrer \textbf{reproduserbarhet} og \textbf{kvalitetskontroll} av predictionsmodels i helsefotherwisekning.
     \end{alertblock}
     
 \end{frame}
@@ -574,9 +574,9 @@
     \begin{block}{\footnotesize Key points}
         \footnotesize
         \begin{itemize}
-            \item Velg metrikk basert på medisinsk kontekst (FN vs. FP konsekvenser)
+            \item Velg metrikk basert på medical kontekst (FN vs. FP konsekvenser)
             \item Accuracy er ofte utilstrekkelig -- bruk F1, AUC, precision, recall
-            \item ROC/AUC gir helhetsbilde uavhengig av terskelverdi
+            \item ROC/AUC gir helhetsbilde uavhengig av threshold value
             \item Følg \href{https://www.tripod-statement.org/}{TRIPOD} for transparent rapportering
         \end{itemize}
     \end{block}
