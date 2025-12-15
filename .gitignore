@@ -1,0 +1,122 @@
+.DS_Store
+.ipynb_checkpoints
+.vscode
+__pycache__/
+*.pyc
+
+# Ignore large dataset (>= 100 MB)
+
+# Ignore Lab1 data
+Lab1-mpMRI-glioma/data/Task01_BrainTumour*
+
+# Ignore Lab0 stuff
+Lab0-ML/Lab0-begin-python-pandas-medim/._assets
+Lab0-ML/Lab0-begin-python-pandas-medim/._kiwi_data
+Lab0-ML/Lab0-begin-python-pandas-medim/.vscode
+
+# Avoid interference with the BMRD365-2026 repo when using private notebooks etc. for experimentation
+my_stuff/
+
+# Ignore saved models
+test.pkl
+logs.log
+saved_model.pkl
+
+# Ignore pycaret stuff
+test.py
+catboost_info
+mlruns
+flagged
+.gradio
+
+
+
+# Lab2-DL generated files and data (loaded automatically at execution)
+Lab2-DL/data/MNIST/
+Lab2-DL/data/flowers/
+Lab2-DL/data/ecg/
+Lab2-DL/data/oasis_mri_sample/
+Lab2-DL/data/ansiktsuttrykk/
+Lab2-DL/notebooks/mnist_images/
+Lab2-DL/notebooks/bonn_eeg_data/
+Lab2-DL/notebooks/catboost_info/
+Lab2-DL/notebooks/*.joblib
+Lab2-DL/notebooks/*.npy
+Lab2-DL/notebooks/*.csv
+Lab2-DL/notebooks/*.csv.gz
+Lab2-DL/notebooks/data/
+Lab2-DL/notebooks/mnist_data/
+
+# Lab2-DL models and training data
+Lab2-DL/notebooks/*.pth
+Lab2-DL/notebooks/*.pkl
+Lab2-DL/modeller/
+Lab2-DL/notebooks/tmp/
+Lab2-DL/notebooks/modeller/
+
+# Lab2-DL large media files (can be streamed from YouTube)
+Lab2-DL/assets/*.mp4
+
+# Old stuff
+2024-Project
+2024-Lab0-ML
+
+# Bonn EEG - track zip-files only, ignore unziped folders
+Lab2-DL/data/bonn_eeg_data/setA/
+Lab2-DL/data/bonn_eeg_data/setE/
+
+# =====================================================================
+# LaTeX auxiliary files (global - applies to all LaTeX/Beamer projects)
+# Track: .tex, .bib, .pdf, .png, .jpg, .eps
+# Ignore: All LaTeX-generated auxiliary files
+# =====================================================================
+
+# Core auxiliary files
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+
+# latexmk
+*.fls
+*.fdb_latexmk
+
+# SyncTeX
+*.synctex.gz
+*.synctex(busy)
+*.synctex.gz(busy)
+
+# Bibliography
+*.blg
+*.bbl
+*.run.xml
+*.bcf
+*-blx.bib
+
+# Beamer-specific
+*.nav
+*.snm
+*.vrb
+
+# Other formats
+*.dvi
+*.ps
+*.xdv
+
+# pythontex
+*.pytxcode
+
+# Misc
+*.brf
+*.idx
+*.ilg
+*.ind
+*.glo
+*.gls
+*.glg
+*.ist
+*.acn
+*.acr
+*.alg

@@ -1,0 +1,116 @@
+# =============================================================================
+# BMED365-2026: Conda Environment
+# Computational imaging, modeling and AI in biomedicine
+# =============================================================================
+name: bmed365-2026
+
+channels:
+  - conda-forge # Fellesskapsdrevet kanal med oppdaterte pakker
+  - defaults # Anacondas standard kanal
+
+dependencies:
+  - python=3.10 # Python-versjon (stabil, bred bibliotekstøtte)
+  - pip # For pakker som ikke finnes i conda
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # VITENSKAPELIG DATABEHANDLING
+  # Grunnpakker for numerisk analyse og visualisering
+  # ─────────────────────────────────────────────────────────────────────────
+  - numpy>=1.24.0 # Numeriske arrays og matriseoperasjoner
+  - pandas>=2.0.0 # DataFrames for tabulære data (pasientdata, CSV)
+  - scipy>=1.10.0 # Vitenskapelige algoritmer (statistikk, signalbehandling)
+  - matplotlib>=3.7.0 # Grunnleggende plotting og visualisering
+  - seaborn>=0.12.0 # Statistisk visualisering (heatmaps, distribusjoner)
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # JUPYTER ØKOSYSTEM
+  # Interaktive notebooks for undervisning og eksperimentering
+  # ─────────────────────────────────────────────────────────────────────────
+  - jupyter>=1.0.0 # Jupyter Notebook/Lab kjernepakke
+  - jupyter-book>=0.15.0 # Publisering av notebooks som bok/nettside
+  - ipywidgets>=8.0.0 # Interaktive widgets i notebooks (sliders, knapper)
+  - nbconvert>=7.0.0 # Konverter notebooks til HTML, PDF, etc.
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # MASKINLÆRING OG DYP LÆRING
+  # Rammeverk for å bygge og trene AI-modeller
+  # ─────────────────────────────────────────────────────────────────────────
+  - scikit-learn>=1.3.0 # Klassisk ML (Random Forest, SVM, clustering)
+  - tensorflow>=2.13.0 # Googles DL-rammeverk (Keras backend)
+  - pytorch>=2.0.0 # Metas DL-rammeverk (fleksibelt, forskningsvennlig)
+  - torchvision>=0.15.0 # Bildebehandling for PyTorch (datasett, transforms)
+  - lightning>=2.0.0 # PyTorch Lightning – strukturert treningskode
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # MEDISINSK BILDEBEHANDLING
+  # Verktøy for å lese og analysere medisinske bilder
+  # ─────────────────────────────────────────────────────────────────────────
+  - nibabel>=5.1.0 # Les/skriv NIfTI, ANALYZE (MR, CT hjernebilder)
+  - nilearn>=0.10.0 # Nevrobildanalyse (fMRI, statistiske kart)
+  - SimpleITK>=2.3.0 # Bilderegistrering og segmentering (ITK wrapper)
+  - scikit-image>=0.21.0 # Generell bildebehandling (filtre, morfologi)
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # NETTVERKSANALYSE
+  # For Lab1: Pasient-likhetsnettverk og grafteori
+  # ─────────────────────────────────────────────────────────────────────────
+  - networkx>=3.1.0 # Grafanalyse (noder, kanter, sentralitet)
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # VERKTØY OG HJELPEPAKKER
+  # ─────────────────────────────────────────────────────────────────────────
+  - tqdm>=4.65.0 # Fremdriftsindikatorer (progress bars)
+  - requests>=2.31.0 # HTTP-forespørsler (laste ned data)
+  - pillow>=10.0.0 # Bildebibliotek (PNG, JPEG lesing/skriving)
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # TABPFN - Dyp læring på tabelldata (Lab2-DL: F1 og F2)
+  # Prior-Data Fitted Networks for små medisinske datasett
+  # ─────────────────────────────────────────────────────────────────────────
+  - pytorch>=2.0.0 # Kreves av TabPFN (allerede over, men viktig)
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # PIP-PAKKER
+  # Pakker som ikke finnes i conda eller har bedre pip-versjoner
+  # ─────────────────────────────────────────────────────────────────────────
+  - pip:
+      # TabPFN v2.5 - Tabulær dyp læring
+      - tabpfn>=2.0.0 # TabPFN v2.5 for klassifikasjon og regresjon
+      - tabpfn-extensions>=0.1.0 # Post-hoc ensembler, SHAP, hyperparametertuning
+      - torch-geometric>=2.4.0 # Grafbaserte utvidelser for TabPFN
+      - hyperopt>=0.2.7 # Hyperparameteroptimalisering
+      - ucimlrepo>=0.0.6 # UCI ML Repository datasett (DARWIN, etc.)
+      - shap>=0.44.0 # SHAP-verdier for modelltolkning
+      - catboost>=1.2.0 # Baseline: Gradient boosting
+      - xgboost>=2.0.0 # Baseline: Gradient boosting
+
+      - plotly>=5.15.0 # Interaktive grafer (zoom, hover)
+      - pydicom>=2.4.0 # Les DICOM-filer (røntgen, CT, MR)
+      - igraph>=0.10.0 # Rask grafanalyse (alternativ til networkx)
+      - python-louvain>=0.16 # Community detection i nettverk
+      - keras>=2.13.0 # Høynivå DL-API (kjører på TensorFlow)
+      - tensorflow-addons>=0.21.0 # Ekstra lag og funksjoner for TensorFlow
+      - gdown>=4.7.0 # Last ned fra Google Drive
+      - kaggle>=1.5.0 # Kaggle API for datasettnedlasting
+      - pyradiomics>=3.0.0 # Radiomics: trekke ut features fra bilder
+      - antspyx>=0.6.0 # Avansert bilderegistrering (ANTs i Python)
+      - tokenizers>=0.20.0 # Hurtig tokenisering for NLP/LLM
+      - gradio>=4.0.0 # Lag enkle web-UI for ML-modeller
+      - wfdb>=4.1.0 # PhysioNet-data (EKG fra MIT-BIH, etc.)
+      - opencv-python>=4.8.0 # Bildebehandling (cv2) for CNN og Grad-CAM
+      - medmnist>=3.0.0 # Standardiserte medisinske bildedatasett (28×28)
+      - timm>=0.9.0 # PyTorch Image Models (ViT, EfficientNet, etc.)
+      - torchviz>=0.0.2 # Visualisering av PyTorch-modellgrafer
+
+      # ─────────────────────────────────────────────────────────────────────────
+      # GENERATIV AI / LLM (Lab3-GenAI-LLM)
+      # Verktøy for store språkmodeller og prompt engineering
+      # ─────────────────────────────────────────────────────────────────────────
+      - tiktoken>=0.5.0 # OpenAI tokenizer (tokenisering av tekst)
+      - transformers>=4.35.0 # HuggingFace Transformers (modeller, pipeline)
+      # Valgfritt for API-bruk (notebook 09):
+      - openai>=1.0.0 # OpenAI API (ChatGPT)
+      - anthropic>=0.18.0 # Anthropic API (Claude)
+      - python-dotenv>=1.0.0 # Miljøvariabler fra .env-fil
+
+# Merk: google-colab er kun tilgjengelig i Google Colab-miljøet
