@@ -9,7 +9,7 @@
 % =====================================================================
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[english]{babel}
+\usepackage[notherwisek]{babel}
 \usepackage{graphicx}
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric, arrows, positioning, calc, decorations.pathreplacing}
@@ -118,43 +118,43 @@
                 \tikzstyle{neuron}=[circle, draw=uibblue, fill=uibblue!20, minimum size=0.6cm]
                 
                 % Input layer
-                \node[neuron] (i1) at (0, -1) {};
-                \node[neuron] (i2) at (0, -2) {};
-                \node[neuron] (i3) at (0, -3) {};
+                \foreach \y in {1,2,3} {
+                    \node[neuron] (i\y) at (0, -\y) {};
+                }
                 \node at (0, -4.2) {\footnotesize Input};
                 
                 % Hidden layer 1
-                \node[neuron, fill=uibblue!40] (h1a) at (2, -0.5) {};
-                \node[neuron, fill=uibblue!40] (h1b) at (2, -1.5) {};
-                \node[neuron, fill=uibblue!40] (h1c) at (2, -2.5) {};
-                \node[neuron, fill=uibblue!40] (h1d) at (2, -3.5) {};
+                \foreach \y in {0.5,1.5,2.5,3.5} {
+                    \node[neuron, fill=uibblue!40] (h1\y) at (2, -\y) {};
+                }
                 \node at (2, -4.7) {\footnotesize Hidden 1};
                 
                 % Hidden layer 2
-                \node[neuron, fill=uibblue!60] (h2a) at (4, -1) {};
-                \node[neuron, fill=uibblue!60] (h2b) at (4, -2) {};
-                \node[neuron, fill=uibblue!60] (h2c) at (4, -3) {};
+                \foreach \y in {1,2,3} {
+                    \node[neuron, fill=uibblue!60] (h2\y) at (4, -\y) {};
+                }
                 \node at (4, -4.2) {\footnotesize Hidden 2};
                 
                 % Output layer
-                \node[neuron, fill=uibred!40] (o1) at (6, -1.5) {};
-                \node[neuron, fill=uibred!40] (o2) at (6, -2.5) {};
+                \foreach \y in {1.5,2.5} {
+                    \node[neuron, fill=uibred!40] (o\y) at (6, -\y) {};
+                }
                 \node at (6, -4.2) {\footnotesize Output};
                 
                 % Connections (simplified)
-                \foreach \i in {i1,i2,i3} {
-                    \foreach \h in {h1a,h1b,h1c,h1d} {
-                        \draw[gray!50, thin] (\i) -- (\h);
+                \foreach \i in {1,2,3} {
+                    \foreach \h in {0.5,1.5,2.5,3.5} {
+                        \draw[gray!50, thin] (i\i) -- (h1\h);
                     }
                 }
-                \foreach \ha in {h1a,h1b,h1c,h1d} {
-                    \foreach \hb in {h2a,h2b,h2c} {
-                        \draw[gray!50, thin] (\ha) -- (\hb);
+                \foreach \ha in {0.5,1.5,2.5,3.5} {
+                    \foreach \hb in {1,2,3} {
+                        \draw[gray!50, thin] (h1\ha) -- (h2\hb);
                     }
                 }
-                \foreach \h in {h2a,h2b,h2c} {
-                    \foreach \o in {o1,o2} {
-                        \draw[gray!50, thin] (\h) -- (\o);
+                \foreach \h in {1,2,3} {
+                    \foreach \o in {1.5,2.5} {
+                        \draw[gray!50, thin] (h2\h) -- (o\o);
                     }
                 }
             \end{tikzpicture}

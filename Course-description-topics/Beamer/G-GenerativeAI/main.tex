@@ -9,7 +9,7 @@
 % =====================================================================
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[english]{babel}
+\usepackage[notherwisek]{babel}
 \usepackage{graphicx}
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric, arrows, positioning, calc, decorations.pathreplacing}
@@ -175,7 +175,7 @@
     \textbf{Tokens = tekstens ``atomer''}
     \begin{itemize}
         \item LLM-er leser ikke bokstaver or ord -- de leser \textbf{tokens}
-        \item Token $\approx$ subword, approx. 4 characters per token (for English/Norwegian)
+        \item Token $\approx$ delord, ca. 4 tegn per token (for engelsk/notherwisek)
     \end{itemize}
 
     \vspace{0.15cm}
@@ -411,13 +411,13 @@
         \item \textbf{Kontekst:} ``Brukeren er helsepersonell...''
         \item \textbf{Oppførsel:} ``Svar konsist og presist...''
         \item \textbf{Limitations:} ``Ikke gi diagnosisr...''
-        \item \textbf{Format:} ``Reply in Norwegian, use bullet points...''
+        \item \textbf{Format:} ``Svar på notherwisek, bruk punktlister...''
     \end{enumerate}
 
     \vspace{0.15cm}
     \begin{block}{\footnotesize Example på systemprompt}
         \scriptsize
-        \texttt{You are a medical AI assistant for healthcare professionals. Reply in Norwegian. Be precise and evidence-based. Reference sources when possible. Never give definitive diagnoses -- suggest differential diagnoses. When uncertain, say so.}
+        \texttt{Du er en medical AI-assistent for helsepersonell. Svar på notherwisek. Vær presis og evidensbasert. Henvis til sourcer når mulig. Gi aldri definitive diagnosisr -- foreslå differensialdiagnosisr. Ved usikkerhet, si fra.}
     \end{block}
 
     \begin{alertblock}{\footnotesize Tip}

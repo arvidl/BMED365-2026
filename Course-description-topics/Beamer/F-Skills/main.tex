@@ -9,7 +9,7 @@
 % =====================================================================
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[english]{babel}
+\usepackage[notherwisek]{babel}
 \usepackage{graphicx}
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric, arrows, positioning, calc}
@@ -175,27 +175,27 @@ df.head()
 \end{frame}
 
 \begin{frame}[fragile]{F04: Read and inspect datasets with pandas}
-    \textbf{Reading data:}
+    \textbf{Lese data:}
     \begin{lstlisting}[language=Python]
-df = pd.read_csv("patients.csv")
+df = pd.read_csv("patienter.csv")
     \end{lstlisting}
     
-    \textbf{Inspecting data:}
+    \textbf{Inspisere data:}
     \begin{lstlisting}[language=Python]
-df.head()        # First 5 rows
-df.info()        # Column types, null values
-df.describe()    # Statistics for numeric columns
-df.shape         # (number of rows, number of columns)
-df.columns       # Column names
+df.head()        # Første 5 rader
+df.info()        # Kolonnetyper, nullvalueer
+df.describe()    # Statistikk for numeriske kolonner
+df.shape         # (antall rader, antall kolonner)
+df.columns       # Kolonnenavn
     \end{lstlisting}
     
-    \textbf{Filtering and selection:}
+    \textbf{Filtrering og utvalg:}
     \begin{lstlisting}[language=Python]
-# Select columns
-df[["age", "diagnosis"]]
+# Velg kolonner
+df[["alder", "diagnosis"]]
 
-# Filter rows
-elderly = df[df["age"] > 65]
+# Filtrer rader
+eldre = df[df["alder"] > 65]
     \end{lstlisting}
 \end{frame}
 
