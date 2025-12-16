@@ -1,6 +1,6 @@
 % =====================================================================
-% BMED365: Graph Theory og network science (N01-N10)
-% Beamer-presentasjon i widescreen (16:9)
+% BMED365: Graph Theory and Network Science (N01-N10)
+% Beamer presentation in widescreen (16:9)
 % =====================================================================
 \documentclass[aspectratio=169, 10pt]{beamer}
 
@@ -9,7 +9,7 @@
 % =====================================================================
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[notherwisek]{babel}
+\usepackage[english]{babel}
 \usepackage{graphicx}
 \usepackage{tikz}
 \usepackage{booktabs}
@@ -24,14 +24,14 @@
 \usetheme{Madrid}
 \usecolortheme{beaver}
 
-% Colotherwise for TikZ diagrams
+% Colors for TikZ diagrams
 \definecolor{uibblue}{RGB}{0, 61, 115}
 \definecolor{uibred}{RGB}{175, 28, 44}
 
 % =====================================================================
 % TITLE INFO
 % =====================================================================
-\title{Graph Theory og Network Science}
+\title{Graph Theory and Network Science}
 \subtitle{BMED365: Topic List N01--N10}
 \author{BMED365}
 \date{Spring 2026}
@@ -60,7 +60,7 @@
         \begin{itemize}
             \item N05: Degree Centrality
             \item N06: Betweenness Centrality
-            \item N07: Eigenveccounts Centrality
+            \item N07: Eigenvector Centrality
             \item N08: Clustering Coefficient
         \end{itemize}
         \item \textbf{Community Detection and Tools}
@@ -83,10 +83,10 @@
     \begin{columns}
         \begin{column}{0.45\textwidth}
             \begin{block}{Definition}
-                En \textbf{graf} $G = (V, E)$ består av:
+                A \textbf{graph} $G = (V, E)$ consists of:
                 \begin{itemize}
-                    \item $V$: mengde av \textbf{noder} (vertices)
-                    \item $E$: mengde av \textbf{kanter} (edges)
+                    \item $V$: set of \textbf{nodes} (vertices)
+                    \item $E$: set of \textbf{edges}
                 \end{itemize}
             \end{block}
             
@@ -94,8 +94,8 @@
             
             \textbf{Medical example:}
             \begin{itemize}
-                \item Noder = Pasienter
-                \item Kanter = Likhet mellom patienter
+                \item Nodes = Patients
+                \item Edges = Similarity between patients
             \end{itemize}
         \end{column}
         
@@ -130,10 +130,10 @@
     
     \begin{columns}
         \begin{column}{0.48\textwidth}
-            \textbf{\faArrowsAltH\ Ikke-rettet graf:}
+            \textbf{\faArrowsAltH\ Undirected graph:}
             \begin{itemize}
-                \item Kantene har ingen retning
-                \item $A - B$ betyr gjensidig forbindelse
+                \item Edges have no direction
+                \item $A - B$ means mutual connection
                 \item Example: Patient Similarity Networks (PSN)
             \end{itemize}
             
@@ -150,11 +150,11 @@
         \end{column}
         
         \begin{column}{0.48\textwidth}
-            \textbf{\faArrowRight\ Rettet graf (digraf):}
+            \textbf{\faArrowRight\ Directed graph (digraph):}
             \begin{itemize}
-                \item Kantene har retning
+                \item Edges have direction
                 \item $A \rightarrow B \neq B \rightarrow A$
-                \item Example: Gen-regulacountsiske nettverk
+                \item Example: Gene regulatory networks
             \end{itemize}
             
             \begin{center}
@@ -172,14 +172,14 @@
     
     \vspace{2mm}
     
-    \begin{block}{\footnotesize \href{https://en.wikipedia.org/wiki/Directed_acyclic_graph}{Rettet asyklisk graf (DAG)}}
-        \footnotesize En rettet graf \textbf{uten sykler} (ingen sti $A \rightarrow \cdots \rightarrow A$). Brukes i kausal inferens, Bayesianske nettverk, og arbeidsflytsystemer.
+    \begin{block}{\footnotesize \href{https://en.wikipedia.org/wiki/Directed_acyclic_graph}{Directed Acyclic Graph (DAG)}}
+        \footnotesize A directed graph \textbf{without cycles} (no path $A \rightarrow \cdots \rightarrow A$). Used in causal inference, Bayesian networks, and workflow systems.
     \end{block}
     
     \vspace{1mm}
     
     \begin{block}{\footnotesize Medical context}
-        \footnotesize PSN (patient similarity networks) er commonvis \textbf{ikke-rettet}: likhet mellom patient A og B er symmetrisk.
+        \footnotesize PSN (patient similarity networks) are typically \textbf{undirected}: similarity between patient A and B is symmetric.
     \end{block}
     
 \end{frame}
@@ -191,10 +191,10 @@
     
     \begin{columns}
         \begin{column}{0.48\textwidth}
-            \textbf{Ikke-vektet graf:}
+            \textbf{Unweighted graph:}
             \begin{itemize}
-                \item Alle kanter er ``like''
-                \item Binær: forbindelse or ikke
+                \item All edges are ``equal''
+                \item Binary: connection or not
             \end{itemize}
             
             \begin{center}
@@ -209,10 +209,10 @@
         \end{column}
         
         \begin{column}{0.48\textwidth}
-            \textbf{Vektet graf:}
+            \textbf{Weighted graph:}
             \begin{itemize}
-                \item Kanter har numeriske vekter
-                \item Representerer strength/avstand/likhet
+                \item Edges have numerical weights
+                \item Represents strength/distance/similarity
             \end{itemize}
             
             \begin{center}
@@ -229,12 +229,12 @@
     
     \vspace{3mm}
     
-    \begin{block}{I PSN (patient similarity networks)}
+    \begin{block}{In PSN (patient similarity networks)}
         \footnotesize
-        Vekten representerer \textbf{likhet (similaritet)} mellom patienter, calculatet fra clinicale variabler.\\[2pt]
-        \textbf{Høyere vekt} ($w$) = mer like patienter (lignende symptoms, biomarkerer, forløp, BMI, samme kjønn, \ldots).\\
-        \textbf{Lavere vekt} = mindre like patienter.\\
-        Ofte brukes en \textbf{threshold value} to filtrere bort svake koblinger (e.g. $w < 0.5$).
+        The weight represents \textbf{similarity} between patients, calculated from clinical variables.\\[2pt]
+        \textbf{Higher weight} ($w$) = more similar patients (similar symptoms, biomarkers, disease course, BMI, same gender, \ldots).\\
+        \textbf{Lower weight} = less similar patients.\\
+        Often a \textbf{threshold value} is used to filter out weak connections (e.g. $w < 0.5$).
     \end{block}
     
 \end{frame}
@@ -242,7 +242,7 @@
 % ---------------------------------------------------------------------
 % N04
 % ---------------------------------------------------------------------
-\begin{frame}{N04: Adjacency Matrix (\href{https://en.wikipedia.org/wiki/Adjacency_matrix}{adjacency matrix})}
+\begin{frame}{N04: \href{https://en.wikipedia.org/wiki/Adjacency_matrix}{Adjacency Matrix}}
     
     \begin{columns}
         \begin{column}{0.4\textwidth}
@@ -279,17 +279,17 @@
             \]
             
             \begin{itemize}
-                \item $A_{ij} = 1$ hvis kant mellom node $i$ og $j$
+                \item $A_{ij} = 1$ if edge between node $i$ and $j$
                 \item $A_{ij} = 0$ otherwise
-                \item Symmetrisk for ikke-rettede grafer
+                \item Symmetric for undirected graphs
             \end{itemize}
         \end{column}
     \end{columns}
     
     \vspace{3mm}
     
-    \begin{block}{Vektet graf}
-        I vektet graf: $A_{ij} = w_{ij}$ (vekten av kanten)
+    \begin{block}{Weighted graph}
+        In weighted graph: $A_{ij} = w_{ij}$ (the weight of the edge)
     \end{block}
     
 \end{frame}
@@ -301,25 +301,25 @@
 % ---------------------------------------------------------------------
 % N05
 % ---------------------------------------------------------------------
-\begin{frame}{N05: \href{https://en.wikipedia.org/wiki/Degree_centrality}{Degree Centrality} (degree centrality)}
+\begin{frame}{N05: \href{https://en.wikipedia.org/wiki/Degree_centrality}{Degree Centrality}}
     
     \begin{columns}
         \begin{column}{0.5\textwidth}
             \begin{block}{Definition}
-                \textbf{Degree} = antall kanter til en node
+                \textbf{Degree} = number of edges to a node
                 \[
                 C_D(v) = \frac{\deg(v)}{n-1}
                 \]
-                (normalisert: delt på maks mulige naboer)
+                (normalized: divided by max possible neighbors)
             \end{block}
             
             \vspace{2mm}
             
-            \textbf{Tolkning:}
+            \textbf{Interpretation:}
             \begin{itemize}
-                \item Høy degree = mange forbindelser
-                \item ``Hub'' i nettverket
-                \item Enkel å calculate
+                \item High degree = many connections
+                \item ``Hub'' in the network
+                \item Easy to calculate
             \end{itemize}
         \end{column}
         
@@ -356,7 +356,7 @@
     \vspace{1mm}
     
     \begin{block}{\footnotesize Medical relevance}
-        \footnotesize I PSN: Pasienter med høy degree centrality ligner på mange andre $\rightarrow$ ``typiske'' patienter.
+        \footnotesize In PSN: Patients with high degree centrality are similar to many others $\rightarrow$ ``typical'' patients.
     \end{block}
     
 \end{frame}
@@ -364,25 +364,25 @@
 % ---------------------------------------------------------------------
 % N06
 % ---------------------------------------------------------------------
-\begin{frame}{N06: \href{https://en.wikipedia.org/wiki/Betweenness_centrality}{Betweenness Centrality} (betweenness)}
+\begin{frame}{N06: \href{https://en.wikipedia.org/wiki/Betweenness_centrality}{Betweenness Centrality}}
     
     \begin{columns}
         \begin{column}{0.5\textwidth}
             \begin{block}{Definition}
-                Andel korteste stier som går gjennom en node
+                Fraction of shortest paths that pass through a node
                 \[
                 C_B(v) = \sum_{s \neq v \neq t} \frac{\sigma_{st}(v)}{\sigma_{st}}
                 \]
-                $\sigma_{st}$ = antall korteste stier fra $s$ til $t$
+                $\sigma_{st}$ = number of shortest paths from $s$ to $t$
             \end{block}
             
             \vspace{2mm}
             
-            \textbf{Tolkning:}
+            \textbf{Interpretation:}
             \begin{itemize}
-                \item Høy betweenness = ``bro'' mellom grupper
-                \item Kontrollerer informasjonsflyt
-                \item Kritisk for nettverkets struktur
+                \item High betweenness = ``bridge'' between groups
+                \item Controls information flow
+                \item Critical for network structure
             \end{itemize}
         \end{column}
         
@@ -427,7 +427,7 @@
             D & 0.0 & & 
             \end{tabular}
             
-            \textit{Node B er bro mellom to clusters}
+            \textit{Node B is bridge between two clusters}
         \end{column}
     \end{columns}
     
@@ -436,29 +436,29 @@
 % ---------------------------------------------------------------------
 % N07
 % ---------------------------------------------------------------------
-\begin{frame}{N07: \href{https://en.wikipedia.org/wiki/Eigenveccounts_centrality}{Eigenveccounts Centrality} (eigenveccounts centrality)}
+\begin{frame}{N07: \href{https://en.wikipedia.org/wiki/Eigenvector_centrality}{Eigenvector Centrality}}
     
-    \begin{block}{Idé}
-        En node er important hvis den er koblet til \textbf{andre importante noder}
+    \begin{block}{Idea}
+        A node is important if it is connected to \textbf{other important nodes}
     \end{block}
     
     \vspace{2mm}
     
     \begin{columns}
         \begin{column}{0.55\textwidth}
-            \textbf{Beregning:}
+            \textbf{Calculation:}
             \[
             x_i = \frac{1}{\lambda} \sum_{j \in N(i)} x_j
             \]
             
-            Matriseform: $\mathbf{Ax} = \lambda \mathbf{x}$ (\href{https://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectotherwise}{egenvekcounts}-ligning)
+            Matrix form: $\mathbf{Ax} = \lambda \mathbf{x}$ (\href{https://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectors}{eigenvector} equation)
             
             \vspace{2mm}
             
-            \textbf{Fotherwisekjell fra degree:}
+            \textbf{Difference from degree:}
             \begin{itemize}
-                \item Degree: counts bare antall naboer
-                \item Eigenveccounts: vekter naboer etter deres importanthet
+                \item Degree: only counts number of neighbors
+                \item Eigenvector: weights neighbors by their importance
             \end{itemize}
         \end{column}
         
@@ -478,14 +478,14 @@
                 \end{tikzpicture}
             \end{center}
             
-            \textit{A har høyest eigenveccounts centrality}
+            \textit{A has highest eigenvector centrality}
         \end{column}
     \end{columns}
     
     \vspace{1mm}
     
-    \begin{block}{\footnotesize Kjent applylse}
-        \footnotesize \href{https://en.wikipedia.org/wiki/PageRank}{Google PageRank} er en variant av eigenveccounts centrality!
+    \begin{block}{\footnotesize Famous application}
+        \footnotesize \href{https://en.wikipedia.org/wiki/PageRank}{Google PageRank} is a variant of eigenvector centrality!
     \end{block}
     
 \end{frame}
@@ -493,12 +493,12 @@
 % ---------------------------------------------------------------------
 % N08
 % ---------------------------------------------------------------------
-\begin{frame}{N08: \href{https://en.wikipedia.org/wiki/Clustering_coefficient}{Clustering Coefficient} (clustering coefficient)}
+\begin{frame}{N08: \href{https://en.wikipedia.org/wiki/Clustering_coefficient}{Clustering Coefficient}}
     
     \begin{block}{Definition}
-        Hvor mye naboene til en node er koblet til hverandre
+        How much the neighbors of a node are connected to each other
         \[
-        C_i = \frac{\text{antall kanter mellom naboer}}{\text{maks mulige kanter mellom naboer}}
+        C_i = \frac{\text{number of edges between neighbors}}{\text{max possible edges between neighbors}}
         \]
     \end{block}
     
@@ -506,7 +506,7 @@
     
     \begin{columns}
         \begin{column}{0.48\textwidth}
-            \textbf{Høy clustering ($C = 1$):}
+            \textbf{High clustering ($C = 1$):}
             \begin{center}
                 \begin{tikzpicture}[scale=0.6]
                     \node[draw, circle, fill=uibred!40] (A) at (1,2) {};
@@ -517,11 +517,11 @@
                     \draw[thick] (B) -- (C);
                 \end{tikzpicture}
             \end{center}
-            ``Naboene kjenner hverandre''
+            ``The neighbors know each other''
         \end{column}
         
         \begin{column}{0.48\textwidth}
-            \textbf{Lav clustering ($C = 0$):}
+            \textbf{Low clustering ($C = 0$):}
             \begin{center}
                 \begin{tikzpicture}[scale=0.6]
                     \node[draw, circle, fill=uibred!40] (A) at (1,2) {};
@@ -532,51 +532,51 @@
                     % No edge between B and C
                 \end{tikzpicture}
             \end{center}
-            ``Naboene kjenner ikke hverandre''
+            ``The neighbors don't know each other''
         \end{column}
     \end{columns}
     
     \vspace{1mm}
     
     \begin{block}{\footnotesize Medical relevance}
-        \footnotesize Høy clustering i PSN kan indikere tette patient subgroups (fenotyper).
+        \footnotesize High clustering in PSN can indicate tight patient subgroups (phenotypes).
     \end{block}
     
 \end{frame}
 
 % =====================================================================
-\section{Community detection}
+\section{Community Detection}
 % =====================================================================
 
 % ---------------------------------------------------------------------
 % N09
 % ---------------------------------------------------------------------
-\begin{frame}{N09: \href{https://en.wikipedia.org/wiki/Community_structure}{Community Detection} og \href{https://en.wikipedia.org/wiki/Louvain_method}{Louvain-algoritmen}}
+\begin{frame}{N09: \href{https://en.wikipedia.org/wiki/Community_structure}{Community Detection} and the \href{https://en.wikipedia.org/wiki/Louvain_method}{Louvain Algorithm}}
     
     \begin{block}{Community Detection}
-        Identifisere \textbf{grupper} (communities) av tett koblede noder
+        Identify \textbf{groups} (communities) of densely connected nodes
     \end{block}
     
     \vspace{2mm}
     
     \begin{columns}
         \begin{column}{0.5\textwidth}
-            \textbf{Louvain-algoritmen:}
+            \textbf{The Louvain algorithm:}
             \begin{enumerate}
-                \item Start: hver node = egen gruppe
-                \item Flytt noder til nabogrupper som øker \textbf{modularitet}
-                \item Gjenta til ingen improvement
-                \item Aggreger og repeter hierarkisk
+                \item Start: each node = own group
+                \item Move nodes to neighbor groups that increase \textbf{modularity}
+                \item Repeat until no improvement
+                \item Aggregate and repeat hierarchically
             \end{enumerate}
             
             \vspace{2mm}
             
-            \textbf{\href{https://en.wikipedia.org/wiki/Modularity_(networks)}{Modularitet} $Q$:}
+            \textbf{\href{https://en.wikipedia.org/wiki/Modularity_(networks)}{Modularity} $Q$:}
             \footnotesize
             \[
             Q = \frac{1}{2m}\sum_{ij}\left[A_{ij} - \frac{k_i k_j}{2m}\right]\delta(c_i, c_j)
             \]
-            \scriptsize $i,j$=noder, $A_{ij}$=nabomatrise, $m$=kanter, $k_i$=grad av node $i$, $c_i$=gruppe til node $i$, $\delta$=1 hvis $c_i=c_j$. $Q > 0.3$: god struktur.
+            \scriptsize $i,j$=nodes, $A_{ij}$=adjacency matrix, $m$=edges, $k_i$=degree of node $i$, $c_i$=community of node $i$, $\delta$=1 if $c_i=c_j$. $Q > 0.3$: good structure.
         \end{column}
         
         \begin{column}{0.45\textwidth}
@@ -607,7 +607,7 @@
                 \end{tikzpicture}
             \end{center}
             
-            \textit{To identifiserte communities}
+            \textit{Two identified communities}
         \end{column}
     \end{columns}
     
@@ -616,27 +616,27 @@
 % ---------------------------------------------------------------------
 % N10
 % ---------------------------------------------------------------------
-\begin{frame}{N10: \href{https://networkx.org/}{NetworkX}-biblioteket for Python}
+\begin{frame}{N10: The \href{https://networkx.org/}{NetworkX} library for Python}
     
     \begin{block}{NetworkX}
-        Python-bibliotek to opprette, manipulere og analysere grafer
+        Python library to create, manipulate, and analyze graphs
     \end{block}
     
     \vspace{2mm}
     
-    \textbf{Vanlige operasjoner:}
+    \textbf{Common operations:}
     
     \begin{columns}
         \begin{column}{0.48\textwidth}
             \texttt{\small import networkx as nx} \\[2mm]
-            \texttt{\small \# Opprett graf} \\
+            \texttt{\small \# Create graph} \\
             \texttt{\small G = nx.Graph()} \\
             \texttt{\small G.add\_edge('A', 'B', weight=0.8)} \\
             \texttt{\small G.add\_edge('B', 'C', weight=0.5)} \\[2mm]
-            \texttt{\small \# Centrality Measures} \\
+            \texttt{\small \# Centrality measures} \\
             \texttt{\small nx.degree\_centrality(G)} \\
             \texttt{\small nx.betweenness\_centrality(G)} \\
-            \texttt{\small nx.eigenveccounts\_centrality(G)} \\
+            \texttt{\small nx.eigenvector\_centrality(G)} \\
             \texttt{\small nx.clustering(G)}
         \end{column}
         
@@ -644,11 +644,11 @@
             \texttt{\small \# Community detection} \\
             \texttt{\small from community import louvain} \\
             \texttt{\small partition = louvain.best\_partition(G)} \\[2mm]
-            \texttt{\small \# Visualisering} \\
+            \texttt{\small \# Visualization} \\
             \texttt{\small nx.draw(G, with\_labels=True)} \\[2mm]
-            \texttt{\small \# Fra nabomatrise (numpy)} \\
+            \texttt{\small \# From adjacency matrix (numpy)} \\
             \texttt{\small G = nx.from\_numpy\_array(A)} \\[2mm]
-            \texttt{\small \# Grafegenskaper} \\
+            \texttt{\small \# Graph properties} \\
             \texttt{\small G.number\_of\_nodes()} \\
             \texttt{\small G.number\_of\_edges()} \\
             \texttt{\small nx.density(G)}
@@ -664,38 +664,38 @@
     
     \begin{columns}
         \begin{column}{0.48\textwidth}
-            \textbf{Graph Theory-grunnlayers:}
+            \textbf{Graph theory fundamentals:}
             \begin{itemize}
-                \item Graf $G = (V, E)$: noder ($V$) + kanter ($E$)
-                \item Rettet vs. ikke-rettet
-                \item Vektet vs. ikke-vektet
-                \item Adjacency Matrix-representasjon
+                \item Graph $G = (V, E)$: nodes ($V$) + edges ($E$)
+                \item Directed vs. undirected
+                \item Weighted vs. unweighted
+                \item Adjacency matrix representation
             \end{itemize}
             
             \vspace{3mm}
             
-            \textbf{Centrality Measures:}
+            \textbf{Centrality measures:}
             \begin{itemize}
-                \item Degree: antall forbindelser
-                \item Betweenness: bro-rolle
-                \item Eigenveccounts: importante naboer
+                \item Degree: number of connections
+                \item Betweenness: bridge role
+                \item Eigenvector: important neighbors
             \end{itemize}
         \end{column}
         
         \begin{column}{0.48\textwidth}
-            \textbf{Strukturanalyse:}
+            \textbf{Structural analysis:}
             \begin{itemize}
-                \item Clustering coefficient: lokal tetthet
-                \item Community detection: finne grupper
-                \item Louvain-algoritme: effektiv metode
+                \item Clustering coefficient: local density
+                \item Community detection: finding groups
+                \item Louvain algorithm: efficient method
             \end{itemize}
             
             \vspace{3mm}
             
-            \textbf{Verktøy:}
+            \textbf{Tools:}
             \begin{itemize}
                 \item \href{https://networkx.org/}{NetworkX} (Python)
-                \item Integrasjon med \href{https://numpy.org/}{NumPy}/\href{https://pandas.pydata.org/}{Pandas}
+                \item Integration with \href{https://numpy.org/}{NumPy}/\href{https://pandas.pydata.org/}{Pandas}
             \end{itemize}
         \end{column}
     \end{columns}
@@ -703,16 +703,9 @@
     \vspace{5mm}
     
     \begin{block}{Next steps}
-        Bruk disse konseptene til å bygge \textbf{patient similarity networks} (PSN)!
+        Use these concepts to build \textbf{patient similarity networks} (PSN)!
     \end{block}
     
 \end{frame}
 
 \end{document}
-
-
-
-
-
-
-

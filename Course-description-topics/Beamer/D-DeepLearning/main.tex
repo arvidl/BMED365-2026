@@ -1,6 +1,6 @@
 % =====================================================================
-% BMED365: Neural Networks og deep learning
-% Beamer-presentasjon - Topic List D01-D13
+% BMED365: Neural Networks and Deep Learning
+% Beamer presentation - Topic List D01-D13
 % =====================================================================
 \documentclass[aspectratio=169, 10pt]{beamer}
 
@@ -9,7 +9,7 @@
 % =====================================================================
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[notherwisek]{babel}
+\usepackage[english]{babel}
 \usepackage{graphicx}
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric, arrows, positioning, calc, decorations.pathreplacing}
@@ -23,7 +23,7 @@
 \usetheme{Madrid}
 \usecolortheme{beaver}
 
-% Colotherwise for TikZ diagrams
+% Colors for TikZ diagrams
 \definecolor{uibblue}{RGB}{0, 61, 115}
 \definecolor{uibred}{RGB}{175, 28, 44}
 
@@ -71,9 +71,9 @@
             \textbf{Artificial neuron (perceptron):}
             \begin{itemize}
                 \item \textbf{Inputs} $x_1, x_2, \ldots$: Receives data
-                \item \textbf{Vekter} $w_1, w_2, \ldots$: Synaptic strength
+                \item \textbf{Weights} $w_1, w_2, \ldots$: Synaptic strength
                 \item \textbf{Sum:} $z = \sum w_i x_i + b$
-                \item \textbf{Aktivering:} $a = f(z)$ \small(f = activation function)
+                \item \textbf{Activation:} $a = f(z)$ \small(f = activation function)
                 \item Mathematical simplification
             \end{itemize}
         \end{column}
@@ -81,11 +81,11 @@
     
     \vspace{0.5cm}
     \begin{block}{Key similarity}
-        Both sum incoming signals og ``fires'' (activates) hvis total stimulering exceeds a threshold.
+        Both sum incoming signals and ``fire'' (activate) if total stimulation exceeds a threshold.
     \end{block}
     
     \begin{alertblock}{Important difference}
-        Artificiale nevroner er \textbf{greatly simplified models} -- de fanger ikke hjernens fulle complexitet.
+        Artificial neurons are \textbf{greatly simplified models} - they do not capture the full complexity of the brain.
     \end{alertblock}
 \end{frame}
 
@@ -95,19 +95,19 @@
             \textbf{MLP architecture:}
             \begin{itemize}
                 \item \textbf{Input layer:} Receives features (no processing)
-                \item \textbf{Hidden layers:} 1 or flere layers of neurons
+                \item \textbf{Hidden layers:} One or more layers of neurons
                 \item \textbf{Output layer:} Produces prediction
             \end{itemize}
             
             \vspace{0.3cm}
             \textbf{Fully connected (dense):}
             \begin{itemize}
-                \item Each neuron in one layer is connected to \textbf{alle} nevroner i neste layers
+                \item Each neuron in one layer is connected to \textbf{all} neurons in the next layer
                 \item Many parameters (weights and biases)
             \end{itemize}
             
             \vspace{0.3cm}
-            \textbf{``Dyp'' læring:}
+            \textbf{``Deep'' learning:}
             \begin{itemize}
                 \item $\geq$ 2 hidden layers = deep model
                 \item More layers $\rightarrow$ more abstract representations
@@ -118,43 +118,43 @@
                 \tikzstyle{neuron}=[circle, draw=uibblue, fill=uibblue!20, minimum size=0.6cm]
                 
                 % Input layer
-                \foreach \y in {1,2,3} {
-                    \node[neuron] (i\y) at (0, -\y) {};
+                \foreach \y/\name in {1/i1,2/i2,3/i3} {
+                    \node[neuron] (\name) at (0, -\y) {};
                 }
                 \node at (0, -4.2) {\footnotesize Input};
                 
                 % Hidden layer 1
-                \foreach \y in {0.5,1.5,2.5,3.5} {
-                    \node[neuron, fill=uibblue!40] (h1\y) at (2, -\y) {};
+                \foreach \y/\name in {0.5/h1a,1.5/h1b,2.5/h1c,3.5/h1d} {
+                    \node[neuron, fill=uibblue!40] (\name) at (2, -\y) {};
                 }
                 \node at (2, -4.7) {\footnotesize Hidden 1};
                 
                 % Hidden layer 2
-                \foreach \y in {1,2,3} {
-                    \node[neuron, fill=uibblue!60] (h2\y) at (4, -\y) {};
+                \foreach \y/\name in {1/h2a,2/h2b,3/h2c} {
+                    \node[neuron, fill=uibblue!60] (\name) at (4, -\y) {};
                 }
                 \node at (4, -4.2) {\footnotesize Hidden 2};
                 
                 % Output layer
-                \foreach \y in {1.5,2.5} {
-                    \node[neuron, fill=uibred!40] (o\y) at (6, -\y) {};
+                \foreach \y/\name in {1.5/o1,2.5/o2} {
+                    \node[neuron, fill=uibred!40] (\name) at (6, -\y) {};
                 }
                 \node at (6, -4.2) {\footnotesize Output};
                 
                 % Connections (simplified)
-                \foreach \i in {1,2,3} {
-                    \foreach \h in {0.5,1.5,2.5,3.5} {
-                        \draw[gray!50, thin] (i\i) -- (h1\h);
+                \foreach \i in {i1,i2,i3} {
+                    \foreach \h in {h1a,h1b,h1c,h1d} {
+                        \draw[gray!50, thin] (\i) -- (\h);
                     }
                 }
-                \foreach \ha in {0.5,1.5,2.5,3.5} {
-                    \foreach \hb in {1,2,3} {
-                        \draw[gray!50, thin] (h1\ha) -- (h2\hb);
+                \foreach \ha in {h1a,h1b,h1c,h1d} {
+                    \foreach \hb in {h2a,h2b,h2c} {
+                        \draw[gray!50, thin] (\ha) -- (\hb);
                     }
                 }
-                \foreach \h in {1,2,3} {
-                    \foreach \o in {1.5,2.5} {
-                        \draw[gray!50, thin] (h2\h) -- (o\o);
+                \foreach \h in {h2a,h2b,h2c} {
+                    \foreach \o in {o1,o2} {
+                        \draw[gray!50, thin] (\h) -- (\o);
                     }
                 }
             \end{tikzpicture}
@@ -163,7 +163,7 @@
 \end{frame}
 
 \begin{frame}{D03: Explain what an activation function is (ReLU, sigmoid)}
-    \textbf{Why activation functioner?} Without them: The entire network = linear transformation. Introduserer \textbf{ikke-linearitet}.
+    \textbf{Why activation functions?} Without them: The entire network = linear transformation. They introduce \textbf{non-linearity}.
 
     \vspace{0.2cm}
     \begin{columns}[T]
@@ -186,8 +186,8 @@
     \end{columns}
 
     \vspace{0.2cm}
-    \begin{block}{\footnotesize Softmax (multi-klasse output)}
-        \footnotesize $\text{softmax}(z_i) = \frac{e^{z_i}}{\sum_j e^{z_j}}$ -- gives probability distribution over classes (sums to 1)
+    \begin{block}{\footnotesize Softmax (multi-class output)}
+        \footnotesize $\text{softmax}(z_i) = \frac{e^{z_i}}{\sum_j e^{z_j}}$ - gives probability distribution over classes (sums to 1)
     \end{block}
 \end{frame}
 
@@ -200,13 +200,13 @@
     \textbf{Forward propagation = forward computation}
     
     \begin{enumerate}
-        \item \textbf{Input:} Data $\mathbf{x}$ (features) legges inn i inputlayerset
+        \item \textbf{Input:} Data $\mathbf{x}$ (features) is fed into the input layer
         \item \textbf{For each layer:}
         \begin{itemize}
             \item Compute weighted sum: $z^{(l)} = W^{(l)} \cdot a^{(l-1)} + b^{(l)}$
             \item Apply activation: $a^{(l)} = f(z^{(l)})$
         \end{itemize}
-        \item \textbf{Output:} Prediksjon $\hat{y}$ fra siste layers
+        \item \textbf{Output:} Prediction $\hat{y}$ from the final layer
     \end{enumerate}
     
     \vspace{0.3cm}
@@ -228,7 +228,7 @@
     
     \vspace{0.3cm}
     \begin{block}{Key point}
-        Forward propagation calculates prediction -- no learning happens here. Learning happens through backpropagation og update av vekter.
+        Forward propagation calculates prediction - no learning happens here. Learning happens through backpropagation and weight updates.
     \end{block}
 \end{frame}
 
@@ -238,22 +238,22 @@
     \vspace{0.3cm}
     \textbf{Main idea:}
     \begin{enumerate}
-        \item \textbf{Beregn feil:} Sammenlign prediction $\hat{y}$ med fasit $y$
+        \item \textbf{Compute error:} Compare prediction $\hat{y}$ with ground truth $y$
         \item \textbf{Propagate backward:} How much did each weight contribute to the error?
-        \item \textbf{Chain rule:} Differentiate error with respect to hver vekt i nettverket
-        \item \textbf{Oppdater vekter:} Adjust to reduce error
+        \item \textbf{Chain rule:} Differentiate error with respect to each weight in the network
+        \item \textbf{Update weights:} Adjust to reduce error
     \end{enumerate}
     
     \vspace{0.3cm}
-    \begin{alertblock}{Intuisjon}
-        Imagine adjusting a complex machine: Backpropagation tells you which screws (weights) du shall turn, og in which direction, to improve the result.
+    \begin{alertblock}{Intuition}
+        Imagine adjusting a complex machine: Backpropagation tells you which screws (weights) to turn, and in which direction, to improve the result.
     \end{alertblock}
     
     \vspace{0.3cm}
-    \begin{block}{Matematisk (forenklet)}
+    \begin{block}{Mathematical (simplified)}
         $\frac{\partial L}{\partial w} = \frac{\partial L}{\partial \hat{y}} \cdot \frac{\partial \hat{y}}{\partial z} \cdot \frac{\partial z}{\partial w}$
         
-        \small (Chain rule for derivasjon propagerer gradienter bakover gjennom nettverket)
+        \small (Chain rule for derivatives propagates gradients backward through the network)
     \end{block}
 \end{frame}
 
@@ -261,23 +261,23 @@
     \textbf{Gradient descent:}
     \begin{itemize}
         \item Optimization algorithm to \textbf{minimize the loss function}
-        \item Følger den \textbf{negative gradienten} (steepest descent)
+        \item Follows the \textbf{negative gradient} (steepest descent)
     \end{itemize}
     
     \vspace{0.3cm}
     \textbf{Update rule:}
     \[
-    w_{\text{ny}} = w_{\text{gammel}} - \eta \cdot \frac{\partial L}{\partial w}
+    w_{\text{new}} = w_{\text{old}} - \eta \cdot \frac{\partial L}{\partial w}
     \]
     
     \begin{columns}[T]
         \begin{column}{0.48\textwidth}
             \textbf{Learning rate $\eta$:}
             \begin{itemize}
-                \item Bestemmer \textbf{steglengde}
+                \item Determines \textbf{step size}
                 \item Too large: Jumps over minimum
                 \item Too small: Slow convergence
-                \item Typisk: 0.001--0.01
+                \item Typical: 0.001--0.01
             \end{itemize}
         \end{column}
         \begin{column}{0.48\textwidth}
@@ -293,14 +293,14 @@
     
     \vspace{0.2cm}
     \begin{block}{\footnotesize Epoch}
-        \footnotesize En \textbf{epoch} = én gjennomgang av hele training datasetet
+        \footnotesize An \textbf{epoch} = one complete pass through the entire training dataset
     \end{block}
 \end{frame}
 
 \begin{frame}{D07: Know about loss functions (cross-entropy, MSE)}
-    \textbf{Loss function (loss function):}
+    \textbf{Loss function:}
     \begin{itemize}
-        \item Måler \textbf{hvor feil} the model's predictions are
+        \item Measures \textbf{how wrong} the model's predictions are
         \item The goal: Minimize loss during training
     \end{itemize}
     
@@ -312,8 +312,8 @@
             L = \frac{1}{n}\sum_{i=1}^{n}(y_i - \hat{y}_i)^2
             \]
             \begin{itemize}
-                \item Brukes for \textbf{regression}
-                \item Penalizes large errotherwise heavily
+                \item Used for \textbf{regression}
+                \item Penalizes large errors heavily
                 \item Continuous output
             \end{itemize}
         \end{column}
@@ -323,7 +323,7 @@
             L = -\sum_{i} y_i \log(\hat{y}_i)
             \]
             \begin{itemize}
-                \item Brukes for \textbf{classification}
+                \item Used for \textbf{classification}
                 \item Binary: $-[y\log\hat{y} + (1-y)\log(1-\hat{y})]$
                 \item Measures divergence between probability distributions
             \end{itemize}
@@ -333,7 +333,7 @@
     \vspace{0.2cm}
     \begin{block}{\footnotesize Choosing the right loss}
         \footnotesize
-        \textbf{Regression:} MSE/MAE \quad \textbf{Binær:} Binary CE \quad \textbf{Multi-klasse:} Categorical CE
+        \textbf{Regression:} MSE/MAE \quad \textbf{Binary:} Binary CE \quad \textbf{Multi-class:} Categorical CE
     \end{block}
 \end{frame}
 
@@ -346,9 +346,9 @@
     \textbf{CNN = specialized for image data}
     
     \begin{itemize}
-        \item Utnytter \textbf{romlig struktur} i bilder
+        \item Exploits \textbf{spatial structure} in images
         \item Far fewer parameters than fully connected network
-        \item Translation invariant -- recognizes patterns regardless of position
+        \item Translation invariant - recognizes patterns regardless of position
     \end{itemize}
     
     \vspace{0.3cm}
@@ -387,9 +387,9 @@
 \begin{frame}{D09: Explain what a convolution filter does}
     \textbf{Convolution filter (kernel):}
     \begin{itemize}
-        \item Small matrix (e.g. $3 \times 3$) som \textbf{slides over the image}
+        \item Small matrix (e.g. $3 \times 3$) that \textbf{slides over the image}
         \item Calculates dot product between filter and image patch
-        \item Produserer et \textbf{feature map}
+        \item Produces a \textbf{feature map}
     \end{itemize}
     
     \vspace{0.3cm}
@@ -403,7 +403,7 @@
             \begin{itemize}
                 \item Detects horizontal edges
                 \item Different filters $\rightarrow$ different features
-                \item CNN \textbf{lærer} optimale filtre!
+                \item CNN \textbf{learns} optimal filters!
             \end{itemize}
         \end{column}
         \begin{column}{0.42\textwidth}
@@ -411,7 +411,7 @@
             \begin{itemize}
                 \item \textbf{Stride:} How far the filter moves
                 \item \textbf{Padding:} Adding pixels at the border
-                \item \textbf{Channel:} RGB = 3 kanaler
+                \item \textbf{Channels:} RGB = 3 channels
                 \item \textbf{Feature map:} Output from convolution
             \end{itemize}
         \end{column}
@@ -419,7 +419,7 @@
     
     \vspace{0.2cm}
     \begin{block}{\footnotesize Weight sharing}
-        \footnotesize Same filter used across entire image $\rightarrow$ dramatically fewer parameters enn fullt koblet nettverk.
+        \footnotesize Same filter used across entire image $\rightarrow$ dramatically fewer parameters than a fully connected network.
     \end{block}
 \end{frame}
 
@@ -431,16 +431,16 @@
         \begin{column}{0.55\textwidth}
             \textbf{Most common type: Max pooling}
             \begin{itemize}
-                \item Velger \textbf{maksvalue} in each region (e.g. $2 \times 2$)
-                \item Reduces spatial size by faccounts 2
+                \item Selects \textbf{maximum value} in each region (e.g. $2 \times 2$)
+                \item Reduces spatial size by factor of 2
             \end{itemize}
 
             \vspace{0.2cm}
             \textbf{Advantages of pooling:}
             \begin{itemize}
-                \item \textbf{Reduces computation} -- fewer parameters
-                \item \textbf{Translation invariance} -- slight shift does not affect output
-                \item \textbf{Prevents overfitting} (overfitting)
+                \item \textbf{Reduces computation} - fewer parameters
+                \item \textbf{Translation invariance} - slight shift does not affect output
+                \item \textbf{Prevents overfitting}
             \end{itemize}
         \end{column}
         \begin{column}{0.42\textwidth}
@@ -456,8 +456,8 @@
             \begin{block}{\footnotesize Other pooling types}
                 \footnotesize
                 \begin{itemize}
-                    \item \textbf{Average:} Average
-                    \item \textbf{Global avg:} Feature map $\rightarrow$ én value
+                    \item \textbf{Average:} Mean value
+                    \item \textbf{Global avg:} Feature map $\rightarrow$ one value
                 \end{itemize}
             \end{block}
         \end{column}
@@ -465,7 +465,7 @@
 \end{frame}
 
 % =====================================================================
-% SECTION: Regularisering og teknikker
+% SECTION: Regularization and Techniques
 % =====================================================================
 \section{Regularization and Advanced Techniques}
 
@@ -488,11 +488,11 @@
         \begin{column}{0.48\textwidth}
             \textbf{Dropout:}
             \begin{itemize}
-                \item ``Slår av'' tilfeldige nevroner under training
-                \item Typisk dropout rate: 0.2--0.5
+                \item ``Turns off'' random neurons during training
+                \item Typical dropout rate: 0.2--0.5
                 \item Advantages:
                 \begin{itemize}
-                    \item Reduserer \textbf{overfitting}
+                    \item Reduces \textbf{overfitting}
                     \item Forces network to be robust
                     \item Acts as ensemble
                 \end{itemize}
@@ -503,7 +503,7 @@
     
     \vspace{0.5cm}
     \begin{block}{Regularization techniques}
-        Både batch normalization og dropout help prevent overfitting and improve generalization.
+        Both batch normalization and dropout help prevent overfitting and improve generalization.
     \end{block}
 \end{frame}
 
@@ -511,21 +511,21 @@
     \textbf{Transfer learning:}
     \begin{itemize}
         \item Reuse a model trained on one problem for a new problem
-        \item Spesielt nyttig når du har \textbf{lite data}
+        \item Especially useful when you have \textbf{limited data}
     \end{itemize}
     
     \vspace{0.3cm}
     \textbf{Typical approach:}
     \begin{enumerate}
-        \item Take a pretrained model (e.g. trained on ImageNet -- millions of images)
+        \item Take a pretrained model (e.g. trained on ImageNet - millions of images)
         \item Freeze early layers (general features)
         \item Replace/train final layer for your specific task
-        \item (Valgfritt) Fine-tune entire model with low learning rate
+        \item (Optional) Fine-tune entire model with low learning rate
     \end{enumerate}
     
     \vspace{0.3cm}
     \begin{alertblock}{\footnotesize Why does it work?}
-        \footnotesize Early layers lærer \textbf{general features} (edges, textures) that are useful for many tasks. Only the final layers are task-specific.
+        \footnotesize Early layers learn \textbf{general features} (edges, textures) that are useful for many tasks. Only the final layers are task-specific.
     \end{alertblock}
 
     \begin{block}{\footnotesize Example in medicine}
@@ -538,7 +538,7 @@
         \begin{column}{0.48\textwidth}
             \textbf{ResNet (Residual Networks):}
             \begin{itemize}
-                \item Introduserte \textbf{skip connections}
+                \item Introduced \textbf{skip connections}
                 \item Allows gradients to flow directly
                 \item Enables very deep networks (50--152+ layers)
                 \item $y = F(x) + x$ (residual block)
@@ -581,36 +581,29 @@
 \section*{Summary}
 
 \begin{frame}{Summary: Deep Learning}
-    \textbf{Fundamental:}
+    \textbf{Fundamentals:}
     \begin{itemize}
-        \item D01--D03: Nevroner, MLP, activation functioner
+        \item D01--D03: Neurons, MLP, activation functions
         \item D04--D07: Forward/backprop, gradient descent, loss functions
     \end{itemize}
     
     \textbf{CNN:}
     \begin{itemize}
-        \item D08--D10: Arkitektur, konvolusjonsfiltre, pooling
-        \item Hierarchical learning av bildfeatures
+        \item D08--D10: Architecture, convolution filters, pooling
+        \item Hierarchical learning of image features
     \end{itemize}
     
-    \textbf{Avansert:}
+    \textbf{Advanced:}
     \begin{itemize}
-        \item D11: Batch normalization, dropout (regularisering)
-        \item D12: Transfer learning (gjenbruk av pretrent kunnskap)
-        \item D13: ResNet (dype nettverk), ViT (transformers for bilder)
+        \item D11: Batch normalization, dropout (regularization)
+        \item D12: Transfer learning (reuse of pretrained knowledge)
+        \item D13: ResNet (deep networks), ViT (transformers for images)
     \end{itemize}
     
     \vspace{0.3cm}
-    \begin{block}{Lab 2 -- Praktisk erfaring}
-        Bygg, tren og evaluate CNN med PyTorch. Bruk Grad-CAM to understand modellbeslutninger.
+    \begin{block}{Lab 2 - Hands-on experience}
+        Build, train and evaluate CNNs with PyTorch. Use Grad-CAM to understand model decisions.
     \end{block}
 \end{frame}
 
 \end{document}
-
-
-
-
-
-
-

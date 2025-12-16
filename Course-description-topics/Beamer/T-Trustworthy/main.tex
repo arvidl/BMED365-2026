@@ -1,6 +1,6 @@
 % =====================================================================
-% BMED365: Trustworthy AI og robustness
-% Beamer-presentasjon - Topic List T01-T07
+% BMED365: Trustworthy AI and Robustness
+% Beamer presentation - Topic List T01-T07
 % =====================================================================
 \documentclass[aspectratio=169, 10pt]{beamer}
 
@@ -9,7 +9,7 @@
 % =====================================================================
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[notherwisek]{babel}
+\usepackage[english]{babel}
 \usepackage{graphicx}
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric, arrows, positioning, calc}
@@ -33,7 +33,7 @@
 % =====================================================================
 % TITLE INFO
 % =====================================================================
-\title{Trustworthy AI og Robustness}
+\title{Trustworthy AI and Robustness}
 \subtitle{BMED365: Topic List T01--T07}
 \author{BMED365}
 \date{Spring 2026}
@@ -59,12 +59,12 @@
         \begin{itemize}
             \item T02: Explain the concept of robustness in ML/AI
             \item T03: Describe data drift and its consequences
-            \item T04: Explain epistemic vs. aleacountsic uncertainty
+            \item T04: Explain epistemic vs. aleatoric uncertainty
         \end{itemize}
         \item \textbf{Human-Machine Interaction}
         \begin{itemize}
             \item T05: Describe human-in-the-loop (HITL) systems
-            \item T06: Discuss the importance of continuous monicountsing
+            \item T06: Discuss the importance of continuous monitoring
         \end{itemize}
         \item \textbf{Security Threats}
         \begin{itemize}
@@ -82,25 +82,25 @@
     \textbf{\href{https://digital-strategy.ec.europa.eu/en/policies/expert-group-ai}{EU High-Level Expert Group on AI} (2019):}
     
     \begin{block}{Definition}
-        \textbf{Trustworthy AI} er AI that is lovlig, etisk og robust -- både teknisk og sosialt.
+        \textbf{Trustworthy AI} is AI that is lawful, ethical and robust -- both technically and socially.
     \end{block}
     
     \vspace{0.2cm}
-    \textbf{Syv nøkkelkrav:}
+    \textbf{Seven key requirements:}
     \begin{enumerate}
-        \item \textbf{Menneskers handlingsrom og tilsyn} -- Human agency \& oversight
-        \item \textbf{Teknisk robustness og sikkerhet} -- Technical robustness \& safety
-        \item \textbf{Privacy og dataforvaltning} -- Privacy \& data governance
-        \item \textbf{Transparens} -- Transparency
-        \item \textbf{Mangfold, ikke-diskriminering, fairness} -- Diversity, non-discrimination, fairness
-        \item \textbf{Sosial og miljømessig velferd} -- Societal \& environmental well-being
-        \item \textbf{Responsibilitylighet} -- Accountability
+        \item \textbf{Human agency and oversight}
+        \item \textbf{Technical robustness and safety}
+        \item \textbf{Privacy and data governance}
+        \item \textbf{Transparency}
+        \item \textbf{Diversity, non-discrimination, fairness}
+        \item \textbf{Societal and environmental well-being}
+        \item \textbf{Accountability}
     \end{enumerate}
     
     \vspace{0.1cm}
     {\small
     \begin{alertblock}{Medical relevance}
-        Høyrisiko AI-systemer i helse må oppfylle disse kravene under \href{https://artificialintelligenceact.eu/}{EU AI Act}.
+        High-risk AI systems in healthcare must fulfill these requirements under the \href{https://artificialintelligenceact.eu/}{EU AI Act}.
     \end{alertblock}
     }
 \end{frame}
@@ -111,29 +111,29 @@
 \section{Robustness and Uncertainty}
 
 \begin{frame}{T02: Explain the concept of robustness in ML/AI}
-    \textbf{Robustness = modellens evne til å prestere pålitelig under variasjon}
+    \textbf{Robustness = the model's ability to perform reliably under variation}
     
     \vspace{0.2cm}
-    \textbf{En robust modell:}
+    \textbf{A robust model:}
     \begin{itemize}
-        \item Gir \textbf{konsistente resulter} på lignende input
-        \item \textbf{Degraderer gradvis} (\href{https://en.wikipedia.org/wiki/Graceful_degradation}{ikke katastrofalt}) ved støy
-        \item Generaliserer godt til nye, usette data
+        \item Provides \textbf{consistent results} on similar inputs
+        \item \textbf{Degrades gracefully} (\href{https://en.wikipedia.org/wiki/Graceful_degradation}{not catastrophically}) under noise
+        \item Generalizes well to new, unseen data
     \end{itemize}
     
     \vspace{0.2cm}
-    \textbf{Typer robustness:}
+    \textbf{Types of robustness:}
     \begin{columns}[T]
         \begin{column}{0.48\textwidth}
             \begin{itemize}
-                \item \textbf{Støyrobustness:} Toleranse for tilfeldig støy
-                \item \textbf{Distribusjonell robustness:} Endringer i dataadvantageing
+                \item \textbf{Noise robustness:} Tolerance for random noise
+                \item \textbf{Distributional robustness:} Changes in data distribution
             \end{itemize}
         \end{column}
         \begin{column}{0.48\textwidth}
             \begin{itemize}
-                \item \textbf{Adversarial robustness:} Motstand mot bevisste angrep
-                \item \textbf{Temporal robustness:} Stabilitet over tid
+                \item \textbf{Adversarial robustness:} Resistance to deliberate attacks
+                \item \textbf{Temporal robustness:} Stability over time
             \end{itemize}
         \end{column}
     \end{columns}
@@ -141,80 +141,80 @@
     \vspace{0.15cm}
     {\small
     \begin{block}{In medicine}
-        En robust medical AI gir pålitelige predictioner uavhengig av variasjon i bildekvalitet, patientpopulasjon, or utstyr.
+        A robust medical AI provides reliable predictions regardless of variation in image quality, patient population, or equipment.
     \end{block}
     }
 \end{frame}
 
 \begin{frame}{T03: Describe data drift and its consequences}
-    \textbf{\href{https://en.wikipedia.org/wiki/Data_drift}{Datadrift} (distributional shift):}
+    \textbf{\href{https://en.wikipedia.org/wiki/Data_drift}{Data drift} (distributional shift):}
     \begin{itemize}
-        \item Fotherwisekjell mellom \textbf{training data} og \textbf{produksjonsdata}
-        \item Modellen møter data som ikke ligner det den er trent på
+        \item Difference between \textbf{training data} and \textbf{production data}
+        \item The model encounters data that doesn't resemble what it was trained on
     \end{itemize}
     
     \vspace{0.2cm}
-    \textbf{Typer drift:}
+    \textbf{Types of drift:}
     \begin{enumerate}
-        \item \textbf{\href{https://en.wikipedia.org/wiki/Covariate_shift}{Covariate shift}:} Input-advantageing endres (e.g. ny patientdemografi)
-        \item \textbf{\href{https://en.wikipedia.org/wiki/Label_shift}{Label shift}:} Forekomst av klasser endres (e.g. pandemier)
-        \item \textbf{\href{https://en.wikipedia.org/wiki/Concept_drift}{Concept drift}:} Sammenhengen mellom input og output endres
+        \item \textbf{\href{https://en.wikipedia.org/wiki/Covariate_shift}{Covariate shift}:} Input distribution changes (e.g. new patient demographics)
+        \item \textbf{\href{https://en.wikipedia.org/wiki/Label_shift}{Label shift}:} Class prevalence changes (e.g. pandemics)
+        \item \textbf{\href{https://en.wikipedia.org/wiki/Concept_drift}{Concept drift}:} The relationship between input and output changes
     \end{enumerate}
     
     \vspace{0.2cm}
-    \textbf{Examples i medisin:}
+    \textbf{Examples in medicine:}
     \begin{itemize}
-        \item Modell trent på data fra USA brukes i Norge
-        \item Ny MR-skanner gir andre bildekarakteristikker
-        \item COVID endret innleggelsesmønstre
+        \item Model trained on US data used in Norway
+        \item New MRI scanner produces different image characteristics
+        \item COVID changed admission patterns
     \end{itemize}
     
     {\small
     \begin{alertblock}{Consequence}
-        Modellen kan \textbf{\href{https://en.wikipedia.org/wiki/Silent_failure}{feile stille}} -- gir predictioner med høy konfidens that is feil!
+        The model can \textbf{\href{https://en.wikipedia.org/wiki/Silent_failure}{fail silently}} -- gives predictions with high confidence that are wrong!
     \end{alertblock}
     }
 \end{frame}
 
-\begin{frame}{T04: Explain the difference between epistemic and aleacountsic uncertainty}
+\begin{frame}{T04: Explain the difference between epistemic and aleatoric uncertainty}
     \begin{columns}[T]
         \begin{column}{0.48\textwidth}
-            \textbf{\href{https://en.wikipedia.org/wiki/Uncertainty_quantification\#Epistemic_uncertainty}{Epistemisk usikkerhet}:}
+            \textbf{\href{https://en.wikipedia.org/wiki/Uncertainty_quantification\#Epistemic_uncertainty}{Epistemic uncertainty}:}
             \begin{itemize}
-                \item Usikkerhet pga. \textbf{manglende kunnskap}
-                \item ``Vi vet ikke nok ennå''
-                \item \textbf{Kan reduseres} med mer data
-                \item Modellen er usikker på områder med lite training data
+                \item Uncertainty due to \textbf{lack of knowledge}
+                \item ``We don't know enough yet''
+                \item \textbf{Can be reduced} with more data
+                \item Model is uncertain in areas with little training data
             \end{itemize}
             
             \vspace{0.3cm}
             \textbf{Example:}
             \begin{itemize}
-                \item Sjelden disease med få training examples
-                \item Usikkerhet fordi modellen mangler erfaring
+                \item Rare disease with few training examples
+                \item Uncertainty because model lacks experience
             \end{itemize}
         \end{column}
         \begin{column}{0.48\textwidth}
-            \textbf{\href{https://en.wikipedia.org/wiki/Uncertainty_quantification\#Aleacountsic_uncertainty}{Aleacountsisk usikkerhet}:}
+            \textbf{\href{https://en.wikipedia.org/wiki/Uncertainty_quantification\#Aleatoric_uncertainty}{Aleatoric uncertainty}:}
             \begin{itemize}
-                \item \textbf{Iboende} tilfeldig variasjon i data
-                \item ``Verden er usikker''
-                \item \textbf{Kan ikke reduseres} med mer data
-                \item Støy i goalinger, naturlig variasjon
+                \item \textbf{Inherent} random variation in data
+                \item ``The world is uncertain''
+                \item \textbf{Cannot be reduced} with more data
+                \item Noise in measurements, natural variation
             \end{itemize}
             
             \vspace{0.3cm}
             \textbf{Example:}
             \begin{itemize}
-                \item To patienter med identiske features har ulike utfall
-                \item Usikkerhet fordi utfall er genuint usikkert
+                \item Two patients with identical features have different outcomes
+                \item Uncertainty because outcome is genuinely uncertain
             \end{itemize}
         \end{column}
     \end{columns}
     
     \vspace{0.5cm}
     \begin{block}{Practical significance}
-        Epistemisk usikkerhet signaliserer når modellen bør ``si ifra'' at den er usikker, og mennesker bør overta.
+        Epistemic uncertainty signals when the model should ``speak up'' that it is uncertain, and humans should take over.
     \end{block}
 \end{frame}
 
@@ -227,70 +227,70 @@
     \textbf{\href{https://en.wikipedia.org/wiki/Human-in-the-loop}{Human-in-the-loop} (HITL):}
     \vspace{-0.1cm}
     \begin{itemize}
-        \item Mennesker er \textbf{integrert} i AI-systemets beslutningsprosess
-        \item AI gir anbefalinger, mennesker tar endelige beslutninger
+        \item Humans are \textbf{integrated} in the AI system's decision process
+        \item AI provides recommendations, humans make final decisions
     \end{itemize}
     
     \vspace{-0.05cm}
-    \textbf{Tre hovedvarianter:}
+    \textbf{Three main variants:}
     \vspace{-0.1cm}
     \begin{enumerate}
-        \item \textbf{\href{https://en.wikipedia.org/wiki/Human-in-the-loop}{Human-in-the-loop}:} Menneske involveres i hver beslutning
-        \item \textbf{\href{https://en.wikipedia.org/wiki/Human-on-the-loop}{Human-on-the-loop}:} Menneske overvåker og kan overstyre
-        \item \textbf{\href{https://en.wikipedia.org/wiki/Automation\#Levels_of_automation}{Human-out-of-the-loop}:} Full autonomi (ikke anbefalt i medisin)
+        \item \textbf{\href{https://en.wikipedia.org/wiki/Human-in-the-loop}{Human-in-the-loop}:} Human involved in every decision
+        \item \textbf{\href{https://en.wikipedia.org/wiki/Human-on-the-loop}{Human-on-the-loop}:} Human monitors and can override
+        \item \textbf{\href{https://en.wikipedia.org/wiki/Automation\#Levels_of_automation}{Human-out-of-the-loop}:} Full autonomy (not recommended in medicine)
     \end{enumerate}
     
     \vspace{-0.05cm}
-    \textbf{Advantages med HITL i medisin:}
+    \textbf{Advantages of HITL in medicine:}
     \vspace{-0.1cm}
     \begin{itemize}
-        \item Kombinerer AI-effektivitet med menneskelig ekspertise
-        \item Fanger opp AI-feil før de får konsekvenser
-        \item Opprettholder clinical responsibility, bygger tillit gradvis
+        \item Combines AI efficiency with human expertise
+        \item Catches AI errors before they have consequences
+        \item Maintains clinical responsibility, builds trust gradually
     \end{itemize}
     
     {\footnotesize
     \begin{alertblock}{\href{https://artificialintelligenceact.eu/}{EU AI Act}}
-        Høyrisiko AI-systemer \textbf{krever} effektiv menneskelig tilsyn.
+        High-risk AI systems \textbf{require} effective human oversight.
     \end{alertblock}
     }
 \end{frame}
 
-\begin{frame}{T06: Discuss the importance of continuous monicountsing}
-    \textbf{Why \href{https://en.wikipedia.org/wiki/Continuous_monicountsing}{kontinuerlig monicountsering}?}
+\begin{frame}{T06: Discuss the importance of continuous monitoring}
+    \textbf{Why \href{https://en.wikipedia.org/wiki/Continuous_monitoring}{continuous monitoring}?}
     \begin{itemize}
-        \item ML-models \textbf{degraderer over tid} (model drift)
-        \item Verden endrer seg, data endrer seg
-        \item Feil i produksjon kan ha alvorlige konsekvenser
+        \item ML models \textbf{degrade over time} (model drift)
+        \item The world changes, data changes
+        \item Errors in production can have serious consequences
     \end{itemize}
     
     \vspace{0.2cm}
-    \textbf{Hva bør overvåkes?}
+    \textbf{What should be monitored?}
     \begin{columns}[T]
         \begin{column}{0.48\textwidth}
-            \textbf{Ytelsesmetrikker:}
+            \textbf{Performance metrics:}
             \begin{itemize}
-                \item Accuracy, precision, recall over tid
-                \item Kalibrering av konfidensscorer
-                \item Sammenligning med baseline
+                \item Accuracy, precision, recall over time
+                \item Calibration of confidence scores
+                \item Comparison with baseline
             \end{itemize}
         \end{column}
         \begin{column}{0.48\textwidth}
-            \textbf{Datakarakteristikker:}
+            \textbf{Data characteristics:}
             \begin{itemize}
-                \item Input-advantageing (drift-deteksjon)
-                \item Andel out-of-distribution input
-                \item Feature-statistikk
+                \item Input distribution (drift detection)
+                \item Proportion of out-of-distribution inputs
+                \item Feature statistics
             \end{itemize}
         \end{column}
     \end{columns}
     
     \vspace{0.2cm}
-    \textbf{Tiltak ved problemer:}
+    \textbf{Actions when problems occur:}
     \begin{itemize}
-        \item \textbf{Re-training} med ferske data -- oppdater modellen på nyere, representative data
-        \item \textbf{Varsling og escalesing} -- automatic varsling ved ytelsesfall or drift
-        \item \textbf{Fallback} -- bytt til enklere modell or menneskelig vurdering ved usikkerhet
+        \item \textbf{Re-training} with fresh data -- update the model on newer, representative data
+        \item \textbf{Alerting and escalation} -- automatic alerts on performance drops or drift
+        \item \textbf{Fallback} -- switch to simpler model or human assessment when uncertain
     \end{itemize}
 \end{frame}
 
@@ -300,39 +300,39 @@
 \section{Security Threats}
 
 \begin{frame}{T07: Know about adversarial attacks}
-    \textbf{\href{https://en.wikipedia.org/wiki/Adversarial_machine_learning}{Adversarial attacks} = bevisst manipulering av AI-input}
+    \textbf{\href{https://en.wikipedia.org/wiki/Adversarial_machine_learning}{Adversarial attacks} = deliberate manipulation of AI input}
     
     \begin{itemize}
-        \item Små, tilsynelatende usynlige endringer som lurer modellen
-        \item Kan få en korrekt klassifikasjon til å bli \textbf{fullstendig feil}
+        \item Small, seemingly invisible changes that fool the model
+        \item Can turn a correct classification into a \textbf{completely wrong} one
     \end{itemize}
     
     \vspace{0.2cm}
     \textbf{Examples:}
     \begin{columns}[T]
         \begin{column}{0.48\textwidth}
-            \textbf{Imager:}
+            \textbf{Images:}
             \begin{itemize}
-                \item Piksel-perturbasjoner usynlige for mennesker
-                \item ``Panda'' $\rightarrow$ ``Gibbon'' med 99\% konfidens
-                \item \href{https://arxiv.org/abs/1707.08945}{Klistremerker som lurer selvkjørende biler}
+                \item Pixel perturbations invisible to humans
+                \item ``Panda'' $\rightarrow$ ``Gibbon'' with 99\% confidence
+                \item \href{https://arxiv.org/abs/1707.08945}{Stickers that fool self-driving cars}
             \end{itemize}
         \end{column}
         \begin{column}{0.48\textwidth}
-            \textbf{Tekst (LLM):}
+            \textbf{Text (LLM):}
             \begin{itemize}
                 \item \href{https://en.wikipedia.org/wiki/Prompt_injection}{Prompt injection}
                 \item \href{https://en.wikipedia.org/wiki/Jailbreaking_(LLM)}{Jailbreaking}
-                \item Omgå \href{https://en.wikipedia.org/wiki/Content_moderation}{sikkerhetsfiltre}
+                \item Bypassing \href{https://en.wikipedia.org/wiki/Content_moderation}{safety filters}
             \end{itemize}
         \end{column}
     \end{columns}
     
     \vspace{0.15cm}
     {\small
-    \begin{alertblock}{Medical risk og fotherwisevar}
-        \textbf{Risiko:} En angriper kunne manipulere et røntgenbilde slik at AI overser patologi, or skaper falske funn. \\
-        \textbf{Fotherwisevar:} Adversarial training, input-validation, ensemble-metoder, robustnessstesting.
+    \begin{alertblock}{Medical risk and defenses}
+        \textbf{Risk:} An attacker could manipulate an X-ray image so AI overlooks pathology, or creates false findings. \\
+        \textbf{Defenses:} Adversarial training, input validation, ensemble methods, robustness testing.
     \end{alertblock}
     }
 \end{frame}
@@ -342,29 +342,22 @@
 % =====================================================================
 \section*{Summary}
 
-\begin{frame}{Summary: Trustworthy AI og Robustness}
+\begin{frame}{Summary: Trustworthy AI and Robustness}
     \textbf{Key points:}
     \begin{itemize}
-        \item \textbf{T01:} EU's 7 krav til trustworthy AI
-        \item \textbf{T02:} Robustness -- konsistente resulter under variasjon
-        \item \textbf{T03:} Distributional shift -- når data i praksis avviker fra training
-        \item \textbf{T04:} Epistemisk (kan reduseres) vs. aleacountsisk (iboende) usikkerhet
-        \item \textbf{T05:} HITL -- mennesker i beslutningssløyfen
-        \item \textbf{T06:} Kontinuerlig monicountsering -- fange drift og degradering
-        \item \textbf{T07:} Adversarial attacks -- bevisst manipulering
+        \item \textbf{T01:} EU's 7 requirements for trustworthy AI
+        \item \textbf{T02:} Robustness -- consistent results under variation
+        \item \textbf{T03:} Distributional shift -- when production data differs from training
+        \item \textbf{T04:} Epistemic (can be reduced) vs. aleatoric (inherent) uncertainty
+        \item \textbf{T05:} HITL -- humans in the decision loop
+        \item \textbf{T06:} Continuous monitoring -- catching drift and degradation
+        \item \textbf{T07:} Adversarial attacks -- deliberate manipulation
     \end{itemize}
     
     \vspace{0.3cm}
     \begin{block}{Key message}
-        Trustworthy AI i medisin krever robuste models, menneskelig tilsyn, kontinuerlig monicountsering og bevissthet om sikkerhetsrisikoer. Teknikk alene er ikke nok -- det kreves også organisacountsiske og regulacountsiske tiltak.
+        Trustworthy AI in medicine requires robust models, human oversight, continuous monitoring and awareness of security risks. Technology alone is not enough -- organizational and regulatory measures are also required.
     \end{block}
 \end{frame}
 
 \end{document}
-
-
-
-
-
-
-

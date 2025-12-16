@@ -1,6 +1,6 @@
 % =====================================================================
 % BMED365: Patient Similarity Networks (PSN)
-% Beamer-presentasjon - Topic List P01-P08
+% Beamer presentation - Topic List P01-P08
 % =====================================================================
 \documentclass[aspectratio=169, 10pt]{beamer}
 
@@ -9,7 +9,7 @@
 % =====================================================================
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[notherwisek]{babel}
+\usepackage[english]{babel}
 \usepackage{graphicx}
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric, arrows, positioning, calc}
@@ -26,7 +26,7 @@
 \usetheme{Madrid}
 \usecolortheme{beaver}
 
-% Colotherwise for TikZ diagrams
+% Colors for TikZ diagrams
 \definecolor{uibblue}{RGB}{0, 61, 115}
 \definecolor{uibred}{RGB}{175, 28, 44}
 
@@ -82,25 +82,26 @@
 \begin{frame}{P01: Explain the concept of \href{https://en.wikipedia.org/wiki/Patient_similarity_network}{patient similarity networks (PSN)}}
     \begin{columns}[T]
         \begin{column}{0.55\textwidth}
-            \textbf{What is a patient similarity networks?}
+            \textbf{What is a patient similarity network?}
             \begin{itemize}
-                \item En \textbf{graf} der hver node representerer en patient
-                \item \textbf{Kanter} forbinder patienter som ligner hverandre
-                \item Likhet basert på clinicale variabler (symptoms, vitalia, demografi), biomarkerer, genethics, avbildning, livsstilsfakcountser
+                \item A \textbf{graph} where each node represents a patient
+                \item \textbf{Edges} connect patients who are similar to each other
+                \item Similarity based on clinical variables (symptoms, vitals, demographics), biomarkers, genetics, imaging, lifestyle factors
             \end{itemize}
             
             \vspace{0.2cm}
             \textbf{Main idea:}
             \begin{itemize}
-                \item Pasienter med lignende profiler grupperes sammen
-                \item Avdekker naturlige subgrupper i patientpopulasjonen
-                \item Grunnlayers for \textbf{patient-stratifisering}: identify undergrupper med felles egenskaper for goalrettet treatment
+                \item Patients with similar profiles are grouped together
+                \item Reveals natural subgroups in the patient population
+                \item Foundation for \textbf{patient stratification}: identify subgroups with shared characteristics for targeted treatment
             \end{itemize}
             
             \vspace{0.2cm}
-            \scriptsize\textbf{Sentrale referanser:}
+            \scriptsize\textbf{Key references:}
             \href{https://doi.org/10.1038/ncomms5022}{Pai \& Bader (2018)},
-            \href{https://doi.org/10.1093/jamia/ocw154}{Li et al. (2015)}
+            \href{https://doi.org/10.1073/pnas.2421060122}{Urda-Garcia et al. (2025)},
+            \href{https://www.science.org/doi/10.1126/sciadv.abg9551}{Bhalla et al. (2021)}
         \end{column}
         \begin{column}{0.42\textwidth}
             \begin{tikzpicture}[scale=0.8, transform shape]
@@ -124,28 +125,28 @@
             \end{tikzpicture}
             
             \vspace{0.3cm}
-            \footnotesize\textit{To patientgrupper med sterk intern likhet}
+            \footnotesize\textit{Two patient groups with strong internal similarity}
         \end{column}
     \end{columns}
 \end{frame}
 
-\begin{frame}{P02: Describe how PSN kan støtte \href{https://en.wikipedia.org/wiki/Precision_medicine}{precision medicine}}
-    \begin{block}{Precisionsmedisin}
-        Tilpasse treatment til den individuelle patienten basert på deres unike profil -- ikke ``one size fits all''
+\begin{frame}{P02: Describe how PSN can support \href{https://en.wikipedia.org/wiki/Precision_medicine}{precision medicine}}
+    \begin{block}{Precision medicine}
+        Tailoring treatment to the individual patient based on their unique profile -- not ``one size fits all''
     \end{block}
     
     \vspace{0.3cm}
-    \textbf{PSN støtter precision medicine ved å:}
+    \textbf{PSN supports precision medicine by:}
     \begin{enumerate}
-        \item \textbf{Identifisere subgrupper} -- Finne patienter med lignende diseasesmekanismer
-        \item \textbf{Predikere treatmentsrespons} -- ``Pasienter som ligner deg responderte godt på X''
-        \item \textbf{Oppdage ukjente sammenhenger} -- Avdekke mønstre på tvers av datatyper og etablerte diagnosisr
-        \item \textbf{Integrere heterogene data} -- Kombinere klinikk, omikk, avbildning
+        \item \textbf{Identifying subgroups} -- Finding patients with similar disease mechanisms
+        \item \textbf{Predicting treatment response} -- ``Patients who are similar to you responded well to X''
+        \item \textbf{Discovering unknown relationships} -- Revealing patterns across data types and established diagnoses
+        \item \textbf{Integrating heterogeneous data} -- Combining clinical, omics, imaging data
     \end{enumerate}
     
     \vspace{0.3cm}
-    \begin{alertblock}{Example: IBS-studien}
-        I Lab 1 bruker vi PSN på IBS-patienter to undersøke sammenhenger mellom mage-tarmsymptoms, hjerneavbildning (MRI) og kognitive funksjoner.
+    \begin{alertblock}{Example: IBS study}
+        In Lab 1 we use PSN on IBS patients to investigate relationships between gastrointestinal symptoms, brain imaging (MRI), and cognitive functions.
     \end{alertblock}
 \end{frame}
 
@@ -154,12 +155,12 @@
 % =====================================================================
 \section{Similarity Calculation}
 
-\begin{frame}{P03: Calculate likhet (\href{https://en.wikipedia.org/wiki/Similarity_measure}{similaritet}) mellom patienter}
-    \textbf{Vanlige similaritets-/avstandsgoal:}
+\begin{frame}{P03: Calculate \href{https://en.wikipedia.org/wiki/Similarity_measure}{similarity} between patients}
+    \textbf{Common similarity/distance measures:}
     \vspace{-1mm}
     \begin{columns}[T]
         \begin{column}{0.48\textwidth}
-            \textbf{Euklidsk avstand ($\ell_2$):}
+            \textbf{Euclidean distance ($\ell_2$):}
             \vspace{-2mm}
             \[
             d_E = \sqrt{\sum_{i=1}^{n}(x_i - y_i)^2}
@@ -167,13 +168,13 @@
             \vspace{-3mm}
             \footnotesize
             \begin{itemize}\setlength{\itemsep}{0pt}
-                \item Rett linje mellom punkter i $\mathbb{R}^n$
-                \item Følsom for scale
-                \item God for kontinuerlige data
+                \item Straight line between points in $\mathbb{R}^n$
+                \item Sensitive to scale
+                \item Good for continuous data
             \end{itemize}
             \normalsize
             
-            \textbf{Manhattan avstand ($\ell_1$):}
+            \textbf{Manhattan distance ($\ell_1$):}
             \vspace{-2mm}
             \[
             d_M = \sum_{i=1}^{n}|x_i - y_i|
@@ -181,107 +182,107 @@
             \vspace{-3mm}
             \footnotesize
             \begin{itemize}\setlength{\itemsep}{0pt}
-                \item ``Bykvartal''-avstand
-                \item Mer robust mot uteliggere
+                \item ``City block'' distance
+                \item More robust to outliers
             \end{itemize}
         \end{column}
         \begin{column}{0.48\textwidth}
-            \textbf{Gower-avstand:}
+            \textbf{Gower distance:}
             \vspace{-2mm}
             \[
             d_G = \frac{1}{n}\sum_{i=1}^{n}d_i(x_i, y_i)
             \]
             \vspace{-1mm}
             \scriptsize
-            \textit{$d_i$ = normalisert avstand for variabel $i$:}
+            \textit{$d_i$ = normalized distance for variable $i$:}
             
             \vspace{0.5mm}
-            num.: range-norm., kat.: 0/1, binær: id.
+            num.: range-norm., cat.: 0/1, binary: id.
             
             \vspace{1mm}
             \footnotesize
             \begin{itemize}\setlength{\itemsep}{0pt}
-                \item Håndterer \textbf{blandede datatyper}
-                \item Normaliserer automatic
-                \item Ideell for clinicale data!
+                \item Handles \textbf{mixed data types}
+                \item Normalizes automatically
+                \item Ideal for clinical data!
             \end{itemize}
             
-            \begin{block}{\scriptsize Konvertering}
-                \scriptsize $\text{similaritet} = 1 - \text{avstand}$ (norm. til [0,1])
+            \begin{block}{\scriptsize Conversion}
+                \scriptsize $\text{similarity} = 1 - \text{distance}$ (norm. to [0,1])
             \end{block}
         \end{column}
     \end{columns}
 \end{frame}
 
 \begin{frame}{P04: Construct a PSN from a patient-feature matrix}
-    \textbf{Steg-for-steg prosess:}
+    \textbf{Step-by-step process:}
     
     \begin{enumerate}
-        \item \textbf{Organiser data:} Pasient $\times$ Feature-matrise
+        \item \textbf{Organize data:} Patient $\times$ Feature matrix
         \begin{center}
             \scriptsize
             \begin{tabular}{l|cccccc}
                 \toprule
-                Pasient & Alder & Kjønn & BMI & Blodtrykk & Symptom-score & Biomarkør \\
+                Patient & Age & Gender & BMI & Blood Pressure & Symptom Score & Biomarker \\
                 \midrule
-                P1 & 45 & K & 24.5 & 120/80 & 7 & 1.2 \\
-                P2 & 42 & K & 25.1 & 118/78 & 8 & 1.1 \\
+                P1 & 45 & F & 24.5 & 120/80 & 7 & 1.2 \\
+                P2 & 42 & F & 25.1 & 118/78 & 8 & 1.1 \\
                 P3 & 67 & M & 31.2 & 145/95 & 3 & 2.8 \\
                 \bottomrule
             \end{tabular}
         \end{center}
         
-        \item \textbf{Normaliser/standardiser:} Gjør variabler sammenlignbare\\
+        \item \textbf{Normalize/standardize:} Make variables comparable\\
         \scriptsize (z-score: $(x-\mu)/\sigma$, min-max: $(x-\min)/(\max-\min)$)
         \normalsize
         
-        \item \textbf{Beregn similaritetsmatrise:} Alle par av patienter
+        \item \textbf{Calculate similarity matrix:} All pairs of patients
         
-        \item \textbf{Velg threshold value:} Bestem når to patienter er ``like nok''
+        \item \textbf{Choose threshold value:} Determine when two patients are ``similar enough''
         
-        \item \textbf{Opprett kanter:} Forbind patienter med similaritet $>$ terskel
+        \item \textbf{Create edges:} Connect patients with similarity $>$ threshold
         
-        \item \textbf{Bygg graf:} Bruk NetworkX to layerse nettverket
+        \item \textbf{Build graph:} Use NetworkX to create the network
     \end{enumerate}
     
-    \begin{block}{\footnotesize Python-kode (conceptual)}
+    \begin{block}{\footnotesize Python code (conceptual)}
         \footnotesize
         \texttt{G = nx.Graph()} \\
         \texttt{for i, j: if similarity[i,j] > threshold: G.add\_edge(i,j)}
     \end{block}
 \end{frame}
 
-\begin{frame}{P05: Velge \href{https://en.wikipedia.org/wiki/Threshold_model}{threshold value} for edge creation i PSN}
+\begin{frame}{P05: Choose \href{https://en.wikipedia.org/wiki/Threshold_model}{threshold value} for edge creation in PSN}
     \begin{block}{\footnotesize Definition}
-        \footnotesize \textbf{Terskel} $\tau$: Kant opprettes mellom patient $i$ og $j$ hvis similaritet $s_{ij} > \tau$.
+        \footnotesize \textbf{Threshold} $\tau$: Edge created between patient $i$ and $j$ if similarity $s_{ij} > \tau$.
     \end{block}
     
     \vspace{1mm}
-    \textbf{Challengeen} (threshold selection er \textbf{critical} for utfall og interpretation):
+    \textbf{The challenge} (threshold selection is \textbf{critical} for results and interpretation):
     \begin{itemize}\setlength{\itemsep}{0pt}
-        \item For lav terskel $\rightarrow$ For mange kanter, alle patienter koblet
-        \item For høy terskel $\rightarrow$ For få kanter, isolerte noder
+        \item Too low threshold $\rightarrow$ Too many edges, all patients connected
+        \item Too high threshold $\rightarrow$ Too few edges, isolated nodes
     \end{itemize}
     
     \vspace{1mm}
-    \textbf{Strategier for threshold selection:}
+    \textbf{Strategies for threshold selection:}
     \begin{enumerate}\setlength{\itemsep}{0pt}
-        \item \textbf{Persentilbasert:} Behold topp 5--10\% av kantene
-        \item \textbf{k-nærmeste naboer (k-NN):} Hver node kobles til k nærmeste
-        \item \textbf{Statistisk terskel:} $\mu + 1.5\sigma$ av similaritetsadvantageingen
-        \item \textbf{Visuell inspeksjon:} Prøv ulike valueer og visualiser
+        \item \textbf{Percentile-based:} Keep top 5--10\% of edges
+        \item \textbf{k-nearest neighbors (k-NN):} Each node connects to k nearest
+        \item \textbf{Statistical threshold:} $\mu + 1.5\sigma$ of similarity distribution
+        \item \textbf{Visual inspection:} Try different values and visualize
     \end{enumerate}
     
     \vspace{1mm}
     \begin{columns}[T]
         \begin{column}{0.48\textwidth}
-            \begin{alertblock}{\scriptsize For mange kanter}
-                \scriptsize Mister subgruppestruktur, vanskelig å interpret
+            \begin{alertblock}{\scriptsize Too many edges}
+                \scriptsize Lose subgroup structure, difficult to interpret
             \end{alertblock}
         \end{column}
         \begin{column}{0.48\textwidth}
-            \begin{alertblock}{\scriptsize For få kanter}
-                \scriptsize Mister informasjon, fragmentert nettverk
+            \begin{alertblock}{\scriptsize Too few edges}
+                \scriptsize Lose information, fragmented network
             \end{alertblock}
         \end{column}
     \end{columns}
@@ -292,37 +293,37 @@
 % =====================================================================
 \section{Analysis of PSN}
 
-\begin{frame}{P06: Identifisere patient subgroups via \href{https://en.wikipedia.org/wiki/Community_structure}{community detection}}
+\begin{frame}{P06: Identify patient subgroups via \href{https://en.wikipedia.org/wiki/Community_structure}{community detection}}
     \begin{columns}[T]
         \begin{column}{0.58\textwidth}
-            \textbf{Community detection i PSN:}
+            \textbf{Community detection in PSN:}
             \begin{itemize}\setlength{\itemsep}{0pt}
-                \item Finner naturlige grupperinger av patienter
-                \item Pasienter i samme gruppe ligner hverandre mer enn de ligner andre
+                \item Finds natural groupings of patients
+                \item Patients in the same group are more similar to each other than to others
             \end{itemize}
             
             \vspace{2mm}
-            \textbf{Louvain-algoritmen (fra N09):}
+            \textbf{The Louvain algorithm (from N09):}
             \begin{enumerate}\setlength{\itemsep}{0pt}
-                \item Optimaliserer \textbf{modularitet} -- intern tetthet vs. eksterne koblinger
-                \item Hierarkisk: Finner grupper på flere nivåer
-                \item Rask og scalesbar
+                \item Optimizes \textbf{modularity} -- internal density vs. external connections
+                \item Hierarchical: Finds groups at multiple levels
+                \item Fast and scalable
             \end{enumerate}
             
             \vspace{2mm}
             \textbf{Clinical interpretation:}
             \begin{itemize}\setlength{\itemsep}{0pt}
-                \item Hver community = potensiell patientsubtype
-                \item Undersøk karakteristika for hver gruppe
-                \item Sammenlign utfall og treatmentsrespons
+                \item Each community = potential patient subtype
+                \item Examine characteristics for each group
+                \item Compare outcomes and treatment response
             \end{itemize}
         \end{column}
         \begin{column}{0.40\textwidth}
-            \begin{block}{\scriptsize Python-kode}
+            \begin{block}{\scriptsize Python code}
                 \scriptsize
-                \texttt{\# NetworkX (innebygd):}\\
+                \texttt{\# NetworkX (built-in):}\\
                 \texttt{nx.community.louvain\_communities(G)}\\[3pt]
-                \texttt{\# Alternativt (python-louvain):}\\
+                \texttt{\# Alternative (python-louvain):}\\
                 \texttt{import community}\\
                 \texttt{community.best\_partition(G)}
             \end{block}
@@ -340,62 +341,62 @@
         \begin{column}{0.48\textwidth}
             \textbf{\textcolor{green!60!black}{Advantages:}}
             \begin{itemize}
-                \item \faCheck~Intuitivt og visuelt
-                \item \faCheck~Integrasjon av ulike datatyper
-                \item \faCheck~Ingen antakelse om underliggende advantageinger
-                \item \faCheck~Oppdager ikke-lineære sammenhenger
-                \item \faCheck~Nettverksanalyse-verktøy kan applys
-                \item \faCheck~Pasient-sentrert perspektiv
+                \item \faCheck~Intuitive and visual
+                \item \faCheck~Integration of different data types
+                \item \faCheck~No assumption about underlying distributions
+                \item \faCheck~Discovers non-linear relationships
+                \item \faCheck~Network analysis tools can be applied
+                \item \faCheck~Patient-centered perspective
             \end{itemize}
         \end{column}
         \begin{column}{0.48\textwidth}
             \textbf{\textcolor{uibred}{Limitations:}}
             \begin{itemize}
-                \item \faTimes~Valg av likhetsgoal og terskel er critical
-                \item \faTimes~Skalerer dårlig til scountse dataset
-                \item \faTimes~Manglende data can be problematisk
-                \item \faTimes~Tolkningsutfordringer
-                \item \faTimes~Ikke alltid replikerbart
-                \item \faTimes~Krever domeneekspertise
+                \item \faTimes~Choice of similarity measure and threshold is critical
+                \item \faTimes~Scales poorly to large datasets
+                \item \faTimes~Missing data can be problematic
+                \item \faTimes~Interpretation challenges
+                \item \faTimes~Not always reproducible
+                \item \faTimes~Requires domain expertise
             \end{itemize}
         \end{column}
     \end{columns}
     
     \vspace{0.5cm}
     \begin{block}{Summary}
-        PSN er et kraftig verktøy for eksplorativ analyse og hypotesegenerering, men resulter bør valideres med uavhengige data og metoder.
+        PSN is a powerful tool for exploratory analysis and hypothesis generation, but results should be validated with independent data and methods.
     \end{block}
 \end{frame}
 
-\begin{frame}{P08: \href{https://en.wikipedia.org/wiki/Multimodal_learning}{Multimodal} PSN (\href{https://en.wikipedia.org/wiki/Data_fusion}{integrering/fusjon} av ulike datatyper)}
+\begin{frame}{P08: \href{https://en.wikipedia.org/wiki/Multimodal_learning}{Multimodal} PSN (\href{https://en.wikipedia.org/wiki/Data_fusion}{integration/fusion} of different data types)}
     \textbf{Multimodal PSN:}
     \begin{itemize}\setlength{\itemsep}{0pt}
-        \item Kombinerer data fra \textbf{flere sourcer/modaliteter}
-        \item Examples: Klinikk + Genethics + Avbildning
+        \item Combines data from \textbf{multiple sources/modalities}
+        \item Examples: Clinical + Genetics + Imaging
     \end{itemize}
     
     \vspace{1mm}
-    \textbf{Integrasjonsstrategier:}
+    \textbf{Integration strategies:}
     \begin{enumerate}\setlength{\itemsep}{0pt}
-        \item \textbf{Tidlig fusjon:} Kombiner alle features før similaritetsberegning
-        \item \textbf{Sen fusjon:} Lag separate PSN, kombiner etterpå
-        \item \textbf{Mellomliggende fusjon:} Vektet kombinasjon av similaritetsmatriser
+        \item \textbf{Early fusion:} Combine all features before similarity calculation
+        \item \textbf{Late fusion:} Create separate PSNs, combine afterwards
+        \item \textbf{Intermediate fusion:} Weighted combination of similarity matrices
     \end{enumerate}
     
     \vspace{1mm}
     \footnotesize
-    \textbf{Example fra Lab 1 (IBS-studie):}
+    \textbf{Example from Lab 1 (IBS study):}
     \begin{itemize}\setlength{\itemsep}{0pt}
-        \item \textbf{Clinicale data:} Symptomscorer, demografi
-        \item \textbf{MRI-data:} Hjerneavbildning (konnektivitet, volum)
-        \item \textbf{Kognitive data:} Testresulter
-        \item $\rightarrow$ Integrert PSN for helhetlig patientprofilering
+        \item \textbf{Clinical data:} Symptom scores, demographics
+        \item \textbf{MRI data:} Brain imaging (connectivity, volume)
+        \item \textbf{Cognitive data:} Test results
+        \item $\rightarrow$ Integrated PSN for holistic patient profiling
     \end{itemize}
     \normalsize
     
     \vspace{-1mm}
-    \begin{block}{\footnotesize Verdi av multimodal PSN}
-        \footnotesize Fanger opp complexiteten i patientpopulasjoner som ikke synes i simpletmodaliteter alene.
+    \begin{block}{\footnotesize Value of multimodal PSN}
+        \footnotesize Captures the complexity in patient populations that is not visible in single modalities alone.
     \end{block}
 \end{frame}
 
@@ -407,27 +408,20 @@
 \begin{frame}{Summary: PSN}
     \textbf{Key points:}
     \begin{itemize}
-        \item \textbf{P01:} PSN = Graf der noder er patienter, kanter er similaritet
-        \item \textbf{P02:} Støtter precision medicine via subgruppeidentifikasjon
-        \item \textbf{P03:} Similaritetsgoal: Euklidsk, Manhattan, Gower
-        \item \textbf{P04:} Konstruksjon: Feature-matrise $\rightarrow$ Similaritet $\rightarrow$ Terskling $\rightarrow$ Graf
-        \item \textbf{P05:} Terskelvalg er critical for nettverksstruktur
-        \item \textbf{P06:} Community detection (Louvain) for subgrupper
-        \item \textbf{P07:} Advantages vs. limitationer må avveies
-        \item \textbf{P08:} Multimodal PSN integrerer heterogene data
+        \item \textbf{P01:} PSN = Graph where nodes are patients, edges are similarity
+        \item \textbf{P02:} Supports precision medicine via subgroup identification
+        \item \textbf{P03:} Similarity measures: Euclidean, Manhattan, Gower
+        \item \textbf{P04:} Construction: Feature matrix $\rightarrow$ Similarity $\rightarrow$ Thresholding $\rightarrow$ Graph
+        \item \textbf{P05:} Threshold selection is critical for network structure
+        \item \textbf{P06:} Community detection (Louvain) for subgroups
+        \item \textbf{P07:} Advantages vs. limitations must be weighed
+        \item \textbf{P08:} Multimodal PSN integrates heterogeneous data
     \end{itemize}
     
     \vspace{0.3cm}
-    \begin{block}{\footnotesize Lab 1 -- Praktisk erfaring}
-        \footnotesize Konstruer og analyser PSN med ekte clinicale data (IRIS, IBS, WAIS-IV) ved hjelp av Python og NetworkX.
+    \begin{block}{\footnotesize Lab 1 -- Practical experience}
+        \footnotesize Construct and analyze PSN with real clinical data (IRIS, IBS, WAIS-IV) using Python and NetworkX.
     \end{block}
 \end{frame}
 
 \end{document}
-
-
-
-
-
-
-

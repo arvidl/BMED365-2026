@@ -1,6 +1,6 @@
 % =====================================================================
 % BMED365: Evaluation of ML Models (E01-E10)
-% Beamer-presentasjon i widescreen (16:9)
+% Beamer presentation in widescreen (16:9)
 % =====================================================================
 \documentclass[aspectratio=169, 10pt]{beamer}
 
@@ -9,7 +9,7 @@
 % =====================================================================
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[notherwisek]{babel}
+\usepackage[english]{babel}
 \usepackage{graphicx}
 \usepackage{tikz}
 \usepackage{booktabs}
@@ -24,7 +24,7 @@
 \usetheme{Madrid}
 \usecolortheme{beaver}
 
-% Colotherwise for TikZ diagrams
+% Colors for TikZ diagrams
 \definecolor{uibblue}{RGB}{0, 61, 115}
 \definecolor{uibred}{RGB}{175, 28, 44}
 
@@ -49,29 +49,29 @@
 % ---------------------------------------------------------------------
 \begin{frame}{Overview}
     \begin{enumerate}
-        \item \textbf{Confusion Matrix} (confusion matrix)
+        \item \textbf{Confusion Matrix}
         \begin{itemize}
             \item E01--E02: TP, TN, FP, FN
         \end{itemize}
-        \item \textbf{Fundamental metrikker}
+        \item \textbf{Fundamental metrics}
         \begin{itemize}
             \item E03: Accuracy
-            \item E04: Precision (precision)
+            \item E04: Precision
             \item E05: Recall / Sensitivity
             \item E06: Specificity
         \end{itemize}
-        \item \textbf{Advanced metrikker}
+        \item \textbf{Advanced metrics}
         \begin{itemize}
             \item E07: F1-score
-            \item E08: ROC-kurven og AUC
-            \item E09: Ubalanserte dataset
-            \item E10: TRIPOD-retningslinjer
+            \item E08: ROC curve and AUC
+            \item E09: Imbalanced datasets
+            \item E10: TRIPOD guidelines
         \end{itemize}
     \end{enumerate}
 \end{frame}
 
 % =====================================================================
-\section{Confusion Matrix (confusion matrix)}
+\section{Confusion Matrix}
 % =====================================================================
 
 % ---------------------------------------------------------------------
@@ -82,7 +82,7 @@
     \begin{columns}
         \begin{column}{0.45\textwidth}
             \begin{block}{What is it?}
-                Tabell: predikerte vs. faktiske klasser
+                Table: predicted vs. actual classes
             \end{block}
 
             \vspace{2mm}
@@ -90,10 +90,10 @@
             \begin{center}
                 \begin{tikzpicture}[scale=0.75]
                     % Headers
-                    \node at (2.25, 3.3) {\textbf{Predikert}};
-                    \node at (1.5, 2.5) {\footnotesize Positiv};
-                    \node at (3, 2.5) {\footnotesize Negativ};
-                    \node[rotate=90] at (-0.3, 1.25) {\footnotesize\textbf{Faktisk}};
+                    \node at (2.25, 3.3) {\textbf{Predicted}};
+                    \node at (1.5, 2.5) {\footnotesize Positive};
+                    \node at (3, 2.5) {\footnotesize Negative};
+                    \node[rotate=90] at (-0.3, 1.25) {\footnotesize\textbf{Actual}};
                     \node at (0.5, 1.75) {\footnotesize Pos};
                     \node at (0.5, 0.75) {\footnotesize Neg};
 
@@ -112,20 +112,20 @@
         \end{column}
         
         \begin{column}{0.5\textwidth}
-            \textbf{Avlesning:}
+            \textbf{Reading the matrix:}
             \begin{itemize}
-                \item \textcolor{green!50!black}{\textbf{TP}}: Korrekt positiv
-                \item \textcolor{green!50!black}{\textbf{TN}}: Korrekt negativ
-                \item \textcolor{red}{\textbf{FP}}: Falsk alarm
-                \item \textcolor{red}{\textbf{FN}}: Oversett tilfelle
+                \item \textcolor{green!50!black}{\textbf{TP}}: Correct positive
+                \item \textcolor{green!50!black}{\textbf{TN}}: Correct negative
+                \item \textcolor{red}{\textbf{FP}}: False alarm
+                \item \textcolor{red}{\textbf{FN}}: Missed case
             \end{itemize}
             
             \vspace{3mm}
             
-            \textbf{Example:} Kreftscreening
+            \textbf{Example:} Cancer screening
             \begin{itemize}
-                \item TP = Kreft oppdaget korrekt
-                \item FN = Oversett kreft (\textit{farlig!})
+                \item TP = Cancer correctly detected
+                \item FN = Missed cancer (\textit{dangerous!})
             \end{itemize}
         \end{column}
     \end{columns}
@@ -143,28 +143,28 @@
             \toprule
             \textbf{Term} & \textbf{Definition} & \textbf{Medical example} \\
             \midrule
-            \textbf{TP} & Syk patient, modell sier syk & Kreft korrekt identifisert \\
-            \textbf{TN} & Frisk patient, modell sier frisk & Frisk person bekreftet frisk \\
-            \textbf{FP} & Frisk patient, modell sier syk & Unødvendig biopsi \\
-            \textbf{FN} & Syk patient, modell sier frisk & \textcolor{uibred}{Oversett kreft} \\
+            \textbf{TP} & Sick patient, model says sick & Cancer correctly identified \\
+            \textbf{TN} & Healthy patient, model says healthy & Healthy person confirmed healthy \\
+            \textbf{FP} & Healthy patient, model says sick & Unnecessary biopsy \\
+            \textbf{FN} & Sick patient, model says healthy & \textcolor{uibred}{Missed cancer} \\
             \bottomrule
         \end{tabular}
     \end{table}
     
     \vspace{5mm}
     
-    \begin{alertblock}{Critical question i medisin}
-        What is verst: \textbf{Falsk positiv} (FP) or \textbf{Falsk negativ} (FN)?
+    \begin{alertblock}{Critical question in medicine}
+        What is worse: \textbf{False Positive} (FP) or \textbf{False Negative} (FN)?
         \begin{itemize}
-            \item Screening: FN er farligere (oversett disease)
-            \item Invasiv treatment: FP can be farligere (unødvendig risiko)
+            \item Screening: FN is more dangerous (missed disease)
+            \item Invasive treatment: FP can be more dangerous (unnecessary risk)
         \end{itemize}
     \end{alertblock}
     
 \end{frame}
 
 % =====================================================================
-\section{Fundamental metrikker (Accuracy, Precision, Recall, Specificity)}
+\section{Fundamental Metrics (Accuracy, Precision, Recall, Specificity)}
 % =====================================================================
 
 % ---------------------------------------------------------------------
@@ -174,7 +174,7 @@
 
     \begin{block}{Definition}
         \[
-        \text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN} = \frac{\text{Korrekte predictioner}}{\text{Alle predictioner}}
+        \text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN} = \frac{\text{Correct predictions}}{\text{All predictions}}
         \]
     \end{block}
 
@@ -202,7 +202,7 @@
     \vspace{2mm}
 
     \begin{alertblock}{Warning}
-        Høy accuracy can be misvisende ved ubalanserte dataset!
+        High accuracy can be misleading with imbalanced datasets!
     \end{alertblock}
 
 \end{frame}
@@ -214,23 +214,23 @@
     
     \begin{block}{Definition}
         \[
-        \text{Precision} = \frac{TP}{TP + FP} = \frac{\text{Sanne positive}}{\text{Alle predikerte positive}}
+        \text{Precision} = \frac{TP}{TP + FP} = \frac{\text{True positives}}{\text{All predicted positives}}
         \]
     \end{block}
     
     \vspace{3mm}
     
-    \textbf{Spørsgoal:} ``Av alle modellen sier er positive, hvor mange er faktisk positive?''
+    \textbf{Question:} ``Of all that the model predicts as positive, how many are actually positive?''
     
     \vspace{3mm}
     
     \begin{columns}
         \begin{column}{0.5\textwidth}
-            \textbf{Høy precision important når:}
+            \textbf{High precision is important when:}
             \begin{itemize}
-                \item Kostbar oppfølging av positive
-                \item Vil unngå falske alarmer
-                \item Example: Sjelden disease
+                \item Costly follow-up of positives
+                \item Want to avoid false alarms
+                \item Example: Rare disease
             \end{itemize}
         \end{column}
         
@@ -239,7 +239,7 @@
             \[
             \text{Precision} = \frac{85}{85 + 5} = 94.4\%
             \]
-            \footnotesize\textit{``94\% av flayersgede patienter er faktisk syke''}
+            \footnotesize\textit{``94\% of flagged patients are actually sick''}
         \end{column}
     \end{columns}
     
@@ -252,23 +252,23 @@
     
     \begin{block}{Definition}
         \[
-        \text{Recall} = \frac{TP}{TP + FN} = \frac{\text{Sanne positive}}{\text{Alle faktisk positive}}
+        \text{Recall} = \frac{TP}{TP + FN} = \frac{\text{True positives}}{\text{All actual positives}}
         \]
     \end{block}
     
     \vspace{3mm}
     
-    \textbf{Spørsgoal:} ``Av alle som faktisk er positive, hvor mange fanger modellen opp?''
+    \textbf{Question:} ``Of all who are actually positive, how many does the model catch?''
     
     \vspace{3mm}
     
     \begin{columns}
         \begin{column}{0.5\textwidth}
-            \textbf{Høy recall important når:}
+            \textbf{High recall is important when:}
             \begin{itemize}
-                \item Alvorlig konsekvens av å overse (FN)
-                \item Screening for farlig disease
-                \item Example: Kreftscreening
+                \item Severe consequence of missing cases (FN)
+                \item Screening for dangerous disease
+                \item Example: Cancer screening
             \end{itemize}
         \end{column}
         
@@ -277,13 +277,13 @@
             \[
             \text{Recall} = \frac{85}{85 + 10} = 89.5\%
             \]
-            \textit{``Vi fanger opp 89.5\% av alle krefttilfor''}
+            \textit{``We catch 89.5\% of all cancer cases''}
         \end{column}
     \end{columns}
     
     \vspace{2mm}
 
-    \begin{block}{\footnotesize Andre navn}
+    \begin{block}{\footnotesize Other names}
         \footnotesize Recall = Sensitivity = True Positive Rate (TPR)
     \end{block}
 
@@ -296,23 +296,23 @@
     
     \begin{block}{Definition}
         \[
-        \text{Specificity} = \frac{TN}{TN + FP} = \frac{\text{Sanne negative}}{\text{Alle faktisk negative}}
+        \text{Specificity} = \frac{TN}{TN + FP} = \frac{\text{True negatives}}{\text{All actual negatives}}
         \]
     \end{block}
     
     \vspace{3mm}
     
-    \textbf{Spørsgoal:} ``Av alle som faktisk er negative, hvor mange identifiserer modellen korrekt?''
+    \textbf{Question:} ``Of all who are actually negative, how many does the model correctly identify?''
     
     \vspace{3mm}
     
     \begin{columns}
         \begin{column}{0.5\textwidth}
-            \textbf{Høy specificity important når:}
+            \textbf{High specificity is important when:}
             \begin{itemize}
-                \item Vil unngå unødvendige inngrep
-                \item Kostbar/risikabel treatment
-                \item Example: Bekreftelsetester
+                \item Want to avoid unnecessary interventions
+                \item Costly/risky treatment
+                \item Example: Confirmatory tests
             \end{itemize}
         \end{column}
         
@@ -321,20 +321,20 @@
             \[
             \text{Specificity} = \frac{900}{900 + 5} = 99.4\%
             \]
-            \textit{``99.4\% av friske korrekt identifisert som friske''}
+            \textit{``99.4\% of healthy correctly identified as healthy''}
         \end{column}
     \end{columns}
     
     \vspace{2mm}
 
     \begin{alertblock}{\footnotesize Trade-off}
-        \footnotesize Høy sensitivity $\leftrightarrow$ Lav specificity (og omvendt). Justering av threshold value påvirker begge.
+        \footnotesize High sensitivity $\leftrightarrow$ Low specificity (and vice versa). Adjusting the threshold affects both.
     \end{alertblock}
 
 \end{frame}
 
 % =====================================================================
-\section{Advanced metrikker (F1-score, ROC/AUC, TRIPOD)}
+\section{Advanced Metrics (F1-score, ROC/AUC, TRIPOD)}
 % =====================================================================
 
 % ---------------------------------------------------------------------
@@ -346,26 +346,26 @@
         \[
         F1 = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}
         \]
-        \textit{Harmonisk gjennomsnitt av precision og recall}
+        \textit{Harmonic mean of precision and recall}
     \end{block}
     
     \vspace{3mm}
     
-    \textbf{Why harmonisk gjennomsnitt?}
+    \textbf{Why harmonic mean?}
     \begin{itemize}
-        \item Straffer ekstreme valueer hardere enn aritmetisk gjennomsnitt
-        \item Precision = 100\%, Recall = 0\% $\rightarrow$ F1 = 0\% (ikke 50\%!)
+        \item Penalizes extreme values more harshly than arithmetic mean
+        \item Precision = 100\%, Recall = 0\% $\rightarrow$ F1 = 0\% (not 50\%!)
     \end{itemize}
     
     \vspace{3mm}
     
     \begin{columns}
         \begin{column}{0.48\textwidth}
-            \textbf{Når bruke F1?}
+            \textbf{When to use F1?}
             \begin{itemize}
-                \item Ubalanserte dataset
-                \item Når både FP og FN er importante
-                \item Compare models
+                \item Imbalanced datasets
+                \item When both FP and FN are important
+                \item Comparing models
             \end{itemize}
         \end{column}
         
@@ -382,25 +382,25 @@
 % ---------------------------------------------------------------------
 % E08
 % ---------------------------------------------------------------------
-\begin{frame}{E08: ROC-kurven og AUC}
+\begin{frame}{E08: ROC curve and AUC}
     
     \begin{columns}
         \begin{column}{0.45\textwidth}
-            \textbf{ROC-kurve:}
+            \textbf{ROC curve:}
             \begin{itemize}
                 \item \textbf{R}eceiver \textbf{O}perating \textbf{C}haracteristic
-                \item Plotter TPR vs. FPR for ulike terskler
-                \item Viser trade-off mellom sensitivity og specificity
+                \item Plots TPR vs. FPR for different thresholds
+                \item Shows trade-off between sensitivity and specificity
             \end{itemize}
             
             \vspace{3mm}
             
             \textbf{AUC (Area Under Curve):}
             \begin{itemize}
-                \item Arealet under ROC-kurven
-                \item Verdi mellom 0 og 1
-                \item AUC = 0.5: tilfeldig gjetting
-                \item AUC = 1.0: perfekt klassifikacounts
+                \item Area under the ROC curve
+                \item Value between 0 and 1
+                \item AUC = 0.5: random guessing
+                \item AUC = 1.0: perfect classification
             \end{itemize}
         \end{column}
         
@@ -420,7 +420,7 @@
                     \fill[uibblue, opacity=0.2] (0,0) .. controls (0.5,3) and (1.5,4) .. (4.5,4.5) -- (4.5,0) -- cycle;
                     
                     \node at (2.5, 2) {\small AUC};
-                    \node[gray] at (3.8, 3.5) {\tiny Tilfeldig};
+                    \node[gray] at (3.8, 3.5) {\tiny Random};
                     
                     % Axis labels
                     \node at (0, -0.3) {\tiny 0};
@@ -435,7 +435,7 @@
     \vspace{3mm}
     
     \begin{block}{Rule of thumb}
-        AUC $>$ 0.9: Utmerket \quad AUC 0.8--0.9: God \quad AUC 0.7--0.8: OK \quad AUC $<$ 0.7: Svak
+        AUC $>$ 0.9: Excellent \quad AUC 0.8--0.9: Good \quad AUC 0.7--0.8: Fair \quad AUC $<$ 0.7: Poor
     \end{block}
     
 \end{frame}
@@ -445,21 +445,21 @@
 % ---------------------------------------------------------------------
 \begin{frame}{E09: When accuracy is insufficient}
     
-    \textbf{Problemet med ubalanserte dataset:}
+    \textbf{The problem with imbalanced datasets:}
     
     \vspace{3mm}
     
     \begin{columns}
         \begin{column}{0.5\textwidth}
-            \textbf{Example:} 1000 patienter
+            \textbf{Example:} 1000 patients
             \begin{itemize}
-                \item 950 friske, 50 syke
-                \item Modell predikerer ALLE som friske
+                \item 950 healthy, 50 sick
+                \item Model predicts ALL as healthy
             \end{itemize}
             
             \vspace{3mm}
             
-            \textbf{Resultater:}
+            \textbf{Results:}
             \[
             \text{Accuracy} = \frac{950}{1000} = 95\%
             \]
@@ -467,26 +467,26 @@
             \text{Recall} = \frac{0}{50} = 0\%
             \]
             
-            \textbf{Høy accuracy, men ubrukelig modell!}
+            \textbf{High accuracy, but useless model!}
         \end{column}
         
         \begin{column}{0.45\textwidth}
-            \textbf{Solutioner:}
+            \textbf{Solutions:}
             \begin{itemize}
-                \item Bruk F1-score or AUC
-                \item Fokuser på recall for screening
-                \item Rapporter alle metrikker
-                \item Sammenlign med baseline
+                \item Use F1-score or AUC
+                \item Focus on recall for screening
+                \item Report all metrics
+                \item Compare with baseline
             \end{itemize}
             
             \vspace{3mm}
             
-            \textbf{Teknikker for ubalanse:}
+            \textbf{Techniques for imbalance:}
             \begin{itemize}
                 \item Oversampling (SMOTE)
                 \item Undersampling
                 \item Class weights
-                \item Stratifisert splitting
+                \item Stratified splitting
             \end{itemize}
         \end{column}
     \end{columns}
@@ -496,7 +496,7 @@
 % ---------------------------------------------------------------------
 % E10
 % ---------------------------------------------------------------------
-\begin{frame}{E10: \href{https://www.tripod-statement.org/}{TRIPOD}-retningslinjer}
+\begin{frame}{E10: \href{https://www.tripod-statement.org/}{TRIPOD} Guidelines}
 
     \begin{block}{What is TRIPOD?}
         \textbf{T}ransparent \textbf{R}eporting of a multivariable prediction model for \textbf{I}ndividual \textbf{P}rognosis \textbf{O}r \textbf{D}iagnosis
@@ -504,33 +504,33 @@
     
     \vspace{3mm}
     
-    \textbf{Main points for rapportering av ML i medisin:}
+    \textbf{Key points for reporting ML in medicine:}
     
     \begin{columns}
         \begin{column}{0.48\textwidth}
             \begin{enumerate}
-                \item Tydelig description av studiepopulasjon
-                \item Definer utfall og predikcountser klart
-                \item Beskriv missing data håndtering
-                \item Rapporter modellutvikling detaljert
+                \item Clear description of study population
+                \item Define outcomes and predictors clearly
+                \item Describe missing data handling
+                \item Report model development in detail
             \end{enumerate}
         \end{column}
         
         \begin{column}{0.48\textwidth}
             \begin{enumerate}
                 \setcounter{enumi}{4}
-                \item Intern validation (cross-validation)
-                \item Ekstern validation hvis mulig
-                \item Rapporter kalibrering og diskriminering
-                \item Diskuter limitationer
+                \item Internal validation (cross-validation)
+                \item External validation if possible
+                \item Report calibration and discrimination
+                \item Discuss limitations
             \end{enumerate}
         \end{column}
     \end{columns}
     
     \vspace{5mm}
     
-    \begin{alertblock}{Why important?}
-        TRIPOD sikrer \textbf{reproduserbarhet} og \textbf{kvalitetskontroll} av predictionsmodels i helsefotherwisekning.
+    \begin{alertblock}{Why is it important?}
+        TRIPOD ensures \textbf{reproducibility} and \textbf{quality control} of prediction models in health research.
     \end{alertblock}
     
 \end{frame}
@@ -553,19 +553,19 @@
             \end{center}
         \end{column}
         \begin{column}{0.30\textwidth}
-            \textbf{Metrikker:}\\[1mm]
+            \textbf{Metrics:}\\[1mm]
             \footnotesize
             Recall = $\frac{\text{TP}}{\text{TP}+\text{FN}}$\\[2mm]
             Precision = $\frac{\text{TP}}{\text{TP}+\text{FP}}$\\[2mm]
             Specificity = $\frac{\text{TN}}{\text{TN}+\text{FP}}$
         \end{column}
         \begin{column}{0.30\textwidth}
-            \textbf{Avansert:}\\[1mm]
+            \textbf{Advanced:}\\[1mm]
             \footnotesize
             \textbf{F1-score:}\\
-            Kombinerer Precision + Recall\\[2mm]
+            Combines Precision + Recall\\[2mm]
             \textbf{ROC/AUC:}\\
-            Helhetsbilde uavhengig av terskel
+            Overall picture independent of threshold
         \end{column}
     \end{columns}
 
@@ -574,20 +574,13 @@
     \begin{block}{\footnotesize Key points}
         \footnotesize
         \begin{itemize}
-            \item Velg metrikk basert på medical kontekst (FN vs. FP konsekvenser)
-            \item Accuracy er ofte utilstrekkelig -- bruk F1, AUC, precision, recall
-            \item ROC/AUC gir helhetsbilde uavhengig av threshold value
-            \item Følg \href{https://www.tripod-statement.org/}{TRIPOD} for transparent rapportering
+            \item Choose metric based on medical context (FN vs. FP consequences)
+            \item Accuracy is often insufficient - use F1, AUC, precision, recall
+            \item ROC/AUC gives overall picture independent of threshold
+            \item Follow \href{https://www.tripod-statement.org/}{TRIPOD} for transparent reporting
         \end{itemize}
     \end{block}
 
 \end{frame}
 
 \end{document}
-
-
-
-
-
-
-
