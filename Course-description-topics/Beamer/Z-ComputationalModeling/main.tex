@@ -1,0 +1,545 @@
+% =====================================================================
+% BMED365: Computational Modeling
+% Beamer presentation - Topic List Z01-Z10
+% =====================================================================
+\documentclass[aspectratio=169, 10pt]{beamer}
+
+% =====================================================================
+% PACKAGES
+% =====================================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows, positioning, calc}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{fontawesome5}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue,
+    citecolor=blue
+}
+
+% =====================================================================
+% THEME AND COLORS
+% =====================================================================
+\usetheme{Madrid}
+\usecolortheme{beaver}
+
+% =====================================================================
+% TITLE INFO
+% =====================================================================
+\title{Computational Modeling}
+\subtitle{BMED365: Topic List Z01--Z10}
+\author{BMED365}
+\date{Spring 2026}
+
+% =====================================================================
+% DOCUMENT
+% =====================================================================
+\begin{document}
+
+% Title page
+\begin{frame}
+    \titlepage
+\end{frame}
+
+% Table of Contents
+\begin{frame}{Overview}
+    \begin{enumerate}
+        \item \textbf{Foundations of Computational Modeling}
+        \begin{itemize}
+            \item Z01: Role of mathematical models in biomedicine
+            \item Z02: Mechanistic vs. phenomenological models
+            \item Z03: Ordinary differential equations (ODEs) in biology
+        \end{itemize}
+        \item \textbf{Neurophysiology Models}
+        \begin{itemize}
+            \item Z04: Hodgkin-Huxley model of action potentials
+        \end{itemize}
+        \item \textbf{Tumor and Vascular Models}
+        \begin{itemize}
+            \item Z05: Tumor growth models
+            \item Z06: Angiogenesis modeling
+        \end{itemize}
+        \item \textbf{Cardiovascular and Muscle Models}
+        \begin{itemize}
+            \item Z07: Cardiovascular flow and hemodynamics
+            \item Z08: ECG and blood pressure waveforms
+            \item Z09: Muscle force generation models
+        \end{itemize}
+        \item \textbf{Cellular and Molecular Models}
+        \begin{itemize}
+            \item Z10: Cell signaling and gene regulatory networks
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+% =====================================================================
+% SECTION: Foundations
+% =====================================================================
+\section{Foundations of Computational Modeling}
+
+\begin{frame}{Z01: Explain the role of mathematical models in biomedicine}
+    \textbf{\href{https://en.wikipedia.org/wiki/Mathematical_and_theoretical_biology}{Mathematical modeling} = using mathematics to describe biological systems}
+    
+    \begin{block}{Definition}
+        A mathematical model is a \textbf{simplified representation} of a biological system using equations, allowing us to understand, predict, and simulate behavior.
+    \end{block}
+    
+    \vspace{0.2cm}
+    \textbf{Why model biological systems?}
+    \begin{itemize}
+        \item \textbf{Understanding:} Formalize hypotheses about mechanisms
+        \item \textbf{Prediction:} Forecast outcomes (disease progression, treatment response)
+        \item \textbf{Experimentation:} Test scenarios that are difficult/unethical in vivo
+        \item \textbf{Optimization:} Find optimal treatment strategies
+    \end{itemize}
+    
+    \vspace{0.1cm}
+    {\small
+    \begin{alertblock}{Biomedical applications}
+        Drug dosing, tumor growth prediction, cardiac simulation, neural activity modeling, epidemic forecasting, personalized medicine.
+    \end{alertblock}
+    }
+\end{frame}
+
+\begin{frame}{Z02: Distinguish between mechanistic and phenomenological models}
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \textbf{\href{https://en.wikipedia.org/wiki/Mechanistic_model}{Mechanistic models}:}
+            \begin{itemize}
+                \item Based on \textbf{underlying mechanisms}
+                \item Describe \textit{how} the system works
+                \item Parameters have physical meaning
+                \item Example: Ion channel dynamics
+            \end{itemize}
+            
+            \vspace{0.3cm}
+            \textbf{Advantages:}
+            \begin{itemize}
+                \item Interpretable, generalizable
+                \item Can extrapolate beyond data
+            \end{itemize}
+            
+            \textbf{Disadvantages:}
+            \begin{itemize}
+                \item Complex, many parameters
+                \item Require detailed knowledge
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \textbf{\href{https://en.wikipedia.org/wiki/Phenomenological_model}{Phenomenological models}:}
+            \begin{itemize}
+                \item Describe \textbf{observed behavior}
+                \item Focus on \textit{what} happens, not how
+                \item Parameters may lack physical meaning
+                \item Example: Tumor growth curves
+            \end{itemize}
+            
+            \vspace{0.3cm}
+            \textbf{Advantages:}
+            \begin{itemize}
+                \item Simple, fewer parameters
+                \item Easier to fit to data
+            \end{itemize}
+            
+            \textbf{Disadvantages:}
+            \begin{itemize}
+                \item Limited extrapolation
+                \item Less insight into mechanisms
+            \end{itemize}
+        \end{column}
+    \end{columns}
+    
+    \vspace{0.3cm}
+    \begin{block}{In practice}
+        Often use \textbf{hybrid approaches} -- mechanistic where knowledge exists, phenomenological where it doesn't.
+    \end{block}
+\end{frame}
+
+\begin{frame}{Z03: Describe ordinary differential equations (ODEs) in biological systems}
+    \textbf{\href{https://en.wikipedia.org/wiki/Ordinary_differential_equation}{Ordinary Differential Equations} (ODEs):}
+    
+    \begin{block}{Definition}
+        ODEs describe how quantities \textbf{change over time}:
+        \[
+        \frac{dx}{dt} = f(x, t)
+        \]
+        where $x$ is the state variable and $t$ is time.
+    \end{block}
+    
+    \vspace{0.2cm}
+    \textbf{Biological examples:}
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \textbf{Population growth:}
+            \[
+            \frac{dN}{dt} = rN
+            \]
+            Exponential growth with rate $r$
+            
+            \vspace{0.2cm}
+            \textbf{Drug elimination:}
+            \[
+            \frac{dC}{dt} = -kC
+            \]
+            First-order decay
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \textbf{Enzyme kinetics:}
+            \[
+            \frac{d[S]}{dt} = -\frac{V_{max}[S]}{K_m + [S]}
+            \]
+            \href{https://en.wikipedia.org/wiki/Michaelis\%E2\%80\%93Menten_kinetics}{Michaelis-Menten}
+            
+            \vspace{0.2cm}
+            \textbf{Predator-prey:}
+            \[
+            \frac{dx}{dt} = \alpha x - \beta xy
+            \]
+            \href{https://en.wikipedia.org/wiki/Lotka\%E2\%80\%93Volterra_equations}{Lotka-Volterra}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+% =====================================================================
+% SECTION: Neurophysiology
+% =====================================================================
+\section{Neurophysiology Models}
+
+\begin{frame}{Z04: Explain the Hodgkin-Huxley model of action potentials}
+    \textbf{\href{https://en.wikipedia.org/wiki/Hodgkin\%E2\%80\%93Huxley_model}{Hodgkin-Huxley model} (1952, Nobel Prize 1963):}
+    
+    \begin{block}{The model}
+        Describes the \textbf{ionic basis of action potentials} using ODEs for membrane voltage and ion channel gating:
+        \[
+        C_m \frac{dV}{dt} = I_{ext} - g_{Na}m^3h(V - E_{Na}) - g_K n^4(V - E_K) - g_L(V - E_L)
+        \]
+    \end{block}
+    
+    \vspace{0.1cm}
+    \textbf{Key components:}
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \begin{itemize}
+                \item $V$: Membrane potential
+                \item $C_m$: Membrane capacitance
+                \item $g_{Na}, g_K, g_L$: Conductances
+                \item $E_{Na}, E_K, E_L$: Reversal potentials
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \begin{itemize}
+                \item $m, h, n$: Gating variables (0--1)
+                \item $m$: Na$^+$ activation
+                \item $h$: Na$^+$ inactivation
+                \item $n$: K$^+$ activation
+            \end{itemize}
+        \end{column}
+    \end{columns}
+    
+    \vspace{0.15cm}
+    {\small
+    \begin{alertblock}{Legacy}
+        Foundation for computational neuroscience. Still used in detailed neuron models and cardiac cell electrophysiology.
+    \end{alertblock}
+    }
+\end{frame}
+
+% =====================================================================
+% SECTION: Tumor Models
+% =====================================================================
+\section{Tumor and Vascular Models}
+
+\begin{frame}{Z05: Describe tumor growth models}
+    \textbf{Mathematical models of \href{https://en.wikipedia.org/wiki/Tumor_growth}{tumor growth}:}
+    
+    \vspace{0.2cm}
+    \begin{columns}[T]
+        \begin{column}{0.32\textwidth}
+            \textbf{\href{https://en.wikipedia.org/wiki/Exponential_growth}{Exponential}:}
+            \[
+            \frac{dN}{dt} = rN
+            \]
+            \begin{itemize}
+                \item Unlimited growth
+                \item Early-stage tumors
+                \item Unrealistic long-term
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.32\textwidth}
+            \textbf{\href{https://en.wikipedia.org/wiki/Logistic_function}{Logistic}:}
+            \[
+            \frac{dN}{dt} = rN\left(1 - \frac{N}{K}\right)
+            \]
+            \begin{itemize}
+                \item Carrying capacity $K$
+                \item Resource limitation
+                \item S-shaped curve
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.32\textwidth}
+            \textbf{\href{https://en.wikipedia.org/wiki/Gompertz_function}{Gompertz}:}
+            \[
+            \frac{dN}{dt} = rN \ln\left(\frac{K}{N}\right)
+            \]
+            \begin{itemize}
+                \item Decelerating growth
+                \item Fits clinical data well
+                \item Common in oncology
+            \end{itemize}
+        \end{column}
+    \end{columns}
+    
+    \vspace{0.3cm}
+    \begin{block}{Clinical applications}
+        Tumor growth models are used to predict progression, plan treatment timing, and evaluate therapy response. Personalized models can incorporate patient-specific parameters.
+    \end{block}
+\end{frame}
+
+\begin{frame}{Z06: Explain angiogenesis modeling and its clinical relevance}
+    \textbf{\href{https://en.wikipedia.org/wiki/Angiogenesis}{Angiogenesis} = formation of new blood vessels}
+    
+    \vspace{0.2cm}
+    \textbf{Why model angiogenesis?}
+    \begin{itemize}
+        \item Tumors require blood supply to grow beyond $\sim$1--2 mm
+        \item Angiogenesis is a key therapeutic target (\href{https://en.wikipedia.org/wiki/Angiogenesis_inhibitor}{anti-VEGF drugs})
+        \item Models help predict treatment response
+    \end{itemize}
+    
+    \vspace{0.2cm}
+    \textbf{Modeling approaches:}
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \textbf{Continuum models:}
+            \begin{itemize}
+                \item PDEs for vessel density
+                \item VEGF diffusion and consumption
+                \item Computationally efficient
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \textbf{Discrete/agent-based:}
+            \begin{itemize}
+                \item Individual vessel tips as agents
+                \item Stochastic branching, migration
+                \item More realistic morphology
+            \end{itemize}
+        \end{column}
+    \end{columns}
+    
+    \vspace{0.2cm}
+    {\small
+    \begin{alertblock}{Clinical relevance}
+        Models predict response to anti-angiogenic therapy (e.g., bevacizumab), help optimize dosing, and explain resistance mechanisms.
+    \end{alertblock}
+    }
+\end{frame}
+
+% =====================================================================
+% SECTION: Cardiovascular
+% =====================================================================
+\section{Cardiovascular and Muscle Models}
+
+\begin{frame}{Z07: Describe cardiovascular flow models and hemodynamics}
+    \textbf{\href{https://en.wikipedia.org/wiki/Hemodynamics}{Hemodynamics} = study of blood flow}
+    
+    \vspace{0.2cm}
+    \textbf{Modeling approaches:}
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \textbf{0D (Lumped parameter):}
+            \begin{itemize}
+                \item Electrical circuit analogy
+                \item Resistance, compliance, inertance
+                \item \href{https://en.wikipedia.org/wiki/Windkessel_effect}{Windkessel models}
+            \end{itemize}
+            
+            \vspace{0.2cm}
+            \textbf{1D models:}
+            \begin{itemize}
+                \item Wave propagation in arteries
+                \item Pulse wave velocity
+                \item Arterial network models
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \textbf{3D CFD:}
+            \begin{itemize}
+                \item \href{https://en.wikipedia.org/wiki/Navier\%E2\%80\%93Stokes_equations}{Navier-Stokes equations}
+                \item Patient-specific geometries
+                \item Wall shear stress, flow patterns
+            \end{itemize}
+            
+            \vspace{0.2cm}
+            \textbf{Applications:}
+            \begin{itemize}
+                \item Aneurysm rupture risk
+                \item Stent design
+                \item Surgical planning
+            \end{itemize}
+        \end{column}
+    \end{columns}
+    
+    \vspace{0.2cm}
+    \begin{block}{Key equation: Poiseuille's law}
+        $Q = \frac{\pi r^4 \Delta P}{8 \mu L}$ \quad (flow rate depends on radius to the 4th power!)
+    \end{block}
+\end{frame}
+
+\begin{frame}{Z08: Understand the relationship between models and ECG/blood pressure}
+    \textbf{Physiological signals from models:}
+    
+    \vspace{0.2cm}
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \textbf{\href{https://en.wikipedia.org/wiki/Electrocardiography}{ECG} modeling:}
+            \begin{itemize}
+                \item \href{https://en.wikipedia.org/wiki/Bidomain_model}{Bidomain model}: Electrical propagation in cardiac tissue
+                \item Cell models (e.g., \href{https://models.physiomeproject.org/exposure/a7179d94365ff0c9c0e6eb7c6a787d3d}{ten Tusscher}) for action potentials
+                \item Forward problem: Compute ECG from heart activity
+            \end{itemize}
+            
+            \vspace{0.2cm}
+            \textbf{Applications:}
+            \begin{itemize}
+                \item Arrhythmia simulation
+                \item Drug safety testing (QT prolongation)
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \textbf{\href{https://en.wikipedia.org/wiki/Blood_pressure}{Blood pressure} waveforms:}
+            \begin{itemize}
+                \item Windkessel models relate cardiac output to arterial pressure
+                \item Pulse wave analysis
+                \item Central vs. peripheral pressure
+            \end{itemize}
+            
+            \vspace{0.2cm}
+            \textbf{Applications:}
+            \begin{itemize}
+                \item Arterial stiffness estimation
+                \item Cardiac function assessment
+                \item Virtual patient trials
+            \end{itemize}
+        \end{column}
+    \end{columns}
+    
+    \vspace{0.2cm}
+    \begin{block}{Digital twins}
+        Patient-specific computational models (``\href{https://en.wikipedia.org/wiki/Digital_twin}{digital twins}'') can simulate individual responses to interventions.
+    \end{block}
+\end{frame}
+
+\begin{frame}{Z09: Describe muscle force generation models}
+    \textbf{\href{https://en.wikipedia.org/wiki/Muscle_contraction}{Muscle contraction} models:}
+    
+    \vspace{0.2cm}
+    \textbf{\href{https://en.wikipedia.org/wiki/Hill\%27s_muscle_model}{Hill's muscle model} (classic):}
+    \begin{itemize}
+        \item Three-element model: Contractile element (CE), series elastic (SE), parallel elastic (PE)
+        \item Force-velocity relationship: $F = F_0 \cdot \frac{v_{max} - v}{v_{max} + v/a}$
+        \item Phenomenological, widely used in biomechanics
+    \end{itemize}
+    
+    \vspace{0.2cm}
+    \textbf{\href{https://en.wikipedia.org/wiki/Sliding_filament_theory}{Cross-bridge models} (mechanistic):}
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \begin{itemize}
+                \item Based on actin-myosin interactions
+                \item \href{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1366732/}{Huxley (1957)} kinetic model
+                \item States: attached, detached, force-generating
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \begin{itemize}
+                \item Calcium activation dynamics
+                \item Captures force-length-velocity relations
+                \item Used in detailed cardiac models
+            \end{itemize}
+        \end{column}
+    \end{columns}
+    
+    \vspace{0.2cm}
+    {\small
+    \begin{alertblock}{Applications}
+        Movement simulation, prosthetics design, cardiac mechanics, sports biomechanics, rehabilitation.
+    \end{alertblock}
+    }
+\end{frame}
+
+% =====================================================================
+% SECTION: Cellular
+% =====================================================================
+\section{Cellular and Molecular Models}
+
+\begin{frame}{Z10: Explain cell signaling pathways and gene regulatory networks}
+    \textbf{Modeling \href{https://en.wikipedia.org/wiki/Cell_signaling}{cell signaling} and \href{https://en.wikipedia.org/wiki/Gene_regulatory_network}{gene regulation}:}
+    
+    \vspace{0.2cm}
+    \textbf{Cell signaling pathways:}
+    \begin{itemize}
+        \item Cascades of molecular interactions (receptors $\rightarrow$ kinases $\rightarrow$ transcription factors)
+        \item ODE models for concentration dynamics
+        \item Example: \href{https://en.wikipedia.org/wiki/MAPK/ERK_pathway}{MAPK/ERK pathway}, \href{https://en.wikipedia.org/wiki/PI3K/AKT/mTOR_pathway}{PI3K/AKT/mTOR}
+    \end{itemize}
+    
+    \vspace{0.2cm}
+    \textbf{Gene regulatory networks:}
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \begin{itemize}
+                \item Genes regulate each other's expression
+                \item Boolean networks: ON/OFF states
+                \item ODE models: Continuous concentrations
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \begin{itemize}
+                \item Network motifs: Feedback loops, feedforward
+                \item Emergent behavior: Oscillations, bistability
+                \item Stochastic effects in single cells
+            \end{itemize}
+        \end{column}
+    \end{columns}
+    
+    \vspace{0.2cm}
+    \begin{block}{Systems biology}
+        Integrating signaling, metabolism, and gene regulation into \textbf{whole-cell models} is a major goal of \href{https://en.wikipedia.org/wiki/Systems_biology}{systems biology}.
+    \end{block}
+\end{frame}
+
+% =====================================================================
+% SUMMARY
+% =====================================================================
+\section*{Summary}
+
+\begin{frame}{Summary: Computational Modeling}
+    \textbf{Key points:}
+    \begin{itemize}
+        \item \textbf{Z01:} Mathematical models help understand, predict, and simulate biological systems
+        \item \textbf{Z02:} Mechanistic models describe mechanisms; phenomenological describe behavior
+        \item \textbf{Z03:} ODEs are the workhorse of dynamic biological modeling
+        \item \textbf{Z04:} Hodgkin-Huxley: ionic basis of action potentials
+        \item \textbf{Z05:} Tumor growth: exponential, logistic, Gompertz models
+        \item \textbf{Z06:} Angiogenesis models predict response to anti-VEGF therapy
+        \item \textbf{Z07:} Cardiovascular models: 0D lumped parameter to 3D CFD
+        \item \textbf{Z08:} ECG/BP waveforms arise from electrophysiology and hemodynamics
+        \item \textbf{Z09:} Muscle models: Hill's phenomenological, cross-bridge mechanistic
+        \item \textbf{Z10:} Cell signaling and gene networks: systems biology perspective
+    \end{itemize}
+    
+    \vspace{0.2cm}
+    \begin{block}{Key message}
+        Computational modeling bridges theory and experiment in biomedicine. From neurons to tumors to hearts, mathematical models provide quantitative frameworks for understanding disease and optimizing treatment.
+    \end{block}
+\end{frame}
+
+\end{document}

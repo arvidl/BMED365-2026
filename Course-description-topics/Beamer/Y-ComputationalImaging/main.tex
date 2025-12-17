@@ -1,0 +1,473 @@
+% =====================================================================
+% BMED365: Computational Imaging
+% Beamer presentation - Topic List Y01-Y10
+% =====================================================================
+\documentclass[aspectratio=169, 10pt]{beamer}
+
+% =====================================================================
+% PACKAGES
+% =====================================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows, positioning, calc}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{fontawesome5}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue,
+    citecolor=blue
+}
+
+% =====================================================================
+% THEME AND COLORS
+% =====================================================================
+\usetheme{Madrid}
+\usecolortheme{beaver}
+
+% =====================================================================
+% TITLE INFO
+% =====================================================================
+\title{Computational Imaging}
+\subtitle{BMED365: Topic List Y01--Y10}
+\author{BMED365}
+\date{Spring 2026}
+
+% =====================================================================
+% DOCUMENT
+% =====================================================================
+\begin{document}
+
+% Title page
+\begin{frame}
+    \titlepage
+\end{frame}
+
+% Table of Contents
+\begin{frame}{Overview}
+    \begin{enumerate}
+        \item \textbf{Fundamentals of Computational Imaging}
+        \begin{itemize}
+            \item Y01: Fundamental concepts in computational imaging
+            \item Y02: The imaging pipeline
+            \item Y03: Digital image representation
+            \item Y04: Basic image processing operations
+        \end{itemize}
+        \item \textbf{Advanced Imaging Techniques}
+        \begin{itemize}
+            \item Y05: Imaging Mass Cytometry (IMC)
+            \item Y06: Multiplexed tissue analysis
+        \end{itemize}
+        \item \textbf{AI in Medical Imaging}
+        \begin{itemize}
+            \item Y07: Role of AI in medical image analysis
+            \item Y08: Image segmentation approaches
+            \item Y09: MedSAM (Segment Anything in Medical Images)
+            \item Y10: LLMs integrated with medical imaging
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+% =====================================================================
+% SECTION: Fundamentals
+% =====================================================================
+\section{Fundamentals of Computational Imaging}
+
+\begin{frame}{Y01: Explain fundamental concepts in computational imaging}
+    \textbf{\href{https://en.wikipedia.org/wiki/Computational_imaging}{Computational imaging} = combining optics, sensors, and computation}
+    
+    \begin{block}{Definition}
+        Computational imaging refers to imaging techniques where the final image is \textbf{computed} from raw sensor data, rather than directly captured.
+    \end{block}
+    
+    \vspace{0.2cm}
+    \textbf{Key concepts:}
+    \begin{itemize}
+        \item \textbf{Image formation:} How physical signals become digital data
+        \item \textbf{Reconstruction:} Algorithms that transform raw data into images
+        \item \textbf{Enhancement:} Improving image quality computationally
+        \item \textbf{Analysis:} Extracting information from images
+    \end{itemize}
+    
+    \vspace{0.1cm}
+    {\small
+    \begin{alertblock}{Medical relevance}
+        CT, MRI, PET, and ultrasound all rely on computational methods to produce diagnostic images from raw sensor data.
+    \end{alertblock}
+    }
+\end{frame}
+
+\begin{frame}{Y02: Describe the imaging pipeline: acquisition, processing, analysis}
+    \textbf{The \href{https://en.wikipedia.org/wiki/Image_processing}{imaging pipeline}:}
+    
+    \vspace{0.2cm}
+    \begin{center}
+    \begin{tikzpicture}[node distance=2.5cm, auto]
+        \tikzstyle{block} = [rectangle, draw=blue!50, fill=blue!10, 
+            text width=2.2cm, text centered, rounded corners, minimum height=1cm]
+        \tikzstyle{arrow} = [thick,->,>=stealth]
+        
+        \node [block] (acq) {Acquisition};
+        \node [block, right of=acq] (pre) {Pre-processing};
+        \node [block, right of=pre] (proc) {Processing};
+        \node [block, right of=proc] (ana) {Analysis};
+        \node [block, right of=ana] (vis) {Visualization};
+        
+        \draw [arrow] (acq) -- (pre);
+        \draw [arrow] (pre) -- (proc);
+        \draw [arrow] (proc) -- (ana);
+        \draw [arrow] (ana) -- (vis);
+    \end{tikzpicture}
+    \end{center}
+    
+    \vspace{0.2cm}
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \textbf{Acquisition:}
+            \begin{itemize}
+                \item Scanner/sensor captures raw data
+                \item Parameters: resolution, contrast, noise
+            \end{itemize}
+            
+            \textbf{Pre-processing:}
+            \begin{itemize}
+                \item Noise reduction, artifact correction
+                \item Format conversion, normalization
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \textbf{Processing:}
+            \begin{itemize}
+                \item Filtering, enhancement, registration
+                \item Feature extraction
+            \end{itemize}
+            
+            \textbf{Analysis \& Visualization:}
+            \begin{itemize}
+                \item Segmentation, quantification
+                \item 2D/3D rendering, reporting
+            \end{itemize}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Y03: Understand digital image representation}
+    \textbf{Digital images = discrete samples of continuous signals}
+    
+    \vspace{0.2cm}
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \textbf{\href{https://en.wikipedia.org/wiki/Pixel}{Pixels} (2D):}
+            \begin{itemize}
+                \item Picture elements
+                \item Arranged in a grid (rows $\times$ columns)
+                \item Each pixel has an intensity value
+            \end{itemize}
+            
+            \vspace{0.2cm}
+            \textbf{\href{https://en.wikipedia.org/wiki/Voxel}{Voxels} (3D):}
+            \begin{itemize}
+                \item Volume elements
+                \item Extension of pixels to 3D
+                \item Used in CT, MRI volumes
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \textbf{Intensity representation:}
+            \begin{itemize}
+                \item \textbf{8-bit:} 0--255 (256 levels)
+                \item \textbf{12-bit:} 0--4095 (medical imaging)
+                \item \textbf{16-bit:} 0--65535
+                \item \textbf{Floating point:} continuous values
+            \end{itemize}
+            
+            \vspace{0.2cm}
+            \textbf{Image types:}
+            \begin{itemize}
+                \item Grayscale (single channel)
+                \item RGB color (3 channels)
+                \item Multi-channel (hyperspectral, IMC)
+            \end{itemize}
+        \end{column}
+    \end{columns}
+    
+    \vspace{0.2cm}
+    \begin{block}{Key parameters}
+        \textbf{Resolution:} Number of pixels/voxels. \textbf{Bit depth:} Number of intensity levels. \textbf{Spacing:} Physical size of each pixel/voxel.
+    \end{block}
+\end{frame}
+
+\begin{frame}{Y04: Explain basic image processing operations}
+    \textbf{\href{https://en.wikipedia.org/wiki/Digital_image_processing}{Image processing} = manipulating images to improve quality or extract information}
+    
+    \vspace{0.2cm}
+    \textbf{Filtering operations:}
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \begin{itemize}
+                \item \textbf{\href{https://en.wikipedia.org/wiki/Gaussian_blur}{Gaussian blur}:} Smoothing, noise reduction
+                \item \textbf{\href{https://en.wikipedia.org/wiki/Median_filter}{Median filter}:} Remove salt-and-pepper noise
+                \item \textbf{\href{https://en.wikipedia.org/wiki/Unsharp_masking}{Sharpening}:} Enhance edges
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \begin{itemize}
+                \item \textbf{\href{https://en.wikipedia.org/wiki/Sobel_operator}{Edge detection}:} Find boundaries
+                \item \textbf{\href{https://en.wikipedia.org/wiki/Morphological_image_processing}{Morphological ops}:} Erosion, dilation
+            \end{itemize}
+        \end{column}
+    \end{columns}
+    
+    \vspace{0.2cm}
+    \textbf{Enhancement techniques:}
+    \begin{itemize}
+        \item \textbf{\href{https://en.wikipedia.org/wiki/Histogram_equalization}{Histogram equalization}:} Improve contrast distribution
+        \item \textbf{\href{https://en.wikipedia.org/wiki/Contrast-limited_adaptive_histogram_equalization}{CLAHE}:} Adaptive local contrast enhancement
+        \item \textbf{Intensity normalization:} Standardize intensity ranges
+    \end{itemize}
+    
+    {\small
+    \begin{alertblock}{In medical imaging}
+        Careful processing is essential -- over-enhancement can create artifacts or hide pathology. Always preserve diagnostic information.
+    \end{alertblock}
+    }
+\end{frame}
+
+% =====================================================================
+% SECTION: Advanced Imaging
+% =====================================================================
+\section{Advanced Imaging Techniques}
+
+\begin{frame}{Y05: Describe Imaging Mass Cytometry (IMC) and its applications}
+    \textbf{\href{https://en.wikipedia.org/wiki/Imaging_mass_cytometry}{Imaging Mass Cytometry} (IMC):}
+    
+    \begin{block}{Definition}
+        IMC combines mass spectrometry with imaging to simultaneously detect \textbf{40+ protein markers} in tissue sections at subcellular resolution.
+    \end{block}
+    
+    \vspace{0.2cm}
+    \textbf{How it works:}
+    \begin{enumerate}
+        \item Tissue is stained with \textbf{metal-conjugated antibodies}
+        \item Laser ablates small spots (1 $\mu$m resolution)
+        \item Mass spectrometer identifies metals $\rightarrow$ protein markers
+        \item Computational reconstruction creates multiplexed image
+    \end{enumerate}
+    
+    \vspace{0.2cm}
+    \textbf{Applications in biomedicine:}
+    \begin{itemize}
+        \item \textbf{Tumor microenvironment:} Map immune cell infiltration
+        \item \textbf{Cell phenotyping:} Identify cell types and states
+        \item \textbf{Spatial biology:} Understand tissue architecture
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Y06: Explain how IMC enables multiplexed tissue analysis}
+    \textbf{Multiplexed analysis = many markers simultaneously}
+    
+    \vspace{0.2cm}
+    \textbf{Advantages over traditional immunohistochemistry:}
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \textbf{Traditional IHC:}
+            \begin{itemize}
+                \item Limited to 2--4 markers
+                \item Multiple serial sections needed
+                \item Spectral overlap limits colors
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \textbf{IMC:}
+            \begin{itemize}
+                \item 40+ markers on single section
+                \item No spectral overlap (mass tags)
+                \item Preserves spatial relationships
+            \end{itemize}
+        \end{column}
+    \end{columns}
+    
+    \vspace{0.3cm}
+    \textbf{Computational analysis pipeline:}
+    \begin{enumerate}
+        \item \textbf{Cell segmentation:} Identify individual cells
+        \item \textbf{Feature extraction:} Measure marker intensities per cell
+        \item \textbf{Clustering:} Group cells by phenotype
+        \item \textbf{Spatial analysis:} Analyze cell neighborhoods and interactions
+    \end{enumerate}
+    
+    \begin{block}{Key insight}
+        IMC generates \textbf{high-dimensional spatial data} requiring sophisticated computational methods for analysis.
+    \end{block}
+\end{frame}
+
+% =====================================================================
+% SECTION: AI in Medical Imaging
+% =====================================================================
+\section{AI in Medical Imaging}
+
+\begin{frame}{Y07: Understand the role of AI in medical image analysis}
+    \textbf{AI is transforming medical imaging:}
+    
+    \vspace{0.2cm}
+    \textbf{Key applications:}
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \begin{itemize}
+                \item \textbf{\href{https://en.wikipedia.org/wiki/Computer-aided_detection}{Detection}:} Find abnormalities
+                \item \textbf{\href{https://en.wikipedia.org/wiki/Image_segmentation}{Segmentation}:} Delineate structures
+                \item \textbf{Classification:} Diagnose conditions
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \begin{itemize}
+                \item \textbf{Quantification:} Measure volumes, changes
+                \item \textbf{Prediction:} Prognosis, treatment response
+                \item \textbf{Image enhancement:} Super-resolution, denoising
+            \end{itemize}
+        \end{column}
+    \end{columns}
+    
+    \vspace{0.2cm}
+    \textbf{Why deep learning excels:}
+    \begin{itemize}
+        \item Learns features automatically from data (no hand-crafted features)
+        \item Handles high-dimensional image data naturally
+        \item \href{https://en.wikipedia.org/wiki/Convolutional_neural_network}{CNNs} designed for spatial data
+    \end{itemize}
+    
+    {\small
+    \begin{alertblock}{Clinical deployment considerations}
+        AI tools require regulatory approval (FDA, CE marking), validation on local populations, and integration into clinical workflows.
+    \end{alertblock}
+    }
+\end{frame}
+
+\begin{frame}{Y08: Describe image segmentation approaches}
+    \textbf{\href{https://en.wikipedia.org/wiki/Image_segmentation}{Image segmentation} = partitioning image into meaningful regions}
+    
+    \vspace{0.2cm}
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \textbf{Classical approaches:}
+            \begin{itemize}
+                \item \textbf{\href{https://en.wikipedia.org/wiki/Thresholding_(image_processing)}{Thresholding}:} Intensity-based separation
+                \item \textbf{\href{https://en.wikipedia.org/wiki/Region_growing}{Region growing}:} Expand from seed points
+                \item \textbf{\href{https://en.wikipedia.org/wiki/Watershed_(image_processing)}{Watershed}:} Topographic flooding
+                \item \textbf{\href{https://en.wikipedia.org/wiki/Active_contour_model}{Active contours}:} Deformable models
+            \end{itemize}
+            
+            \vspace{0.2cm}
+            \textit{Pros:} Interpretable, no training data needed\\
+            \textit{Cons:} Sensitive to noise, requires tuning
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \textbf{Deep learning approaches:}
+            \begin{itemize}
+                \item \textbf{\href{https://arxiv.org/abs/1505.04597}{U-Net}:} Encoder-decoder with skip connections
+                \item \textbf{\href{https://arxiv.org/abs/1802.02611}{nnU-Net}:} Self-configuring U-Net
+                \item \textbf{\href{https://arxiv.org/abs/2010.11929}{Vision Transformers}:} Attention-based
+                \item \textbf{\href{https://segment-anything.com/}{SAM/MedSAM}:} Foundation models
+            \end{itemize}
+            
+            \vspace{0.2cm}
+            \textit{Pros:} State-of-the-art accuracy, handles complexity\\
+            \textit{Cons:} Requires training data, less interpretable
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Y09: Know about MedSAM (Segment Anything in Medical Images)}
+    \textbf{\href{https://www.nature.com/articles/s41467-024-44824-z}{MedSAM} = Medical adaptation of Segment Anything Model}
+    
+    \vspace{0.2cm}
+    \textbf{Background:}
+    \begin{itemize}
+        \item \href{https://segment-anything.com/}{SAM} (Meta AI, 2023): Foundation model for image segmentation
+        \item Trained on 11M images, 1B masks -- generalizes to new tasks
+        \item \textbf{MedSAM:} Fine-tuned on 1.5M medical image-mask pairs
+    \end{itemize}
+    
+    \vspace{0.2cm}
+    \textbf{Key features:}
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \begin{itemize}
+                \item \textbf{Promptable:} Specify what to segment with points, boxes, or text
+                \item \textbf{Zero-shot:} Works on unseen image types
+                \item \textbf{Interactive:} Refine with additional prompts
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \begin{itemize}
+                \item \textbf{Multi-modality:} CT, MRI, X-ray, ultrasound, microscopy
+                \item \textbf{Efficient:} Fast inference
+            \end{itemize}
+        \end{column}
+    \end{columns}
+    
+    \vspace{0.2cm}
+    \begin{block}{Impact}
+        MedSAM represents a shift toward \textbf{foundation models} in medical imaging -- general-purpose models that can be adapted to specific tasks with minimal effort.
+    \end{block}
+\end{frame}
+
+\begin{frame}{Y10: Discuss how LLMs are integrated with medical imaging}
+    \textbf{Large Language Models (LLMs) + Medical Imaging:}
+    
+    \vspace{0.2cm}
+    \textbf{Integration approaches:}
+    \begin{enumerate}
+        \item \textbf{\href{https://en.wikipedia.org/wiki/Vision-language_model}{Vision-Language Models}:} Joint understanding of images and text
+        \item \textbf{Report generation:} Automatically describe findings
+        \item \textbf{Question answering:} ``What abnormalities are visible?''
+        \item \textbf{Clinical decision support:} Combine image analysis with patient context
+    \end{enumerate}
+    
+    \vspace{0.2cm}
+    \textbf{Examples:}
+    \begin{itemize}
+        \item \textbf{\href{https://arxiv.org/abs/2306.00890}{Med-PaLM M}:} Google's multimodal medical AI
+        \item \textbf{\href{https://arxiv.org/abs/2303.04048}{LLaVA-Med}:} Open-source medical VLM
+        \item \textbf{GPT-4V/Claude with vision:} Can analyze medical images (with caveats)
+    \end{itemize}
+    
+    {\small
+    \begin{alertblock}{Current limitations}
+        \textbf{Hallucinations:} LLMs may generate plausible but incorrect findings. \textbf{Not FDA-approved} for clinical diagnosis. Use as assistive tools only, with human oversight.
+    \end{alertblock}
+    }
+\end{frame}
+
+% =====================================================================
+% SUMMARY
+% =====================================================================
+\section*{Summary}
+
+\begin{frame}{Summary: Computational Imaging}
+    \textbf{Key points:}
+    \begin{itemize}
+        \item \textbf{Y01:} Computational imaging combines optics, sensors, and computation
+        \item \textbf{Y02:} Imaging pipeline: acquisition $\rightarrow$ processing $\rightarrow$ analysis
+        \item \textbf{Y03:} Digital images: pixels/voxels with intensity values
+        \item \textbf{Y04:} Image processing: filtering, enhancement, feature extraction
+        \item \textbf{Y05:} IMC enables 40+ marker detection in tissue
+        \item \textbf{Y06:} Multiplexed analysis reveals cell phenotypes and spatial patterns
+        \item \textbf{Y07:} AI excels at detection, segmentation, and classification
+        \item \textbf{Y08:} Segmentation: classical methods vs. deep learning (U-Net)
+        \item \textbf{Y09:} MedSAM: foundation model for medical image segmentation
+        \item \textbf{Y10:} LLMs + imaging: report generation, VQA, multimodal analysis
+    \end{itemize}
+    
+    \vspace{0.2cm}
+    \begin{block}{Key message}
+        Computational imaging is essential for modern medical diagnostics. AI and foundation models are rapidly advancing capabilities, but require careful validation and human oversight in clinical settings.
+    \end{block}
+\end{frame}
+
+\end{document}

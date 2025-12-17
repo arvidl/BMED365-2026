@@ -81,7 +81,7 @@ All course material is openly available at [this](https://github.com/arvidl/BMED
 | 5    | Mon 26 - Sat 31 |                | INDIVIDUAL PROJECT (on your own during the week)                |          |          |     B         |
 | 5    | Mon 26.01.2026 | 10:15–12:00    | Motivation, demonstration - image processing                           | AL       | Hist 1   |     B         |
 | 5    | Tue 27.01.2026 | 08:15–10:00    | [TEAM PROJECT](./Team-project) – group presentations                       | AL       | Hist 1   |    E/B        |
-| 5    | Fri 30.01.2026 | 11:00–13:00    | HOME EXAM - MCQ (Inspera)                                     |          |          |  ELMED219     |
+| 5    | Fri 30.01.2026 | 11:00–13:00    | HOME EXAM (Inspera)                                     |          |          |  ELMED219     |
 | 6    | Mon 02 - Sat 07 |                | INDIVIDUAL PROJECT (on your own during the week)                | AL       |          |     B         |
 | 7    | Mon 09 - Sat 14 |                | INDIVIDUAL PROJECT (on your own during the week)                | AL       |          |     B         |
 | 7    | Mon 09.02.2026 | 08:15–10:00    | [Lab 4](./Lab4-Comp-Imag) (Computational Imaging) [[slides](https://github.com/arvidl/BMED365-2026/blob/main/Course-description-topics/Beamer/Y-ComputationalImaging/main.pdf)]                                 | AL       | Hist 1   |     B         |
@@ -89,7 +89,7 @@ All course material is openly available at [this](https://github.com/arvidl/BMED
 | 8    | Mon 16.02.2026 | 08:15–10:00    | Motivation, demonstration - modeling                          | AL       | Hist 1   |     B         |
 | 8    | Fri 20.02.2026 | 08:15–10:00    | [Lab 5](./Lab5-Comp-Mod) (Computational Modeling)  [[slides](https://github.com/arvidl/BMED365-2026/blob/main/Course-description-topics/Beamer/Z-ComputationalModeling/main.pdf)]                               | AL       | Hist 1   |     B         |
 | 9    | Fri 27.02.2026 | 08:15–10:00    | Summary & reflections                                      | AL       | Hist 1   |     B         |
-| 10   | Fri 06.03.2026 | 09:00–11:00    | HOME EXAM MCQ (Inspera)                                       |          |          |   BMED365     |
+| 10   | Fri 06.03.2026 | 09:00–11:00    | **HOME EXAM (Inspera)**                                       |          |          |   BMED365     |
 
 ---
 
@@ -110,7 +110,7 @@ All course material is openly available at [this](https://github.com/arvidl/BMED
 
 | Activity | Topic | Description |
 |:---------|:------|:------------|
-| [**Lab 4**](./Lab4-Comp-Imag) | Computational Imaging | MRI analysis, image classification, segmentation, and imaging mass cytometry |
+| [**Lab 4**](./Lab4-Comp-Imag) | Computational Imaging | MRI analysis, image classification, segmentation, and imaging mass cytometry (IMC) |
 | [**Lab 5**](./Lab5-Comp-Mod) | Computational Modeling | Biomedical modeling: action potentials, tumor growth, cardiovascular flow |
 | [**Individual Project**](./Individual-project) | Student-defined | Personal project within the scope of the course, presented as a digital speed poster |
 
