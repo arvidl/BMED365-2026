@@ -3,6 +3,12 @@
 \usepackage[english]{babel}
 \usepackage{graphicx}
 \usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue!70!black,
+    citecolor=green!50!black
+}
 \usepackage{booktabs}
 \usepackage{amsmath}
 \usepackage{listings}
@@ -115,7 +121,7 @@
 \end{frame}
 
 \section{Jupyter Notebooks}
-\begin{frame}{The Jupyter Notebook Environment}
+\begin{frame}{The \href{https://jupyter.org/}{Jupyter Notebook} Environment}
     \begin{columns}
         \column{0.5\textwidth}
         A \textbf{Notebook} (.ipynb) combines:
@@ -124,7 +130,7 @@
             \item \textbf{Rich text} (Markdown, LaTeX formulas).
             \item \textbf{Visualizations} (Plots directly in the document).
         \end{enumerate}
-        This promotes \textit{reproducible research}.
+        This promotes \href{https://en.wikipedia.org/wiki/Reproducibility}{\textit{reproducible research}}.
         
         \column{0.5\textwidth}
         \begin{block}{Prompt}
@@ -135,7 +141,7 @@
     \end{columns}
 \end{frame}
 
-\begin{frame}[fragile]{Markdown and LaTeX in Jupyter}
+\begin{frame}[fragile]{\href{https://www.markdownguide.org/}{Markdown} and \href{https://www.latex-project.org/}{LaTeX} in Jupyter}
     We can write formulas directly in text cells using \$:
     \vspace{0.5cm}
     
@@ -152,7 +158,7 @@
 \end{frame}
 
 \section{Important Libraries}
-\begin{frame}{NumPy: Numerical Python}
+\begin{frame}{\href{https://numpy.org/}{NumPy}: Numerical Python}
     The foundation for all scientific computing in Python.
     \begin{itemize}
         \item Introduces \texttt{ndarray} (n-dimensional arrays).
@@ -165,7 +171,7 @@
     \end{block}
 \end{frame}
 
-\begin{frame}[fragile]{Pandas: Data Processing}
+\begin{frame}[fragile]{\href{https://pandas.pydata.org/}{Pandas}: Data Processing}
     The main tool for tabular data (like Excel, but more powerful).
     
     \begin{columns}
@@ -194,7 +200,7 @@ print(df.describe())
     \end{columns}
 \end{frame}
 
-\begin{frame}{Matplotlib \& Seaborn: Visualization}
+\begin{frame}{\href{https://matplotlib.org/}{Matplotlib} \& \href{https://seaborn.pydata.org/}{Seaborn}: Visualization}
     \begin{itemize}
         \item \textbf{Matplotlib:} The "grandfather" of plotting. Powerful, but can be verbose.
         \item \textbf{Seaborn:} Built on Matplotlib. More attractive default design, simpler for statistical plots.
@@ -226,12 +232,12 @@ print(df.describe())
         \begin{lstlisting}[language=Python]
 pd.read_csv?
         \end{lstlisting}
-        \item \textbf{Restart Kernel:} If things get stuck, restart the kernel (Kernel -> Restart).
+        \item \textbf{Restart Kernel:} If things get stuck, restart the kernel (Kernel $\rightarrow$ Restart).
     \end{itemize}
 \end{frame}
 
 \begin{frame}{The Road Ahead}
-    When you are finished with the quick start, you are ready for \textbf{Lab 0}, where we will begin with real machine learning using PyCaret.
+    When you are finished with the quick start, you are ready for \textbf{Lab 0}, where we will begin with real machine learning using \href{https://pycaret.org/}{PyCaret}.
     
     \vspace{1cm}
     \centering
