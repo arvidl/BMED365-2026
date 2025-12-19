@@ -1,0 +1,546 @@
+
+==========================================================================================
+cell 38 (markdown)
+------------------------------------------------------------------------------------------
+---
+
+# 📝 Oppgaver og refleksjoner: Diabetes-prediksjon
+
+Før vi går videre til den interaktive webappen, her er 15 oppgaver og perspektiver du kan utforske og drøfte. Disse dekker både tekniske og etiske aspekter ved medisinsk maskinlæring.
+
+---
+
+## 🔧 Tekniske oppgaver (koding)
+
+### Oppgave 1: Forbedre modellens ytelse
+Modellen vår har ~74% accuracy. Prøv følgende og rapporter om det hjelper:
+- Øk `n_estimators` til 200 eller 500
+- Prøv andre algoritmer: `GradientBoostingClassifier`, `LogisticRegression`, `SVC`
+- Juster `max_depth` for å unngå overfitting
+
+```python
+# Din kode her:
+# from sklearn.ensemble import GradientBoostingClassifier
+# ...
+```
+
+### Oppgave 2: Håndter manglende verdier
+Datasettet har verdier på 0 som egentlig er manglende (f.eks. `glucose=0` er umulig). 
+- Identifiser hvilke columns som har dette problemet
+- Erstatt 0-verdier med medianen eller bruk imputeringsteknikker
+- Tren modellen på nytt og sammenlign ytelsen
+
+### Oppgave 3: Feature selection
+Noen egenskaper (triceps, diastolic) ser ut til å ha negativ permutation importance.
+- Fjern disse og tren modellen på nytt
+- Blir modellen bedre eller dårligere?
+- Reflekter: Hvorfor kan det være nyttig å fjerne features?
+
+### Oppgave 4: Kryss-validering
+Vi brukte én enkel train/test split. Implementer 5-fold kryss-validering:
+```python
+from sklearn.model_selection import cross_val_score
+# scores = cross_val_score(rf, X, y, cv=5, scoring='accuracy')
+```
+Hva er gjennomsnitt og standardavvik? Er modellen stabil?
+
+### Oppgave 5: ROC-kurve og AUC
+Accuracy er ikke alltid det beste målet. Lag en ROC-kurve og beregn AUC:
+```python
+from sklearn.metrics import roc_curve, auc
+# fpr, tpr, thresholds = roc_curve(y_test, probs)
+```
+Hva forteller AUC-verdien oss om modellens evne til å skille klassene?
+
+---
+
+## 📊 Analytiske oppgaver
+
+### Oppgave 6: Optimal terskelverdi
+Vi bruker 50% som terskel for å klassifisere. Men er dette optimalt?
+- Lag en tabell over precision, recall og F1 for ulike terskler (30%, 40%, 50%, 60%, 70%)
+- Hvilken terskel ville du anbefalt for en screening-test?
+- Hvilken for en bekreftende test?
+
+### Oppgave 7: Konfusjonsmatrise-analyse
+Lag en konfusjonsmatrise for diabetes-modellen.
+- Hvor mange falske positive har vi? Falske negative?
+- Hva er konsekvensene av hver type feil i en medisinsk kontekst?
+- Hva er verst: Å si "diabetes" til en frisk person, eller å overse en syk?
+
+### Oppgave 8: Subgruppe-analyse
+Analyser modellens ytelse på ulike aldersgrupper:
+- Under 30 år
+- 30-50 år
+- Over 50 år
+
+Er modellen like god for alle aldersgrupper? Hva kan forklare forskjeller?
+
+---
+
+## 🤔 Etiske og kritiske refleksjoner
+
+### Oppgave 9: Populasjonsbias
+Datasettet er fra Pima-indianerkvinner. Diskuter:
+- Kan modellen brukes på norske pasienter? Hvorfor/hvorfor ikke?
+- Hvilke faktorer kan variere mellom populasjoner?
+- Hva ville kreves for å validere modellen i Norge?
+
+### Oppgave 10: Historisk bias
+Dataene er fra 1988. Reflekter over:
+- Har livsstilsfaktorer endret seg siden da?
+- Er diagnostiske kriterier for diabetes de samme?
+- Kan gamle data gi misvisende modeller for moderne pasienter?
+
+### Oppgave 11: Kjønns- og mangfoldsperspektiv
+The dataset contains kun kvinner.
+- Kan modellen brukes på menn? Hva er risikoen?
+- Hvilke biologiske forskjeller mellom kjønn kan påvirke diabetes-risiko?
+- Hvordan burde et rettferdig medisinsk AI-system håndtere dette?
+
+### Oppgave 12: Informert samtykke
+Tenk deg at denne modellen brukes i klinisk praksis:
+- Bør pasienten vite at AI er involvert i vurderingen?
+- Hvordan ville du forklart modellens beslutning til en pasient?
+- Hva om pasienten nekter å bli vurdert av AI?
+
+---
+
+## 🏥 Kliniske perspektiver
+
+### Oppgave 13: Integrasjon i klinisk praksis
+Du er rådgiver for et sykehus som vurderer å implementere diabetes-prediksjonsmodellen.
+- Hvordan ville du foreslå at modellen integreres i legens arbeidsflyt?
+- Hvilke "guardrails" (sikkerhetsnett) bør være på plass?
+- Hvordan håndterer vi tilfeller der legen er uenig med modellen?
+
+### Oppgave 14: Koste-nytte-analyse
+En falsk positiv fører til ekstra testing (HbA1c-test koster ~200 kr).
+En falsk negativ kan føre til forsinket diagnose (komplikasjoner, høyere kostnader).
+- Sett opp et enkelt regnestykke for kostnaden av feil
+- Ved hvilken terskelverdi minimerer vi totalkostnaden?
+- Er det etisk riktig å basere medisinske beslutninger på økonomi?
+
+### Oppgave 15: Fremtidens diabetes-prediksjon
+Hvis du skulle designe et optimalt diabetes-prediksjonsystem:
+- Hvilke ekstra variabler ville du inkludert? (genetikk, livsstil, kontinuerlig glukosemåling?)
+- Hvordan ville du sikret at systemet er rettferdig for alle pasientgrupper?
+- Hvilke reguleringer og godkjenninger ville vært nødvendige?
+- Hvordan ville du målt suksess etter implementering?
+
+---
+
+## 💡 Tips for gjennomføring
+
+| Oppgavetype | Anbefalt tilnærming |
+|-------------|---------------------|
+| **Koding (1-5)** | Modifiser koden i cellene over, kjør på nytt, sammenlign resultater |
+| **Analytisk (6-8)** | Bruk Python til å beregne, visualiser med matplotlib |
+| **Etisk (9-12)** | Diskuter i grupper, skriv refleksjonsnotat |
+| **Klinisk (13-15)** | Rollespill, case-diskusjon, eller skriftlig besvarelse |
+
+> 🎯 **Læringsmål:** Disse oppgavene skal hjelpe deg å forstå at medisinsk AI handler om mye mer enn bare å få høy accuracy. Kontekst, etikk, og klinisk relevans er like viktig som den tekniske ytelsen!
+
+
+==========================================================================================
+cell 39 (markdown)
+------------------------------------------------------------------------------------------
+---
+
+# Lag en interaktiv webapp med Gradio
+
+==========================================================================================
+cell 40 (code)
+------------------------------------------------------------------------------------------
+# Installer Gradio om nødvendig
+if colab or kaggle:
+    %pip install gradio
+
+==========================================================================================
+cell 41 (code)
+------------------------------------------------------------------------------------------
+import gradio as gr
+
+def predict_diabetes(age, bmi, glucose):
+    """Predikerer diabetes basert på alder, BMI og glukosenivå."""
+    mean_vals = diabetes.mean()
+    input_data = np.array([
+        mean_vals['pregnancies'], glucose, mean_vals['diastolic'], 
+        mean_vals['triceps'], mean_vals['insulin'], bmi, 
+        mean_vals['dpf'], age
+    ]).reshape(1, -1)
+    prediction = rf.predict(input_data)
+    return "🔴 Diabetes" if prediction[0] == 1 else "🟢 Ikke diabetes"
+
+iface = gr.Interface(
+    fn=predict_diabetes,
+    inputs=[
+        gr.Slider(18, 80, 35, label="Alder (år)"),
+        gr.Slider(15, 50, 25, label="BMI"),
+        gr.Slider(50, 200, 100, label="Glukosenivå (mg/dL)")
+    ],
+    outputs=gr.Textbox(label="Prediksjon"),
+    title="🩺 Diabetes-prediktor",
+    description="⚠️ Kun for demonstrasjon - IKKE for medisinsk bruk!"
+)
+
+# share=False for lokal kjøring (unngår frpc-problemer)
+iface.launch(share=False)
+
+==========================================================================================
+cell 42 (markdown)
+------------------------------------------------------------------------------------------
+---
+
+## 🚀 Utvidet webapp med XAI og personlige helseråd
+
+### Hvorfor begrense til 3 egenskaper?
+
+Den enkle webappen over bruker kun **alder**, **BMI** og **glukosenivå**. Dette er et bevisst valg:
+
+**Praktiske fordeler:**
+- 🎯 **Brukervennlighet:** Færre input-felt = enklere å bruke
+- ⏱️ **Tilgjengelighet:** Disse verdiene er ofte kjent eller lett målbare
+- 📊 **Viktigste prediktorer:** Vår XAI-analyse viste at glucose og BMI er de viktigste egenskapene
+
+**Men det er en trade-off:**
+- ❌ Modellen bruker gjennomsnittsverdier for de andre 5 egenskapene
+- ❌ Dette kan gi mindre nøyaktige prediksjoner for individuelle pasienter
+- ❌ Vi mister viktig informasjon (f.eks. familiehistorie via `dpf`)
+
+### Utvidet versjon med flere egenskaper
+
+I den utvidede webappen under inkluderer vi **flere egenskaper** og legger til:
+
+1. **🔢 Probabilistisk prediksjon** - Ikke bare "ja/nei", men sannsynlighet
+2. **📊 XAI-forklaring** - Hvilke faktorer bidrar mest til prediksjonen
+3. **💊 Personlige helseråd** - Konkrete anbefalinger basert på verdiene
+4. **🎨 Visuell risiko-indikator** - Fargekoding av risikonivå
+
+---
+
+
+==========================================================================================
+cell 43 (code)
+------------------------------------------------------------------------------------------
+# =============================================================================
+# UTVIDET DIABETES-WEBAPP MED XAI OG PERSONLIGE HELSERÅD
+# =============================================================================
+
+import gradio as gr
+
+# Referanseverdier for sammenligning (fra datasettet)
+reference_values = {
+    'pregnancies': {'mean': diabetes['pregnancies'].mean(), 'healthy_max': 4},
+    'glucose': {'mean': diabetes['glucose'].mean(), 'healthy_max': 100, 'prediabetes': 125, 'diabetes': 126},
+    'diastolic': {'mean': diabetes['diastolic'].mean(), 'healthy_max': 80, 'high': 90},
+    'bmi': {'mean': diabetes['bmi'].mean(), 'normal_max': 25, 'overweight': 30, 'obese': 35},
+    'dpf': {'mean': diabetes['dpf'].mean(), 'low_risk': 0.3, 'high_risk': 0.7},
+    'age': {'mean': diabetes['age'].mean(), 'risk_increase': 45}
+}
+
+def get_risk_level(probability):
+    """Kategoriserer risikonivå basert på sannsynlighet."""
+    if probability < 0.3:
+        return "🟢 LAV RISIKO", "green"
+    elif probability < 0.5:
+        return "🟡 MODERAT RISIKO", "orange"
+    elif probability < 0.7:
+        return "🟠 FORHØYET RISIKO", "darkorange"
+    else:
+        return "🔴 HØY RISIKO", "red"
+
+def generate_xai_explanation(input_values, probability, feature_importances):
+    """Genererer en forklarbar AI-analyse av prediksjonen."""
+    
+    # Feature-navn i samme rekkefølge som modellen forventer
+    feature_names = ['pregnancies', 'glucose', 'diastolic', 'triceps', 
+                     'insulin', 'bmi', 'dpf', 'age']
+    
+    # Beregn bidrag fra hver feature (forenklet metode)
+    contributions = []
+    for i, (name, value) in enumerate(zip(feature_names, input_values)):
+        ref = reference_values.get(name, {})
+        mean = ref.get('mean', value)
+        importance = feature_importances[i]
+        
+        # Beregn avvik fra gjennomsnitt
+        if mean > 0:
+            deviation = (value - mean) / mean
+        else:
+            deviation = 0
+            
+        # Bidrag = viktighet × avvik (forenklet)
+        contribution = importance * deviation
+        contributions.append((name, value, mean, contribution, importance))
+    
+    # Sorter etter absolutt bidrag
+    contributions.sort(key=lambda x: abs(x[3]), reverse=True)
+    
+    # Bygg forklaring
+    explanation = "## 📊 XAI-ANALYSE: Hva påvirker prediksjonen?\n\n"
+    explanation += "| Egenskap | Din verdi | Gjennomsnitt | Bidrag |\n"
+    explanation += "|----------|-----------|--------------|--------|\n"
+    
+    for name, value, mean, contrib, imp in contributions[:5]:  # Top 5
+        direction = "↑ øker" if contrib > 0 else "↓ senker"
+        explanation += f"| {name} | {value:.1f} | {mean:.1f} | {direction} risiko |\n"
+    
+    return explanation
+
+def generate_health_advice(glucose, bmi, diastolic, age, dpf, probability):
+    """Genererer personlige helseråd basert på input-verdier og prediksjon."""
+    
+    advice = []
+    urgent = []
+    
+    # Glukose-vurdering
+    if glucose >= 126:
+        urgent.append("⚠️ **GLUKOSE KRITISK HØY** ({:.0f} mg/dL): Dette er over diabetesgrensen. Oppsøk lege snarest!".format(glucose))
+    elif glucose >= 100:
+        advice.append("🔶 **Glukose forhøyet** ({:.0f} mg/dL): Du er i prediabetes-området (100-125). Vurder kostholdsendringer.".format(glucose))
+    else:
+        advice.append("✅ **Glukose normal** ({:.0f} mg/dL): Bra! Verdien er under 100.".format(glucose))
+    
+    # BMI-vurdering
+    if bmi >= 35:
+        urgent.append("⚠️ **BMI SVÆRT HØY** ({:.1f}): Fedme grad 2+. Snakk med lege om vektnedgang.".format(bmi))
+    elif bmi >= 30:
+        advice.append("🔶 **BMI høy** ({:.1f}): Fedme grad 1. Mål: Reduser 5-10% av kroppsvekten.".format(bmi))
+    elif bmi >= 25:
+        advice.append("🔶 **BMI lett forhøyet** ({:.1f}): Overvekt. Øk fysisk aktivitet og vurder kosthold.".format(bmi))
+    else:
+        advice.append("✅ **BMI normal** ({:.1f}): Bra! Hold vekten stabil.".format(bmi))
+    
+    # Blodtrykk-vurdering
+    if diastolic >= 90:
+        urgent.append("⚠️ **DIASTOLISK BLODTRYKK HØY** ({:.0f} mmHg): Hypertensjon. Bør følges opp av lege.".format(diastolic))
+    elif diastolic >= 80:
+        advice.append("🔶 **Blodtrykk lett forhøyet** ({:.0f} mmHg): Vurder saltreduksjon og mosjon.".format(diastolic))
+    else:
+        advice.append("✅ **Blodtrykk normalt** ({:.0f} mmHg): Bra!".format(diastolic))
+    
+    # Alder og familiehistorie
+    if age >= 45:
+        advice.append("ℹ️ **Alder over 45**: Økt risiko. Anbefaler årlig screening.")
+    
+    if dpf >= 0.5:
+        advice.append("ℹ️ **Familiehistorie**: Din DPF-verdi ({:.2f}) indikerer genetisk disposisjon.".format(dpf))
+    
+    # Samle resultat
+    result = "## 💊 PERSONLIGE HELSERÅD\n\n"
+    
+    if urgent:
+        result += "### 🚨 Krever oppmerksomhet:\n" + "\n".join(urgent) + "\n\n"
+    
+    result += "### 📋 Vurdering av dine verdier:\n" + "\n".join(advice) + "\n\n"
+    
+    # Generelle anbefalinger basert på risikonivå
+    if probability >= 0.5:
+        result += """### 🎯 Anbefalte tiltak ved forhøyet risiko:
+1. **Kosthold:** Reduser sukker og raffinerte karbohydrater
+2. **Mosjon:** 150 min moderat aktivitet per uke (rask gange, sykling)
+3. **Vekt:** Mål om 5-7% vekttap hvis BMI > 25
+4. **Oppfølging:** Bestill time hos fastlege for HbA1c-test
+5. **Monitorering:** Mål blodsukker regelmessig hvis tilgjengelig
+"""
+    else:
+        result += """### 🎯 Forebyggende tiltak:
+1. **Oppretthold** sunne vaner med balansert kosthold
+2. **Fortsett** med regelmessig fysisk aktivitet
+3. **Årlig screening** anbefales fra 45 år
+"""
+    
+    return result
+
+def predict_diabetes_extended(pregnancies, glucose, diastolic, triceps, insulin, bmi, dpf, age):
+    """
+    Utvidet prediksjonsfunksjon med XAI og helseråd.
+    Returnerer prediksjon, sannsynlighet, XAI-forklaring og helseråd.
+    """
+    
+    # Forbered input som DataFrame med riktige kolonnenavn (unngår sklearn-advarsel)
+    feature_names = ['pregnancies', 'glucose', 'diastolic', 'triceps', 
+                     'insulin', 'bmi', 'dpf', 'age']
+    input_data = pd.DataFrame([[pregnancies, glucose, diastolic, triceps, 
+                                insulin, bmi, dpf, age]], columns=feature_names)
+    
+    # Prediksjon og sannsynlighet
+    prediction = rf.predict(input_data)[0]
+    probability = rf.predict_proba(input_data)[0][1]  # P(diabetes)
+    
+    # Risikonivå
+    risk_level, color = get_risk_level(probability)
+    
+    # Hovedresultat
+    main_result = f"""# 🩺 DIABETES RISIKOVURDERING
+
+## {risk_level}
+
+**Predikert sannsynlighet for diabetes: {probability:.1%}**
+
+{"🔴 Modellen predikerer **DIABETES**" if prediction == 1 else "🟢 Modellen predikerer **IKKE DIABETES**"}
+
+---
+
+⚠️ **VIKTIG ANSVARSFRASKRIVELSE:**
+Dette er en demonstrasjonsmodell basert på et begrenset datasett fra 1988.
+Resultatene skal **IKKE** brukes til medisinske beslutninger.
+Kontakt alltid kvalifisert helsepersonell for reelle helsebekymringer.
+
+---
+"""
+    
+    # XAI-forklaring
+    feature_importances = rf.feature_importances_
+    xai_explanation = generate_xai_explanation(
+        [pregnancies, glucose, diastolic, triceps, insulin, bmi, dpf, age],
+        probability,
+        feature_importances
+    )
+    
+    # Helseråd
+    health_advice = generate_health_advice(glucose, bmi, diastolic, age, dpf, probability)
+    
+    # Kombiner alt
+    full_output = main_result + xai_explanation + "\n---\n\n" + health_advice
+    
+    return full_output
+
+# Opprett utvidet Gradio-grensesnitt
+extended_interface = gr.Interface(
+    fn=predict_diabetes_extended,
+    inputs=[
+        gr.Slider(0, 15, 1, step=1, label="👶 Antall graviditeter", 
+                  info="Antall ganger gravid (sett 0 for menn)"),
+        gr.Slider(50, 200, 100, step=1, label="🩸 Glukose (mg/dL)", 
+                  info="Fastende blodsukker. Normal: <100, Prediabetes: 100-125, Diabetes: ≥126"),
+        gr.Slider(40, 120, 70, step=1, label="💓 Diastolisk blodtrykk (mmHg)", 
+                  info="Nedre blodtrykkverdi. Normal: <80, Høyt: ≥90"),
+        gr.Slider(10, 60, 25, step=1, label="💪 Triceps hudfold (mm)", 
+                  info="Mål på underhudsfett. Bruk 25 hvis ukjent."),
+        gr.Slider(0, 500, 80, step=5, label="💉 Insulin (μU/mL)", 
+                  info="2-timers serum insulin. Bruk 80 hvis ukjent."),
+        gr.Slider(15, 50, 25, step=0.5, label="⚖️ BMI (kg/m²)", 
+                  info="Normal: 18.5-25, Overvekt: 25-30, Fedme: >30"),
+        gr.Slider(0, 2.5, 0.5, step=0.05, label="🧬 Diabetes Pedigree Function", 
+                  info="Genetisk disposisjon (0-2.5). Lav: <0.3, Høy: >0.7"),
+        gr.Slider(18, 80, 35, step=1, label="🎂 Alder (år)", 
+                  info="Risiko øker etter 45 år")
+    ],
+    outputs=gr.Markdown(label="Resultat"),
+    title="🏥 Utvidet Diabetes Risikovurdering med XAI",
+    description="""
+    **Interaktiv demonstrasjon av maskinlæring i medisin**
+    
+    Denne utvidede versjonen inkluderer:
+    - 📊 Alle 8 egenskaper fra datasettet
+    - 🔢 Probabilistisk prediksjon (ikke bare ja/nei)
+    - 🔍 XAI-forklaring av hva som påvirker prediksjonen
+    - 💊 Personlige helseråd basert på dine verdier
+    
+    ⚠️ **NB: Kun for undervisningsformål - IKKE for medisinsk bruk!**
+    """,
+    article="""
+    ### Om modellen
+    - **Algoritme:** Random Forest (100 beslutningstrær)
+    - **Training data:** Pima Indians Diabetes Database (768 kvinner, 1988)
+    - **Nøyaktighet:** ~74% på testdata
+    
+    ### Begrensninger
+    - Datasettet er gammelt og fra én spesifikk populasjon
+    - Modellen er ikke validert for klinisk bruk
+    - XAI-forklaringen er forenklet
+    """,
+    flagging_mode="never"
+)
+
+# Start den utvidede webappen
+# NB: share=False fordi frpc-filen ofte blokkeres av antivirus/system
+# Appen kjører lokalt på http://127.0.0.1:7860 (eller lignende port)
+extended_interface.launch(share=False)
+
+
+==========================================================================================
+cell 44 (markdown)
+------------------------------------------------------------------------------------------
+---
+
+# Summary
+
+I denne notebooken har vi:
+
+✅ Lært hva maskinlæring er og hvordan det brukes i medisin
+
+✅ Utforsket Iris- og Diabetes-datasett
+
+✅ Visualisert data med histogrammer og scatter plots
+
+✅ Trent Random Forest-modeller og forstått hvordan de fungerer
+
+✅ Evaluert modellene med accuracy, confusion matrix, precision, recall og F1
+
+✅ Undersøkt feature importance og partial dependence plots (XAI)
+
+✅ Diskutert trustworthy AI og etiske aspekter
+
+✅ Laget interaktive webapper med Gradio
+
+---
+
+# 📚 Referanser og videre lesing
+
+## Datasett
+
+| Datasett | Referanse |
+|----------|-----------|
+| **Iris** | Fisher, R. A. (1936). *The use of multiple measurements in taxonomic problems*. Annals of Eugenics, 7(2), 179-188. [DOI](https://doi.org/10.1111/j.1469-1809.1936.tb02137.x) |
+| **Pima Indians Diabetes** | Smith, J. W., et al. (1988). *Using the ADAP learning algorithm to forecast the onset of diabetes mellitus*. Proceedings of the Annual Symposium on Computer Application in Medical Care, 261-265. [PubMed](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2245318/) |
+
+## Maskinlæring og Random Forest
+
+| Emne | Referanse |
+|------|-----------|
+| **Random Forest** | Breiman, L. (2001). *Random forests*. Machine Learning, 45(1), 5-32. [DOI](https://doi.org/10.1023/A:1010933404324) |
+| **Scikit-learn** | Pedregosa, F., et al. (2011). *Scikit-learn: Machine Learning in Python*. Journal of Machine Learning Research, 12, 2825-2830. [JMLR](https://jmlr.org/papers/v12/pedregosa11a.html) |
+
+## Explainable AI (XAI)
+
+| Emne | Referanse |
+|------|-----------|
+| **XAI oversikt** | Molnar, C. (2022). *Interpretable Machine Learning: A Guide for Making Black Box Models Explainable*. [christophm.github.io/interpretable-ml-book](https://christophm.github.io/interpretable-ml-book/) |
+| **Permutation Importance** | Altmann, A., et al. (2010). *Permutation importance: a corrected feature importance measure*. Bioinformatics, 26(10), 1340-1347. [DOI](https://doi.org/10.1093/bioinformatics/btq134) |
+| **Partial Dependence Plots** | Friedman, J. H. (2001). *Greedy function approximation: A gradient boosting machine*. Annals of Statistics, 29(5), 1189-1232. [DOI](https://doi.org/10.1214/aos/1013203451) |
+| **SHAP** | Lundberg, S. M., & Lee, S. I. (2017). *A unified approach to interpreting model predictions*. NeurIPS. [GitHub](https://github.com/slundberg/shap) |
+| **LIME** | Ribeiro, M. T., et al. (2016). *"Why Should I Trust You?": Explaining the Predictions of Any Classifier*. KDD. [GitHub](https://github.com/marcotcr/lime) |
+
+## AI i medisin og etikk
+
+| Emne | Referanse |
+|------|-----------|
+| **Trustworthy AI** | European Commission (2019). *Ethics Guidelines for Trustworthy AI*. [EC](https://ec.europa.eu/digital-single-market/en/news/ethics-guidelines-trustworthy-ai) |
+| **AI i diagnostikk** | Topol, E. J. (2019). *High-performance medicine: the convergence of human and artificial intelligence*. Nature Medicine, 25(1), 44-56. [DOI](https://doi.org/10.1038/s41591-018-0300-7) |
+| **Bias i medisinsk AI** | Obermeyer, Z., et al. (2019). *Dissecting racial bias in an algorithm used to manage the health of populations*. Science, 366(6464), 447-453. [DOI](https://doi.org/10.1126/science.aax2342) |
+
+## Programvare og biblioteker
+
+| Bibliotek | Dokumentasjon |
+|-----------|---------------|
+| **scikit-learn** | [scikit-learn.org](https://scikit-learn.org/) |
+| **pandas** | [pandas.pydata.org](https://pandas.pydata.org/) |
+| **NumPy** | [numpy.org](https://numpy.org/) |
+| **Matplotlib** | [matplotlib.org](https://matplotlib.org/) |
+| **Seaborn** | [seaborn.pydata.org](https://seaborn.pydata.org/) |
+| **Gradio** | [gradio.app](https://gradio.app/) |
+
+## Anbefalte bøker
+
+1. **Hastie, T., Tibshirani, R., & Friedman, J.** (2009). *The Elements of Statistical Learning*. Springer. [Gratis PDF](https://hastie.su.domains/ElemStatLearn/)
+
+2. **James, G., et al.** (2021). *An Introduction to Statistical Learning with Applications in Python*. Springer. [Gratis PDF](https://www.statlearning.com/)
+
+3. **Géron, A.** (2022). *Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow* (3rd ed.). O'Reilly.
+
+---
+
+> 🎓 **Lykke til med videre læring innen AI og beregningsorientert medisin!**

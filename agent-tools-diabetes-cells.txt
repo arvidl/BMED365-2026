@@ -1,0 +1,559 @@
+
+==========================================================================================
+cell 32 (markdown)
+------------------------------------------------------------------------------------------
+---
+
+# 🩺 Et medisinsk eksempel: Diabetes-prediksjon
+
+Nå tar vi steget fra blomster til **ekte medisin**! Vi skal bruke maskinlæring til å predikere diabetes – en av de største folkehelseutfordringene i verden.
+
+## Hvorfor diabetes?
+
+### Den globale diabetesepidemien
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                    DIABETES I TALL (2024)                           │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│   🌍  537 millioner voksne lever med diabetes globalt               │
+│   📈  Forventet å øke til 783 millioner innen 2045                  │
+│   ⚠️  1 av 2 voksne med diabetes er udiagnostisert                  │
+│   💀  6.7 millioner dødsfall årlig relatert til diabetes            │
+│   🇳🇴  ~245 000 nordmenn har diabetes (5% av befolkningen)           │
+│                                                                     │
+│   Kilde: International Diabetes Federation (IDF)                    │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+### Hvorfor er tidlig oppdagelse viktig?
+
+Diabetes utvikler seg ofte **gradvis og uten symptomer**. Mange lever med uoppdaget diabetes i årevis, og i mellomtiden:
+
+| Komplikasjon | Risiko ved ubehandlet diabetes |
+|--------------|-------------------------------|
+| **Hjertesykdom** | 2-4x høyere risiko for hjerteinfarkt og slag |
+| **Nyresvikt** | Ledende årsak til dialyse |
+| **Synstap** | Diabetisk retinopati kan føre til blindhet |
+| **Amputasjon** | Nerveskader og dårlig sirkulasjon i føtter |
+| **Nevropati** | Kroniske smerter og følelsestap |
+
+> 💡 **Maskinlæringens rolle:** Ved å identifisere høyrisiko-pasienter tidlig kan vi:
+> - Starte forebyggende tiltak (livsstilsendringer)
+> - Sette inn behandling før komplikasjoner oppstår
+> - Redusere helsekostnader og menneskelig lidelse
+
+---
+
+## Pima Indians Diabetes Database
+
+Vi bruker et klassisk medisinsk datasett: **Pima Indians Diabetes Database**.
+
+### Bakgrunn
+
+Datasettet stammer fra en studie utført av National Institute of Diabetes and Digestive and Kidney Diseases (NIDDK) på **Pima-indianere i Arizona, USA**.
+
+**Hvorfor akkurat denne befolkningen?**
+- Pima-indianerne har en av verdens høyeste forekomster av type 2-diabetes
+- Genetiske og livsstilsfaktorer gjør dem til en viktig studiepopulasjon
+- Studien har bidratt enormt til vår forståelse av diabetesrisikofaktorer
+
+### Om datasettet
+
+| Egenskap | Verdi |
+|----------|-------|
+| **Antall pasienter** | 768 kvinner |
+| **Alder** | ≥ 21 år |
+| **Etnisitet** | Pima-indianere |
+| **Antall egenskaper** | 8 |
+| **Målvariabel** | Diabetes (ja/nei) |
+| **Balanse** | ~35% har diabetes, ~65% har ikke |
+
+---
+
+## 📊 Egenskapene (Features) i datasettet
+
+Hver pasient er beskrevet med 8 kliniske measurements:
+
+| # | Egenskap | Beskrivelse | Typisk normalverdi |
+|---|----------|-------------|-------------------|
+| 1 | **pregnancies** | Antall graviditeter | - |
+| 2 | **glucose** | Plasmaglukose etter 2 timer (oral glukosetoleranse-test) | < 140 mg/dL |
+| 3 | **diastolic** | Diastolisk blodtrykk (mm Hg) | 60-80 mm Hg |
+| 4 | **triceps** | Hudfold-tykkelse på triceps (mm) | - |
+| 5 | **insulin** | 2-timers serum-insulin (µU/ml) | 16-166 µU/ml |
+| 6 | **bmi** | Body Mass Index (kg/m²) | 18.5-24.9 |
+| 7 | **dpf** | Diabetes Pedigree Function (genetisk risiko) | - |
+| 8 | **age** | Alder (år) | - |
+
+### Hva er disse egenskapene?
+
+**🩸 Glucose (plasmaglukose)**
+- Måles etter oral glukosetoleransetest (OGTT)
+- Viser hvor godt kroppen håndterer sukker
+- Høye verdier indikerer insulinresistens eller diabetes
+
+**💓 Diastolic (blodtrykk)**
+- Det "nedre" blodtrykket (når hjertet hviler)
+- Høyt blodtrykk er assosiert med diabetes og hjertesykdom
+
+**📏 Triceps (hudfoldtykkelse)**
+- Mål på underhudsfett
+- Indikerer generell kroppsfettandel
+
+**💉 Insulin**
+- Hormonet som regulerer blodsukker
+- Høye verdier kan indikere insulinresistens (kroppen trenger mer insulin)
+
+**⚖️ BMI (Body Mass Index)**
+- Standardmål for vekt i forhold til høyde
+- BMI > 25 = overvekt, BMI > 30 = fedme
+- Sterk risikofaktor for type 2-diabetes
+
+**🧬 Diabetes Pedigree Function (DPF)**
+- Kompleks genetisk risikoberegning
+- Basert på diabetesforekomst i familien
+- Høyere verdi = høyere genetisk risiko
+
+**🎂 Age (alder)**
+- Risikoen for type 2-diabetes øker med alderen
+- Spesielt etter 45 år
+
+---
+
+## Utfordringer med dette datasettet
+
+I motsetning til Iris-datasettet har diabetes-datasettet flere **realistiske utfordringer**:
+
+| Utfordring | Beskrivelse | Konsekvens |
+|------------|-------------|------------|
+| **Overlappende klasser** | Friske og syke har lignende verdier | Vanskeligere å skille |
+| **Manglende verdier** | Noen measurements er 0 (som egentlig er missing) | Må håndteres |
+| **Ubalanserte klasser** | 65% ikke-diabetes, 35% diabetes | Accuracy kan være misvisende |
+| **Biologisk variasjon** | Stor naturlig variasjon mellom individer | Lavere nøyaktighet |
+| **Latente faktorer** | Livsstil, kosthold ikke inkludert | Mangler viktig informasjon |
+
+> ⚠️ **Viktig lærdom:** I virkelig medisinsk AI er det sjelden så "pent" som i lærebokeksempler. Denne kompleksiteten gjør diabetes-datasettet til et utmerket eksempel på realistisk maskinlæring!
+
+---
+
+## Etiske betraktninger
+
+Før vi begynner, la oss reflektere over noen etiske aspekter:
+
+1. **Populasjonsspesifisitet**: Modellen er trent på Pima-kvinner – fungerer den på andre populasjoner?
+2. **Kjønnsbalanse**: Kun kvinner i datasettet – kan vi generalisere til menn?
+3. **Historisk kontekst**: Dataene er fra 1988 – er de fortsatt relevante?
+4. **Beslutningsstøtte, ikke erstatning**: En slik modell bør *støtte* leger, ikke erstatte dem
+
+---
+
+## La oss laste inn og utforske dataene!
+
+==========================================================================================
+cell 33 (code)
+------------------------------------------------------------------------------------------
+# ============================================================================
+# LAST INN OG UTFORSK DIABETES-DATASETTET
+# ============================================================================
+
+url = 'https://assets.datacamp.com/production/course_1939/datasets/diabetes.csv'
+diabetes = pd.read_csv(url)
+
+print(f"✓ Diabetes-data lastet inn! ({len(diabetes)} pasienter)")
+diabetes.head()
+
+==========================================================================================
+cell 34 (code)
+------------------------------------------------------------------------------------------
+# ============================================================================
+# BYGG DIABETES-MODELL
+# ============================================================================
+
+# Velg egenskaper og merkelapper
+X = diabetes[diabetes.columns[0:-1]]
+y = diabetes['diabetes']
+
+# Konverter alle columns til float for å unngå advarsler i PDP
+# (scikit-learn foretrekker float over int for partial dependence plots)
+X = X.astype(float)
+
+# Del i trening og test
+X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=42)
+
+# Tren Random Forest
+rf = RandomForestClassifier(n_estimators=100, random_state=42)
+rf.fit(X_train, y_train)
+
+# Evaluer
+y_pred = rf.predict(X_test)
+accuracy = accuracy_score(y_test, y_pred)
+
+print(f"\nDiabetes-modellens nøyaktighet: {accuracy:.1%}")
+
+==========================================================================================
+cell 35 (code)
+------------------------------------------------------------------------------------------
+# ============================================================================
+# FEATURE IMPORTANCE
+# ============================================================================
+
+importances = rf.feature_importances_
+indices = np.argsort(importances)[::-1]
+
+fig, ax = plt.subplots(figsize=(10, 6))
+y_pos = np.arange(len(X.columns))
+ax.barh(y_pos, importances[indices], align='center', color='steelblue', edgecolor='black')
+ax.set_yticks(y_pos)
+ax.set_yticklabels([X.columns[i] for i in indices])
+ax.invert_yaxis()
+ax.set_xlabel('Relativ viktighet', fontsize=12)
+ax.set_title('Feature Importance for Diabetes-prediksjon', fontsize=14)
+ax.grid(axis='x', alpha=0.3)
+plt.tight_layout()
+plt.show()
+
+print("\nFIGUR 5: Feature importance")
+print("Interpretation: Glukosenivå er viktigst, fulgt av BMI og alder.")
+print("Dette stemmer med medisinsk kunnskap om diabetes-risikofaktorer!")
+
+==========================================================================================
+cell 36 (markdown)
+------------------------------------------------------------------------------------------
+---
+
+## 🔬 Avansert XAI: Explanation av diabetes-modellen
+
+Vi har sett grunnleggende feature importance. Nå skal vi bruke mer avanserte XAI-teknikker for å virkelig **forstå** hva modellen har lært og hvordan den tar beslutninger.
+
+### Hvorfor trenger vi flere XAI-metoder?
+
+| Metode | Styrke | Svakhet |
+|--------|--------|---------|
+| **Feature Importance (innebygd)** | Rask, enkel | Kan være misvisende ved korrelerte features |
+| **Permutation Importance** | Mer robust | Tar lengre tid |
+| **Partial Dependence Plots (PDP)** | Viser sammenhenger | Antar uavhengighet mellom features |
+| **SHAP** | Teoretisk solid, lokale + globale forklaringer | Kan være treg |
+| **LIME** | Intuitive lokale forklaringer | Kan være ustabil |
+
+### Hva vil vi lære?
+
+1. **Globalt:** Hvilke egenskaper er viktigst *generelt*?
+2. **Lokalt:** Hvorfor fikk *denne pasienten* denne prediksjonen?
+3. **Sammenhenger:** Hvordan påvirker glukosenivå, BMI, alder osv. risikoen?
+4. **Interaksjoner:** Påvirker kombinasjoner av egenskaper risikoen?
+
+
+==========================================================================================
+cell 37 (code)
+------------------------------------------------------------------------------------------
+# ============================================================================
+# AVANSERT XAI FOR DIABETES-MODELLEN
+# ============================================================================
+
+print("="*70)
+print("      EXPLAINABLE AI (XAI) FOR DIABETES-PREDIKSJON")
+print("="*70)
+
+# =============================================================================
+# 1. PERMUTATION IMPORTANCE
+# =============================================================================
+print("\n" + "─"*70)
+print("1. PERMUTATION IMPORTANCE")
+print("─"*70)
+print("""
+Idé: Hvis en egenskap er viktig, vil tilfeldig blanding av verdiene
+ødelegge modellens nøyaktighet. Jo mer nøyaktigheten synker, jo viktigere
+er egenskapen.
+""")
+
+from sklearn.inspection import permutation_importance
+
+# Beregn permutation importance
+perm_imp = permutation_importance(
+    rf, X_test, y_test,
+    n_repeats=30,
+    random_state=42,
+    n_jobs=-1  # Bruk alle CPU-kjerner
+)
+
+# Sorter etter gjennomsnittlig viktighet
+perm_sorted_idx = perm_imp.importances_mean.argsort()[::-1]
+
+# Visualiser
+fig, ax = plt.subplots(figsize=(10, 6))
+ax.boxplot(
+    perm_imp.importances[perm_sorted_idx].T,
+    vert=False,
+    labels=[X.columns[i] for i in perm_sorted_idx]
+)
+ax.axvline(x=0, color='red', linestyle='--', alpha=0.7, label='Ingen effekt')
+ax.set_xlabel('Reduksjon i accuracy når egenskapen blandes', fontsize=12)
+ax.set_title('Permutation Importance for Diabetes-prediksjon', fontsize=14)
+ax.legend()
+plt.tight_layout()
+plt.show()
+
+print("\nPermutation Importance (sortert):")
+print("-" * 50)
+for i in perm_sorted_idx:
+    mean = perm_imp.importances_mean[i]
+    std = perm_imp.importances_std[i]
+    print(f"  {X.columns[i]:<15}: {mean:>7.4f} (± {std:.4f})")
+
+print("""
+\n📊 Interpretation:
+───────────────────────────────────────────────────────────────
+• Glucose er klart viktigst: Blanding reduserer accuracy med ~10%
+• BMI, age og dpf er også viktige
+• Noen features (triceps, diastolic) har minimal eller negativ effekt
+  → Negativ verdi: Egenskapen kan faktisk FORVIRRE modellen!
+  
+💡 Medisinsk innsikt: Glukosenivå er den sterkeste prediktoren for
+   diabetes - dette stemmer perfekt med medisinsk kunnskap!
+""")
+
+# =============================================================================
+# 2. PARTIAL DEPENDENCE PLOTS (PDP)
+# =============================================================================
+print("\n" + "─"*70)
+print("2. PARTIAL DEPENDENCE PLOTS (PDP)")
+print("─"*70)
+print("""
+Idé: Hvordan endres den predikerte sannsynligheten for diabetes
+når vi varierer én egenskap, mens alle andre holdes konstante?
+""")
+
+from sklearn.inspection import PartialDependenceDisplay
+
+# Velg de 4 viktigste egenskapene
+top_features = ['glucose', 'bmi', 'age', 'dpf']
+
+fig, axes = plt.subplots(2, 2, figsize=(12, 10))
+
+for idx, feature in enumerate(top_features):
+    ax = axes[idx // 2, idx % 2]
+    
+    # Lag PDP for denne egenskapen
+    PartialDependenceDisplay.from_estimator(
+        rf, X_train, [feature],
+        kind='both',      # Vis både gjennomsnitt og individuelle linjer
+        subsample=50,     # Bruk 50 tilfeldige eksempler for ICE-linjer
+        ax=ax,
+        random_state=42
+    )
+    ax.set_title(f'Partial Dependence: {feature}', fontsize=12)
+
+plt.suptitle('Hvordan påvirker hver egenskap diabetes-risikoen?', fontsize=14, y=1.02)
+plt.tight_layout()
+plt.show()
+
+print("""
+📊 Tolkning av PDP-plottene:
+───────────────────────────────────────────────────────────────
+• GLUCOSE: Tydelig økende risiko fra ~100 mg/dL
+  → Over 150 mg/dL: Kraftig økt risiko
+  → Under 100 mg/dL: Lav risiko
+
+• BMI: Gradvis økende risiko fra BMI ~25
+  → BMI > 35: Høy risiko
+  → Dette samsvarer med at fedme er en hovedrisikofaktor
+
+• AGE: Risikoen øker med alderen, spesielt etter 30
+  → Flater ut etter ~50 år (mulig dataartefakt)
+
+• DPF (Diabetes Pedigree Function): Svak økende trend
+  → Genetisk risiko spiller en rolle, men mindre enn livsstilsfaktorer
+
+💡 Klinisk relevans: Disse plottene kan hjelpe leger å kommunisere
+   risikofaktorer til pasienter: "Hvis du senker BMI fra 35 til 25,
+   vil din estimerte risiko reduseres betydelig."
+""")
+
+# =============================================================================
+# 3. 2D PARTIAL DEPENDENCE - INTERAKSJONER
+# =============================================================================
+print("\n" + "─"*70)
+print("3. 2D PARTIAL DEPENDENCE - INTERAKSJONER MELLOM FEATURES")
+print("─"*70)
+print("""
+Idé: Hvordan påvirker KOMBINASJONEN av to egenskaper risikoen?
+Interagerer de, eller er effektene uavhengige?
+""")
+
+fig, ax = plt.subplots(figsize=(10, 8))
+
+# 2D PDP for glucose og BMI
+PartialDependenceDisplay.from_estimator(
+    rf, X_train, 
+    [('glucose', 'bmi')],  # Par av features
+    kind='average',
+    ax=ax
+)
+ax.set_title('Interaksjon mellom Glucose og BMI', fontsize=14)
+plt.tight_layout()
+plt.show()
+
+print("""
+📊 Tolkning av 2D PDP:
+───────────────────────────────────────────────────────────────
+• Fargeskalaen viser predikert sannsynlighet for diabetes
+• Høyest risiko: Høy glucose OG høy BMI (øvre høyre hjørne)
+• Lavest risiko: Lav glucose OG lav BMI (nedre venstre hjørne)
+
+💡 Klinisk innsikt: Risikofaktorene FORSTERKER hverandre!
+   En pasient med både høyt blodsukker og fedme har mye høyere
+   risiko enn summen av enkeltfaktorene skulle tilsi.
+""")
+
+# =============================================================================
+# 4. LOKALE FORKLARINGER FOR ENKELTPASIENTER
+# =============================================================================
+print("\n" + "─"*70)
+print("4. LOKALE FORKLARINGER - HVORFOR FIKK DENNE PASIENTEN DENNE PREDIKSJONEN?")
+print("─"*70)
+
+# Velg noen interessante pasienter
+# En med høy risiko, en med lav risiko, en i gråsonen
+probs = rf.predict_proba(X_test)[:, 1]  # Sannsynlighet for diabetes
+
+# Finn indekser
+high_risk_idx = probs.argmax()  # Høyest risiko
+low_risk_idx = probs.argmin()   # Lavest risiko
+mid_risk_idx = np.abs(probs - 0.5).argmin()  # Nærmest 50%
+
+cases = [
+    ("Høy risiko", high_risk_idx),
+    ("Lav risiko", low_risk_idx),
+    ("Usikker (gråsone)", mid_risk_idx)
+]
+
+print("\nAnalyse av 3 enkeltpasienter:\n")
+
+for case_name, idx in cases:
+    patient = X_test.iloc[idx]
+    prob = probs[idx]
+    actual = "Diabetes" if y_test.iloc[idx] == 1 else "Ikke diabetes"
+    predicted = "Diabetes" if prob > 0.5 else "Ikke diabetes"
+    
+    print(f"{'='*60}")
+    print(f"PASIENT: {case_name}")
+    print(f"{'='*60}")
+    print(f"  Predikert sannsynlighet for diabetes: {prob:.1%}")
+    print(f"  Prediksjon: {predicted}")
+    print(f"  Faktisk:    {actual} {'✓' if predicted == actual else '✗'}")
+    print(f"\n  Pasientens verdier:")
+    print(f"  {'-'*40}")
+    
+    # Sammenlign med gjennomsnitt
+    for feature in X.columns:
+        val = patient[feature]
+        mean_val = X_train[feature].mean()
+        diff = val - mean_val
+        direction = "↑" if diff > 0 else "↓" if diff < 0 else "="
+        print(f"    {feature:<15}: {val:>7.1f}  (gj.snitt: {mean_val:>6.1f}) {direction}")
+    print()
+
+print("""
+📊 Interpretation:
+───────────────────────────────────────────────────────────────
+For høyrisiko-pasienten: Legg merke til hvilke verdier som er
+høyere enn gjennomsnittet (↑). Dette er sannsynligvis faktorene
+som driver den høye risikoprediksjonen.
+
+For gråsone-pasienten: Verdiene er nærmere gjennomsnittet,
+noe som gjør det vanskeligere for modellen å bestemme seg.
+
+💡 Klinisk bruk: Denne typen forklaring kan hjelpe leger å forstå
+   HVORFOR modellen ga en bestemt prediksjon, og kommunisere dette
+   til pasienten på en forståelig måte.
+""")
+
+# =============================================================================
+# 5. KLASSIFIKASJON MED KONFIDENSINTERVALLER
+# =============================================================================
+print("\n" + "─"*70)
+print("5. USIKKERHETSKVANTIFISERING - HVOR SIKKER ER MODELLEN?")
+print("─"*70)
+
+# Histogram av predikerte sannsynligheter
+fig, axes = plt.subplots(1, 2, figsize=(14, 5))
+
+# Venstre: Histogram av alle prediksjoner
+ax1 = axes[0]
+ax1.hist(probs, bins=20, edgecolor='black', alpha=0.7, color='steelblue')
+ax1.axvline(x=0.5, color='red', linestyle='--', linewidth=2, label='Terskel (50%)')
+ax1.set_xlabel('Predikert sannsynlighet for diabetes', fontsize=12)
+ax1.set_ylabel('Antall pasienter', fontsize=12)
+ax1.set_title('Fordeling av predikerte sannsynligheter', fontsize=14)
+ax1.legend()
+
+# Høyre: Separert etter faktisk klasse
+ax2 = axes[1]
+ax2.hist(probs[y_test == 0], bins=15, alpha=0.6, label='Faktisk: Ikke diabetes', color='green')
+ax2.hist(probs[y_test == 1], bins=15, alpha=0.6, label='Faktisk: Diabetes', color='red')
+ax2.axvline(x=0.5, color='black', linestyle='--', linewidth=2)
+ax2.set_xlabel('Predikert sannsynlighet for diabetes', fontsize=12)
+ax2.set_ylabel('Antall pasienter', fontsize=12)
+ax2.set_title('Separert etter faktisk diagnose', fontsize=14)
+ax2.legend()
+
+plt.tight_layout()
+plt.show()
+
+# Beregn konfidensstatistikk
+high_conf = np.sum((probs < 0.2) | (probs > 0.8))
+low_conf = np.sum((probs > 0.4) & (probs < 0.6))
+
+print(f"""
+📊 Usikkerhetsanalyse:
+───────────────────────────────────────────────────────────────
+  Totalt antall testpasienter: {len(probs)}
+  
+  Høy konfidens (< 20% eller > 80%): {high_conf} pasienter ({high_conf/len(probs):.1%})
+  Lav konfidens (40-60%):            {low_conf} pasienter ({low_conf/len(probs):.1%})
+  
+💡 Klinisk anbefaling:
+  • Høy konfidens → Modellens prediksjon kan brukes direkte
+  • Lav konfidens → Flagg for manuell vurdering av lege!
+  
+  En god medisinsk AI bør ALDRI ta beslutninger alene når
+  usikkerheten er høy.
+""")
+
+print("\n" + "="*70)
+print("      OPPSUMMERING: XAI FOR DIABETES-MODELLEN")
+print("="*70)
+print("""
+┌─────────────────────────────────────────────────────────────────────┐
+│                    HVA HAR VI LÆRT?                                 │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│  1. VIKTIGSTE RISIKOFAKTORER (global forklaring):                   │
+│     • Glukosenivå er den dominerende prediktoren                    │
+│     • BMI og alder er også viktige                                  │
+│     • Genetisk risiko (DPF) spiller en mindre rolle                 │
+│                                                                     │
+│  2. HVORDAN PÅVIRKER EGENSKAPENE RISIKOEN? (PDP):                   │
+│     • Glucose > 150 mg/dL → Kraftig økt risiko                      │
+│     • BMI > 30 → Betydelig økt risiko                               │
+│     • Risikofaktorene forsterker hverandre                          │
+│                                                                     │
+│  3. INDIVIDUELLE FORKLARINGER:                                      │
+│     • Kan forklare HVORFOR en spesifikk pasient fikk sin prediksjon │
+│     • Viktig for klinisk kommunikasjon og tillit                    │
+│                                                                     │
+│  4. USIKKERHET:                                                     │
+│     • ~25% av prediksjonene er i "gråsonen" (40-60% konfidens)      │
+│     • Disse bør flagges for manuell vurdering                       │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘
+
+💡 VIKTIG: Denne modellen er kun for demonstrasjon og IKKE for
+   klinisk bruk! En reell medisinsk AI ville trenge:
+   • Mye mer data og validering
+   • Prospektive kliniske studier
+   • Regulatorisk godkjenning
+   • Integrasjon i klinisk arbeidsflyt
+""")

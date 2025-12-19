@@ -1,0 +1,1902 @@
+Total cells: 46
+
+Cells with Norwegian-looking text: 20
+
+Indices: 22, 24, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44
+
+
+==========================================================================================
+cell 22 (markdown)
+------------------------------------------------------------------------------------------
+---
+
+# Train a Machine Learning Model
+
+Now we come to the core of machine learning: actually **building a model** that can learn from data and make predictions on new, unseen examples.
+
+## From data to decisions
+
+Imagine you are a doctor who needs to diagnose patients. Over the years you have seen thousands of patients and learned patterns: "Patients with these symptoms often have this disease." You use this experience to make diagnoses for new patients you have never met before.
+
+A machine learning model does exactly the same:
+1. **Learn from examples** (training): Look at data where we know the answer
+2. **Generalize** (prediction): Use what it has learned on new data
+
+But here comes a critical question: **How do we know that the model has actually learned something useful, and not just memorized the training data?**
+
+---
+
+## 🎯 Why Split the Data? The Most Important Insight in Machine Learning
+
+This is perhaps the **most important concept** you will learn in this course:
+
+> ⚠️ **The Golden Rule:** We must ALWAYS evaluate the model on data it has NOT seen during training!
+
+### The problem: overfitting
+
+Imagine a student who memorizes previous exam questions word for word, without understanding the concepts. On a test with exactly the same questions, the student scores 100%. But on a new exam with slightly different questions, the student fails completely.
+
+This is called **overfitting** – the model "memorizes" the training data instead of learning the underlying patterns.
+
+**Medical example:**
+- A model trained to detect lung cancer on X-ray images
+- If we evaluate on the same images used for training, the model may have "memorized" that "Image #47 = cancer"
+- On new patients, the model may not work at all!
+
+### The solution: train/test split
+
+We split the data into two (or three) separate parts:
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    ALL DATA (100%)                          │
+├────────────────────────────────────┬────────────────────────┤
+│       TRAINING DATA (75%)          │     TEST DATA (25%)     │
+│                                    │                        │
+│   Used to BUILD the model          │  Used to EVALUATE      │
+│   The model "sees" these data      │  The model has NEVER   │
+│                                    │  seen these data       │
+└────────────────────────────────────┴────────────────────────┘
+```
+
+### The three datasets (for more advanced use)
+
+In practice, we often use **three** datasets:
+
+| Dataset | Typical size | Purpose |
+|----------|-----------------|--------|
+| **Training data** | 60-80% | Learn the patterns – build the model |
+| **Validation data** | 10-20% | Tune model hyperparameters |
+| **Test data** | 10-20% | Final, unbiased evaluation |
+
+**Why validation?**
+- When we try different models or settings, we choose the one that works best on the validation data
+- The test data is held back completely until the end – it is our "exam"
+- If we use test data to choose a model, we have "cheated" and don't know how good the model really is
+
+### Medical perspective: why this is critical
+
+In medicine, the consequences of overfitting can be serious:
+
+| Scenario | Consequence of overfitting |
+|----------|----------------------------|
+| Cancer diagnosis | False positives → unnecessary biopsies and anxiety |
+| Sepsis prediction | False negatives → delayed treatment, death |
+| Drug dosing | Wrong dose → toxicity or lack of effect |
+
+> 💡 **Important insight:** A model that looks fantastic on training data, but fails on new data, is *worthless* in clinical practice. This is why train/test split is not optional – it is **fundamental**!
+
+---
+
+## Let's Build Our First Model!
+
+Now we will:
+1. Choose which features we want to use
+2. Split the data into training and test
+3. Train a classification model
+4. Evaluate how well the model works on test data
+
+==========================================================================================
+cell 24 (code)
+------------------------------------------------------------------------------------------
+# ============================================================================
+# SPLIT DATA INTO TRAINING AND TEST
+# ============================================================================
+
+from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, random_state=42
+)
+
+print(f"Training data: {X_train.shape[0]} observations (75%)")
+print(f"Test data:     {X_test.shape[0]} observations (25%)")
+
+==========================================================================================
+cell 27 (markdown)
+------------------------------------------------------------------------------------------
+## 📊 Evaluering av modellen: Hvordan vet vi om den er god nok?
+
+Nå kommer et av de viktigste stegene i maskinlæring: **evaluering**. En modell er verdiløs hvis vi ikke vet hvor godt den fungerer – og i medisin kan feil prediksjoner ha alvorlige konsekvenser.
+
+### Hvorfor er evaluering så viktig i medisin?
+
+Tenk deg følgende scenario:
+
+> *"Vi har utviklet en AI-modell som kan oppdage kreft med 95% nøyaktighet!"*
+
+Dette høres imponerende ut, men **er det godt nok?** Svaret avhenger av:
+- Hva betyr de 5% feilene?
+- Hvem blir feildiagnostisert?
+- Hva er konsekvensene av feilene?
+
+---
+
+## 🎯 Evalueringsmetrikker: Mer enn bare "nøyaktighet"
+
+### 1. Accuracy (Nøyaktighet)
+
+Den enkleste metrikken – andelen korrekte prediksjoner:
+
+$$\text{Accuracy} = \frac{\text{Antall korrekte prediksjoner}}{\text{Totalt antall prediksjoner}}$$
+
+**Problem:** Accuracy kan være misvisende!
+
+**Eksempel:** En modell for å oppdage en sjelden sykdom (1% av befolkningen):
+- Modellen sier alltid "frisk" → 99% accuracy!
+- Men den fanger **ingen** syke pasienter
+
+### 2. Confusion Matrix (Confusion Matrix)
+
+For å forstå *hva slags* feil modellen gjør, bruker vi en forvirringsmatrise:
+
+```
+                        PREDIKERT
+                    Positiv    Negativ
+                  ┌──────────┬──────────┐
+FAKTISK  Positiv  │    TP    │    FN    │
+                  │ (Sant    │ (Falskt  │
+                  │ positiv) │ negativ) │
+                  ├──────────┼──────────┤
+         Negativ  │    FP    │    TN    │
+                  │ (Falskt  │ (Sant    │
+                  │ positiv) │ negativ) │
+                  └──────────┴──────────┘
+```
+
+| Term | Betydning | Medisinsk konsekvens |
+|------|-----------|---------------------|
+| **TP** (True Positive) | Syk, korrekt identifisert | ✓ Pasienten får behandling |
+| **TN** (True Negative) | Frisk, korrekt identifisert | ✓ Pasienten slipper unødvendig behandling |
+| **FP** (False Positive) | Frisk, men klassifisert som syk | ⚠️ Unødvendig angst, behandling, kostnader |
+| **FN** (False Negative) | Syk, men klassifisert som frisk | ❌ **FARLIG!** Pasienten får ikke behandling |
+
+### 3. Sensitivity og Specificity
+
+Disse to metrikkene er **essensielle** i medisin:
+
+**Sensitivity (Sensitivitet / Recall / True Positive Rate):**
+$$\text{Sensitivity} = \frac{TP}{TP + FN} = \frac{\text{Korrekt identifiserte syke}}{\text{Alle som faktisk er syke}}$$
+
+> *"Hvor mange av de syke fanger vi opp?"*
+
+**Specificity (Spesifisitet / True Negative Rate):**
+$$\text{Specificity} = \frac{TN}{TN + FP} = \frac{\text{Korrekt identifiserte friske}}{\text{Alle som faktisk er friske}}$$
+
+> *"Hvor mange friske unngår vi å feildiagnostisere?"*
+
+### 4. Precision (Presisjon)
+
+$$\text{Precision} = \frac{TP}{TP + FP} = \frac{\text{Korrekt identifiserte syke}}{\text{Alle modellen sier er syke}}$$
+
+> *"Når modellen sier 'syk', hvor ofte har den rett?"*
+
+### 5. F1-Score
+
+Kombinerer precision og recall i én metrikk:
+$$\text{F1} = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}$$
+
+---
+
+## ⚖️ Hvilken metrikk bør du bruke?
+
+**Det avhenger av konteksten!** Her er noen retningslinjer:
+
+| Situasjon | Prioriter | Grunn |
+|-----------|-----------|-------|
+| **Screening for alvorlig sykdom** | Høy sensitivity | Bedre å ha noen falske alarmer enn å overse syke |
+| **Bekreftende test før invasiv behandling** | Høy specificity | Unngå unødvendig kirurgi/cellegift |
+| **Balansert problem** | F1-score | Kompromiss mellom precision og recall |
+| **Ubalanserte klasser** | Unngå accuracy! | Bruk F1, AUC-ROC, eller balansert accuracy |
+
+### Medisinsk eksempel: COVID-19 hurtigtest
+
+- **Høy sensitivity viktigst**: Vi vil fange alle smittede
+- Aksepterer noen falske positive (de kan ta PCR-test etterpå)
+- En falsk negativ = smittet person sprer virus ukontrollert
+
+### Medisinsk eksempel: Biopsi før kreftbehandling
+
+- **Høy specificity viktigst**: Unngå unødvendige biopsier
+- En biopsi har risiko (infeksjon, blødning, smerte)
+- Bedre å observere litt lenger enn å operere friske pasienter
+
+---
+
+## 🏥 Fra evaluering til handling: "Actionable Information"
+
+En evaluering er bare nyttig hvis den fører til **bedre beslutninger**. Spør deg selv:
+
+### 1. Hva er den kliniske konteksten?
+- Screening vs. diagnose vs. prognose?
+- Hva er alternativene hvis modellen ikke brukes?
+- Hva er konsekvensene av feil beslutninger?
+
+### 2. Hva er terskelverdiene?
+De fleste modeller gir en **sannsynlighet**, ikke bare ja/nei:
+
+```
+Pasient A: 73% sannsynlighet for diabetes
+Pasient B: 51% sannsynlighet for diabetes
+Pasient C: 12% sannsynlighet for diabetes
+```
+
+Hvor setter vi grensen? Ved 50%? Ved 30%? Ved 70%?
+
+| Lav terskel (f.eks. 30%) | Høy terskel (f.eks. 70%) |
+|--------------------------|--------------------------|
+| Høy sensitivity | Lav sensitivity |
+| Lav specificity | Høy specificity |
+| Fanger flere syke | Færre falske alarmer |
+| Flere unødvendige tester | Risikerer å overse syke |
+
+### 3. Kommuniser usikkerhet!
+
+En god medisinsk AI sier ikke bare "diabetes" eller "ikke diabetes", men:
+
+> *"Basert på modellen har denne pasienten 73% sannsynlighet for diabetes. 
+> Anbefalt handling: Utfør HbA1c-test for bekreftelse."*
+
+### 4. Integrer med klinisk arbeidsflyt
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                KLINISK BESLUTNINGSSTØTTE                    │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  Modellens prediksjon: Høy risiko for diabetes (73%)        │
+│                                                             │
+│  Anbefalt handling:                                         │
+│  ☐ Bestill HbA1c-test                                       │
+│  ☐ Planlegg oppfølgingstime                                 │
+│  ☐ Gi livsstilsråd                                          │
+│                                                             │
+│  Modellens begrensninger:                                   │
+│  • Trent på data fra 2015-2020                              │
+│  • Sensitivity: 82%, Specificity: 76%                       │
+│  • Ikke validert for pasienter under 18 år                  │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 📈 Summary: Evalueringssjekkliste
+
+Før du stoler på en maskinlæringsmodell i medisin, sjekk:
+
+| ✓ | Spørsmål |
+|---|----------|
+| ☐ | Er modellen evaluert på **uavhengige testdata**? |
+| ☐ | Er evalueringsmetrikkene **relevante for konteksten**? |
+| ☐ | Er **sensitivity og specificity** rapportert? |
+| ☐ | Vet vi hvordan modellen presterer på **subgrupper**? (kjønn, alder, etnisitet) |
+| ☐ | Er det klart **hvilke handlinger** som bør følge av prediksjonene? |
+| ☐ | Er **usikkerheten** kommunisert? |
+
+> 💡 **Husk:** En modell med 78% nøyaktighet kan være utmerket i én kontekst og ubrukelig i en annen. Kontekst er alt!
+
+---
+
+La oss nå evaluere vår Iris-modell:
+
+
+==========================================================================================
+cell 28 (code)
+------------------------------------------------------------------------------------------
+# ============================================================================
+# EVALUATE THE MODEL
+# ============================================================================
+
+from sklearn.metrics import accuracy_score
+
+# Gjør prediksjoner på testdata
+y_pred = rf.predict(X_test)
+
+# Calculate accuracy
+accuracy = accuracy_score(y_test, y_pred)
+
+print(f"\nModel accuracy: {accuracy:.1%}")
+print(f"→ {int(accuracy * len(y_test))} av {len(y_test)} flowers classified correctly")
+
+==========================================================================================
+cell 29 (code)
+------------------------------------------------------------------------------------------
+# ============================================================================
+# COMPREHENSIVE MODEL EVALUATION
+# ============================================================================
+# Let's use multiple evaluation metrics to get a more complete picture
+
+from sklearn.metrics import (
+    confusion_matrix, 
+    classification_report, 
+    precision_score, 
+    recall_score, 
+    f1_score
+)
+import seaborn as sns
+
+# -----------------------------------------------------------------------------
+# 1. CONFUSION MATRIX (Confusion Matrix)
+# -----------------------------------------------------------------------------
+# Shows how many of each class were correctly/incorrectly classified
+
+cm = confusion_matrix(y_test, y_pred)
+
+# Visualize the confusion matrix
+fig, ax = plt.subplots(figsize=(8, 6))
+sns.heatmap(
+    cm, 
+    annot=True,           # Show numbers in cells
+    fmt='d',              # Integer format
+    cmap='Blues',         # Color scale
+    xticklabels=iris_dataset.target_names,  # Class names on x-axis
+    yticklabels=iris_dataset.target_names,  # Class names on y-axis
+    ax=ax
+)
+ax.set_xlabel('Predicted class', fontsize=12)
+ax.set_ylabel('Actual class', fontsize=12)
+ax.set_title('Confusion Matrix (Confusion Matrix)', fontsize=14)
+plt.tight_layout()
+plt.show()
+
+print("\n" + "="*60)
+print("FIGUR: Confusion Matrix")
+print("="*60)
+print("""
+Interpretation:
+- Diagonalen (øverst venstre til nederst høyre) viser KORREKTE prediksjoner
+- Alle andre celler viser FEIL prediksjoner
+- Høye tall på diagonalen = god modell
+- Eksempel: Hvis celle (setosa, versicolor) = 2, betyr det at 2 setosa-blomster
+  ble feilaktig klassifisert som versicolor
+""")
+
+# -----------------------------------------------------------------------------
+# 2. CLASSIFICATION REPORT
+# -----------------------------------------------------------------------------
+# Gives precision, recall and F1-score for each class
+
+print("\n" + "="*60)
+print("CLASSIFICATION REPORT")
+print("="*60)
+print(classification_report(
+    y_test, 
+    y_pred, 
+    target_names=iris_dataset.target_names
+))
+
+print("""
+Explanation av metrikkene:
+─────────────────────────────────────────────────────────────
+• Precision: Av alle modellen sa var klasse X, hvor mange var riktig?
+  → Høy precision = få falske positive
+
+• Recall (Sensitivity): Av alle som faktisk var klasse X, hvor mange fant vi?
+  → Høy recall = få falske negative
+  
+• F1-score: Harmonisk gjennomsnitt av precision og recall
+  → Balansert mål når begge er viktige
+
+• Support: Antall faktiske eksempler av hver klasse i testsettet
+─────────────────────────────────────────────────────────────
+""")
+
+# -----------------------------------------------------------------------------
+# 3. DETAILED METRICS
+# -----------------------------------------------------------------------------
+
+print("="*60)
+print("DETALJERTE METRIKKER")
+print("="*60)
+
+# For multiclass we use 'weighted' to account for class sizes
+precision = precision_score(y_test, y_pred, average='weighted')
+recall = recall_score(y_test, y_pred, average='weighted')
+f1 = f1_score(y_test, y_pred, average='weighted')
+
+print(f"""
+Weighted averages (accounting for class sizes):
+──────────────────────────────────────────────────────
+  Accuracy:   {accuracy:.1%}  (proportion correct overall)
+  Precision:  {precision:.1%}  (how precise is the model?)
+  Recall:     {recall:.1%}  (how many do we catch?)
+  F1-score:   {f1:.1%}  (balanced measure)
+""")
+
+# -----------------------------------------------------------------------------
+# 4. ANALYSIS OF MISCLASSIFICATIONS
+# -----------------------------------------------------------------------------
+
+print("="*60)
+print("ANALYSE AV FEILKLASSIFISERINGER")
+print("="*60)
+
+# Find which examples were misclassified
+error_indices = y_test != y_pred
+antall_feil = sum(error_indices)
+
+print(f"\nNumber of misclassifications: {antall_feil} av {len(y_test)}")
+
+if antall_feil > 0:
+    print("\nDetails about the errors:")
+    print("-" * 40)
+    for i, (faktisk, predikert) in enumerate(zip(y_test[error_indices], y_pred[error_indices])):
+        faktisk_navn = iris_dataset.target_names[faktisk]
+        predikert_navn = iris_dataset.target_names[predikert]
+        print(f"  Error {i+1}: Actual = {actual_name}, Predicted = {predicted_name}")
+
+print("""
+\n💡 Innsikt:
+──────────────────────────────────────────────────────
+Legg merke til hvilke klasser som forveksles. I Iris-datasettet er det
+typisk versicolor og virginica som er vanskeligst å skille, fordi de
+overlapper mer i feature-rommet (se scatter matrix fra tidligere).
+
+I en medisinsk kontekst ville vi analysert:
+- Er feilene systematiske? (Overser vi alltid samme type pasienter?)
+- Hvilke konsekvenser har de ulike feiltypene?
+- Kan vi samle mer data for de problematiske tilfellene?
+""")
+
+
+==========================================================================================
+cell 30 (markdown)
+------------------------------------------------------------------------------------------
+---
+
+# 🔍 Forklarbar AI (XAI) og Pålitelig AI (Trustworthy AI)
+
+Nå har vi trent en modell og evaluert ytelsen. Men i medisin er det ikke nok at modellen fungerer – vi må også **forstå hvorfor** den tar de beslutningene den gjør, og vi må kunne **stole på** den.
+
+## Hva er Explainable AI (XAI)?
+
+**Explainable AI (XAI)** handler om å gjøre maskinlæringsmodeller *forståelige* for mennesker. I stedet for en "svart boks" som bare gir et svar, ønsker vi innsikt i:
+
+- **Hvilke egenskaper** påvirker prediksjonene mest?
+- **Hvorfor** ble akkurat denne pasienten klassifisert slik?
+- **Når** kan vi stole på modellens prediksjoner?
+
+### Hvorfor er XAI viktig i medisin?
+
+| Situasjon | Uten XAI | Med XAI |
+|-----------|----------|---------|
+| Lege får AI-anbefaling | "Pasienten har 73% risiko for diabetes" | "73% risiko basert på: høyt glukosenivå (bidrar 45%), høy BMI (bidrar 30%), familiehistorie (bidrar 15%)" |
+| Pasient spør "hvorfor?" | "Det sier modellen" | "Fordi dine blodverdier og vekthistorikk matcher mønstre vi ser hos diabetikere" |
+| Feildiagnose oppdages | Umulig å forstå hva som gikk galt | Kan identifisere hvilke faktorer som misledet modellen |
+
+> 📜 **Regulatorisk krav:** EU's AI Act krever at høyrisiko AI-systemer (inkludert medisinsk AI) må være forklarbare og transparente.
+
+---
+
+## 🔐 Trustworthy AI: Mer enn bare forklarbarhet
+
+**Trustworthy AI** (pålitelig AI) er et bredere konsept som omfatter flere dimensjoner:
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    TRUSTWORTHY AI                               │
+│                                                                 │
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐              │
+│  │  ACCURACY   │  │ EXPLAINA-   │  │  FAIRNESS   │              │
+│  │  Nøyaktighet│  │ BILITY      │  │  Rettferdig-│              │
+│  │             │  │ Forklarbar- │  │  het        │              │
+│  │  "Fungerer  │  │ het         │  │             │              │
+│  │   det?"     │  │             │  │  "Fungerer  │              │
+│  │             │  │  "Hvorfor?" │  │   det likt  │              │
+│  │             │  │             │  │   for alle?"│              │
+│  └─────────────┘  └─────────────┘  └─────────────┘              │
+│                                                                 │
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐              │
+│  │ ROBUSTNESS  │  │  PRIVACY    │  │ ACCOUNTA-   │              │
+│  │ Robusthet   │  │  Personvern │  │ BILITY      │              │
+│  │             │  │             │  │ Ansvarlighet│              │
+│  │  "Tåler den │  │ "Er data    │  │             │              │
+│  │   støy?"    │  │  beskyttet?"│  │  "Hvem har  │              │
+│  │             │  │             │  │   ansvar?"  │              │
+│  └─────────────┘  └─────────────┘  └─────────────┘              │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### De seks pilarene i Trustworthy AI
+
+| Pilar | Beskrivelse | Medisinsk relevans |
+|-------|-------------|-------------------|
+| **1. Nøyaktighet** | Modellen gir korrekte prediksjoner | Feil diagnose = feil behandling |
+| **2. Forklarbarhet** | Vi forstår hvorfor modellen predikerer | Legen må kunne forklare til pasienten |
+| **3. Rettferdighet** | Modellen fungerer likt for alle grupper | Må ikke diskriminere basert på kjønn, etnisitet, alder |
+| **4. Robusthet** | Modellen tåler variasjon og støy i data | Må fungere på data fra ulike sykehus/utstyr |
+| **5. Personvern** | Pasientdata er beskyttet | GDPR, helseregisterloven |
+| **6. Ansvarlighet** | Klart hvem som har ansvar ved feil | Hvem er ansvarlig hvis AI gir feil råd? |
+
+---
+
+## 🔬 XAI-teknikker i praksis
+
+Det finnes flere metoder for å forklare maskinlæringsmodeller:
+
+### 1. Feature Importance (Global forklaring)
+**Spørsmål:** "Generelt sett, hvilke egenskaper er viktigst for modellen?"
+
+→ Vi har allerede sett dette! Random Forest gir oss `feature_importances_`.
+
+### 2. Permutation Importance (Global forklaring)
+**Spørsmål:** "Hvor mye forverres modellen hvis vi tilfeldig roter en egenskap?"
+
+→ Mer pålitelig mål enn innebygd feature importance.
+
+### 3. SHAP Values (Lokal + Global forklaring)
+**Spørsmål:** "For denne *spesifikke* prediksjonen, hvordan bidro hver egenskap?"
+
+→ Gir både individuelle forklaringer og oversikt.
+
+### 4. LIME (Local Interpretable Model-agnostic Explanations)
+**Spørsmål:** "Kan vi lage en enkel modell som forklarer denne ene prediksjonen?"
+
+→ Trener en tolkbar modell lokalt rundt prediksjonen.
+
+### 5. Partial Dependence Plots (Global forklaring)
+**Spørsmål:** "Hvordan endres prediksjonen når vi varierer én egenskap?"
+
+→ Viser sammenhengen mellom egenskap og prediksjon.
+
+---
+
+## La oss demonstrere XAI på Iris-modellen!
+
+
+==========================================================================================
+cell 31 (code)
+------------------------------------------------------------------------------------------
+# ============================================================================
+# EXPLAINABLE AI (XAI) DEMONSTRASJON PÅ IRIS-MODELLEN
+# ============================================================================
+
+print("="*70)
+print("               EXPLAINABLE AI (XAI) FOR IRIS-MODELLEN")
+print("="*70)
+
+# -----------------------------------------------------------------------------
+# 1. FEATURE IMPORTANCE (Innebygd i Random Forest)
+# -----------------------------------------------------------------------------
+print("\n" + "─"*70)
+print("1. FEATURE IMPORTANCE - Hvilke egenskaper er viktigst?")
+print("─"*70)
+
+# Hent feature importance fra modellen
+# Note: Vi bruker bare 2 egenskaper (sepal length og width) i denne modellen
+feature_names_used = ['sepal length (cm)', 'sepal width (cm)']
+importances = rf.feature_importances_
+
+# Visualiser
+fig, ax = plt.subplots(figsize=(8, 4))
+bars = ax.barh(feature_names_used, importances, color=['steelblue', 'coral'])
+ax.set_xlabel('Relativ viktighet', fontsize=12)
+ax.set_title('Feature Importance for Iris-klassifisering', fontsize=14)
+ax.set_xlim(0, 1)
+
+# Legg til verdier på søylene
+for bar, imp in zip(bars, importances):
+    ax.text(bar.get_width() + 0.02, bar.get_y() + bar.get_height()/2, 
+            f'{imp:.2f}', va='center', fontsize=11)
+
+plt.tight_layout()
+plt.show()
+
+print(f"""
+Interpretation:
+  • Sepal length bidrar med {importances[0]:.1%} til modellens beslutninger
+  • Sepal width bidrar med {importances[1]:.1%} til modellens beslutninger
+  
+  → Dette forteller oss at {'sepal length' if importances[0] > importances[1] else 'sepal width'} 
+    er den viktigste egenskapen for å skille Iris-artene.
+""")
+
+# -----------------------------------------------------------------------------
+# 2. PERMUTATION IMPORTANCE - Mer robust mål
+# -----------------------------------------------------------------------------
+print("\n" + "─"*70)
+print("2. PERMUTATION IMPORTANCE - Hva skjer hvis vi roter egenskapene?")
+print("─"*70)
+
+from sklearn.inspection import permutation_importance
+
+# Beregn permutation importance på testdataene
+perm_importance = permutation_importance(
+    rf, X_test, y_test, 
+    n_repeats=30,           # Gjenta 30 ganger for stabilt estimat
+    random_state=42
+)
+
+# Visualiser
+fig, ax = plt.subplots(figsize=(8, 4))
+
+# Lag boxplot for å vise usikkerhet
+ax.boxplot(
+    perm_importance.importances.T,
+    vert=False,
+    labels=feature_names_used
+)
+ax.set_xlabel('Reduksjon i accuracy når egenskapen rotes', fontsize=12)
+ax.set_title('Permutation Importance (med usikkerhet)', fontsize=14)
+ax.axvline(x=0, color='gray', linestyle='--', alpha=0.5)
+plt.tight_layout()
+plt.show()
+
+print(f"""
+Interpretation:
+  • Sepal length: {perm_importance.importances_mean[0]:.3f} (±{perm_importance.importances_std[0]:.3f})
+  • Sepal width:  {perm_importance.importances_mean[1]:.3f} (±{perm_importance.importances_std[1]:.3f})
+  
+  → En verdi på f.eks. 0.15 betyr at accuracy synker med ~15 prosentpoeng
+    når vi tilfeldig blander denne egenskapen.
+  → Negative verdier kan bety at egenskapen faktisk forvirrer modellen!
+""")
+
+# -----------------------------------------------------------------------------
+# 3. INDIVIDUELLE PREDIKSJONER - Hvorfor ble DENNE blomsten klassifisert slik?
+# -----------------------------------------------------------------------------
+print("\n" + "─"*70)
+print("3. FORKLARING AV ENKELTPREDIKSJONER")
+print("─"*70)
+
+# Velg noen eksempler fra testsettet
+print("\nLa oss se på 3 enkeltprediksjoner:\n")
+
+for i in [0, 10, 20]:  # Velg noen indekser
+    if i < len(X_test):
+        blomst = X_test[i]
+        faktisk = iris_dataset.target_names[y_test.iloc[i] if hasattr(y_test, 'iloc') else y_test[i]]
+        predikert = iris_dataset.target_names[y_pred[i]]
+        
+        # Hent sannsynligheter for hver klasse
+        probs = rf.predict_proba([blomst])[0]
+        
+        print(f"  Blomst #{i+1}:")
+        print(f"    Sepal length: {blomst[0]:.1f} cm")
+        print(f"    Sepal width:  {blomst[1]:.1f} cm")
+        print(f"    Faktisk art:  {faktisk}")
+        print(f"    Predikert:    {predikert} {'✓' if faktisk == predikert else '✗'}")
+        print(f"    Konfidenser:  Setosa={probs[0]:.0%}, Versicolor={probs[1]:.0%}, Virginica={probs[2]:.0%}")
+        print()
+
+print("""
+💡 Innsikt om konfidenser:
+───────────────────────────────────────────────────────────────
+  • Høy konfidens (f.eks. 95%) = Modellen er sikker
+  • Lav konfidens (f.eks. 40%) = Modellen er usikker
+  
+  I medisin bør usikre prediksjoner flagges for menneskelig vurdering!
+""")
+
+# -----------------------------------------------------------------------------
+# 4. BESLUTNINGSGRENSER - Visualiser hva modellen har lært
+# -----------------------------------------------------------------------------
+print("\n" + "─"*70)
+print("4. BESLUTNINGSGRENSER - Hva har modellen lært?")
+print("─"*70)
+
+# Lag et rutenett over feature-rommet
+x_min, x_max = X[:, 0].min() - 0.5, X[:, 0].max() + 0.5
+y_min, y_max = X[:, 1].min() - 0.5, X[:, 1].max() + 0.5
+xx, yy = np.meshgrid(
+    np.linspace(x_min, x_max, 200),
+    np.linspace(y_min, y_max, 200)
+)
+
+# Prediker for hvert punkt i rutenettet
+Z = rf.predict(np.c_[xx.ravel(), yy.ravel()])
+Z = Z.reshape(xx.shape)
+
+# Plott beslutningsgrensene
+fig, ax = plt.subplots(figsize=(10, 8))
+
+# Fargelegg bakgrunnen etter prediksjon
+ax.contourf(xx, yy, Z, alpha=0.3, cmap='RdYlBu')
+ax.contour(xx, yy, Z, colors='black', linewidths=0.5, alpha=0.5)
+
+# Plott treningsdataene
+colors = ['red', 'yellow', 'blue']
+for label in [0, 1, 2]:
+    mask = y_train == label
+    ax.scatter(
+        X_train[mask, 0], X_train[mask, 1],
+        c=colors[label], label=f'{iris_dataset.target_names[label]} (trening)',
+        edgecolors='black', s=60, alpha=0.7
+    )
+
+# Plott testdataene med annen markør
+for label in [0, 1, 2]:
+    mask = y_test == label
+    ax.scatter(
+        X_test[mask, 0], X_test[mask, 1],
+        c=colors[label], marker='s', 
+        edgecolors='black', s=100, alpha=0.9,
+        label=f'{iris_dataset.target_names[label]} (test)'
+    )
+
+ax.set_xlabel('Sepal length (cm)', fontsize=12)
+ax.set_ylabel('Sepal width (cm)', fontsize=12)
+ax.set_title('Beslutningsgrenser lært av Random Forest', fontsize=14)
+ax.legend(loc='upper left', fontsize=9)
+plt.tight_layout()
+plt.show()
+
+print("""
+FIGUR: Beslutningsgrenser
+───────────────────────────────────────────────────────────────
+Interpretation:
+  • Fargede områder viser hva modellen predikerer for ulike verdier
+  • Grensene mellom fargene er "beslutningsgrensene"
+  • Punkter som ligger nær en grense er vanskeligere å klassifisere
+  
+  → Legg merke til at setosa (rød) er lett separert
+  → Versicolor og virginica har mer kompliserte, overlappende grenser
+  
+  Dette er FORKLARBAR AI: Vi kan faktisk SE hva modellen har lært!
+""")
+
+# -----------------------------------------------------------------------------
+# 5. OPPSUMMERING: TRUSTWORTHY AI SJEKKLISTE FOR IRIS-MODELLEN
+# -----------------------------------------------------------------------------
+print("\n" + "="*70)
+print("         TRUSTWORTHY AI SJEKKLISTE FOR VÅR IRIS-MODELL")
+print("="*70)
+
+print("""
+┌─────────────────────────────────────────────────────────────────────┐
+│  ✓ NØYAKTIGHET                                                      │
+│    Accuracy: 78.9% på testdata                                      │
+│    → Akseptabelt for demonstrasjon, men ville trenge forbedring     │
+│      for kritiske medisinske beslutninger                           │
+├─────────────────────────────────────────────────────────────────────┤
+│  ✓ FORKLARBARHET                                                    │
+│    • Feature importance viser hvilke egenskaper som er viktige      │
+│    • Beslutningsgrenser kan visualiseres                            │
+│    • Konfidenser gis for hver prediksjon                            │
+├─────────────────────────────────────────────────────────────────────┤
+│  ? RETTFERDIGHET                                                    │
+│    • Ikke testet på subgrupper (ville trenge mer data)              │
+│    • I medisin: Må sjekke ytelse på tvers av kjønn, alder, etc.     │
+├─────────────────────────────────────────────────────────────────────┤
+│  ? ROBUSTHET                                                        │
+│    • Ikke testet med støy eller data fra andre kilder               │
+│    • Random Forest er generelt robust, men bør valideres            │
+├─────────────────────────────────────────────────────────────────────┤
+│  ✓ PERSONVERN                                                       │
+│    • Iris-data inneholder ingen personopplysninger                  │
+│    • I medisin: Må følge GDPR og helseregisterloven                 │
+├─────────────────────────────────────────────────────────────────────┤
+│  ✓ ANSVARLIGHET                                                     │
+│    • Modellen er dokumentert i denne notebooken                     │
+│    • Begrensninger er kommunisert                                   │
+│    • I produksjon: Trenger formell godkjenning og ansvarsperson     │
+└─────────────────────────────────────────────────────────────────────┘
+""")
+
+
+==========================================================================================
+cell 32 (markdown)
+------------------------------------------------------------------------------------------
+---
+
+# 🩺 Et medisinsk eksempel: Diabetes-prediksjon
+
+Nå tar vi steget fra blomster til **ekte medisin**! Vi skal bruke maskinlæring til å predikere diabetes – en av de største folkehelseutfordringene i verden.
+
+## Hvorfor diabetes?
+
+### Den globale diabetesepidemien
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                    DIABETES I TALL (2024)                           │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│   🌍  537 millioner voksne lever med diabetes globalt               │
+│   📈  Forventet å øke til 783 millioner innen 2045                  │
+│   ⚠️  1 av 2 voksne med diabetes er udiagnostisert                  │
+│   💀  6.7 millioner dødsfall årlig relatert til diabetes            │
+│   🇳🇴  ~245 000 nordmenn har diabetes (5% av befolkningen)           │
+│                                                                     │
+│   Kilde: International Diabetes Federation (IDF)                    │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+### Hvorfor er tidlig oppdagelse viktig?
+
+Diabetes utvikler seg ofte **gradvis og uten symptomer**. Mange lever med uoppdaget diabetes i årevis, og i mellomtiden:
+
+| Komplikasjon | Risiko ved ubehandlet diabetes |
+|--------------|-------------------------------|
+| **Hjertesykdom** | 2-4x høyere risiko for hjerteinfarkt og slag |
+| **Nyresvikt** | Ledende årsak til dialyse |
+| **Synstap** | Diabetisk retinopati kan føre til blindhet |
+| **Amputasjon** | Nerveskader og dårlig sirkulasjon i føtter |
+| **Nevropati** | Kroniske smerter og følelsestap |
+
+> 💡 **Maskinlæringens rolle:** Ved å identifisere høyrisiko-pasienter tidlig kan vi:
+> - Starte forebyggende tiltak (livsstilsendringer)
+> - Sette inn behandling før komplikasjoner oppstår
+> - Redusere helsekostnader og menneskelig lidelse
+
+---
+
+## Pima Indians Diabetes Database
+
+Vi bruker et klassisk medisinsk datasett: **Pima Indians Diabetes Database**.
+
+### Bakgrunn
+
+Datasettet stammer fra en studie utført av National Institute of Diabetes and Digestive and Kidney Diseases (NIDDK) på **Pima-indianere i Arizona, USA**.
+
+**Hvorfor akkurat denne befolkningen?**
+- Pima-indianerne har en av verdens høyeste forekomster av type 2-diabetes
+- Genetiske og livsstilsfaktorer gjør dem til en viktig studiepopulasjon
+- Studien har bidratt enormt til vår forståelse av diabetesrisikofaktorer
+
+### Om datasettet
+
+| Egenskap | Verdi |
+|----------|-------|
+| **Antall pasienter** | 768 kvinner |
+| **Alder** | ≥ 21 år |
+| **Etnisitet** | Pima-indianere |
+| **Antall egenskaper** | 8 |
+| **Målvariabel** | Diabetes (ja/nei) |
+| **Balanse** | ~35% har diabetes, ~65% har ikke |
+
+---
+
+## 📊 Egenskapene (Features) i datasettet
+
+Hver pasient er beskrevet med 8 kliniske measurements:
+
+| # | Egenskap | Beskrivelse | Typisk normalverdi |
+|---|----------|-------------|-------------------|
+| 1 | **pregnancies** | Antall graviditeter | - |
+| 2 | **glucose** | Plasmaglukose etter 2 timer (oral glukosetoleranse-test) | < 140 mg/dL |
+| 3 | **diastolic** | Diastolisk blodtrykk (mm Hg) | 60-80 mm Hg |
+| 4 | **triceps** | Hudfold-tykkelse på triceps (mm) | - |
+| 5 | **insulin** | 2-timers serum-insulin (µU/ml) | 16-166 µU/ml |
+| 6 | **bmi** | Body Mass Index (kg/m²) | 18.5-24.9 |
+| 7 | **dpf** | Diabetes Pedigree Function (genetisk risiko) | - |
+| 8 | **age** | Alder (år) | - |
+
+### Hva er disse egenskapene?
+
+**🩸 Glucose (plasmaglukose)**
+- Måles etter oral glukosetoleransetest (OGTT)
+- Viser hvor godt kroppen håndterer sukker
+- Høye verdier indikerer insulinresistens eller diabetes
+
+**💓 Diastolic (blodtrykk)**
+- Det "nedre" blodtrykket (når hjertet hviler)
+- Høyt blodtrykk er assosiert med diabetes og hjertesykdom
+
+**📏 Triceps (hudfoldtykkelse)**
+- Mål på underhudsfett
+- Indikerer generell kroppsfettandel
+
+**💉 Insulin**
+- Hormonet som regulerer blodsukker
+- Høye verdier kan indikere insulinresistens (kroppen trenger mer insulin)
+
+**⚖️ BMI (Body Mass Index)**
+- Standardmål for vekt i forhold til høyde
+- BMI > 25 = overvekt, BMI > 30 = fedme
+- Sterk risikofaktor for type 2-diabetes
+
+**🧬 Diabetes Pedigree Function (DPF)**
+- Kompleks genetisk risikoberegning
+- Basert på diabetesforekomst i familien
+- Høyere verdi = høyere genetisk risiko
+
+**🎂 Age (alder)**
+- Risikoen for type 2-diabetes øker med alderen
+- Spesielt etter 45 år
+
+---
+
+## Utfordringer med dette datasettet
+
+I motsetning til Iris-datasettet har diabetes-datasettet flere **realistiske utfordringer**:
+
+| Utfordring | Beskrivelse | Konsekvens |
+|------------|-------------|------------|
+| **Overlappende klasser** | Friske og syke har lignende verdier | Vanskeligere å skille |
+| **Manglende verdier** | Noen measurements er 0 (som egentlig er missing) | Må håndteres |
+| **Ubalanserte klasser** | 65% ikke-diabetes, 35% diabetes | Accuracy kan være misvisende |
+| **Biologisk variasjon** | Stor naturlig variasjon mellom individer | Lavere nøyaktighet |
+| **Latente faktorer** | Livsstil, kosthold ikke inkludert | Mangler viktig informasjon |
+
+> ⚠️ **Viktig lærdom:** I virkelig medisinsk AI er det sjelden så "pent" som i lærebokeksempler. Denne kompleksiteten gjør diabetes-datasettet til et utmerket eksempel på realistisk maskinlæring!
+
+---
+
+## Etiske betraktninger
+
+Før vi begynner, la oss reflektere over noen etiske aspekter:
+
+1. **Populasjonsspesifisitet**: Modellen er trent på Pima-kvinner – fungerer den på andre populasjoner?
+2. **Kjønnsbalanse**: Kun kvinner i datasettet – kan vi generalisere til menn?
+3. **Historisk kontekst**: Dataene er fra 1988 – er de fortsatt relevante?
+4. **Beslutningsstøtte, ikke erstatning**: En slik modell bør *støtte* leger, ikke erstatte dem
+
+---
+
+## La oss laste inn og utforske dataene!
+
+==========================================================================================
+cell 33 (code)
+------------------------------------------------------------------------------------------
+# ============================================================================
+# LAST INN OG UTFORSK DIABETES-DATASETTET
+# ============================================================================
+
+url = 'https://assets.datacamp.com/production/course_1939/datasets/diabetes.csv'
+diabetes = pd.read_csv(url)
+
+print(f"✓ Diabetes-data lastet inn! ({len(diabetes)} pasienter)")
+diabetes.head()
+
+==========================================================================================
+cell 34 (code)
+------------------------------------------------------------------------------------------
+# ============================================================================
+# BYGG DIABETES-MODELL
+# ============================================================================
+
+# Velg egenskaper og merkelapper
+X = diabetes[diabetes.columns[0:-1]]
+y = diabetes['diabetes']
+
+# Konverter alle columns til float for å unngå advarsler i PDP
+# (scikit-learn foretrekker float over int for partial dependence plots)
+X = X.astype(float)
+
+# Del i trening og test
+X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=42)
+
+# Tren Random Forest
+rf = RandomForestClassifier(n_estimators=100, random_state=42)
+rf.fit(X_train, y_train)
+
+# Evaluer
+y_pred = rf.predict(X_test)
+accuracy = accuracy_score(y_test, y_pred)
+
+print(f"\nDiabetes-modellens nøyaktighet: {accuracy:.1%}")
+
+==========================================================================================
+cell 35 (code)
+------------------------------------------------------------------------------------------
+# ============================================================================
+# FEATURE IMPORTANCE
+# ============================================================================
+
+importances = rf.feature_importances_
+indices = np.argsort(importances)[::-1]
+
+fig, ax = plt.subplots(figsize=(10, 6))
+y_pos = np.arange(len(X.columns))
+ax.barh(y_pos, importances[indices], align='center', color='steelblue', edgecolor='black')
+ax.set_yticks(y_pos)
+ax.set_yticklabels([X.columns[i] for i in indices])
+ax.invert_yaxis()
+ax.set_xlabel('Relativ viktighet', fontsize=12)
+ax.set_title('Feature Importance for Diabetes-prediksjon', fontsize=14)
+ax.grid(axis='x', alpha=0.3)
+plt.tight_layout()
+plt.show()
+
+print("\nFIGUR 5: Feature importance")
+print("Interpretation: Glukosenivå er viktigst, fulgt av BMI og alder.")
+print("Dette stemmer med medisinsk kunnskap om diabetes-risikofaktorer!")
+
+==========================================================================================
+cell 36 (markdown)
+------------------------------------------------------------------------------------------
+---
+
+## 🔬 Avansert XAI: Explanation av diabetes-modellen
+
+Vi har sett grunnleggende feature importance. Nå skal vi bruke mer avanserte XAI-teknikker for å virkelig **forstå** hva modellen har lært og hvordan den tar beslutninger.
+
+### Hvorfor trenger vi flere XAI-metoder?
+
+| Metode | Styrke | Svakhet |
+|--------|--------|---------|
+| **Feature Importance (innebygd)** | Rask, enkel | Kan være misvisende ved korrelerte features |
+| **Permutation Importance** | Mer robust | Tar lengre tid |
+| **Partial Dependence Plots (PDP)** | Viser sammenhenger | Antar uavhengighet mellom features |
+| **SHAP** | Teoretisk solid, lokale + globale forklaringer | Kan være treg |
+| **LIME** | Intuitive lokale forklaringer | Kan være ustabil |
+
+### Hva vil vi lære?
+
+1. **Globalt:** Hvilke egenskaper er viktigst *generelt*?
+2. **Lokalt:** Hvorfor fikk *denne pasienten* denne prediksjonen?
+3. **Sammenhenger:** Hvordan påvirker glukosenivå, BMI, alder osv. risikoen?
+4. **Interaksjoner:** Påvirker kombinasjoner av egenskaper risikoen?
+
+
+==========================================================================================
+cell 37 (code)
+------------------------------------------------------------------------------------------
+# ============================================================================
+# AVANSERT XAI FOR DIABETES-MODELLEN
+# ============================================================================
+
+print("="*70)
+print("      EXPLAINABLE AI (XAI) FOR DIABETES-PREDIKSJON")
+print("="*70)
+
+# =============================================================================
+# 1. PERMUTATION IMPORTANCE
+# =============================================================================
+print("\n" + "─"*70)
+print("1. PERMUTATION IMPORTANCE")
+print("─"*70)
+print("""
+Idé: Hvis en egenskap er viktig, vil tilfeldig blanding av verdiene
+ødelegge modellens nøyaktighet. Jo mer nøyaktigheten synker, jo viktigere
+er egenskapen.
+""")
+
+from sklearn.inspection import permutation_importance
+
+# Beregn permutation importance
+perm_imp = permutation_importance(
+    rf, X_test, y_test,
+    n_repeats=30,
+    random_state=42,
+    n_jobs=-1  # Bruk alle CPU-kjerner
+)
+
+# Sorter etter gjennomsnittlig viktighet
+perm_sorted_idx = perm_imp.importances_mean.argsort()[::-1]
+
+# Visualiser
+fig, ax = plt.subplots(figsize=(10, 6))
+ax.boxplot(
+    perm_imp.importances[perm_sorted_idx].T,
+    vert=False,
+    labels=[X.columns[i] for i in perm_sorted_idx]
+)
+ax.axvline(x=0, color='red', linestyle='--', alpha=0.7, label='Ingen effekt')
+ax.set_xlabel('Reduksjon i accuracy når egenskapen blandes', fontsize=12)
+ax.set_title('Permutation Importance for Diabetes-prediksjon', fontsize=14)
+ax.legend()
+plt.tight_layout()
+plt.show()
+
+print("\nPermutation Importance (sortert):")
+print("-" * 50)
+for i in perm_sorted_idx:
+    mean = perm_imp.importances_mean[i]
+    std = perm_imp.importances_std[i]
+    print(f"  {X.columns[i]:<15}: {mean:>7.4f} (± {std:.4f})")
+
+print("""
+\n📊 Interpretation:
+───────────────────────────────────────────────────────────────
+• Glucose er klart viktigst: Blanding reduserer accuracy med ~10%
+• BMI, age og dpf er også viktige
+• Noen features (triceps, diastolic) har minimal eller negativ effekt
+  → Negativ verdi: Egenskapen kan faktisk FORVIRRE modellen!
+  
+💡 Medisinsk innsikt: Glukosenivå er den sterkeste prediktoren for
+   diabetes - dette stemmer perfekt med medisinsk kunnskap!
+""")
+
+# =============================================================================
+# 2. PARTIAL DEPENDENCE PLOTS (PDP)
+# =============================================================================
+print("\n" + "─"*70)
+print("2. PARTIAL DEPENDENCE PLOTS (PDP)")
+print("─"*70)
+print("""
+Idé: Hvordan endres den predikerte sannsynligheten for diabetes
+når vi varierer én egenskap, mens alle andre holdes konstante?
+""")
+
+from sklearn.inspection import PartialDependenceDisplay
+
+# Velg de 4 viktigste egenskapene
+top_features = ['glucose', 'bmi', 'age', 'dpf']
+
+fig, axes = plt.subplots(2, 2, figsize=(12, 10))
+
+for idx, feature in enumerate(top_features):
+    ax = axes[idx // 2, idx % 2]
+    
+    # Lag PDP for denne egenskapen
+    PartialDependenceDisplay.from_estimator(
+        rf, X_train, [feature],
+        kind='both',      # Vis både gjennomsnitt og individuelle linjer
+        subsample=50,     # Bruk 50 tilfeldige eksempler for ICE-linjer
+        ax=ax,
+        random_state=42
+    )
+    ax.set_title(f'Partial Dependence: {feature}', fontsize=12)
+
+plt.suptitle('Hvordan påvirker hver egenskap diabetes-risikoen?', fontsize=14, y=1.02)
+plt.tight_layout()
+plt.show()
+
+print("""
+📊 Tolkning av PDP-plottene:
+───────────────────────────────────────────────────────────────
+• GLUCOSE: Tydelig økende risiko fra ~100 mg/dL
+  → Over 150 mg/dL: Kraftig økt risiko
+  → Under 100 mg/dL: Lav risiko
+
+• BMI: Gradvis økende risiko fra BMI ~25
+  → BMI > 35: Høy risiko
+  → Dette samsvarer med at fedme er en hovedrisikofaktor
+
+• AGE: Risikoen øker med alderen, spesielt etter 30
+  → Flater ut etter ~50 år (mulig dataartefakt)
+
+• DPF (Diabetes Pedigree Function): Svak økende trend
+  → Genetisk risiko spiller en rolle, men mindre enn livsstilsfaktorer
+
+💡 Klinisk relevans: Disse plottene kan hjelpe leger å kommunisere
+   risikofaktorer til pasienter: "Hvis du senker BMI fra 35 til 25,
+   vil din estimerte risiko reduseres betydelig."
+""")
+
+# =============================================================================
+# 3. 2D PARTIAL DEPENDENCE - INTERAKSJONER
+# =============================================================================
+print("\n" + "─"*70)
+print("3. 2D PARTIAL DEPENDENCE - INTERAKSJONER MELLOM FEATURES")
+print("─"*70)
+print("""
+Idé: Hvordan påvirker KOMBINASJONEN av to egenskaper risikoen?
+Interagerer de, eller er effektene uavhengige?
+""")
+
+fig, ax = plt.subplots(figsize=(10, 8))
+
+# 2D PDP for glucose og BMI
+PartialDependenceDisplay.from_estimator(
+    rf, X_train, 
+    [('glucose', 'bmi')],  # Par av features
+    kind='average',
+    ax=ax
+)
+ax.set_title('Interaksjon mellom Glucose og BMI', fontsize=14)
+plt.tight_layout()
+plt.show()
+
+print("""
+📊 Tolkning av 2D PDP:
+───────────────────────────────────────────────────────────────
+• Fargeskalaen viser predikert sannsynlighet for diabetes
+• Høyest risiko: Høy glucose OG høy BMI (øvre høyre hjørne)
+• Lavest risiko: Lav glucose OG lav BMI (nedre venstre hjørne)
+
+💡 Klinisk innsikt: Risikofaktorene FORSTERKER hverandre!
+   En pasient med både høyt blodsukker og fedme har mye høyere
+   risiko enn summen av enkeltfaktorene skulle tilsi.
+""")
+
+# =============================================================================
+# 4. LOKALE FORKLARINGER FOR ENKELTPASIENTER
+# =============================================================================
+print("\n" + "─"*70)
+print("4. LOKALE FORKLARINGER - HVORFOR FIKK DENNE PASIENTEN DENNE PREDIKSJONEN?")
+print("─"*70)
+
+# Velg noen interessante pasienter
+# En med høy risiko, en med lav risiko, en i gråsonen
+probs = rf.predict_proba(X_test)[:, 1]  # Sannsynlighet for diabetes
+
+# Finn indekser
+high_risk_idx = probs.argmax()  # Høyest risiko
+low_risk_idx = probs.argmin()   # Lavest risiko
+mid_risk_idx = np.abs(probs - 0.5).argmin()  # Nærmest 50%
+
+cases = [
+    ("Høy risiko", high_risk_idx),
+    ("Lav risiko", low_risk_idx),
+    ("Usikker (gråsone)", mid_risk_idx)
+]
+
+print("\nAnalyse av 3 enkeltpasienter:\n")
+
+for case_name, idx in cases:
+    patient = X_test.iloc[idx]
+    prob = probs[idx]
+    actual = "Diabetes" if y_test.iloc[idx] == 1 else "Ikke diabetes"
+    predicted = "Diabetes" if prob > 0.5 else "Ikke diabetes"
+    
+    print(f"{'='*60}")
+    print(f"PASIENT: {case_name}")
+    print(f"{'='*60}")
+    print(f"  Predikert sannsynlighet for diabetes: {prob:.1%}")
+    print(f"  Prediksjon: {predicted}")
+    print(f"  Faktisk:    {actual} {'✓' if predicted == actual else '✗'}")
+    print(f"\n  Pasientens verdier:")
+    print(f"  {'-'*40}")
+    
+    # Sammenlign med gjennomsnitt
+    for feature in X.columns:
+        val = patient[feature]
+        mean_val = X_train[feature].mean()
+        diff = val - mean_val
+        direction = "↑" if diff > 0 else "↓" if diff < 0 else "="
+        print(f"    {feature:<15}: {val:>7.1f}  (gj.snitt: {mean_val:>6.1f}) {direction}")
+    print()
+
+print("""
+📊 Interpretation:
+───────────────────────────────────────────────────────────────
+For høyrisiko-pasienten: Legg merke til hvilke verdier som er
+høyere enn gjennomsnittet (↑). Dette er sannsynligvis faktorene
+som driver den høye risikoprediksjonen.
+
+For gråsone-pasienten: Verdiene er nærmere gjennomsnittet,
+noe som gjør det vanskeligere for modellen å bestemme seg.
+
+💡 Klinisk bruk: Denne typen forklaring kan hjelpe leger å forstå
+   HVORFOR modellen ga en bestemt prediksjon, og kommunisere dette
+   til pasienten på en forståelig måte.
+""")
+
+# =============================================================================
+# 5. KLASSIFIKASJON MED KONFIDENSINTERVALLER
+# =============================================================================
+print("\n" + "─"*70)
+print("5. USIKKERHETSKVANTIFISERING - HVOR SIKKER ER MODELLEN?")
+print("─"*70)
+
+# Histogram av predikerte sannsynligheter
+fig, axes = plt.subplots(1, 2, figsize=(14, 5))
+
+# Venstre: Histogram av alle prediksjoner
+ax1 = axes[0]
+ax1.hist(probs, bins=20, edgecolor='black', alpha=0.7, color='steelblue')
+ax1.axvline(x=0.5, color='red', linestyle='--', linewidth=2, label='Terskel (50%)')
+ax1.set_xlabel('Predikert sannsynlighet for diabetes', fontsize=12)
+ax1.set_ylabel('Antall pasienter', fontsize=12)
+ax1.set_title('Fordeling av predikerte sannsynligheter', fontsize=14)
+ax1.legend()
+
+# Høyre: Separert etter faktisk klasse
+ax2 = axes[1]
+ax2.hist(probs[y_test == 0], bins=15, alpha=0.6, label='Faktisk: Ikke diabetes', color='green')
+ax2.hist(probs[y_test == 1], bins=15, alpha=0.6, label='Faktisk: Diabetes', color='red')
+ax2.axvline(x=0.5, color='black', linestyle='--', linewidth=2)
+ax2.set_xlabel('Predikert sannsynlighet for diabetes', fontsize=12)
+ax2.set_ylabel('Antall pasienter', fontsize=12)
+ax2.set_title('Separert etter faktisk diagnose', fontsize=14)
+ax2.legend()
+
+plt.tight_layout()
+plt.show()
+
+# Beregn konfidensstatistikk
+high_conf = np.sum((probs < 0.2) | (probs > 0.8))
+low_conf = np.sum((probs > 0.4) & (probs < 0.6))
+
+print(f"""
+📊 Usikkerhetsanalyse:
+───────────────────────────────────────────────────────────────
+  Totalt antall testpasienter: {len(probs)}
+  
+  Høy konfidens (< 20% eller > 80%): {high_conf} pasienter ({high_conf/len(probs):.1%})
+  Lav konfidens (40-60%):            {low_conf} pasienter ({low_conf/len(probs):.1%})
+  
+💡 Klinisk anbefaling:
+  • Høy konfidens → Modellens prediksjon kan brukes direkte
+  • Lav konfidens → Flagg for manuell vurdering av lege!
+  
+  En god medisinsk AI bør ALDRI ta beslutninger alene når
+  usikkerheten er høy.
+""")
+
+print("\n" + "="*70)
+print("      OPPSUMMERING: XAI FOR DIABETES-MODELLEN")
+print("="*70)
+print("""
+┌─────────────────────────────────────────────────────────────────────┐
+│                    HVA HAR VI LÆRT?                                 │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│  1. VIKTIGSTE RISIKOFAKTORER (global forklaring):                   │
+│     • Glukosenivå er den dominerende prediktoren                    │
+│     • BMI og alder er også viktige                                  │
+│     • Genetisk risiko (DPF) spiller en mindre rolle                 │
+│                                                                     │
+│  2. HVORDAN PÅVIRKER EGENSKAPENE RISIKOEN? (PDP):                   │
+│     • Glucose > 150 mg/dL → Kraftig økt risiko                      │
+│     • BMI > 30 → Betydelig økt risiko                               │
+│     • Risikofaktorene forsterker hverandre                          │
+│                                                                     │
+│  3. INDIVIDUELLE FORKLARINGER:                                      │
+│     • Kan forklare HVORFOR en spesifikk pasient fikk sin prediksjon │
+│     • Viktig for klinisk kommunikasjon og tillit                    │
+│                                                                     │
+│  4. USIKKERHET:                                                     │
+│     • ~25% av prediksjonene er i "gråsonen" (40-60% konfidens)      │
+│     • Disse bør flagges for manuell vurdering                       │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘
+
+💡 VIKTIG: Denne modellen er kun for demonstrasjon og IKKE for
+   klinisk bruk! En reell medisinsk AI ville trenge:
+   • Mye mer data og validering
+   • Prospektive kliniske studier
+   • Regulatorisk godkjenning
+   • Integrasjon i klinisk arbeidsflyt
+""")
+
+
+==========================================================================================
+cell 38 (markdown)
+------------------------------------------------------------------------------------------
+---
+
+# 📝 Oppgaver og refleksjoner: Diabetes-prediksjon
+
+Før vi går videre til den interaktive webappen, her er 15 oppgaver og perspektiver du kan utforske og drøfte. Disse dekker både tekniske og etiske aspekter ved medisinsk maskinlæring.
+
+---
+
+## 🔧 Tekniske oppgaver (koding)
+
+### Oppgave 1: Forbedre modellens ytelse
+Modellen vår har ~74% accuracy. Prøv følgende og rapporter om det hjelper:
+- Øk `n_estimators` til 200 eller 500
+- Prøv andre algoritmer: `GradientBoostingClassifier`, `LogisticRegression`, `SVC`
+- Juster `max_depth` for å unngå overfitting
+
+```python
+# Din kode her:
+# from sklearn.ensemble import GradientBoostingClassifier
+# ...
+```
+
+### Oppgave 2: Håndter manglende verdier
+Datasettet har verdier på 0 som egentlig er manglende (f.eks. `glucose=0` er umulig). 
+- Identifiser hvilke columns som har dette problemet
+- Erstatt 0-verdier med medianen eller bruk imputeringsteknikker
+- Tren modellen på nytt og sammenlign ytelsen
+
+### Oppgave 3: Feature selection
+Noen egenskaper (triceps, diastolic) ser ut til å ha negativ permutation importance.
+- Fjern disse og tren modellen på nytt
+- Blir modellen bedre eller dårligere?
+- Reflekter: Hvorfor kan det være nyttig å fjerne features?
+
+### Oppgave 4: Kryss-validering
+Vi brukte én enkel train/test split. Implementer 5-fold kryss-validering:
+```python
+from sklearn.model_selection import cross_val_score
+# scores = cross_val_score(rf, X, y, cv=5, scoring='accuracy')
+```
+Hva er gjennomsnitt og standardavvik? Er modellen stabil?
+
+### Oppgave 5: ROC-kurve og AUC
+Accuracy er ikke alltid det beste målet. Lag en ROC-kurve og beregn AUC:
+```python
+from sklearn.metrics import roc_curve, auc
+# fpr, tpr, thresholds = roc_curve(y_test, probs)
+```
+Hva forteller AUC-verdien oss om modellens evne til å skille klassene?
+
+---
+
+## 📊 Analytiske oppgaver
+
+### Oppgave 6: Optimal terskelverdi
+Vi bruker 50% som terskel for å klassifisere. Men er dette optimalt?
+- Lag en tabell over precision, recall og F1 for ulike terskler (30%, 40%, 50%, 60%, 70%)
+- Hvilken terskel ville du anbefalt for en screening-test?
+- Hvilken for en bekreftende test?
+
+### Oppgave 7: Konfusjonsmatrise-analyse
+Lag en konfusjonsmatrise for diabetes-modellen.
+- Hvor mange falske positive har vi? Falske negative?
+- Hva er konsekvensene av hver type feil i en medisinsk kontekst?
+- Hva er verst: Å si "diabetes" til en frisk person, eller å overse en syk?
+
+### Oppgave 8: Subgruppe-analyse
+Analyser modellens ytelse på ulike aldersgrupper:
+- Under 30 år
+- 30-50 år
+- Over 50 år
+
+Er modellen like god for alle aldersgrupper? Hva kan forklare forskjeller?
+
+---
+
+## 🤔 Etiske og kritiske refleksjoner
+
+### Oppgave 9: Populasjonsbias
+Datasettet er fra Pima-indianerkvinner. Diskuter:
+- Kan modellen brukes på norske pasienter? Hvorfor/hvorfor ikke?
+- Hvilke faktorer kan variere mellom populasjoner?
+- Hva ville kreves for å validere modellen i Norge?
+
+### Oppgave 10: Historisk bias
+Dataene er fra 1988. Reflekter over:
+- Har livsstilsfaktorer endret seg siden da?
+- Er diagnostiske kriterier for diabetes de samme?
+- Kan gamle data gi misvisende modeller for moderne pasienter?
+
+### Oppgave 11: Kjønns- og mangfoldsperspektiv
+The dataset contains kun kvinner.
+- Kan modellen brukes på menn? Hva er risikoen?
+- Hvilke biologiske forskjeller mellom kjønn kan påvirke diabetes-risiko?
+- Hvordan burde et rettferdig medisinsk AI-system håndtere dette?
+
+### Oppgave 12: Informert samtykke
+Tenk deg at denne modellen brukes i klinisk praksis:
+- Bør pasienten vite at AI er involvert i vurderingen?
+- Hvordan ville du forklart modellens beslutning til en pasient?
+- Hva om pasienten nekter å bli vurdert av AI?
+
+---
+
+## 🏥 Kliniske perspektiver
+
+### Oppgave 13: Integrasjon i klinisk praksis
+Du er rådgiver for et sykehus som vurderer å implementere diabetes-prediksjonsmodellen.
+- Hvordan ville du foreslå at modellen integreres i legens arbeidsflyt?
+- Hvilke "guardrails" (sikkerhetsnett) bør være på plass?
+- Hvordan håndterer vi tilfeller der legen er uenig med modellen?
+
+### Oppgave 14: Koste-nytte-analyse
+En falsk positiv fører til ekstra testing (HbA1c-test koster ~200 kr).
+En falsk negativ kan føre til forsinket diagnose (komplikasjoner, høyere kostnader).
+- Sett opp et enkelt regnestykke for kostnaden av feil
+- Ved hvilken terskelverdi minimerer vi totalkostnaden?
+- Er det etisk riktig å basere medisinske beslutninger på økonomi?
+
+### Oppgave 15: Fremtidens diabetes-prediksjon
+Hvis du skulle designe et optimalt diabetes-prediksjonsystem:
+- Hvilke ekstra variabler ville du inkludert? (genetikk, livsstil, kontinuerlig glukosemåling?)
+- Hvordan ville du sikret at systemet er rettferdig for alle pasientgrupper?
+- Hvilke reguleringer og godkjenninger ville vært nødvendige?
+- Hvordan ville du målt suksess etter implementering?
+
+---
+
+## 💡 Tips for gjennomføring
+
+| Oppgavetype | Anbefalt tilnærming |
+|-------------|---------------------|
+| **Koding (1-5)** | Modifiser koden i cellene over, kjør på nytt, sammenlign resultater |
+| **Analytisk (6-8)** | Bruk Python til å beregne, visualiser med matplotlib |
+| **Etisk (9-12)** | Diskuter i grupper, skriv refleksjonsnotat |
+| **Klinisk (13-15)** | Rollespill, case-diskusjon, eller skriftlig besvarelse |
+
+> 🎯 **Læringsmål:** Disse oppgavene skal hjelpe deg å forstå at medisinsk AI handler om mye mer enn bare å få høy accuracy. Kontekst, etikk, og klinisk relevans er like viktig som den tekniske ytelsen!
+
+
+==========================================================================================
+cell 39 (markdown)
+------------------------------------------------------------------------------------------
+---
+
+# Lag en interaktiv webapp med Gradio
+
+==========================================================================================
+cell 40 (code)
+------------------------------------------------------------------------------------------
+# Installer Gradio om nødvendig
+if colab or kaggle:
+    %pip install gradio
+
+==========================================================================================
+cell 41 (code)
+------------------------------------------------------------------------------------------
+import gradio as gr
+
+def predict_diabetes(age, bmi, glucose):
+    """Predikerer diabetes basert på alder, BMI og glukosenivå."""
+    mean_vals = diabetes.mean()
+    input_data = np.array([
+        mean_vals['pregnancies'], glucose, mean_vals['diastolic'], 
+        mean_vals['triceps'], mean_vals['insulin'], bmi, 
+        mean_vals['dpf'], age
+    ]).reshape(1, -1)
+    prediction = rf.predict(input_data)
+    return "🔴 Diabetes" if prediction[0] == 1 else "🟢 Ikke diabetes"
+
+iface = gr.Interface(
+    fn=predict_diabetes,
+    inputs=[
+        gr.Slider(18, 80, 35, label="Alder (år)"),
+        gr.Slider(15, 50, 25, label="BMI"),
+        gr.Slider(50, 200, 100, label="Glukosenivå (mg/dL)")
+    ],
+    outputs=gr.Textbox(label="Prediksjon"),
+    title="🩺 Diabetes-prediktor",
+    description="⚠️ Kun for demonstrasjon - IKKE for medisinsk bruk!"
+)
+
+# share=False for lokal kjøring (unngår frpc-problemer)
+iface.launch(share=False)
+
+==========================================================================================
+cell 42 (markdown)
+------------------------------------------------------------------------------------------
+---
+
+## 🚀 Utvidet webapp med XAI og personlige helseråd
+
+### Hvorfor begrense til 3 egenskaper?
+
+Den enkle webappen over bruker kun **alder**, **BMI** og **glukosenivå**. Dette er et bevisst valg:
+
+**Praktiske fordeler:**
+- 🎯 **Brukervennlighet:** Færre input-felt = enklere å bruke
+- ⏱️ **Tilgjengelighet:** Disse verdiene er ofte kjent eller lett målbare
+- 📊 **Viktigste prediktorer:** Vår XAI-analyse viste at glucose og BMI er de viktigste egenskapene
+
+**Men det er en trade-off:**
+- ❌ Modellen bruker gjennomsnittsverdier for de andre 5 egenskapene
+- ❌ Dette kan gi mindre nøyaktige prediksjoner for individuelle pasienter
+- ❌ Vi mister viktig informasjon (f.eks. familiehistorie via `dpf`)
+
+### Utvidet versjon med flere egenskaper
+
+I den utvidede webappen under inkluderer vi **flere egenskaper** og legger til:
+
+1. **🔢 Probabilistisk prediksjon** - Ikke bare "ja/nei", men sannsynlighet
+2. **📊 XAI-forklaring** - Hvilke faktorer bidrar mest til prediksjonen
+3. **💊 Personlige helseråd** - Konkrete anbefalinger basert på verdiene
+4. **🎨 Visuell risiko-indikator** - Fargekoding av risikonivå
+
+---
+
+
+==========================================================================================
+cell 43 (code)
+------------------------------------------------------------------------------------------
+# =============================================================================
+# UTVIDET DIABETES-WEBAPP MED XAI OG PERSONLIGE HELSERÅD
+# =============================================================================
+
+import gradio as gr
+
+# Referanseverdier for sammenligning (fra datasettet)
+reference_values = {
+    'pregnancies': {'mean': diabetes['pregnancies'].mean(), 'healthy_max': 4},
+    'glucose': {'mean': diabetes['glucose'].mean(), 'healthy_max': 100, 'prediabetes': 125, 'diabetes': 126},
+    'diastolic': {'mean': diabetes['diastolic'].mean(), 'healthy_max': 80, 'high': 90},
+    'bmi': {'mean': diabetes['bmi'].mean(), 'normal_max': 25, 'overweight': 30, 'obese': 35},
+    'dpf': {'mean': diabetes['dpf'].mean(), 'low_risk': 0.3, 'high_risk': 0.7},
+    'age': {'mean': diabetes['age'].mean(), 'risk_increase': 45}
+}
+
+def get_risk_level(probability):
+    """Kategoriserer risikonivå basert på sannsynlighet."""
+    if probability < 0.3:
+        return "🟢 LAV RISIKO", "green"
+    elif probability < 0.5:
+        return "🟡 MODERAT RISIKO", "orange"
+    elif probability < 0.7:
+        return "🟠 FORHØYET RISIKO", "darkorange"
+    else:
+        return "🔴 HØY RISIKO", "red"
+
+def generate_xai_explanation(input_values, probability, feature_importances):
+    """Genererer en forklarbar AI-analyse av prediksjonen."""
+    
+    # Feature-navn i samme rekkefølge som modellen forventer
+    feature_names = ['pregnancies', 'glucose', 'diastolic', 'triceps', 
+                     'insulin', 'bmi', 'dpf', 'age']
+    
+    # Beregn bidrag fra hver feature (forenklet metode)
+    contributions = []
+    for i, (name, value) in enumerate(zip(feature_names, input_values)):
+        ref = reference_values.get(name, {})
+        mean = ref.get('mean', value)
+        importance = feature_importances[i]
+        
+        # Beregn avvik fra gjennomsnitt
+        if mean > 0:
+            deviation = (value - mean) / mean
+        else:
+            deviation = 0
+            
+        # Bidrag = viktighet × avvik (forenklet)
+        contribution = importance * deviation
+        contributions.append((name, value, mean, contribution, importance))
+    
+    # Sorter etter absolutt bidrag
+    contributions.sort(key=lambda x: abs(x[3]), reverse=True)
+    
+    # Bygg forklaring
+    explanation = "## 📊 XAI-ANALYSE: Hva påvirker prediksjonen?\n\n"
+    explanation += "| Egenskap | Din verdi | Gjennomsnitt | Bidrag |\n"
+    explanation += "|----------|-----------|--------------|--------|\n"
+    
+    for name, value, mean, contrib, imp in contributions[:5]:  # Top 5
+        direction = "↑ øker" if contrib > 0 else "↓ senker"
+        explanation += f"| {name} | {value:.1f} | {mean:.1f} | {direction} risiko |\n"
+    
+    return explanation
+
+def generate_health_advice(glucose, bmi, diastolic, age, dpf, probability):
+    """Genererer personlige helseråd basert på input-verdier og prediksjon."""
+    
+    advice = []
+    urgent = []
+    
+    # Glukose-vurdering
+    if glucose >= 126:
+        urgent.append("⚠️ **GLUKOSE KRITISK HØY** ({:.0f} mg/dL): Dette er over diabetesgrensen. Oppsøk lege snarest!".format(glucose))
+    elif glucose >= 100:
+        advice.append("🔶 **Glukose forhøyet** ({:.0f} mg/dL): Du er i prediabetes-området (100-125). Vurder kostholdsendringer.".format(glucose))
+    else:
+        advice.append("✅ **Glukose normal** ({:.0f} mg/dL): Bra! Verdien er under 100.".format(glucose))
+    
+    # BMI-vurdering
+    if bmi >= 35:
+        urgent.append("⚠️ **BMI SVÆRT HØY** ({:.1f}): Fedme grad 2+. Snakk med lege om vektnedgang.".format(bmi))
+    elif bmi >= 30:
+        advice.append("🔶 **BMI høy** ({:.1f}): Fedme grad 1. Mål: Reduser 5-10% av kroppsvekten.".format(bmi))
+    elif bmi >= 25:
+        advice.append("🔶 **BMI lett forhøyet** ({:.1f}): Overvekt. Øk fysisk aktivitet og vurder kosthold.".format(bmi))
+    else:
+        advice.append("✅ **BMI normal** ({:.1f}): Bra! Hold vekten stabil.".format(bmi))
+    
+    # Blodtrykk-vurdering
+    if diastolic >= 90:
+        urgent.append("⚠️ **DIASTOLISK BLODTRYKK HØY** ({:.0f} mmHg): Hypertensjon. Bør følges opp av lege.".format(diastolic))
+    elif diastolic >= 80:
+        advice.append("🔶 **Blodtrykk lett forhøyet** ({:.0f} mmHg): Vurder saltreduksjon og mosjon.".format(diastolic))
+    else:
+        advice.append("✅ **Blodtrykk normalt** ({:.0f} mmHg): Bra!".format(diastolic))
+    
+    # Alder og familiehistorie
+    if age >= 45:
+        advice.append("ℹ️ **Alder over 45**: Økt risiko. Anbefaler årlig screening.")
+    
+    if dpf >= 0.5:
+        advice.append("ℹ️ **Familiehistorie**: Din DPF-verdi ({:.2f}) indikerer genetisk disposisjon.".format(dpf))
+    
+    # Samle resultat
+    result = "## 💊 PERSONLIGE HELSERÅD\n\n"
+    
+    if urgent:
+        result += "### 🚨 Krever oppmerksomhet:\n" + "\n".join(urgent) + "\n\n"
+    
+    result += "### 📋 Vurdering av dine verdier:\n" + "\n".join(advice) + "\n\n"
+    
+    # Generelle anbefalinger basert på risikonivå
+    if probability >= 0.5:
+        result += """### 🎯 Anbefalte tiltak ved forhøyet risiko:
+1. **Kosthold:** Reduser sukker og raffinerte karbohydrater
+2. **Mosjon:** 150 min moderat aktivitet per uke (rask gange, sykling)
+3. **Vekt:** Mål om 5-7% vekttap hvis BMI > 25
+4. **Oppfølging:** Bestill time hos fastlege for HbA1c-test
+5. **Monitorering:** Mål blodsukker regelmessig hvis tilgjengelig
+"""
+    else:
+        result += """### 🎯 Forebyggende tiltak:
+1. **Oppretthold** sunne vaner med balansert kosthold
+2. **Fortsett** med regelmessig fysisk aktivitet
+3. **Årlig screening** anbefales fra 45 år
+"""
+    
+    return result
+
+def predict_diabetes_extended(pregnancies, glucose, diastolic, triceps, insulin, bmi, dpf, age):
+    """
+    Utvidet prediksjonsfunksjon med XAI og helseråd.
+    Returnerer prediksjon, sannsynlighet, XAI-forklaring og helseråd.
+    """
+    
+    # Forbered input som DataFrame med riktige kolonnenavn (unngår sklearn-advarsel)
+    feature_names = ['pregnancies', 'glucose', 'diastolic', 'triceps', 
+                     'insulin', 'bmi', 'dpf', 'age']
+    input_data = pd.DataFrame([[pregnancies, glucose, diastolic, triceps, 
+                                insulin, bmi, dpf, age]], columns=feature_names)
+    
+    # Prediksjon og sannsynlighet
+    prediction = rf.predict(input_data)[0]
+    probability = rf.predict_proba(input_data)[0][1]  # P(diabetes)
+    
+    # Risikonivå
+    risk_level, color = get_risk_level(probability)
+    
+    # Hovedresultat
+    main_result = f"""# 🩺 DIABETES RISIKOVURDERING
+
+## {risk_level}
+
+**Predikert sannsynlighet for diabetes: {probability:.1%}**
+
+{"🔴 Modellen predikerer **DIABETES**" if prediction == 1 else "🟢 Modellen predikerer **IKKE DIABETES**"}
+
+---
+
+⚠️ **VIKTIG ANSVARSFRASKRIVELSE:**
+Dette er en demonstrasjonsmodell basert på et begrenset datasett fra 1988.
+Resultatene skal **IKKE** brukes til medisinske beslutninger.
+Kontakt alltid kvalifisert helsepersonell for reelle helsebekymringer.
+
+---
+"""
+    
+    # XAI-forklaring
+    feature_importances = rf.feature_importances_
+    xai_explanation = generate_xai_explanation(
+        [pregnancies, glucose, diastolic, triceps, insulin, bmi, dpf, age],
+        probability,
+        feature_importances
+    )
+    
+    # Helseråd
+    health_advice = generate_health_advice(glucose, bmi, diastolic, age, dpf, probability)
+    
+    # Kombiner alt
+    full_output = main_result + xai_explanation + "\n---\n\n" + health_advice
+    
+    return full_output
+
+# Opprett utvidet Gradio-grensesnitt
+extended_interface = gr.Interface(
+    fn=predict_diabetes_extended,
+    inputs=[
+        gr.Slider(0, 15, 1, step=1, label="👶 Antall graviditeter", 
+                  info="Antall ganger gravid (sett 0 for menn)"),
+        gr.Slider(50, 200, 100, step=1, label="🩸 Glukose (mg/dL)", 
+                  info="Fastende blodsukker. Normal: <100, Prediabetes: 100-125, Diabetes: ≥126"),
+        gr.Slider(40, 120, 70, step=1, label="💓 Diastolisk blodtrykk (mmHg)", 
+                  info="Nedre blodtrykkverdi. Normal: <80, Høyt: ≥90"),
+        gr.Slider(10, 60, 25, step=1, label="💪 Triceps hudfold (mm)", 
+                  info="Mål på underhudsfett. Bruk 25 hvis ukjent."),
+        gr.Slider(0, 500, 80, step=5, label="💉 Insulin (μU/mL)", 
+                  info="2-timers serum insulin. Bruk 80 hvis ukjent."),
+        gr.Slider(15, 50, 25, step=0.5, label="⚖️ BMI (kg/m²)", 
+                  info="Normal: 18.5-25, Overvekt: 25-30, Fedme: >30"),
+        gr.Slider(0, 2.5, 0.5, step=0.05, label="🧬 Diabetes Pedigree Function", 
+                  info="Genetisk disposisjon (0-2.5). Lav: <0.3, Høy: >0.7"),
+        gr.Slider(18, 80, 35, step=1, label="🎂 Alder (år)", 
+                  info="Risiko øker etter 45 år")
+    ],
+    outputs=gr.Markdown(label="Resultat"),
+    title="🏥 Utvidet Diabetes Risikovurdering med XAI",
+    description="""
+    **Interaktiv demonstrasjon av maskinlæring i medisin**
+    
+    Denne utvidede versjonen inkluderer:
+    - 📊 Alle 8 egenskaper fra datasettet
+    - 🔢 Probabilistisk prediksjon (ikke bare ja/nei)
+    - 🔍 XAI-forklaring av hva som påvirker prediksjonen
+    - 💊 Personlige helseråd basert på dine verdier
+    
+    ⚠️ **NB: Kun for undervisningsformål - IKKE for medisinsk bruk!**
+    """,
+    article="""
+    ### Om modellen
+    - **Algoritme:** Random Forest (100 beslutningstrær)
+    - **Training data:** Pima Indians Diabetes Database (768 kvinner, 1988)
+    - **Nøyaktighet:** ~74% på testdata
+    
+    ### Begrensninger
+    - Datasettet er gammelt og fra én spesifikk populasjon
+    - Modellen er ikke validert for klinisk bruk
+    - XAI-forklaringen er forenklet
+    """,
+    flagging_mode="never"
+)
+
+# Start den utvidede webappen
+# NB: share=False fordi frpc-filen ofte blokkeres av antivirus/system
+# Appen kjører lokalt på http://127.0.0.1:7860 (eller lignende port)
+extended_interface.launch(share=False)
+
+
+==========================================================================================
+cell 44 (markdown)
+------------------------------------------------------------------------------------------
+---
+
+# Summary
+
+I denne notebooken har vi:
+
+✅ Lært hva maskinlæring er og hvordan det brukes i medisin
+
+✅ Utforsket Iris- og Diabetes-datasett
+
+✅ Visualisert data med histogrammer og scatter plots
+
+✅ Trent Random Forest-modeller og forstått hvordan de fungerer
+
+✅ Evaluert modellene med accuracy, confusion matrix, precision, recall og F1
+
+✅ Undersøkt feature importance og partial dependence plots (XAI)
+
+✅ Diskutert trustworthy AI og etiske aspekter
+
+✅ Laget interaktive webapper med Gradio
+
+---
+
+# 📚 Referanser og videre lesing
+
+## Datasett
+
+| Datasett | Referanse |
+|----------|-----------|
+| **Iris** | Fisher, R. A. (1936). *The use of multiple measurements in taxonomic problems*. Annals of Eugenics, 7(2), 179-188. [DOI](https://doi.org/10.1111/j.1469-1809.1936.tb02137.x) |
+| **Pima Indians Diabetes** | Smith, J. W., et al. (1988). *Using the ADAP learning algorithm to forecast the onset of diabetes mellitus*. Proceedings of the Annual Symposium on Computer Application in Medical Care, 261-265. [PubMed](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2245318/) |
+
+## Maskinlæring og Random Forest
+
+| Emne | Referanse |
+|------|-----------|
+| **Random Forest** | Breiman, L. (2001). *Random forests*. Machine Learning, 45(1), 5-32. [DOI](https://doi.org/10.1023/A:1010933404324) |
+| **Scikit-learn** | Pedregosa, F., et al. (2011). *Scikit-learn: Machine Learning in Python*. Journal of Machine Learning Research, 12, 2825-2830. [JMLR](https://jmlr.org/papers/v12/pedregosa11a.html) |
+
+## Explainable AI (XAI)
+
+| Emne | Referanse |
+|------|-----------|
+| **XAI oversikt** | Molnar, C. (2022). *Interpretable Machine Learning: A Guide for Making Black Box Models Explainable*. [christophm.github.io/interpretable-ml-book](https://christophm.github.io/interpretable-ml-book/) |
+| **Permutation Importance** | Altmann, A., et al. (2010). *Permutation importance: a corrected feature importance measure*. Bioinformatics, 26(10), 1340-1347. [DOI](https://doi.org/10.1093/bioinformatics/btq134) |
+| **Partial Dependence Plots** | Friedman, J. H. (2001). *Greedy function approximation: A gradient boosting machine*. Annals of Statistics, 29(5), 1189-1232. [DOI](https://doi.org/10.1214/aos/1013203451) |
+| **SHAP** | Lundberg, S. M., & Lee, S. I. (2017). *A unified approach to interpreting model predictions*. NeurIPS. [GitHub](https://github.com/slundberg/shap) |
+| **LIME** | Ribeiro, M. T., et al. (2016). *"Why Should I Trust You?": Explaining the Predictions of Any Classifier*. KDD. [GitHub](https://github.com/marcotcr/lime) |
+
+## AI i medisin og etikk
+
+| Emne | Referanse |
+|------|-----------|
+| **Trustworthy AI** | European Commission (2019). *Ethics Guidelines for Trustworthy AI*. [EC](https://ec.europa.eu/digital-single-market/en/news/ethics-guidelines-trustworthy-ai) |
+| **AI i diagnostikk** | Topol, E. J. (2019). *High-performance medicine: the convergence of human and artificial intelligence*. Nature Medicine, 25(1), 44-56. [DOI](https://doi.org/10.1038/s41591-018-0300-7) |
+| **Bias i medisinsk AI** | Obermeyer, Z., et al. (2019). *Dissecting racial bias in an algorithm used to manage the health of populations*. Science, 366(6464), 447-453. [DOI](https://doi.org/10.1126/science.aax2342) |
+
+## Programvare og biblioteker
+
+| Bibliotek | Dokumentasjon |
+|-----------|---------------|
+| **scikit-learn** | [scikit-learn.org](https://scikit-learn.org/) |
+| **pandas** | [pandas.pydata.org](https://pandas.pydata.org/) |
+| **NumPy** | [numpy.org](https://numpy.org/) |
+| **Matplotlib** | [matplotlib.org](https://matplotlib.org/) |
+| **Seaborn** | [seaborn.pydata.org](https://seaborn.pydata.org/) |
+| **Gradio** | [gradio.app](https://gradio.app/) |
+
+## Anbefalte bøker
+
+1. **Hastie, T., Tibshirani, R., & Friedman, J.** (2009). *The Elements of Statistical Learning*. Springer. [Gratis PDF](https://hastie.su.domains/ElemStatLearn/)
+
+2. **James, G., et al.** (2021). *An Introduction to Statistical Learning with Applications in Python*. Springer. [Gratis PDF](https://www.statlearning.com/)
+
+3. **Géron, A.** (2022). *Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow* (3rd ed.). O'Reilly.
+
+---
+
+> 🎓 **Lykke til med videre læring innen AI og beregningsorientert medisin!**
