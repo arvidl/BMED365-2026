@@ -17,6 +17,12 @@ Lab0-ML/Lab0-begin-python-pandas-medim/.vscode
 # Avoid interference with the BMRD365-2026 repo when using private notebooks etc. for experimentation
 my_stuff/
 
+# Local agent translation dumps (do not track)
+agent-tools-cell32-current.md
+agent-tools-diabetes-cells.txt
+agent-tools-translation-dump.txt
+agent-tools-webapp-cells.txt
+
 # Ignore saved models
 test.pkl
 logs.log
