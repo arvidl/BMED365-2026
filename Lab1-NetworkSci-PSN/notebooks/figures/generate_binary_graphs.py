@@ -95,3 +95,4 @@ plt.tight_layout()
 plt.savefig('binary_graphs_en.png', dpi=300, bbox_inches='tight', facecolor='white', edgecolor='none')
 print('✓ Figure saved to figures/binary_graphs_en.png')
 
+
