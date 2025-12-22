@@ -15,7 +15,7 @@ Lab0-ML/Lab0-begin-python-pandas-medim/._kiwi_data
 Lab0-ML/Lab0-begin-python-pandas-medim/.vscode
 
 # Avoid interference with the BMRD365-2026 repo when using private notebooks etc. for experimentation
-my_stuff/
+MyStuff/
 
 # Local agent translation dumps (do not track)
 agent-tools-cell32-current.md
