@@ -41,3 +41,4 @@ with open('B2-learning-in-nn.ipynb', 'w', encoding='utf-8') as f:
 print("✅ Fixed all Norwegian file paths and directory names!")
 
 
+

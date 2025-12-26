@@ -101,6 +101,7 @@ dependencies:
       - medmnist>=3.0.0        # Standardized medical image datasets (28×28)
       - timm>=0.9.0            # PyTorch Image Models (ViT, EfficientNet, etc.)
       - torchviz>=0.0.2        # Visualization of PyTorch model graphs
+      - torchinfo>=1.8.0       # PyTorch model summary (parameters, layers)
       
       # ─────────────────────────────────────────────────────────────────────────
       # GENERATIVE AI / LLM (Lab3-GenAI-LLM)
