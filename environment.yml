@@ -92,7 +92,7 @@ dependencies:
       - tensorflow-addons>=0.21.0  # Extra layers and functions for TensorFlow
       - gdown>=4.7.0           # Download from Google Drive
       - kaggle>=1.5.0          # Kaggle API for dataset download
-      - pyradiomics>=3.0.0     # Radiomics: extract features from images
+      # - pyradiomics>=3.0.0     # Radiomics: extract features from images
       - antspyx>=0.6.0         # Advanced image registration (ANTs in Python)
       - tokenizers>=0.20.0     # Fast tokenization for NLP/LLM
       - gradio>=4.0.0          # Create simple web UIs for ML models
