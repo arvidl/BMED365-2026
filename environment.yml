@@ -2,6 +2,13 @@
 # BMED365-2026: Conda Environment
 # Computational imaging, modeling and AI in biomedicine
 # =============================================================================
+# Compatible with: Linux (x86_64), macOS (Intel & Apple Silicon M1/M2/M3/M4)
+#
+# macOS Notes:
+#   - PyTorch uses MPS (Metal Performance Shaders) on Apple Silicon
+#   - TensorFlow has limited GPU support on Apple Silicon
+#   - Some packages may install CPU-only versions on macOS
+# =============================================================================
 name: bmed365-2026
 
 channels:
@@ -36,7 +43,7 @@ dependencies:
   # Frameworks for building and training AI models
   # ─────────────────────────────────────────────────────────────────────────
   - scikit-learn>=1.3.0  # Classical ML (Random Forest, SVM, clustering)
-  - tensorflow>=2.13.0   # Google's DL framework (Keras backend)
+  - tensorflow>=2.13.0   # Google's DL framework (Keras backend, limited GPU on macOS)
   - pytorch>=2.0.0       # Meta's DL framework (flexible, research-friendly)
   - torchvision>=0.15.0  # Image processing for PyTorch (datasets, transforms)
   - lightning>=2.0.0     # PyTorch Lightning – structured training code
@@ -89,11 +96,13 @@ dependencies:
       - igraph>=0.10.0         # Fast graph analysis (alternative to networkx)
       - python-louvain>=0.16   # Community detection in networks
       - keras>=2.13.0          # High-level DL API (runs on TensorFlow)
-      - tensorflow-addons>=0.21.0  # Extra layers and functions for TensorFlow
+      - tf-keras>=2.15.0       # Keras 2 compatibility layer for Keras 3 (required by SHAP/transformers)
+      # Note: tensorflow-addons is deprecated and incompatible with TF 2.16+
+      # - tensorflow-addons>=0.21.0  # Extra layers and functions for TensorFlow
       - gdown>=4.7.0           # Download from Google Drive
       - kaggle>=1.5.0          # Kaggle API for dataset download
       # - pyradiomics>=3.0.0     # Radiomics: extract features from images
-      - antspyx>=0.6.0         # Advanced image registration (ANTs in Python)
+      - antspyx>=0.6.0         # Advanced image registration (ANTs) - may need manual install on macOS
       - tokenizers>=0.20.0     # Fast tokenization for NLP/LLM
       - gradio>=4.0.0          # Create simple web UIs for ML models
       - wfdb>=4.1.0            # PhysioNet data (ECG from MIT-BIH, etc.)
@@ -114,4 +123,23 @@ dependencies:
       - anthropic>=0.18.0      # Anthropic API (Claude)
       - python-dotenv>=1.0.0   # Environment variables from .env file
 
-# Note: google-colab is only available in the Google Colab environment
+# =============================================================================
+# PLATFORM-SPECIFIC NOTES
+# =============================================================================
+# Linux (Ubuntu/CUDA):
+#   - Full GPU support for PyTorch and TensorFlow
+#   - Run: conda env create -f environment.yml
+#
+# macOS (Intel):
+#   - CPU-only TensorFlow, GPU support via PyTorch MPS
+#   - Run: conda env create -f environment.yml
+#
+# macOS (Apple Silicon M1/M2/M3/M4):
+#   - PyTorch MPS backend for GPU acceleration
+#   - TensorFlow-metal for limited GPU support (optional: pip install tensorflow-metal)
+#   - Some packages may need Rosetta 2 or have limited support
+#   - Run: conda env create -f environment.yml
+#
+# Google Colab:
+#   - Use the notebook-specific pip installs (google-colab not in this file)
+# =============================================================================
