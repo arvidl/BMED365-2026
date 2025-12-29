@@ -42,3 +42,4 @@ print("✅ Fixed all Norwegian file paths and directory names!")
 
 
 
+
