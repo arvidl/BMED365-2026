@@ -8,27 +8,66 @@
 \usepackage{float} % to force figure or table here [H]
 \usepackage{multirow} % For tables with different rows and columns
 \usepackage{lipsum}  % for placeholder text (lorem ipsum ...)
+\usepackage{booktabs} % for toprule, midrule, bottomrule
 %\usepackage{biblatex}
 
-\title{Precision medicine and quantitative imaging in glioblastoma}
-\author{ELMED219 (Artificial Intelligence and Computational Medicine), January 5-30, 2026\\
-{\footnotesize \url{https://github.com/MMIV-ML/ELMED219-2026}}}
 
+\title{Precision medicine and quantitative imaging in glioblastoma}
+\author{ELMED219 (Artificial Intelligence and Computational Medicine) \\
+BMED365  (Computational imaging, modelling and AI in biomedicine) \\
+January 5-30, 2026\\
+{\footnotesize \url{https://github.com/arvidl/ELMED219-2026}} \\
+{\footnotesize \url{https://github.com/arvidl/BMED365-2026}}}
 \date{Team \#k}
 \begin{document}
 
 \maketitle
 
+
+\noindent Team \#k members:
+
+\noindent \emph{Name, Category, E-mail (use Mitt-UiB Innloggings-ID)}	\\
+NN, MED, nn@student.uib.no \\
+MM, BIOMED, mm@student.uib.no 
+
 \begin{scriptsize}
-\begin{verbatim}
-Team #k members:
-
-Name, Category, E-mail	
-NN, MED, nn@student.uib.no
-MM, TEK, mm@student.uib.no
-KK, ING, kk@@student.hvl.no
-
-\end{verbatim}
+\subsection*{Report Organization}
+\subsubsection*{Research Plan}
+\textbf{(3 to 5 pages including figures and reference list)}
+\begin{table}[htbp]
+\centering
+\scriptsize
+\begin{tabular}{p{3cm}p{4.5cm}p{6.5cm}}
+\toprule
+\textbf{Section} & \textbf{Content} & \textbf{Questions to Consider} \\
+\midrule
+Background & Brief introduction to the field & What is the clinical problem? What are current approaches? \\
+Objectives & Aims and expected outcomes & What do you want to achieve? Why is it relevant? \\
+Materials & Data sources, patient cohorts & Which datasets would you use? What kind of images? \\
+Methods & Imaging analysis, ML approaches & How would you process images? Which methods would you apply? \\
+Evaluation & How to assess results & How would you know if your approach works? \\
+\bottomrule
+\end{tabular}
+\end{table}
+\subsection*{Assessment Criteria}
+\begin{table}[htbp]
+\centering
+\scriptsize
+\begin{tabular}{p{4.5cm}p{1.5cm}p{8cm}}
+\toprule
+\textbf{Component} & \textbf{Weight} & \textbf{What We Look For} \\
+\midrule
+Background and Objectives & 20\% & Clear description of the problem, well-defined aims, understanding of clinical relevance \\
+Materials and Methods & 30\% & Appropriate choice of data and methods, logical workflow, demonstration of understanding \\
+Relevance and Impact & 20\% & Why this project matters, potential benefits, realistic scope \\
+Ethics and Data Management & 20\% & Awareness of privacy and ethical issues, basic data management plan, FAIR principles \\
+Writing Quality & 10\% & Clear structure, appropriate use of references, readable figures, good language \\
+\bottomrule
+\end{tabular}
+\end{table}
+\begin{quote}
+\textbf{Note}: We do not expect you to propose something completely novel or to have deep technical expertise. We are looking for evidence that you understand the field, can describe a reasonable approach, and have thought carefully about the ethical dimensions.
+\end{quote}
 \end{scriptsize}
 
 \vspace{3mm}
@@ -81,8 +120,8 @@ Data is illustrated in Fig.~\ref{fig:elmed219-dummy} ...
 
 \begin{figure}[H]
 a)  \hspace{32mm} b) \hspace{32mm}  c) \hspace{32mm}  d) \\
-\includegraphics[width=0.9\textwidth]{elmed219_dummy_fig.png}
-\caption{This is an ELMED219 dummy figure. (a) T2w, (b) FLAIR, (c) T1w, (d) T1wGd. (Image taken from study TCGA-06-1802 in the TCGA-GBM data collection [ref \cite{TCGA-GBM} in Section 2])}
+\includegraphics[width=0.9\textwidth]{elmed219_bmed365_dummy_fig.png}
+\caption{This is an ELMED219 / BMED365 dummy figure. (a) T2w, (b) FLAIR, (c) T1w, (d) T1wGd. (Image taken from study TCGA-06-1802 in the TCGA-GBM data collection [ref \cite{TCGA-GBM} in Section 2])}
 \label{fig:elmed219-dummy}
 \end{figure}
 

@@ -175,9 +175,9 @@ We use the online, collaborative LaTeX editor [Overleaf](https://www.overleaf.co
 - [Academic journal templates](https://www.overleaf.com/latex/templates/tagged/academic-journal)
 
 **Project template:**
-- LaTeX source: [[BMED365_2026_project_team_k.tex](./latex-template/BMED365_2026_project_team_k.tex)]
-- Example figure: [[bmed365_dummy_fig.png](./latex-template/bmed365_dummy_fig.png)]
-- Compiled PDF: [[BMED365_2026_project_team_k.pdf](./latex-template/BMED365_2026_project_team_k.pdf)]
+- LaTeX source: [[ELMED219_BMED365_2026_project_team_k.tex](./latex-template/ELMED219_BMED365_2026_project_team_k.tex)]
+- Example figure: [[elmed219_bmed365_dummy_fig.png](./latex-template/elmed219_bmed365_dummy_fig.png)]
+- Compiled PDF: [[ELMED219_BMED365_2026_project_team_k.pdf](./latex-template/ELMED219_BMED365_2026_project_team_k.pdf)]
 
 **Example of expected detail level:**
 - Seili Summer School 2019 project report (Prostate Cancer theme):
