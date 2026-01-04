@@ -48,9 +48,9 @@ Your topic should engage with one or more themes relevant to BMED365. The follow
 
 | Theme | Example Topics |
 |-------|----------------|
-| **Computational Imaging** | MRI analysis, image segmentation, imaging mass cytometry (IMC), quantitative imaging biomarkers, PET/CT reconstruction |
+| **Computational Imaging** | MRI analysis, image segmentation, imaging mass cytometry (IMC), quantitative imaging biomarkers, PET/CT reconstruction, computational pathology |
 | **Computational Modeling** | Physiological modeling, tumor growth models, cardiovascular flow simulation, pharmacokinetic models, neural network architectures |
-| **Reasoning and Data Analysis** | Machine learning for diagnosis, patient similarity networks (PSN), explainable AI (XAI), clinical decision support, natural language processing in healthcare |
+| **Reasoning and Data Analysis** | Machine learning for diagnosis or prediction, patient similarity networks (PSN) or use of graph representation and network science in biomedicine, explainable AI (XAI), clinical or biomedical decision support, natural language processing in biomedicine or healthcare |
 
 **Note:** These examples are illustrative, not exhaustive. Topics from outside these specific areas are welcome, provided they connect meaningfully to the broader themes of computational biomedicine and AI in healthcare. If you are uncertain whether your topic fits, consult with the course coordinator.
 
