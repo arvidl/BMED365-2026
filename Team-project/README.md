@@ -36,7 +36,7 @@ The project is designed to accommodate this diversity of backgrounds while encou
 
 ## Team Project Report Submission
 
-**Thursday 29.01.2026, 16:00**  - One member submits the team report (as a PDF file) to Mitt-UiB on behalf of the team
+**Deadline: Thursday 29.01.2026, 16:00**  - One member submits the team report (as a PDF file) to Mitt-UiB on behalf of the team
 
 ---
 
@@ -466,7 +466,7 @@ These tools may help with literature search, writing, and understanding complex 
 Before you start, make sure everyone on the team has completed these tasks:
 
 ### Individual Preparation
-- [ ] Created a free [Overleaf](https://www.overleaf.com) account
+- [ ] Created a free [Overleaf](https://www.overleaf.com) account (preferably using your Mitt-UiB Innloggings-ID)
 - [ ] Accessed the LaTeX template and understood its structure
 - [ ] Read at least one background article on glioblastoma and its imaging
 - [ ] Familiarized themselves with the WHO 2021 classification of CNS tumors
@@ -474,7 +474,7 @@ Before you start, make sure everyone on the team has completed these tasks:
 - [ ] Looked at at least one software tool or framework (nnU-Net, MONAI, MedSAM)
 
 ### Team Organization
-- [ ] Established a communication channel (Teams, Discord, Slack, etc.)
+- [ ] Established a communication channel ([Discord](https://support.discord.com) channel _Team k_ - using your Mitt-UiB Innloggings-ID as user name)
 - [ ] Assigned roles and responsibilities for different sections
 - [ ] Created a shared Overleaf project from the template
 - [ ] Set up a timeline with milestones and internal deadlines
@@ -486,6 +486,9 @@ Before you start, make sure everyone on the team has completed these tasks:
 - [ ] Figures are clear and properly captioned
 - [ ] Document compiles without errors
 - [ ] Page limits are respected (3 to 5 pages research plan + 1.5 to 2.5 pages DMP/ethics)
+
+### Submission Deadline
+- [ ] Thursday 29.01.2026, 16:00 - One member submits the team report (as a PDF file) to Mitt-UiB on behalf of the team
 
 ---
 
