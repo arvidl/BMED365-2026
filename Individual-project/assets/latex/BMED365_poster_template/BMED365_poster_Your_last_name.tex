@@ -1,0 +1,59 @@
+
+% LaTeX Poster Quick Start
+% If you choose the LaTeX option, here is a minimal example to get started:
+
+\documentclass[25pt, a0paper, portrait]{tikzposter}
+
+\title{Your Poster Title Here}
+\author{Your Name}
+\institute{Department of Biomedicine, University of Bergen}
+
+% BMED365 color theme
+\definecolorpalette{BMEDpalette}{
+    \definecolor{colorOne}{HTML}{003A70}   % UiB dark blue
+    \definecolor{colorTwo}{HTML}{0077B6}   % Accent blue
+    \definecolor{colorThree}{HTML}{F5F5F5} % Light background
+}
+\usetheme{Default}
+\usecolorpalette{BMEDpalette}
+
+\begin{document}
+\maketitle
+
+\begin{columns}
+\column{0.5}
+
+\block{Introduction}{
+    Your introduction text here...
+}
+
+\block{Methods}{
+    Your methods description here...
+}
+
+\column{0.5}
+
+\block{Results}{
+    Your results here...
+
+    % Example figure
+    % \includegraphics[width=\linewidth]{figure.pdf}
+}
+
+\block{Conclusions}{
+    Your conclusions here...
+}
+
+\end{columns}
+
+\block{References}{
+    \small
+    Your references here...
+}
+
+\end{document}
+
+
+% Compilation: Use `pdflatex` or compile via Overleaf.
+% Full template: The complete template with all sections, example figures, and bibliography setup is available in `./assets/latex/BMED365_poster_template/`.
+% Last updated: 04 January 2026
