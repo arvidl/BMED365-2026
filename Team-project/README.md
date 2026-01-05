@@ -7,7 +7,7 @@
 
 ## Team Organization
 
-This year we have **14 applicants from BMED365** and **14 applicants from ELMED219**. We will establish **5 interdisciplinary teams**, each with a balanced mix of students from both programs:
+This year we have **15 applicants from BMED365** and **14 applicants from ELMED219**. We will establish **5 interdisciplinary teams**, each with a balanced mix of students from both programs:
 
 | Team | BMED365 students | ELMED219 students | Total |
 |------|------------------|-------------------|-------|
@@ -15,7 +15,7 @@ This year we have **14 applicants from BMED365** and **14 applicants from ELMED2
 | Team 2 | 3 (b04, b05, b06) | 3 (e04, e05, e06)| 6 |
 | Team 3 | 3 (b07, b08, b09) | 3 (e07, e08, e09)| 6 |
 | Team 4 | 3 (b10, b11, b12)| 2 (e10, e11)| 5 |
-| Team 5 | 2 (b13, b14) | 3 (e12, e13, e14)| 5 |
+| Team 5 | 2 (b13, b14, b15) | 3 (e12, e13, e14)| 6 |
 
 This interdisciplinary composition reflects real-world research teams where medical expertise meets computational and technical skills.
 
