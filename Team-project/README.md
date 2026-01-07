@@ -29,7 +29,7 @@ Pr. 2026-01-06:
 | Team 2 | 4 (b04, b05, b06, b16) | 2 (e05, e06)  | 6     |
 | Team 3 | 2 (b07, b09)      | 3 (e07=b08, e08, e09)  | 5     |
 | Team 4 | 2 (b10, b11)      | 4 (e10, e11, e15, e16) | 6     |
-| Team 5 | 3 (b13, b14, b15) | 3 (e12, e13=b12, e14)  | 6     |
+| Team 5 | 4 (b12, b13, b14, b15) | 2 (e12, e14)      | 6     |
 
 This interdisciplinary composition reflects real-world research teams where medical expertise meets computational and technical skills.
 
