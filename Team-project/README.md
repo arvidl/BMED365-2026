@@ -99,7 +99,7 @@ Glioblastoma (GBM) represents a good case study for precision medicine and quant
 
 Imagine that you are part of a group of established, successful researchers who will collaborate on an important biomedical and medical challenge. An open call for research projects has been announced under a new umbrella program titled **"Artificial Intelligence and Computational (Bio)medicine"**. Your interdisciplinary group is aiming for a project on **"Precision Medicine and Quantitative Imaging in Glioblastoma: A Multiscale Approach"**.
 
-> **Important:** The task is to **write a research plan** (a grant proposal sketch) for a hypothetical project, **not** to actually conduct the project with data analysis or coding. You should describe *what* you would do, *how* and *why*, but not perform the actual analysis.
+> **! Important !** The task is to **write a research plan** (a grant proposal sketch) for a hypothetical project, **not** to actually conduct the project with data analysis or coding. You should describe *what* you would do, *how* and *why*, but not perform the actual analysis.
 
 ### Focus Areas
 
