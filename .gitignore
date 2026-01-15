@@ -14,6 +14,10 @@ __pycache__/
 # Ignore Lab1 data
 Lab1-mpMRI-glioma/data/Task01_BrainTumour*
 
+# Ignore Lab4 medical imaging data (large NIfTI files)
+Lab4-Comp-Imag/mpMRI-glioma/data/brats_subset/
+Lab4-Comp-Imag/mpMRI-glioma/data/decathlon_brain/
+
 # Ignore Lab0 stuff
 Lab0-ML/Lab0-begin-python-pandas-medim/._assets
 Lab0-ML/Lab0-begin-python-pandas-medim/._kiwi_data
