@@ -160,5 +160,108 @@ Lab2-DL/
 
 ---
 
+## Lab 2 Deep Learning - Tentative Time Schedule
+
+**Date:** Friday, January 16, 2026  
+**Time:** 08:15 - 13:00 (4h 45min)  
+**Location:** Hist 1  
+**Instructor:** Arvid Lundervold  
+**Courses:** ELMED219 / BMED365
+
+---
+
+### Recommended Short Videos for Integration
+
+These short videos work well as lecture openers or between-section transitions:
+
+| Video | Author | Duration | Best Used |
+|:------|:-------|:--------:|:----------|
+| [What is Deep Learning?](https://youtu.be/6M5VXKLf4D4) | Simplilearn | 6 min | Opening (08:30) |
+| [But what is a neural network?](https://youtu.be/aircAruvnKk) | 3Blue1Brown | 19 min | After intro lecture |
+| [Neural Networks Explained](https://youtu.be/GvQwE2OhL8I) | StatQuest | 10 min | Alternative opener |
+| [Gradient Descent, Step-by-Step](https://youtu.be/sDv4f4s2SB8) | StatQuest | 10 min | Before B2 notebook |
+| [What is backpropagation?](https://youtu.be/Ilg3gGewQ5U) | 3Blue1Brown | 13 min | With Part B theory |
+| [Deep Learning in 5 Minutes](https://youtu.be/3hJUNvVNPzk) | Siraj Raval | 5 min | Quick recap option |
+| [CNN Explainer](https://youtu.be/JboZfxUjLSk) | Computerphile | 12 min | Before A6/CNN hands-on |
+
+**Note:** The 3Blue1Brown series (Chapter 1-3) is particularly recommended for building intuition.
+
+---
+
+### Detailed Schedule
+
+#### 08:15 - 08:30 | Welcome and Setup (15 min)
+- Course overview and learning objectives
+- Verify Colab/local environment setup
+- Discord channel for questions
+
+#### 08:30 - 09:15 | Lecture: Deep Learning Fundamentals (45 min)
+- **Video:** "What is Deep Learning?" (Simplilearn, 6 min) - opener
+- **Slides:** [D-DeepLearning slides](../Course-description-topics/Beamer/D-DeepLearning/main.pdf) + [Google Slides](https://docs.google.com/presentation/d/1cEZO_OPJ6vBkmMAvXT5Kh00tfeLBMdJpedB3P-xxKGc/edit)
+- What is deep learning? AI/ML/DL hierarchy
+- Biological vs artificial neurons
+- **Video:** "But what is a neural network?" (3Blue1Brown, 19 min) - visual intuition
+
+#### 09:15 - 09:25 | Break (10 min)
+
+#### 09:25 - 10:15 | Part B: Neural Networks Theory (50 min)
+- **B1-nn-intro** - Neural networks in humans and machines (demo + discussion)
+- **Video option:** "What is backpropagation?" (3Blue1Brown, 13 min)
+- **B2-learning-in-nn** - Backpropagation and gradient descent (live coding demo)
+- Interactive Q&A on learning mechanisms
+
+#### 10:15 - 10:25 | Break (10 min)
+
+#### 10:25 - 11:00 | Part A: CNN Introduction and MLP (35 min)
+- **A1-CNN-intro** - Conceptual intro with medical analogies (walkthrough)
+- **A5-MNIST-MLP** - Students run their first MLP model (hands-on)
+- Compare MLP vs CNN architecture
+
+#### 11:00 - 11:30 | Lunch (30 min)
+
+#### 11:30 - 12:15 | CNN and Medical Applications (45 min)
+- **Video option:** CNN Explainer (Computerphile, 12 min) - visual intro to convolutions
+- **A6-MNIST-CNN** - CNN on MNIST (hands-on)
+- **B3-heart-disease-classification** - Heart disease prediction (demo)
+- **B4-ECG-arrhythmia-CNN** - ECG analysis with CNN (demo/discussion)
+- Discussion: Clinical relevance and limitations
+
+#### 12:15 - 12:25 | Break (10 min)
+
+#### 12:25 - 12:50 | Advanced Topics Preview (25 min)
+- **C3-cnn-testing-gradcam** - Explainable AI with Grad-CAM (demo)
+- **D1-MRI-dementia-classification** - MRI analysis preview (demo)
+- Pointers to Part C, D, E, F for self-study
+
+#### 12:50 - 13:00 | Summary and Q&A (10 min)
+- Key takeaways
+- Resources for further learning
+- Recommend Karpathy's "Building micrograd" (2.5h) for deeper understanding at home
+- Assignment guidance and next steps
+
+---
+
+### Time Summary
+
+| Activity | Duration |
+|----------|----------|
+| Lectures, videos, and demonstrations | 2h 35min |
+| Hands-on notebook work | 1h 20min |
+| Breaks (3 x 10 min) | 30 min |
+| Lunch | 30 min |
+| **Total** | **4h 45min** |
+
+---
+
+### Notebook Priority for Session
+
+| Covered in Session | Self-Study Recommended |
+|-------------------|------------------------|
+| A1, A5, A6 (core) | A2, A3, A4 (optional) |
+| B1, B2, B3, B4 (core) | C1-C4 (recommended) |
+| C3, D1 (demo only) | E1-E3, F1-F2 (optional) |
+
+---
+
 Developed by Arvid Lundervold, University of Bergen.
 
