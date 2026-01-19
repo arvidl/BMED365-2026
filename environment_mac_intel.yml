@@ -1,0 +1,143 @@
+# =============================================================================
+# BMED365-2026: Conda Environment for macOS Intel
+# Computational imaging, modeling and AI in biomedicine
+# =============================================================================
+# Optimized for: macOS Intel (x86_64)
+#
+# macOS Intel Notes:
+#   - CPU-only TensorFlow, GPU support via PyTorch MPS (if available)
+#   - numba and llvmlite installed from conda-forge to avoid build issues
+#   - Some packages may install CPU-only versions on macOS
+# =============================================================================
+name: bmed365-2026
+
+channels:
+  - conda-forge    # Community-driven channel with updated packages
+  - defaults       # Anaconda's default channel
+
+dependencies:
+  - python=3.10    # Python version (stable, broad library support)
+  - pip            # For packages not available in conda
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # SCIENTIFIC DATA PROCESSING
+  # Core packages for numerical analysis and visualization
+  # ─────────────────────────────────────────────────────────────────────────
+  - numpy>=1.24.0       # Numerical arrays and matrix operations
+  - pandas>=2.0.0       # DataFrames for tabular data (patient data, CSV)
+  - scipy>=1.10.0       # Scientific algorithms (statistics, signal processing)
+  - matplotlib>=3.7.0   # Basic plotting and visualization
+  - seaborn>=0.12.0     # Statistical visualization (heatmaps, distributions)
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # JUPYTER ECOSYSTEM
+  # Interactive notebooks for teaching and experimentation
+  # ─────────────────────────────────────────────────────────────────────────
+  - jupyter>=1.0.0       # Jupyter Notebook/Lab core package
+  - jupyter-book>=0.15.0 # Publish notebooks as book/website
+  - ipywidgets>=8.0.0    # Interactive widgets in notebooks (sliders, buttons)
+  - nbconvert>=7.0.0     # Convert notebooks to HTML, PDF, etc.
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # MACHINE LEARNING AND DEEP LEARNING
+  # Frameworks for building and training AI models
+  # ─────────────────────────────────────────────────────────────────────────
+  - scikit-learn>=1.3.0  # Classical ML (Random Forest, SVM, clustering)
+  - tensorflow>=2.13.0   # Google's DL framework (Keras backend, limited GPU on macOS)
+  - pytorch>=2.0.0       # Meta's DL framework (flexible, research-friendly)
+  - torchvision>=0.15.0  # Image processing for PyTorch (datasets, transforms)
+  - lightning>=2.0.0     # PyTorch Lightning – structured training code
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # MEDICAL IMAGE PROCESSING
+  # Tools for reading and analyzing medical images
+  # ─────────────────────────────────────────────────────────────────────────
+  - nibabel>=5.1.0       # Read/write NIfTI, ANALYZE (MR, CT brain images)
+  - nilearn>=0.10.0      # Neuroimaging analysis (fMRI, statistical maps)
+  - SimpleITK>=2.3.0     # Image registration and segmentation (ITK wrapper)
+  - scikit-image>=0.21.0 # General image processing (filters, morphology)
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # NETWORK ANALYSIS
+  # For Lab1: Patient similarity networks and graph theory
+  # ─────────────────────────────────────────────────────────────────────────
+  - networkx>=3.1.0      # Graph analysis (nodes, edges, centrality)
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # UTILITIES AND HELPER PACKAGES
+  # ─────────────────────────────────────────────────────────────────────────
+  - tqdm>=4.65.0         # Progress indicators (progress bars)
+  - requests>=2.31.0     # HTTP requests (download data)
+  - pillow>=10.0.0       # Image library (PNG, JPEG reading/writing)
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # NUMBA AND LLVMLITE (Intel Mac fix)
+  # Install from conda-forge to avoid build issues with LLVM
+  # ─────────────────────────────────────────────────────────────────────────
+  - numba>=0.54.0        # JIT compiler for NumPy (required by SHAP)
+  - llvmlite>=0.46.0     # LLVM bindings for numba (pre-built from conda-forge)
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # TABPFN - Deep learning on tabular data (Lab2-DL: F1 and F2)
+  # Prior-Data Fitted Networks for small medical datasets
+  # ─────────────────────────────────────────────────────────────────────────
+  - pytorch>=2.0.0             # Required by TabPFN (already above, but important)
+  
+  # ─────────────────────────────────────────────────────────────────────────
+  # PIP PACKAGES
+  # Packages not available in conda or with better pip versions
+  # ─────────────────────────────────────────────────────────────────────────
+  - pip:
+      # TabPFN v2.5 - Tabular deep learning
+      - tabpfn>=2.0.0            # TabPFN v2.5 for classification and regression
+      - tabpfn-extensions>=0.1.0 # Post-hoc ensembles, SHAP, hyperparameter tuning
+      - torch-geometric>=2.4.0   # Graph-based extensions for TabPFN
+      - hyperopt>=0.2.7          # Hyperparameter optimization
+      - ucimlrepo>=0.0.6         # UCI ML Repository datasets (DARWIN, etc.)
+      - shap>=0.44.0             # SHAP values for model interpretation
+      - catboost>=1.2.0          # Baseline: Gradient boosting
+      - xgboost>=2.0.0           # Baseline: Gradient boosting
+      
+      - plotly>=5.15.0         # Interactive graphs (zoom, hover)
+      - pydicom>=2.4.0         # Read DICOM files (X-ray, CT, MR)
+      - igraph>=0.10.0         # Fast graph analysis (alternative to networkx)
+      - python-louvain>=0.16   # Community detection in networks
+      - keras>=2.13.0          # High-level DL API (runs on TensorFlow)
+      - tf-keras>=2.15.0       # Keras 2 compatibility layer for Keras 3 (required by SHAP/transformers)
+      # Note: tensorflow-addons is deprecated and incompatible with TF 2.16+
+      # - tensorflow-addons>=0.21.0  # Extra layers and functions for TensorFlow
+      - gdown>=4.7.0           # Download from Google Drive
+      - kaggle>=1.5.0          # Kaggle API for dataset download
+      # - pyradiomics>=3.0.0     # Radiomics: extract features from images
+      - antspyx>=0.6.0         # Advanced image registration (ANTs) - may need manual install on macOS
+      - tokenizers>=0.20.0     # Fast tokenization for NLP/LLM
+      - gradio>=4.0.0          # Create simple web UIs for ML models
+      - wfdb>=4.1.0            # PhysioNet data (ECG from MIT-BIH, etc.)
+      - opencv-python>=4.8.0   # Image processing (cv2) for CNN and Grad-CAM
+      - medmnist>=3.0.0        # Standardized medical image datasets (28×28)
+      - timm>=0.9.0            # PyTorch Image Models (ViT, EfficientNet, etc.)
+      - monai>=1.3.0           # Medical imaging deep learning (3D segmentation, transforms)
+      - torchviz>=0.0.2        # Visualization of PyTorch model graphs
+      - torchinfo>=1.8.0       # PyTorch model summary (parameters, layers)
+      
+      # ─────────────────────────────────────────────────────────────────────────
+      # GENERATIVE AI / LLM (Lab3-GenAI-LLM)
+      # Tools for large language models and prompt engineering
+      # ─────────────────────────────────────────────────────────────────────────
+      - tiktoken>=0.5.0        # OpenAI tokenizer (text tokenization)
+      - transformers>=4.35.0   # HuggingFace Transformers (models, pipeline)
+      # Optional for API usage (notebook 09):
+      - openai>=1.0.0          # OpenAI API (ChatGPT)
+      - anthropic>=0.18.0      # Anthropic API (Claude)
+      - python-dotenv>=1.0.0   # Environment variables from .env file
+
+# =============================================================================
+# PLATFORM-SPECIFIC NOTES
+# =============================================================================
+# macOS Intel (x86_64):
+#   - This file is optimized for Intel Macs
+#   - numba and llvmlite are installed from conda-forge to avoid build issues
+#   - CPU-only TensorFlow, GPU support via PyTorch MPS (if available)
+#   - Run: conda env create -f environment_mac_intel.yml
+#   - Or update existing: conda env update -f environment_mac_intel.yml --prune
+# =============================================================================
