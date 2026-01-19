@@ -2,7 +2,7 @@
 
 This lab provides a comprehensive introduction to generative AI and large language models (LLM) with a focus on biomedical applications. We cover everything from foundational concepts and the transformer architecture to ethical considerations, trustworthy AI, and emerging approaches like neurosymbolic AI.
 
-> **Connection to Team Project:** This lab provides essential background for your Team Project on *Precision Medicine and Quantitative Imaging in Glioblastoma*. Notebook 08 (Neurosymbolic AI) includes a dedicated case study on brain tumor classification that directly relates to your project work. See also the prompt templates [grant_writing.txt](prompts/grant_writing.txt) and [project_pitch.txt](prompts/project_pitch.txt) for preparing your grant application and project presentation.
+> **Connection to Team Project:** This lab provides essential background for your Team Project on *Precision Medicine and Quantitative Imaging in Glioblastoma*. Notebook 08 (Neurosymbolic AI) includes a dedicated case study on brain tumor classification that directly relates to your project work. See also the prompt templates [grant_writing.txt](https://github.com/arvidl/BMED365-2026/blob/main/Lab3-GenAI-LLM/prompts/grant_writing.txt) and [project_pitch.txt](https://github.com/arvidl/BMED365-2026/blob/main/Lab3-GenAI-LLM/prompts/project_pitch.txt) for preparing your grant application and project presentation.
 
 ---
 
