@@ -1,0 +1,328 @@
+# Ethics Case Analysis - Prompt Templates
+
+These templates demonstrate structured approaches to analyzing ethical dilemmas in healthcare AI.
+
+---
+
+## 1. Four Principles Framework Analysis
+
+```
+ROLE: You are a medical ethics educator helping students analyze ethical dilemmas.
+
+CASE: A hospital wants to implement an AI system that predicts which patients 
+are likely to miss their appointments. The system works well but has been found 
+to have higher false-positive rates for patients from lower socioeconomic backgrounds.
+
+Analyze this case using the Four Principles framework:
+
+**AUTONOMY**
+- How does this affect patient's right to make informed decisions?
+- Is consent required? What should patients be told?
+- Can patients opt out?
+
+**BENEFICENCE**
+- What benefits could this system provide?
+- Who benefits most? Patients? Healthcare system?
+- How can benefits be maximized?
+
+**NON-MALEFICENCE**
+- What potential harms exist?
+- Who might be harmed?
+- How can harms be minimized?
+
+**JUSTICE**
+- Is the system fair to all patient groups?
+- Does it exacerbate existing inequities?
+- How should resources be distributed?
+
+**BALANCING THE PRINCIPLES**
+- Which principles are in tension?
+- How would you prioritize them in this case?
+- What would you recommend?
+```
+
+---
+
+## 2. Stakeholder Analysis
+
+```
+CASE: Development of an AI diagnostic tool for skin cancer detection
+
+Identify and analyze perspectives of all stakeholders:
+
+**PRIMARY STAKEHOLDERS**
+
+| Stakeholder | Interests | Concerns | Power/Influence |
+|-------------|-----------|----------|-----------------|
+| Patients | | | |
+| Dermatologists | | | |
+| Primary care physicians | | | |
+| AI developers | | | |
+
+**SECONDARY STAKEHOLDERS**
+
+| Stakeholder | Interests | Concerns | Power/Influence |
+|-------------|-----------|----------|-----------------|
+| Hospital administrators | | | |
+| Insurance companies | | | |
+| Regulators | | | |
+| AI vendors | | | |
+
+**ANALYSIS**
+- Whose interests should be prioritized and why?
+- Where do stakeholder interests conflict?
+- How can competing interests be balanced?
+- What governance structures are needed?
+```
+
+---
+
+## 3. Real-World Case Discussion
+
+```
+CASE: The Epic Sepsis Model Controversy
+
+BACKGROUND:
+- Epic Systems deployed a sepsis prediction model in hundreds of hospitals
+- An external validation study (Wong et al., 2021) found the model performed 
+  significantly worse than Epic's reported metrics
+- Hospitals had been using this model for clinical decisions
+
+DISCUSSION QUESTIONS:
+
+**TRANSPARENCY**
+- What information should AI vendors disclose about their models?
+- Who is responsible for independent validation?
+- How should performance claims be verified?
+
+**ACCOUNTABILITY**
+- Who is responsible when a deployed AI underperforms?
+- What are the obligations of vendors? Hospitals? Regulators?
+- What recourse do patients have?
+
+**CLINICAL DECISION-MAKING**
+- How should clinicians weigh AI recommendations?
+- What happens when AI conflicts with clinical judgment?
+- How do we maintain clinical skills when using AI?
+
+**LESSONS LEARNED**
+- What should change about how AI is deployed in healthcare?
+- What regulations might help?
+- How can this inform our own AI projects?
+
+REFERENCE: Search for "Wong et al. 2021 Epic sepsis" to read the study
+```
+
+---
+
+## 4. Bias Detection Exercise
+
+```
+SCENARIO: You are auditing an AI system before deployment
+
+AI SYSTEM: Chest X-ray analysis for pneumonia detection
+TRAINING DATA: 100,000 chest X-rays from a large urban teaching hospital
+PERFORMANCE REPORTED: 95% sensitivity, 90% specificity
+
+TASK: Identify potential sources of bias
+
+**DATA COLLECTION BIAS**
+- Who was included in the training data?
+- Who might be underrepresented?
+- What systematic differences might exist?
+
+**LABEL BIAS**
+- How were diagnoses confirmed?
+- Who labeled the data?
+- What gold standard was used?
+
+**MEASUREMENT BIAS**
+- Are X-rays from different equipment types?
+- Are there quality variations?
+- How might this affect AI performance?
+
+**DEPLOYMENT CONTEXT**
+- Where will this be used?
+- How might the new population differ?
+- What performance monitoring is needed?
+
+**MITIGATION STRATEGIES**
+- What would you recommend before deployment?
+- How should the system be monitored?
+- What reporting mechanisms are needed?
+```
+
+---
+
+## 5. Regulatory Framework Comparison
+
+```
+TASK: Compare regulatory approaches to medical AI
+
+Compare the following regulatory frameworks:
+
+| Aspect | FDA (USA) | EU MDR/AI Act | Norway/EMA |
+|--------|-----------|---------------|------------|
+| Classification of AI as medical device | | | |
+| Pre-market requirements | | | |
+| Clinical evidence needed | | | |
+| Post-market surveillance | | | |
+| Transparency requirements | | | |
+| Liability framework | | | |
+
+**DISCUSSION**
+
+1. Which approach best protects patients?
+2. Which approach best enables innovation?
+3. What would an ideal regulatory framework look like?
+4. How should regulations evolve as AI capabilities change?
+
+**FOR NORWAY SPECIFICALLY**
+- How does Norwegian law interact with EU regulations?
+- What role does Legemiddelverket play?
+- What guidance exists from Datatilsynet on health AI?
+```
+
+---
+
+## 6. Consent and Transparency Scenario
+
+```
+SCENARIO: Designing consent for AI-assisted diagnosis
+
+CONTEXT: A hospital is implementing an AI system that will analyze 
+all chest X-rays before a radiologist reviews them. The AI highlights 
+areas of concern and provides a preliminary assessment.
+
+DESIGN A CONSENT PROCESS:
+
+**INFORMATION TO PROVIDE**
+- What should patients know?
+- How should it be explained?
+- When should this information be provided?
+
+**OPT-OUT OPTIONS**
+- Should patients be able to opt out?
+- What are the implications of opting out?
+- How should opt-out be handled?
+
+**ONGOING COMMUNICATION**
+- Should patients be told if AI was used in their care?
+- How should this appear in medical records?
+- What if AI and human disagree?
+
+**PRACTICAL IMPLEMENTATION**
+- Draft sample consent language (patient-friendly)
+- Create a simple information sheet
+- Design workflow for obtaining consent
+
+**DISCUSSION**
+- Is traditional informed consent appropriate for AI?
+- What new concepts might be needed?
+- How do we balance information with overwhelming patients?
+```
+
+---
+
+## 7. Future Scenario Analysis
+
+```
+SCENARIO: It's 2030 and AI capabilities have advanced significantly.
+
+Consider this hypothetical situation:
+An AI system can predict which medical students will become 
+high-performing physicians with 85% accuracy based on their 
+performance in years 1-2 of medical school.
+
+ANALYZE:
+
+**POTENTIAL USES**
+- How might medical schools use this?
+- How might residency programs use this?
+
+**ETHICAL CONCERNS**
+- Self-fulfilling prophecy effects
+- Impact on student wellbeing
+- Fairness and bias considerations
+- Effect on diversity in medicine
+
+**POLICY QUESTIONS**
+- Should such systems be allowed?
+- If allowed, how should they be regulated?
+- What safeguards would be essential?
+
+**DEEPER QUESTIONS**
+- What makes a "good" physician? Can AI measure this?
+- Is prediction the same as potential?
+- What would we lose if we optimized for predicted performance?
+
+FORMAT: Write this as if preparing for a medical school ethics committee discussion
+```
+
+---
+
+## 8. Personal Reflection Exercise
+
+```
+REFLECTION PROMPT:
+
+Consider a future where AI is deeply integrated into healthcare:
+
+1. **Your future practice**
+   - How do you imagine AI will affect your daily work?
+   - What concerns do you have?
+   - What excites you?
+
+2. **Your responsibilities**
+   - What ethical obligations will you have regarding AI?
+   - How will you maintain your skills?
+   - How will you explain AI to patients?
+
+3. **Your role in shaping AI**
+   - How can clinicians influence AI development?
+   - What voice should patients have?
+   - What would you advocate for?
+
+4. **Lines you wouldn't cross**
+   - What uses of AI would you refuse to participate in?
+   - Where are your personal ethical boundaries?
+   - How would you respond to pressure to compromise?
+
+5. **Preparing yourself**
+   - What knowledge do you need?
+   - What skills should you develop?
+   - How can you stay informed?
+
+WRITE: A 300-500 word personal reflection (for submission or self-assessment)
+```
+
+---
+
+## Discussion Questions for Class
+
+### Small Group Discussion
+
+1. "Should patients have the right to know when AI was involved in their care?"
+   - Argue both positions
+   - What practical challenges exist?
+
+2. "Who should be liable when AI makes a diagnostic error?"
+   - Discuss: physician, hospital, AI developer, or shared?
+   - How does this compare to other medical errors?
+
+3. "Is it ethical to deploy AI that performs worse for some groups if it 
+   still helps the majority?"
+   - Consider utilitarian vs. justice perspectives
+   - What threshold of disparity is acceptable?
+
+4. "Should AI be required to explain its decisions in healthcare?"
+   - Trade-offs between explainability and performance
+   - What level of explanation is sufficient?
+
+### Case-Based Discussion
+
+Present students with a scenario and ask:
+- What would you do?
+- Why?
+- What principles guide your decision?
+- What additional information would you want?

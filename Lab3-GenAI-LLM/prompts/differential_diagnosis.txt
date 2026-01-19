@@ -1,0 +1,235 @@
+# Differential Diagnosis - Prompt Templates
+
+These templates demonstrate structured approaches to using LLMs for differential diagnosis support.
+
+> **IMPORTANT**: These are educational examples only. Never use AI for actual clinical diagnosis without proper validation and physician oversight.
+
+---
+
+## 1. Structured Differential Diagnosis
+
+```
+ROLE: You are a clinical reasoning assistant helping medical students learn differential diagnosis.
+
+PATIENT PRESENTATION:
+- Age: 45-year-old male
+- Chief complaint: Sudden onset severe headache
+- Duration: Started 2 hours ago
+- Character: "Worst headache of my life"
+- Associated symptoms: Neck stiffness, photophobia, nausea
+- Vital signs: BP 165/95, HR 88, Temp 37.8°C
+- Medical history: Hypertension, smoking 20 pack-years
+
+TASK: Generate a differential diagnosis with the following structure:
+
+1. **Most Likely Diagnoses** (top 3):
+   - Diagnosis name
+   - Key supporting findings
+   - Key findings that would argue against
+
+2. **Must Not Miss** (life-threatening conditions):
+   - Condition
+   - Why it must be considered
+   - Initial workup to rule out
+
+3. **Other Considerations**:
+   - Less likely but possible diagnoses
+
+4. **Recommended Initial Workup**:
+   - Prioritized list of investigations
+
+FORMAT: Use clinical reasoning language appropriate for medical education.
+```
+
+---
+
+## 2. Symptom-Based DDx Template
+
+```
+You are helping a medical student work through a differential diagnosis.
+
+PRESENTING SYMPTOM: [Insert symptom, e.g., "Chest pain"]
+
+Please provide:
+
+A) **Organ System Approach**:
+   - Cardiac causes (list with brief distinguishing features)
+   - Pulmonary causes
+   - Gastrointestinal causes
+   - Musculoskeletal causes
+   - Other (psychiatric, referred pain, etc.)
+
+B) **Red Flags** that require immediate evaluation:
+   - List with rationale
+
+C) **Key History Questions** to narrow the differential:
+   - Numbered list of questions with what each helps distinguish
+
+D) **Physical Exam Findings** to look for:
+   - Organized by system
+```
+
+---
+
+## 3. Pattern Recognition Exercise
+
+```
+ROLE: Clinical educator
+
+CLINICAL PATTERN:
+Young woman with:
+- Fatigue
+- Joint pain (symmetric, small joints)
+- Malar rash
+- Photosensitivity
+- Oral ulcers
+
+TASK:
+1. What syndrome/diagnosis does this pattern suggest?
+2. What additional history would you seek?
+3. What laboratory tests would you order?
+4. What are the diagnostic criteria for this condition?
+5. What conditions can mimic this presentation?
+
+NOTE: Include reasoning for each step to support learning.
+```
+
+---
+
+## 4. Emergency Triage DDx
+
+```
+CONTEXT: Emergency department, rapid assessment needed.
+
+PATIENT: 68-year-old woman with acute dyspnea
+
+VITAL SIGNS:
+- SpO2: 88% on room air
+- RR: 28/min
+- HR: 110/min
+- BP: 90/60 mmHg
+- Temp: 38.2°C
+
+TASK: Time-sensitive differential diagnosis
+
+1. **Immediate Life Threats** (must rule out in first 10 minutes):
+   - List with key discriminating features
+
+2. **Urgent Conditions** (evaluate within 1 hour):
+   - List with workup priorities
+
+3. **First Actions**:
+   - What to do while awaiting test results
+
+4. **If unstable** - What changes the approach?
+```
+
+---
+
+## 5. Pediatric DDx Template
+
+```
+ROLE: Pediatric clinical reasoning assistant
+
+PATIENT: 3-year-old boy
+PRESENTING: High fever (39.5°C) for 3 days, rash appeared today
+
+RASH DESCRIPTION:
+- Started on trunk, spreading to extremities
+- Maculopapular, blanching
+- Child appears ill but consolable
+
+ADDITIONAL FINDINGS:
+- Irritable
+- Reduced oral intake
+- Lymphadenopathy (cervical)
+- No cough or coryza initially
+
+TASK: Pediatric-specific differential diagnosis
+
+1. **Viral Exanthems** to consider:
+   - Classic features of each
+
+2. **Bacterial Causes** not to miss:
+   - Red flags for each
+
+3. **Kawasaki Disease**: Does this meet criteria? What criteria are present/absent?
+
+4. **When to worry**: Signs requiring immediate intervention
+
+5. **Parental counseling**: What to tell the family
+```
+
+---
+
+## 6. Comparison-Based Learning
+
+```
+Compare and contrast the following two conditions:
+
+CONDITION A: Pulmonary Embolism
+CONDITION B: Pneumonia
+
+Create a table comparing:
+
+| Feature | Pulmonary Embolism | Pneumonia |
+|---------|-------------------|-----------|
+| Typical onset | | |
+| Chest pain character | | |
+| Fever pattern | | |
+| Cough | | |
+| Key physical findings | | |
+| D-dimer utility | | |
+| Chest X-ray | | |
+| CT findings | | |
+| Risk factors | | |
+
+Then provide:
+- Scenario where PE might be misdiagnosed as pneumonia
+- Key distinguishing questions to ask
+- When to consider both diagnoses simultaneously
+```
+
+---
+
+## 7. Self-Assessment DDx Exercise
+
+```
+SCENARIO: 55-year-old man with 2 weeks of progressive weakness in legs
+
+Before reading further, write down your top 3 differential diagnoses.
+
+---
+
+ADDITIONAL INFORMATION (reveal after initial list):
+- Weakness started distally, now proximal
+- Areflexia on examination
+- Recent URI 3 weeks ago
+- Sensory symptoms minimal
+- No bladder/bowel issues
+
+Now revise your differential:
+1. What diagnosis moved to the top?
+2. What made you change your ranking?
+3. What single test would you order first?
+4. What treatment might be needed urgently?
+
+[AI should not provide answer until student attempts first]
+```
+
+---
+
+## Usage Notes for Students
+
+1. **Always verify** AI-generated differentials against reliable sources
+2. **Practice first** - try generating your own DDx before using AI
+3. **Use as learning tool** - understand the reasoning, don't just memorize lists
+4. **Clinical context matters** - AI cannot examine patients or understand nuance
+5. **Discuss with supervisors** - AI is for learning, not clinical decisions
+
+## Discussion Questions
+
+1. In what ways might AI-assisted DDx be helpful for medical students?
+2. What are the risks of relying too heavily on AI for diagnostic reasoning?
+3. How might AI DDx tools change medical education?
+4. What role should AI play in actual clinical practice?

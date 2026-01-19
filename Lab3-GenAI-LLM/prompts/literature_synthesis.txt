@@ -1,0 +1,347 @@
+# Literature Synthesis - Prompt Templates
+
+These templates demonstrate structured approaches to using LLMs for literature review and research synthesis, particularly useful for the Team Project.
+
+> **IMPORTANT**: Always verify citations and facts. LLMs can hallucinate references that don't exist.
+
+---
+
+## 1. Systematic Literature Summary
+
+```
+ROLE: You are a research assistant helping with a literature review.
+
+TOPIC: Deep learning methods for glioblastoma segmentation from MRI
+
+TASK: Summarize the key developments in this field following this structure:
+
+1. **Overview** (2-3 sentences on the field)
+
+2. **Key Methods Categories**:
+   - List main approaches (e.g., U-Net variants, Transformers, etc.)
+   - Brief description of each
+
+3. **Benchmark Datasets**:
+   - BraTS challenge: purpose, data, metrics
+   - Other relevant datasets
+
+4. **State-of-the-Art Performance**:
+   - Current best methods
+   - Performance metrics (Dice score ranges)
+   - Remaining challenges
+
+5. **Recent Trends** (2023-2025):
+   - New directions
+   - Emerging techniques
+
+6. **Gaps in Literature**:
+   - What remains understudied
+   - Opportunities for future research
+
+FORMAT: Structured with clear headings
+CITATIONS: Note that I should verify all references independently
+```
+
+---
+
+## 2. Paper Summary Template
+
+```
+Summarize the following research paper:
+
+TITLE: [Paper title]
+AUTHORS: [Author list]
+JOURNAL/CONFERENCE: [Publication venue]
+YEAR: [Year]
+
+Provide:
+
+**RESEARCH QUESTION**
+- What problem does this paper address?
+- Why is it important?
+
+**METHODS**
+- Study design
+- Data used
+- Key techniques/algorithms
+- Evaluation metrics
+
+**KEY FINDINGS**
+- Main results (with numbers if available)
+- Most important figure/table findings
+
+**CONTRIBUTIONS**
+- What's novel about this work?
+- How does it advance the field?
+
+**LIMITATIONS**
+- Acknowledged by authors
+- Additional limitations you notice
+
+**RELEVANCE TO [YOUR PROJECT]**
+- How might this inform your work?
+- Applicable techniques or insights
+
+**CITATION** (proper format):
+[Generate citation in Vancouver/APA style]
+```
+
+---
+
+## 3. Comparative Analysis of Methods
+
+```
+TOPIC: Comparing deep learning approaches for brain tumor segmentation
+
+METHODS TO COMPARE:
+1. U-Net (Ronneberger et al., 2015)
+2. nnU-Net (Isensee et al., 2021)
+3. Transformer-based methods (e.g., UNETR, TransBTS)
+4. Foundation models (e.g., SAM, MedSAM)
+
+Create a comparison covering:
+
+**ARCHITECTURE COMPARISON**
+| Aspect | U-Net | nnU-Net | Transformers | Foundation Models |
+|--------|-------|---------|--------------|-------------------|
+| Core mechanism | | | | |
+| Parameters | | | | |
+| Training data needs | | | | |
+| Computational cost | | | | |
+| Interpretability | | | | |
+
+**PERFORMANCE ON BraTS**
+- Dice scores comparison
+- Strengths/weaknesses by tumor region
+
+**PRACTICAL CONSIDERATIONS**
+- Ease of implementation
+- Pretrained models available
+- Clinical deployment readiness
+
+**RECOMMENDATIONS**
+- When to use each approach
+- Trade-offs to consider
+```
+
+---
+
+## 4. Research Gap Identification
+
+```
+FIELD: AI-based precision medicine for glioblastoma
+
+TASK: Identify research gaps and opportunities
+
+Review what is known about:
+1. Imaging biomarkers (MRI-based features)
+2. Molecular markers (IDH, MGMT, etc.)
+3. AI/ML applications for prediction
+4. Clinical integration challenges
+
+Then identify:
+
+**UNDER-RESEARCHED AREAS**
+- Topics with few publications
+- Methodological gaps
+- Populations not well-studied
+
+**TECHNICAL CHALLENGES**
+- Data availability issues
+- Reproducibility problems
+- Validation limitations
+
+**CLINICAL TRANSLATION GAPS**
+- What's needed for clinical adoption?
+- Regulatory hurdles
+- Implementation barriers
+
+**PROMISING DIRECTIONS**
+- Emerging technologies
+- Interdisciplinary opportunities
+- Novel data sources
+
+RELEVANCE: Frame this for a grant proposal or research plan
+```
+
+---
+
+## 5. Background Section Draft
+
+```
+TASK: Help draft a background section for a research proposal
+
+PROJECT TITLE: Precision Medicine and Quantitative Imaging in Glioblastoma
+
+Generate a structured background covering:
+
+**CLINICAL CONTEXT** (~150 words)
+- Glioblastoma epidemiology and prognosis
+- Current diagnostic and treatment approaches
+- Unmet clinical needs
+
+**IMAGING IN GLIOBLASTOMA** (~150 words)
+- Role of MRI in diagnosis and monitoring
+- Standard imaging protocols
+- Emerging advanced imaging techniques
+
+**AI/ML APPLICATIONS** (~150 words)
+- Deep learning for tumor segmentation
+- Radiomics and feature extraction
+- Predictive modeling applications
+
+**MOLECULAR MARKERS** (~100 words)
+- Key biomarkers (IDH, MGMT, 1p/19q)
+- Imaging-based prediction of molecular status
+
+**CURRENT LIMITATIONS** (~100 words)
+- What gaps does your project address?
+- Why is new research needed?
+
+STYLE: Academic, suitable for grant application
+CITATIONS: Mark where references should be inserted [ref]
+```
+
+---
+
+## 6. Methods Section Conceptual Outline
+
+```
+TASK: Create a conceptual outline for a methods section
+
+PROJECT: AI-based glioblastoma analysis pipeline
+
+Generate outline covering:
+
+**1. STUDY DESIGN**
+- Type of study
+- Rationale for design choices
+
+**2. DATA**
+- Data sources (BraTS, TCGA-GBM, etc.)
+- Inclusion/exclusion criteria
+- Sample size considerations
+
+**3. PREPROCESSING PIPELINE**
+- Image preprocessing steps
+- Normalization approaches
+- Quality control
+
+**4. ANALYSIS METHODS**
+- Segmentation approach
+- Feature extraction
+- Classification/prediction models
+- Validation strategy
+
+**5. EVALUATION**
+- Performance metrics
+- Statistical analysis
+- Comparison benchmarks
+
+**6. REPRODUCIBILITY**
+- Code availability plans
+- Hardware/software specifications
+
+NOTE: This is a conceptual outline. Actual methods should be developed with domain experts.
+```
+
+---
+
+## 7. Citation Verification Checklist
+
+```
+IMPORTANT: Before using any AI-generated citation, verify:
+
+□ Authors - Do these authors exist and work in this field?
+□ Title - Is this the exact title? (Search Google Scholar)
+□ Journal - Does this journal exist? Is it reputable?
+□ Year - Does the publication year match?
+□ DOI - Can you access the paper via the DOI?
+□ Content - Does the paper actually say what the AI claims?
+
+COMMON AI CITATION ERRORS:
+- Inventing plausible-sounding papers that don't exist
+- Mixing up authors between papers
+- Attributing findings to wrong papers
+- Creating fake DOIs
+- Misrepresenting paper conclusions
+
+VERIFICATION TOOLS:
+- Google Scholar
+- PubMed
+- Semantic Scholar
+- Connected Papers
+- Publisher websites
+
+WHEN IN DOUBT: If you can't find a paper, don't cite it.
+```
+
+---
+
+## 8. Writing Improvement Prompts
+
+```
+TASK: Improve the following paragraph for academic writing
+
+[Paste your paragraph here]
+
+Please:
+1. Improve clarity and flow
+2. Ensure academic tone
+3. Strengthen transitions
+4. Check logical structure
+5. Suggest where citations might be needed [citation needed]
+
+Provide:
+- Revised version
+- Explanation of key changes
+- Alternative phrasings for consideration
+```
+
+---
+
+## For the Team Project
+
+### Quick Prompts for Literature Review
+
+```
+1. "Summarize the BraTS challenge: history, data, evaluation metrics, and key winning methods"
+
+2. "What are the main molecular markers used in glioblastoma classification according to WHO 2021?"
+
+3. "Compare traditional radiomics vs. deep learning for brain tumor analysis"
+
+4. "What are the key ethical considerations for AI in neuro-oncology?"
+
+5. "Summarize recent advances in federated learning for medical imaging"
+```
+
+### Synthesis Prompt for Team Project
+
+```
+We are writing a research proposal on:
+"Precision Medicine and Quantitative Imaging in Glioblastoma"
+
+Synthesize the following themes into a coherent narrative:
+- Glioblastoma as a challenging malignancy
+- Role of MRI and advanced imaging
+- Deep learning for automated segmentation
+- Molecular markers and personalized treatment
+- Need for multimodal integration
+
+The synthesis should:
+- Flow logically
+- Build a case for why this research is needed
+- Identify the gap our proposal will address
+- Be approximately 500 words
+```
+
+---
+
+## Discussion Questions
+
+1. How can AI assist with literature review while avoiding hallucinated citations?
+2. What verification steps are essential when using AI for research synthesis?
+3. How might AI change the process of writing systematic reviews?
+4. What are the ethical considerations of using AI to draft research proposals?
+5. How can students learn critical appraisal skills if AI summarizes papers for them?

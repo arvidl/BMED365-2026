@@ -145,6 +145,80 @@ For those who want to go deeper into special topics:
 
 ---
 
+## Learning Paths
+
+Choose a path based on your background and goals:
+
+### By Background
+
+| Your Background | Recommended Path | Focus | Time |
+|----------------|------------------|-------|------|
+| **Medical student** (limited coding) | 01 → 04 → 06 → 08 | Concepts, prompting, ethics, glioma | ~4h |
+| **BMED student** (technical) | 01 → 02 → 03 → 05 → 08 → 09 | Full technical depth + APIs | ~6h |
+| **Quick overview** | 01 → 04 → 06 | Essential concepts only | ~2.5h |
+| **Team Project focus** | 04 → 05 → 08 | Prompting, XAI, glioma case | ~3h |
+| **Ethics & regulation focus** | 01 → 06 → 07 | Responsible AI deployment | ~3h |
+
+### By Goal
+
+| Goal | Notebooks | Key Skills |
+|------|-----------|------------|
+| "I want to use ChatGPT better" | 01, 04 | Prompt engineering |
+| "I want to understand how LLMs work" | 01, 02, 03 | Technical foundations |
+| "I want to deploy AI responsibly" | 05, 06, 07 | XAI, ethics, validation |
+| "I want to build AI applications" | 04, 09 | APIs, programming |
+| "I need this for the Team Project" | 04, 05, 08 | Literature, XAI, glioma |
+
+---
+
+## Quick Reference Card
+
+For a printable one-page summary of key concepts, see:
+- **[QUICK_REFERENCE.md](QUICK_REFERENCE.md)** - Essential vocabulary, prompting techniques, safety checklist
+
+---
+
+## Progress Tracker
+
+Use this checklist to track your progress through the lab:
+
+### Core Content
+- [ ] **Notebook 01**: Introduction to Generative AI
+  - [ ] Completed reading
+  - [ ] Answered self-check questions
+  - [ ] Can explain: generative vs. discriminative AI
+- [ ] **Notebook 02**: Transformer Architecture
+  - [ ] Completed reading
+  - [ ] Ran attention visualization code
+  - [ ] Can explain: Query, Key, Value mechanism
+- [ ] **Notebook 03**: LLM Fundamentals
+  - [ ] Completed reading
+  - [ ] Experimented with tokenizer
+  - [ ] Can explain: temperature's effect on output
+- [ ] **Notebook 04**: Prompt Engineering
+  - [ ] Completed reading
+  - [ ] Practiced with prompt templates
+  - [ ] Can apply: zero-shot, few-shot, chain-of-thought
+
+### Recommended Content
+- [ ] **Notebook 05**: Explainable AI
+  - [ ] Understand SHAP vs. LIME
+- [ ] **Notebook 06**: AI Ethics
+  - [ ] Know the four principles applied to AI
+  - [ ] Understand EU AI Act basics
+
+### Optional/Advanced
+- [ ] **Notebook 07**: Trustworthy AI
+- [ ] **Notebook 08**: Neurosymbolic AI (glioma case study)
+- [ ] **Notebook 09**: API Integration
+
+### Reflection & Application
+- [ ] Completed 300-500 word reflection essay
+- [ ] Connected concepts to Team Project
+- [ ] Explored Medical AI Assistant GPT
+
+---
+
 ## Self-Check Questions Summary
 
 Each notebook includes interactive self-check questions to reinforce learning. Here are example topics:
@@ -215,6 +289,7 @@ All notebooks in this lab follow best practices for scientific reproducibility:
 ```
 Lab3-GenAI-LLM/
 ├── README.md                 # This file
+├── QUICK_REFERENCE.md        # One-page summary (print this!)
 ├── notebooks/                # All notebooks (01-09)
 │   ├── 01-introduction-genai.ipynb
 │   ├── 02-transformer-architecture.ipynb
@@ -226,9 +301,16 @@ Lab3-GenAI-LLM/
 │   ├── 08-neurosymbolic-ai.ipynb      # Glioma case study
 │   └── 09-chatgpt-claude-api.ipynb
 ├── prompts/                  # Example prompts for healthcare tasks
-│   ├── clinical_notes.txt
-│   ├── patient_conversation.txt
-│   └── journal_summary.txt
+│   ├── kliniske_notater.txt          # Clinical notes (Norwegian)
+│   ├── pasientsamtale.txt            # Patient conversation (Norwegian)
+│   ├── journalsammendrag.txt         # Journal summary (Norwegian)
+│   ├── differential_diagnosis.txt    # DDx templates
+│   ├── patient_education.txt         # Patient-friendly explanations
+│   ├── literature_synthesis.txt      # Research & Team Project
+│   ├── ethics_case_analysis.txt      # Ethics discussion cases
+│   ├── radiology_report.txt          # Imaging report templates
+│   ├── grant_writing.txt             # Grant application templates ⭐
+│   └── project_pitch.txt             # Pitch & panel Q&A prep ⭐
 ├── resources/               # Figures and references
 └── 00-test-llm.ipynb        # Technical supplement
 ```

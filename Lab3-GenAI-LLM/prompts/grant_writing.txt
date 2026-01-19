@@ -1,0 +1,556 @@
+# Grant Writing - Prompt Templates
+
+Templates for writing, improving, and reviewing grant applications, with specific focus on the Team Project: **Precision Medicine and Quantitative Imaging in Glioblastoma**.
+
+> **IMPORTANT**: AI-generated grant content should always be reviewed and refined by domain experts. Use these templates as starting points, not final products.
+
+---
+
+## 1. Specific Aims Page
+
+The Specific Aims page is the most critical part of any grant. It must hook reviewers in one page.
+
+```
+ROLE: You are a grant writing consultant helping researchers craft compelling Specific Aims pages.
+
+PROJECT CONTEXT:
+- Title: Precision Medicine and Quantitative Imaging in Glioblastoma
+- Duration: [X years]
+- Funding mechanism: [e.g., NFR, Helse Vest, EU Horizon]
+
+Generate a Specific Aims page following this structure:
+
+**OPENING PARAGRAPH** (~100 words)
+- Hook: State the problem and why it matters NOW
+- Gap: What's missing in current approaches
+- Solution hint: Your unique approach
+
+**CENTRAL HYPOTHESIS** (1-2 sentences)
+- Testable, specific, mechanistic
+
+**SPECIFIC AIMS** (2-4 aims)
+For each aim:
+- Aim X: [Action verb] + [what] + [to achieve what]
+- Brief rationale (1 sentence)
+- Approach summary (1-2 sentences)
+- Expected outcome (1 sentence)
+
+**CLOSING PARAGRAPH** (~50 words)
+- Impact: What changes if you succeed
+- Innovation: Why your approach is novel
+- Feasibility: Why you'll succeed
+
+CONSTRAINTS:
+- Total length: 1 page (approximately 500 words)
+- Accessible to non-specialists on review panel
+- Avoid jargon; define necessary technical terms
+- Every sentence must earn its place
+```
+
+---
+
+## 2. Significance Section
+
+```
+TASK: Draft the Significance section for a grant proposal
+
+PROJECT: AI-based precision medicine for glioblastoma
+
+ADDRESS THESE COMPONENTS:
+
+**THE BURDEN** (~150 words)
+- Epidemiology: Incidence, mortality, years of life lost
+- Current treatment: Standard of care, survival statistics
+- Why glioblastoma specifically (not brain tumors in general)
+- Norwegian/European context if relevant
+
+**THE GAP** (~150 words)
+- What's limiting current approaches
+- Why existing solutions are insufficient
+- What would change with your solution
+
+**YOUR SOLUTION'S IMPACT** (~150 words)
+- Direct benefits: Better diagnosis, treatment selection, monitoring
+- Indirect benefits: Cost savings, quality of life, reduced burden
+- Generalizability: Could this approach help other cancers/diseases?
+
+**TIMELINESS** (~50 words)
+- Why now? Recent developments that make this possible
+- What happens if we wait?
+
+STYLE GUIDANCE:
+- Use concrete numbers where possible
+- Cite recent, high-impact literature
+- Make it personal (brief patient scenario is acceptable)
+- Connect to funder's priorities
+```
+
+---
+
+## 3. Innovation Section
+
+```
+TASK: Articulate the innovation of your research proposal
+
+PROJECT: Integrating deep learning with molecular markers for glioblastoma
+
+For each innovation, explain:
+1. What makes it novel
+2. How it differs from existing approaches
+3. Why this matters
+
+CATEGORIES TO ADDRESS:
+
+**CONCEPTUAL INNOVATION**
+- New way of thinking about the problem
+- Integration of previously separate fields
+- Example: Combining imaging AI with molecular profiling
+
+**METHODOLOGICAL INNOVATION**
+- New techniques or novel application of existing ones
+- Example: Neurosymbolic AI for explainable tumor classification
+
+**TECHNOLOGICAL INNOVATION**
+- New tools, platforms, or pipelines
+- Example: Federated learning for multi-site data
+
+**CLINICAL INNOVATION**
+- New pathways to patient benefit
+- Example: Non-invasive prediction of treatment response
+
+FORMAT:
+- Use bullet points for clarity
+- Bold the key innovative element in each paragraph
+- Avoid overclaiming; be specific about what's new
+- Acknowledge related work while differentiating yours
+```
+
+---
+
+## 4. Approach Section Outline
+
+```
+TASK: Create a detailed outline for the Research Approach section
+
+PROJECT: [Your specific project]
+
+For each Specific Aim, structure as follows:
+
+**AIM [X]: [Title]**
+
+*Rationale* (2-3 sentences)
+- Why this aim is necessary
+- How it connects to overall hypothesis
+
+*Preliminary Data* (if applicable)
+- What you've already done
+- How it supports feasibility
+
+*Research Design*
+- Study population/data sources
+- Methods and techniques
+- Analysis plan
+- Timeline
+
+*Expected Outcomes*
+- What you'll produce
+- Milestones and deliverables
+
+*Potential Pitfalls and Alternatives*
+- What might go wrong
+- Backup plans
+- How limitations will be addressed
+
+*Rigor and Reproducibility*
+- How you ensure validity
+- Quality control measures
+- Data sharing plans
+
+Repeat for each aim.
+
+IMPORTANT:
+- Show logical flow between aims
+- Demonstrate feasibility with preliminary data
+- Address potential weaknesses before reviewers raise them
+- Include timeline/Gantt chart reference
+```
+
+---
+
+## 5. Grant Section Improvement
+
+```
+TASK: Improve the following grant section
+
+[PASTE YOUR DRAFT TEXT HERE]
+
+SECTION TYPE: [Specific Aims / Significance / Innovation / Approach]
+
+EVALUATE AND IMPROVE:
+
+1. **Clarity**
+   - Are there any sentences that require re-reading?
+   - Is jargon minimized and defined when necessary?
+   - Suggest clearer alternatives for complex passages
+
+2. **Impact**
+   - Does the importance come through immediately?
+   - Are the stakes clear?
+   - Strengthen weak impact statements
+
+3. **Logic**
+   - Does each paragraph flow to the next?
+   - Is the argument structure sound?
+   - Identify any logical gaps
+
+4. **Conciseness**
+   - Are there redundant phrases?
+   - Can any sentences be tightened?
+   - Remove padding while preserving meaning
+
+5. **Reviewer Perspective**
+   - What questions might reviewers have?
+   - What criticisms might arise?
+   - Preemptively address concerns
+
+PROVIDE:
+- Revised version with tracked changes explained
+- Specific suggestions for improvement
+- Priority ranking (critical, important, minor)
+```
+
+---
+
+## 6. Mock Grant Review
+
+```
+ROLE: You are an expert grant reviewer evaluating this proposal.
+
+PROPOSAL SECTION:
+[PASTE YOUR DRAFT HERE]
+
+FUNDING AGENCY: [NFR / Helse Vest / EU Horizon / NIH / etc.]
+
+EVALUATE USING STANDARD CRITERIA:
+
+**SIGNIFICANCE** (Score 1-9)
+- Does the project address an important problem?
+- Will scientific knowledge or clinical practice be advanced?
+- Strengths:
+- Weaknesses:
+
+**INVESTIGATOR(S)** (Score 1-9)
+- Do the investigators have appropriate expertise?
+- Is there evidence of productivity?
+- Strengths:
+- Weaknesses:
+
+**INNOVATION** (Score 1-9)
+- Does the project employ novel concepts or approaches?
+- Strengths:
+- Weaknesses:
+
+**APPROACH** (Score 1-9)
+- Are the methods and analyses appropriate?
+- Are potential problems acknowledged with solutions?
+- Strengths:
+- Weaknesses:
+
+**ENVIRONMENT** (Score 1-9)
+- Is the institutional support adequate?
+- Are collaborations well-defined?
+- Strengths:
+- Weaknesses:
+
+**OVERALL IMPACT**
+- Summary of enthusiasm
+- Key factors driving score
+- Recommendations for improvement
+
+REVIEWER STYLE: Be constructive but critical. Identify both strengths and areas for improvement.
+```
+
+---
+
+## 7. Responding to Reviewer Critiques
+
+```
+TASK: Help draft response to reviewer comments
+
+REVIEWER CRITIQUE:
+"[Paste the specific criticism here]"
+
+ORIGINAL PROPOSAL TEXT (relevant section):
+"[Paste the relevant section here]"
+
+GENERATE RESPONSE:
+
+**STRUCTURE FOR RESPONSE LETTER:**
+
+1. **Thank the Reviewer** (brief, genuine)
+
+2. **Summarize the Concern**
+   - Show you understood the critique
+
+3. **Address Directly**
+   - If you agree: Explain changes made
+   - If you partially agree: Acknowledge valid points, explain your perspective
+   - If you disagree: Provide evidence-based rebuttal (respectfully)
+
+4. **Show What Changed**
+   - Quote new/revised text
+   - Reference page/line numbers
+
+5. **Impact on Proposal**
+   - How does this strengthen the application?
+
+TONE GUIDANCE:
+- Never defensive or dismissive
+- Acknowledge valid concerns
+- Be specific about changes
+- Show you've done additional work if needed
+```
+
+---
+
+## 8. Budget Justification
+
+```
+TASK: Draft budget justification for grant application
+
+PROJECT: [Your project title]
+DURATION: [X years]
+TOTAL BUDGET: [Amount]
+
+FOR EACH BUDGET CATEGORY:
+
+**PERSONNEL**
+| Role | % Effort | Justification |
+|------|----------|---------------|
+| PI | | Why this level of effort is needed |
+| Co-I | | Specific responsibilities |
+| Postdoc | | What they'll do |
+| PhD Student | | Training + research contributions |
+
+**EQUIPMENT**
+| Item | Cost | Justification |
+|------|------|---------------|
+| [GPU Cluster] | | Why needed, alternatives considered |
+
+**SUPPLIES/CONSUMABLES**
+- Cloud computing costs
+- Software licenses
+- Data storage
+
+**TRAVEL**
+- Conferences (which, why)
+- Collaboration visits
+
+**OTHER**
+- Publication costs
+- Participant compensation (if applicable)
+
+JUSTIFY EACH ITEM:
+- Why is this essential?
+- Why this amount?
+- What happens without it?
+
+COMMON PITFALLS TO AVOID:
+- Round numbers that look arbitrary
+- Missing indirect costs
+- Forgetting salary increases over years
+```
+
+---
+
+## 9. Lay Summary / Abstract
+
+```
+TASK: Write a lay summary for public communication
+
+PROJECT: Precision Medicine and Quantitative Imaging in Glioblastoma
+
+AUDIENCE: General public, patient advocates, media
+
+LENGTH: 250 words
+
+STRUCTURE:
+
+**THE PROBLEM** (50 words)
+- What is glioblastoma?
+- Why is it so challenging?
+- Who is affected?
+
+**OUR APPROACH** (100 words)
+- What will we do? (no jargon)
+- How is this different from current approaches?
+- Use an analogy if helpful
+
+**EXPECTED IMPACT** (50 words)
+- What changes if we succeed?
+- How will patients benefit?
+
+**THE TEAM** (50 words)
+- Who is doing this work?
+- Why are we well-positioned?
+
+GUIDELINES:
+- No acronyms (spell out and explain)
+- Reading level: 8th grade
+- Avoid: "novel," "paradigm shift," "groundbreaking"
+- Include: concrete benefits, timeline, patient focus
+```
+
+---
+
+## 10. Team Project-Specific Templates
+
+### Glioblastoma Project Opening Paragraph
+
+```
+CONTEXT: You are drafting the opening paragraph for a grant on AI-based glioblastoma analysis.
+
+REQUIRED ELEMENTS:
+- Hook with impact (survival statistics)
+- Current standard of care
+- Why AI/imaging is the solution
+- Your unique approach
+
+DRAFT OPTIONS:
+
+OPTION A (Clinical urgency):
+"Glioblastoma remains the deadliest primary brain tumor, with a median survival of 15 months despite aggressive treatment..."
+
+OPTION B (Technical opportunity):
+"Advances in deep learning and multimodal imaging have created an unprecedented opportunity to..."
+
+OPTION C (Patient-centered):
+"For the 300 Norwegians diagnosed with glioblastoma each year, treatment decisions are made with incomplete information..."
+
+Choose and refine the most compelling option for your specific aims.
+```
+
+### Literature Review Synthesis
+
+```
+TASK: Synthesize literature for the Background section
+
+TOPIC: AI applications in glioblastoma
+
+SYNTHESIZE ACROSS THEMES:
+
+1. **Imaging-based analysis**
+   - Segmentation (BraTS challenge progress)
+   - Radiomics features
+   - Deep learning approaches
+
+2. **Molecular prediction from imaging**
+   - IDH mutation status
+   - MGMT methylation
+   - 1p/19q codeletion
+
+3. **Treatment response**
+   - Distinguishing progression from pseudoprogression
+   - Response assessment criteria (RANO)
+   - Prediction of treatment outcomes
+
+4. **Current limitations**
+   - Lack of interpretability
+   - Validation across sites
+   - Integration into clinical workflow
+
+FORMAT: For each theme, identify:
+- Key papers (verify these exist!)
+- Current state of the art
+- Gap your project addresses
+```
+
+---
+
+## 11. Writing Quality Checklist
+
+Use this checklist before submitting:
+
+### Content
+- [ ] Specific Aims are testable and achievable
+- [ ] Significance is clear to non-specialists
+- [ ] Innovation is specific and defensible
+- [ ] Approach is detailed but readable
+- [ ] Preliminary data supports feasibility
+- [ ] Pitfalls are acknowledged with solutions
+
+### Style
+- [ ] Active voice throughout
+- [ ] First person ("we will") is appropriate
+- [ ] Jargon minimized and defined
+- [ ] Acronyms spelled out on first use
+- [ ] Transitions connect sections logically
+
+### Format
+- [ ] Within page limits
+- [ ] Required sections included
+- [ ] Citations properly formatted
+- [ ] Figures are readable and referenced
+- [ ] Font and margins meet guidelines
+
+### Strategy
+- [ ] Addresses funder's priorities
+- [ ] Team expertise is evident
+- [ ] Timeline is realistic
+- [ ] Budget is justified
+- [ ] Letters of support obtained
+
+---
+
+## Discussion Questions for Grant Writing
+
+1. **When is AI helpful vs. harmful for grant writing?**
+   - What aspects benefit from AI assistance?
+   - What risks exist (plagiarism, generic content)?
+   - How should AI use be disclosed?
+
+2. **Tailoring to funders**
+   - How does an NFR proposal differ from an NIH proposal?
+   - What do Norwegian health authorities prioritize?
+   - How does EU Horizon emphasize collaboration?
+
+3. **The reviewer's perspective**
+   - What makes a grant memorable (in a good way)?
+   - Common reasons for rejection?
+   - How to stand out in a competitive field?
+
+4. **Ethics of AI in grant writing**
+   - Should AI assistance be disclosed?
+   - Is there a line between "assistance" and "authorship"?
+   - How might this change peer review?
+
+---
+
+## Quick Prompt Templates
+
+### Strengthen a Weak Sentence
+```
+Original: "We will use AI to analyze brain tumors."
+Improve this sentence for a grant by adding: specificity, impact, and novelty.
+```
+
+### Generate Alternative Phrasings
+```
+Provide 3 alternative ways to express this idea for a grant proposal:
+"[Your sentence here]"
+Vary by: formality, emphasis, and conciseness.
+```
+
+### Check for Overclaiming
+```
+Review this paragraph for overclaiming. Flag phrases that might concern reviewers:
+"[Your paragraph here]"
+Suggest more measured alternatives.
+```
+
+### Simplify for Broader Audience
+```
+Rewrite this technical paragraph for a review panel that includes non-specialists:
+"[Your paragraph here]"
+Preserve accuracy while improving accessibility.
+```

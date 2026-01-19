@@ -1,0 +1,587 @@
+# Project Pitch & Panel Q&A - Prompt Templates
+
+Templates for preparing compelling project presentations and handling challenging questions from evaluation panels. Designed for the Team Project: **Precision Medicine and Quantitative Imaging in Glioblastoma**.
+
+> **IMPORTANT**: Use these templates to prepare, but practice your pitch with real humans. AI can help you anticipate questions, but confidence comes from practice.
+
+---
+
+## PART 1: CRAFTING YOUR PITCH
+
+### 1. The Elevator Pitch (30-60 seconds)
+
+```
+TASK: Create a compelling elevator pitch
+
+PROJECT: [Your project title]
+
+STRUCTURE (30 seconds = ~75 words):
+
+**HOOK** (1 sentence)
+- Start with a striking fact or question
+- Example: "Every day in Norway, one person is diagnosed with glioblastoma—the deadliest brain cancer."
+
+**PROBLEM** (1 sentence)
+- What's broken/missing
+- Example: "Current diagnosis requires invasive biopsy and weeks of waiting."
+
+**SOLUTION** (1-2 sentences)
+- Your approach
+- Example: "We're developing AI that predicts tumor characteristics from MRI scans alone."
+
+**IMPACT** (1 sentence)
+- Why it matters
+- Example: "This could cut diagnosis time from weeks to hours and spare patients unnecessary surgery."
+
+**ASK/CLOSE** (1 sentence)
+- What you need or next step
+- Example: "We're seeking collaborators to validate our approach across Norwegian hospitals."
+
+GENERATE 3 VERSIONS:
+1. Technical audience (more detail)
+2. General audience (no jargon)
+3. Patient/advocate audience (human impact focus)
+```
+
+---
+
+### 2. The 3-Minute Pitch
+
+```
+TASK: Structure a 3-minute project pitch
+
+FORMAT: Approximately 450 words, clear sections
+
+**MINUTE 1: THE PROBLEM**
+- Hook: Attention-grabbing opening
+- Context: Brief background (glioblastoma, current standard of care)
+- Pain point: What's not working
+- Stakes: Why this matters NOW
+
+**MINUTE 2: YOUR SOLUTION**
+- Core innovation: What makes your approach different
+- How it works: Brief, accessible explanation
+- Preliminary evidence: What supports feasibility
+- Team capability: Why you can deliver
+
+**MINUTE 3: IMPACT & ASK**
+- Expected outcomes: What success looks like
+- Timeline: Key milestones
+- Resources needed: What you're asking for
+- Vision: The bigger picture if this succeeds
+
+STYLE GUIDANCE:
+- One clear message per section
+- Avoid jargon; explain technical terms
+- Use concrete examples and numbers
+- End with a memorable closing statement
+```
+
+---
+
+### 3. The 10-Minute Presentation
+
+```
+TASK: Create slide-by-slide outline for 10-minute presentation
+
+PROJECT: Precision Medicine and Quantitative Imaging in Glioblastoma
+
+SLIDE STRUCTURE:
+
+**SLIDE 1: TITLE** (15 sec)
+- Project name
+- Team members
+- Date/context
+
+**SLIDE 2: THE PROBLEM** (60 sec)
+- Glioblastoma statistics
+- Current diagnostic pathway
+- Key limitation/gap
+- Visual: Survival curve or patient journey
+
+**SLIDE 3: WHY NOW?** (45 sec)
+- Recent advances making this possible
+- Available data (BraTS, TCGA)
+- AI capabilities
+
+**SLIDE 4: OUR APPROACH** (90 sec)
+- Overview of methodology
+- Key innovation
+- Visual: Pipeline diagram
+- Differentiation from existing work
+
+**SLIDE 5: PRELIMINARY RESULTS** (60 sec)
+- What you've done
+- Initial findings
+- Visual: Key figure/result
+
+**SLIDE 6: METHODS DETAIL** (60 sec)
+- Technical approach
+- Data sources
+- Analysis plan
+- Validation strategy
+
+**SLIDE 7: TEAM & EXPERTISE** (30 sec)
+- Who does what
+- Relevant experience
+- Collaborators
+
+**SLIDE 8: TIMELINE & MILESTONES** (30 sec)
+- Key phases
+- Deliverables
+- Dependencies
+
+**SLIDE 9: IMPACT & SIGNIFICANCE** (45 sec)
+- Clinical translation potential
+- Patient benefit
+- Broader implications
+
+**SLIDE 10: ASK & SUMMARY** (45 sec)
+- What you need
+- Key takeaways (3 points)
+- Contact information
+- Closing statement
+
+TOTAL: ~10 minutes (leave 5+ for Q&A)
+```
+
+---
+
+### 4. Visual Storytelling
+
+```
+TASK: Create narrative arc for presentation visuals
+
+STORY STRUCTURE:
+
+**ACT 1: ESTABLISH THE STAKES**
+- Patient perspective: "Meet Maria, a 55-year-old teacher..."
+- The diagnosis journey
+- Current frustrations/failures
+
+**ACT 2: INTRODUCE THE SOLUTION**
+- Transition: "What if we could..."
+- Your innovation
+- How it changes the journey
+
+**ACT 3: PROVE IT WORKS**
+- Evidence and results
+- Validation approach
+- Expert endorsement
+
+**ACT 4: ENVISION THE FUTURE**
+- Scaled impact
+- Next steps
+- Call to action
+
+VISUAL PRINCIPLES:
+- One message per slide
+- Minimal text (≤6 words per bullet)
+- High-quality images
+- Consistent color scheme
+- Data visualization over tables
+```
+
+---
+
+## PART 2: HANDLING PANEL QUESTIONS
+
+### 5. Anticipating Tough Questions
+
+```
+ROLE: You are a skeptical grant reviewer/evaluation panel member.
+
+PROJECT: [Brief description of the project]
+
+Generate challenging questions in these categories:
+
+**SCIENTIFIC RIGOR** (5 questions)
+- Methodology concerns
+- Statistical validity
+- Reproducibility issues
+- Alternative explanations
+
+**FEASIBILITY** (5 questions)
+- Timeline realism
+- Resource adequacy
+- Technical risks
+- Team capability
+
+**SIGNIFICANCE/IMPACT** (5 questions)
+- Clinical relevance
+- Incremental vs. transformative
+- Competition/alternatives
+- Translation pathway
+
+**ETHICS & BROADER IMPACTS** (3 questions)
+- Patient safety
+- Equity concerns
+- Unintended consequences
+
+**CURVEBALL QUESTIONS** (3 questions)
+- Questions you haven't anticipated
+- Edge cases
+- "What if X fails?"
+
+For each question, rate:
+- Likelihood (1-5)
+- Difficulty (1-5)
+- Priority to prepare (1-5)
+```
+
+---
+
+### 6. Structuring Your Answers
+
+```
+FRAMEWORK: The STAR-I Method for Panel Questions
+
+**S - SITUATION** (brief context)
+"That's an excellent question about our validation approach..."
+
+**T - TASK/CHALLENGE** (acknowledge the concern)
+"You're right that external validation is critical for clinical translation..."
+
+**A - ACTION** (what you're doing)
+"We've designed a three-phase validation strategy..."
+
+**R - RESULT** (expected outcome)
+"This will give us performance data across multiple patient populations..."
+
+**I - INSIGHT** (deeper understanding)
+"What we've learned from preliminary work suggests..."
+
+TIMING:
+- 30-60 seconds for simple questions
+- 90-120 seconds for complex questions
+- Don't ramble; it's okay to be concise
+```
+
+---
+
+### 7. Question-Specific Templates
+
+#### "Why should we fund you instead of others?"
+
+```
+ANSWER STRUCTURE:
+
+1. **ACKNOWLEDGE COMPETITION** (briefly)
+   "There are several excellent groups working on brain tumor AI..."
+
+2. **UNIQUE STRENGTHS** (2-3 points)
+   - What you do differently
+   - Team expertise
+   - Unique resources/data access
+
+3. **COMPLEMENTARITY** (if appropriate)
+   "Our work complements these efforts by focusing on..."
+
+4. **TRACK RECORD** (briefly)
+   "Our team has demonstrated [relevant achievement]..."
+
+5. **CONCRETE DELIVERABLES**
+   "Within [timeframe], we will deliver [specific outputs]..."
+```
+
+#### "What if your main hypothesis is wrong?"
+
+```
+ANSWER STRUCTURE:
+
+1. **ACKNOWLEDGE UNCERTAINTY**
+   "Science involves uncertainty, and we've built our approach with that in mind..."
+
+2. **ALTERNATIVE HYPOTHESES**
+   "If our primary hypothesis is incorrect, the data will inform alternatives..."
+
+3. **VALUABLE OUTPUTS REGARDLESS**
+   "Even if the main hypothesis fails, we will have generated [valuable assets]..."
+
+4. **PIVOT STRATEGY**
+   "Our modular approach allows us to pivot to [alternative direction]..."
+
+5. **SCIENTIFIC VALUE**
+   "Negative results in this case would still advance the field by..."
+```
+
+#### "Your timeline seems ambitious—is this realistic?"
+
+```
+ANSWER STRUCTURE:
+
+1. **SHOW YOU'VE THOUGHT ABOUT IT**
+   "We've carefully considered the timeline based on our experience..."
+
+2. **MILESTONE RATIONALE**
+   "Each milestone is based on [specific estimates/prior work]..."
+
+3. **RISK MITIGATION**
+   "We've built in [X weeks/months] buffer for unexpected challenges..."
+
+4. **PARALLELIZATION**
+   "Several tasks can proceed in parallel, including..."
+
+5. **CONTINGENCY**
+   "If [specific phase] takes longer, we can [specific adjustment]..."
+
+6. **TRACK RECORD** (briefly)
+   "Our team has delivered on similar timelines in [prior project]..."
+```
+
+#### "How will you handle the ethical concerns?"
+
+```
+ANSWER STRUCTURE:
+
+1. **ACKNOWLEDGE IMPORTANCE**
+   "Ethics is central to our approach, not an afterthought..."
+
+2. **SPECIFIC MEASURES**
+   - Data privacy: "All patient data is anonymized using..."
+   - Consent: "Our consent process includes..."
+   - Bias: "We're actively testing for bias across..."
+   - Oversight: "We have established [ethics board/review process]..."
+
+3. **ONGOING VIGILANCE**
+   "We'll continue monitoring for [specific concerns] throughout..."
+
+4. **STAKEHOLDER ENGAGEMENT**
+   "We're involving [patients/clinicians/ethicists] in..."
+```
+
+#### "How is this different from [competitor/existing approach]?"
+
+```
+ANSWER STRUCTURE:
+
+1. **ACKNOWLEDGE THEIR WORK**
+   "The work by [group/approach] is excellent and has shown..."
+
+2. **KEY DIFFERENTIATORS** (be specific)
+   - Methodological: "Our approach differs in..."
+   - Data: "We have access to..."
+   - Scope: "We focus specifically on..."
+   - Integration: "We combine X with Y, which hasn't been done..."
+
+3. **COMPLEMENTARITY**
+   "Our work could potentially complement theirs by..."
+
+4. **AVOID NEGATIVITY**
+   - Don't criticize competitors
+   - Focus on what you add, not what they lack
+```
+
+---
+
+### 8. Handling Difficult Situations
+
+#### When You Don't Know the Answer
+
+```
+TEMPLATES:
+
+HONEST ADMISSION:
+"That's an excellent question, and I don't have the data to answer it 
+confidently. What I can say is [related information]. We plan to 
+address this in [phase/timeline]."
+
+PARTIAL ANSWER:
+"I can speak to part of that question. Regarding [aspect], we know 
+[information]. The [other aspect] is something we're still investigating."
+
+REFRAME CONSTRUCTIVELY:
+"That's something we hadn't fully considered. My initial thought is 
+[reasonable speculation], but we'd need to [specific action] to be certain."
+
+NEVER:
+- Make up data
+- Bluff technical details
+- Get defensive
+- Give a rambling non-answer
+```
+
+#### When Facing Hostile Questions
+
+```
+STRATEGIES:
+
+1. **STAY CALM**
+   - Pause before answering
+   - Breathe
+   - Maintain neutral body language
+
+2. **ACKNOWLEDGE THE CONCERN**
+   "That's a valid concern that we take seriously..."
+
+3. **AVOID DEFENSIVENESS**
+   - Don't argue with the questioner
+   - Stick to facts
+   - Be concise
+
+4. **BRIDGE TO STRENGTHS**
+   "While [concern] is important, our approach addresses it through..."
+
+5. **IF TRULY UNFAIR**
+   - Answer calmly, factually
+   - Don't get drawn into debate
+   - Move on gracefully
+```
+
+#### When Asked the Same Thing Multiple Ways
+
+```
+STRATEGIES:
+
+1. **RECOGNIZE THE PATTERN**
+   - They may not be satisfied with your answer
+   - Or they're testing consistency
+
+2. **PROVIDE ADDITIONAL DETAIL**
+   "To expand on my earlier point..."
+
+3. **ASK FOR CLARIFICATION**
+   "I want to make sure I'm addressing your concern—could you 
+   help me understand which aspect you'd like me to elaborate on?"
+
+4. **OFFER TO FOLLOW UP**
+   "I'd be happy to provide additional documentation on this 
+   after the presentation."
+```
+
+---
+
+### 9. Practice Session Template
+
+```
+TASK: Generate a mock Q&A session
+
+PROJECT: [Your project description]
+TIME: [X minutes for Q&A]
+PANEL COMPOSITION: [e.g., 2 clinicians, 1 AI researcher, 1 industry rep, 1 patient advocate]
+
+GENERATE REALISTIC SEQUENCE:
+
+**QUESTION 1** (Opening, usually gentle)
+[Panel member role]: "[Question]"
+Suggested answer approach: [Brief guidance]
+
+**QUESTION 2** (Technical depth)
+[Panel member role]: "[Question]"
+Suggested answer approach: [Brief guidance]
+
+**QUESTION 3** (Significance challenge)
+[Panel member role]: "[Question]"
+Suggested answer approach: [Brief guidance]
+
+**QUESTION 4** (Feasibility concern)
+[Panel member role]: "[Question]"
+Suggested answer approach: [Brief guidance]
+
+**QUESTION 5** (Curveball/unexpected)
+[Panel member role]: "[Question]"
+Suggested answer approach: [Brief guidance]
+
+**FOLLOW-UP** (Based on previous answer)
+"You mentioned X—can you elaborate on...?"
+
+PRACTICE INSTRUCTIONS:
+1. Time yourself (60-90 seconds per answer)
+2. Record and review
+3. Practice with team members playing panel roles
+4. Iterate based on weak spots
+```
+
+---
+
+### 10. Team Project-Specific Questions
+
+```
+LIKELY QUESTIONS FOR GLIOBLASTOMA PROJECT:
+
+**CLINICAL RELEVANCE**
+Q: "How will this actually change patient care?"
+A: [Focus on faster diagnosis, treatment selection, reduced biopsies]
+
+Q: "What's the path from your research to clinical implementation?"
+A: [Regulatory pathway, validation requirements, clinical partnerships]
+
+**TECHNICAL**
+Q: "How do you address the heterogeneity of glioblastoma?"
+A: [Multimodal approach, molecular subtyping, uncertainty quantification]
+
+Q: "Your training data is from BraTS—will it generalize to Norwegian patients?"
+A: [Transfer learning strategy, local validation plan, demographic analysis]
+
+Q: "Why not use a simpler, more interpretable model?"
+A: [Accuracy-interpretability tradeoff, XAI methods, clinical explainability]
+
+**DATA & ETHICS**
+Q: "How do you handle patient consent for AI development?"
+A: [Consent process, anonymization, data governance]
+
+Q: "What about bias in the training data?"
+A: [Bias testing, subgroup analysis, fairness metrics]
+
+**COMPETITION & NOVELTY**
+Q: "How does this differ from Google/IBM/other major AI efforts?"
+A: [Focus on Norwegian context, specific clinical needs, interpretability emphasis]
+
+Q: "Why will you succeed where others haven't achieved clinical adoption?"
+A: [Clinical partnerships, implementation focus, regulatory strategy]
+
+**FEASIBILITY**
+Q: "Do you have access to enough data?"
+A: [Data sources, sample size justification, multi-site plans]
+
+Q: "What's your biggest technical risk?"
+A: [Honest assessment, mitigation strategy, contingency plan]
+```
+
+---
+
+### 11. Final Preparation Checklist
+
+```
+BEFORE YOUR PITCH:
+
+**CONTENT**
+- [ ] Can you explain the project in 30 seconds?
+- [ ] Do you have a clear, memorable key message?
+- [ ] Are all claims supported by evidence?
+- [ ] Have you anticipated the top 10 questions?
+
+**DELIVERY**
+- [ ] Have you practiced the full presentation 3+ times?
+- [ ] Is it within time limit with buffer?
+- [ ] Have you practiced Q&A with a mock panel?
+- [ ] Do all team members know their roles?
+
+**MATERIALS**
+- [ ] Backup of slides in multiple formats
+- [ ] Key facts/numbers memorized (not read)
+- [ ] One-page handout for panel (optional)
+- [ ] Contact information ready to share
+
+**MINDSET**
+- [ ] You know your material better than anyone
+- [ ] The panel wants you to succeed
+- [ ] Tough questions = engagement, not attacks
+- [ ] It's okay to not know everything
+
+**ON THE DAY**
+- [ ] Arrive early
+- [ ] Test technology
+- [ ] Water available
+- [ ] Deep breaths before starting
+```
+
+---
+
+## Discussion Questions
+
+1. **The practice gap**: Why do good researchers sometimes give poor pitches?
+2. **AI-assisted preparation**: How much should you use AI to prepare? Where's the line?
+3. **Panel dynamics**: How do you read the room and adapt during Q&A?
+4. **Authenticity vs. polish**: How do you stay genuine while being professional?
+5. **Failure as learning**: What can you learn from a pitch that doesn't go well?

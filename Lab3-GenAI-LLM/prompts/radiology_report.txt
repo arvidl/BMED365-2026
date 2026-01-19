@@ -1,0 +1,379 @@
+# Radiology Report - Prompt Templates
+
+These templates demonstrate structured approaches to AI-assisted radiology reporting and interpretation.
+
+> **IMPORTANT**: These are educational examples. AI-generated radiology reports must be reviewed and verified by qualified radiologists before clinical use.
+
+---
+
+## 1. Structured Report Template
+
+```
+ROLE: You are assisting a radiology resident in learning structured reporting.
+
+MODALITY: MRI Brain
+INDICATION: New onset seizures, rule out tumor
+
+Generate a structured report template:
+
+**CLINICAL INFORMATION**
+[Provided by referring physician]
+
+**TECHNIQUE**
+- Sequences obtained
+- Contrast administration
+- Technical quality assessment
+
+**COMPARISON**
+[Prior studies if available]
+
+**FINDINGS**
+
+Brain Parenchyma:
+- Supratentorial structures
+- Infratentorial structures
+- Signal abnormalities (location, size, characteristics)
+- Mass effect
+- Midline shift
+
+Ventricles and CSF Spaces:
+- Ventricular size
+- CSF flow/circulation
+- Extra-axial collections
+
+Enhancement Pattern:
+[If contrast given]
+- Areas of enhancement
+- Pattern description
+
+Vessels:
+[If MRA included]
+- Major arteries
+- Venous structures
+
+Skull Base and Orbits:
+[Visible portions]
+
+Paranasal Sinuses:
+[Incidental findings]
+
+**IMPRESSION**
+1. Primary finding (most clinically significant)
+2. Secondary findings
+3. Recommendations (if any)
+
+**RECOMMENDATIONS**
+- Follow-up imaging
+- Additional workup
+- Urgency of communication
+```
+
+---
+
+## 2. Brain Tumor Imaging Description
+
+```
+TASK: Practice describing brain tumors on MRI
+
+CASE: Glioblastoma (WHO Grade 4)
+
+Describe imaging findings following this structure:
+
+**LOCATION**
+- Anatomical location (lobe, laterality)
+- Relationship to eloquent cortex
+- Deep structure involvement
+
+**SIZE**
+- Measurements (3 dimensions)
+- Comparison to prior (if available)
+
+**SIGNAL CHARACTERISTICS**
+| Sequence | Finding |
+|----------|---------|
+| T1 pre-contrast | |
+| T1 post-contrast | |
+| T2/FLAIR | |
+| DWI/ADC | |
+| Perfusion (if available) | |
+| Spectroscopy (if available) | |
+
+**ENHANCEMENT PATTERN**
+- Ring-enhancing vs. solid
+- Heterogeneity
+- Necrotic center
+
+**ASSOCIATED FINDINGS**
+- Peritumoral edema (extent)
+- Mass effect
+- Herniation
+- Hemorrhage
+
+**DIFFERENTIAL DIAGNOSIS**
+Based on imaging features:
+1. Most likely: Glioblastoma (describe supporting features)
+2. Consider: [Other possibilities]
+3. Less likely but possible: [With reasoning]
+
+**COMPARISON TO WHO 2021 CLASSIFICATION**
+- Imaging features suggestive of molecular markers
+- Recommendation for tissue diagnosis
+```
+
+---
+
+## 3. Report Quality Improvement
+
+```
+TASK: Review and improve a radiology report
+
+ORIGINAL REPORT:
+"Brain MRI shows a 3cm lesion in the right frontal lobe. 
+There is enhancement. Recommend correlation."
+
+Improve this report by addressing:
+
+**COMPLETENESS**
+- What information is missing?
+- What additional findings should be described?
+- What clinical context is needed?
+
+**SPECIFICITY**
+- How can the lesion be better characterized?
+- What additional sequences should be commented on?
+- What measurements would be helpful?
+
+**CLINICAL UTILITY**
+- Is the impression actionable?
+- Are recommendations specific?
+- Is follow-up guidance provided?
+
+**IMPROVED VERSION**
+[Write a complete, well-structured report]
+
+**TEACHING POINTS**
+- Common pitfalls in radiology reporting
+- How to write reports that clinicians can act on
+```
+
+---
+
+## 4. AI-Assisted Findings Description
+
+```
+CONTEXT: You are using an AI tool that has detected findings on imaging.
+The AI outputs need to be verified and incorporated into a report.
+
+AI DETECTION OUTPUT:
+{
+  "finding_type": "pulmonary_nodule",
+  "location": "right_lower_lobe",
+  "size_mm": 8,
+  "attenuation": "solid",
+  "confidence": 0.92,
+  "coordinates": [x, y, z]
+}
+
+TASK: Incorporate AI finding into clinical report
+
+**VERIFICATION CHECKLIST**
+□ Confirm AI detection is accurate (review images)
+□ Measure independently if needed
+□ Characterize additional features AI may have missed
+□ Consider clinical context
+
+**REPORT LANGUAGE**
+Write finding in appropriate radiological language:
+- Objective description
+- Clinical significance assessment
+- Comparison to prior (if available)
+- Follow-up recommendation per guidelines
+
+**DOCUMENTATION OF AI USE**
+How should AI assistance be documented?
+- In the report?
+- In the medical record?
+- For quality assurance?
+
+**DISCUSSION**
+- What should radiologists do when they disagree with AI?
+- How should AI confidence scores influence interpretation?
+- What are the liability implications?
+```
+
+---
+
+## 5. Comparative Imaging Analysis
+
+```
+TASK: Compare current study to prior imaging
+
+CURRENT: MRI Brain with contrast [today's date]
+PRIOR: MRI Brain with contrast [3 months ago]
+
+INDICATION: Known glioblastoma, post-treatment follow-up
+
+Create structured comparison:
+
+**TREATMENT SINCE PRIOR**
+[Document relevant treatments]
+
+**TUMOR ASSESSMENT**
+
+| Feature | Prior Study | Current Study | Change |
+|---------|-------------|---------------|--------|
+| Enhancing tumor size | | | |
+| Non-enhancing tumor | | | |
+| Edema extent | | | |
+| Mass effect | | | |
+| Necrosis | | | |
+| New lesions | | | |
+
+**RANO CRITERIA ASSESSMENT**
+- Complete Response (CR)
+- Partial Response (PR)
+- Stable Disease (SD)
+- Progressive Disease (PD)
+- [Select and justify]
+
+**TREATMENT-RELATED CHANGES**
+- Pseudoprogression consideration
+- Radiation necrosis vs. recurrence
+- Distinguishing features
+
+**IMPRESSION**
+1. Primary assessment: Response category
+2. Key changes
+3. Concerns or limitations
+4. Recommendations
+```
+
+---
+
+## 6. Critical Finding Communication
+
+```
+SCENARIO: You identify a critical finding during interpretation
+
+FINDING: Large right MCA territory infarct with hemorrhagic transformation 
+and mass effect causing 6mm midline shift
+
+TASK: Document and communicate critical finding
+
+**IMMEDIATE ACTIONS**
+1. Verify finding
+2. Identify ordering physician
+3. Direct communication
+
+**COMMUNICATION DOCUMENTATION**
+
+Date/Time of finding: ____________
+Date/Time of communication: ____________
+Communicated to: ____________
+Method: □ Phone □ In-person □ Other: ________
+Findings communicated: ____________
+Read-back confirmed: □ Yes □ No
+Documented by: ____________
+
+**CRITICAL RESULTS POLICY**
+- What findings require immediate communication?
+- What is the acceptable timeframe?
+- What if the physician is unavailable?
+- How to escalate?
+
+**REPORT ADDENDUM**
+"Critical finding communicated to Dr. [Name] at [time] by [method]. 
+Acknowledgment received."
+```
+
+---
+
+## 7. Teaching File Case Creation
+
+```
+TASK: Create a teaching case from an interesting imaging study
+
+CASE TYPE: Glioblastoma with classic imaging features
+
+**CLINICAL HISTORY**
+[Brief, relevant, anonymous]
+
+**IMAGES TO INCLUDE**
+- Key sequences demonstrating findings
+- Annotated versions showing important features
+
+**IMAGING FINDINGS**
+Write as teaching points:
+1. Signal characteristics and why
+2. Enhancement pattern and significance
+3. Associated findings and implications
+4. Comparison to typical cases
+
+**DIFFERENTIAL DIAGNOSIS**
+- Primary consideration with supporting features
+- Alternative diagnoses to consider
+- Features that favor or argue against each
+
+**DIAGNOSIS**
+Final pathological diagnosis (if available)
+
+**DISCUSSION**
+- Key teaching points
+- Common pitfalls
+- Pearls and tips
+
+**REFERENCES**
+- Key papers on imaging of this entity
+- Guidelines referenced
+
+**QUIZ QUESTIONS**
+1. Multiple choice question testing key feature recognition
+2. Short answer on differential diagnosis
+3. Clinical correlation question
+```
+
+---
+
+## 8. AI Integration Considerations
+
+```
+DISCUSSION: Integrating AI into radiology workflow
+
+**CURRENT AI APPLICATIONS IN RADIOLOGY**
+- Triage (stroke, PE, fractures)
+- Detection (nodules, findings)
+- Quantification (tumor volumes, organ volumes)
+- Characterization (benign vs. malignant)
+- Report generation assistance
+
+**WORKFLOW CONSIDERATIONS**
+- Where in workflow should AI insert?
+- How should AI findings be presented?
+- What is the radiologist's role with AI?
+
+**QUALITY ASSURANCE**
+- How to monitor AI performance?
+- What metrics should be tracked?
+- How to handle AI failures?
+
+**TRAINING IMPLICATIONS**
+- How should radiology residents learn with AI?
+- Will AI change required competencies?
+- How to maintain skills AI might replace?
+
+**DISCUSSION QUESTIONS**
+1. Will AI make radiology more or less satisfying?
+2. How should AI be acknowledged in reports?
+3. What happens when AI and radiologist disagree?
+4. Should patients be told if AI was used?
+```
+
+---
+
+## Discussion Questions for Students
+
+1. How might AI change the role of radiologists in the next decade?
+2. What skills should radiology trainees focus on developing?
+3. How should we handle AI bias in medical imaging?
+4. What standards should exist for AI-assisted radiology?
+5. How can AI improve access to expert radiology interpretation?

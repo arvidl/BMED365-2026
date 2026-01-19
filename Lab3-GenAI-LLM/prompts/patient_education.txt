@@ -1,0 +1,312 @@
+# Patient Education - Prompt Templates
+
+These templates demonstrate how to use LLMs to create patient-friendly explanations of medical conditions and treatments.
+
+> **IMPORTANT**: All AI-generated patient materials should be reviewed by healthcare professionals before use.
+
+---
+
+## 1. Explaining a New Diagnosis
+
+```
+ROLE: You are helping a healthcare provider create patient education materials.
+
+CONDITION: Type 2 Diabetes Mellitus
+
+PATIENT CONTEXT:
+- Age: 55 years
+- Education level: High school
+- Language preference: Norwegian (Norsk)
+- Cultural considerations: None specified
+- Health literacy: Average
+
+TASK: Create a patient-friendly explanation that includes:
+
+1. **What is this condition?** (2-3 sentences, simple language)
+
+2. **Why did I get this?** (avoid blame, explain risk factors)
+
+3. **What does this mean for my daily life?** (practical implications)
+
+4. **What can I do about it?** (actionable steps)
+
+5. **What warning signs should I watch for?** (when to seek help)
+
+6. **Common questions patients ask** (with answers)
+
+TONE: Empathetic, empowering, non-judgmental
+READING LEVEL: 8th grade or below
+AVOID: Medical jargon, statistics that may cause anxiety, scare tactics
+```
+
+---
+
+## 2. Medication Explanation
+
+```
+TASK: Explain a new medication to a patient
+
+MEDICATION: Metformin 500mg
+INDICATION: Type 2 Diabetes
+PATIENT: Elderly patient with mild cognitive impairment
+
+Create explanation covering:
+
+1. **What is this medicine for?** (one sentence)
+
+2. **How do I take it?**
+   - When
+   - With food or without
+   - What if I miss a dose
+
+3. **What should I expect?**
+   - How long until it works
+   - Common side effects (and what to do)
+
+4. **Warning signs** - when to call the doctor immediately
+
+5. **Things to avoid** (interactions, alcohol, etc.)
+
+6. **Simple reminder** - one key takeaway sentence
+
+FORMAT: Use bullet points, large font suggestions, simple words
+INCLUDE: Suggestion for a medication reminder system
+```
+
+---
+
+## 3. Procedure Preparation
+
+```
+PROCEDURE: Colonoscopy
+PATIENT: First-time, anxious about the procedure
+
+Create patient preparation guide:
+
+**BEFORE THE PROCEDURE**
+- Timeline: What to do when (day before, morning of)
+- Diet instructions: Clear, specific examples
+- Bowel prep: Step-by-step, managing common issues
+
+**DAY OF PROCEDURE**
+- What to bring
+- What to expect at check-in
+- The procedure itself (honest but reassuring)
+- Duration
+
+**AFTER THE PROCEDURE**
+- Recovery: What's normal
+- When you can eat/drive/work
+- Results: When and how
+
+**ADDRESSING COMMON FEARS**
+- "Will it hurt?" 
+- "Will I be awake?"
+- "What if they find something?"
+
+TONE: Reassuring but honest
+INCLUDE: Encourage them to write down questions for the doctor
+```
+
+---
+
+## 4. Lifestyle Modification Guidance
+
+```
+CONTEXT: Patient just diagnosed with hypertension
+GOAL: Create actionable lifestyle guidance
+
+Structure the advice as:
+
+**START HERE** (Week 1-2):
+- One simple dietary change
+- One activity to add
+- One thing to track
+
+**BUILD ON SUCCESS** (Week 3-4):
+- Next steps if first changes are working
+- How to measure progress
+
+**LONG-TERM HABITS** (Month 2+):
+- Sustainable changes
+- How to handle setbacks
+
+**PRACTICAL TIPS**:
+- Grocery shopping suggestions
+- Restaurant ordering tips
+- Exercise that doesn't require gym
+- Stress management techniques
+
+**MOTIVATION**:
+- What benefits to expect and when
+- Success stories (generic)
+- Small wins matter
+
+AVOID: Overwhelming with too many changes at once
+INCLUDE: Acknowledge that change is hard
+```
+
+---
+
+## 5. Explaining Test Results
+
+```
+TASK: Help patient understand laboratory results
+
+TEST: Complete Blood Count (CBC)
+PATIENT VALUES:
+- Hemoglobin: 10.2 g/dL (low)
+- WBC: 7.5 x10^9/L (normal)
+- Platelets: 245 x10^9/L (normal)
+
+Create explanation:
+
+1. **What this test measures** (simple analogy)
+
+2. **Your results explained**:
+   - What's normal (green light)
+   - What needs attention (yellow light)
+   - What's concerning (red light)
+
+3. **What the low hemoglobin means**:
+   - Possible causes (non-scary)
+   - Common symptoms
+   - Why we need to investigate
+
+4. **Next steps**:
+   - Additional tests that might be ordered
+   - What you can do now
+   - When to follow up
+
+5. **Questions to ask your doctor**:
+   - Suggested list
+
+AVOID: Making the patient panic
+INCLUDE: "Most cases of anemia are easily treated"
+```
+
+---
+
+## 6. Norwegian Language Patient Materials
+
+```
+ROLLE: Du hjelper helsepersonell med å lage pasientinformasjon på norsk.
+
+TILSTAND: Hjertesvikt (Heart Failure)
+
+LAG PASIENTBROSJYRE SOM INKLUDERER:
+
+**HVA ER HJERTESVIKT?**
+- Enkel forklaring uten medisinske ord
+- Bruk sammenligning/analogi
+
+**SYMPTOMER Å KJENNE IGJEN**
+- Dagligdagse beskrivelser
+- Når bør du kontakte lege
+
+**MEDISINENE DINE**
+- Hvorfor de er viktige
+- Vanlige bivirkninger
+- Ikke slutt uten å snakke med lege
+
+**LIVSSTILSTIPS**
+- Salt og væske
+- Aktivitet
+- Vekt - hvorfor og hvordan følge med
+
+**PRAKTISK HJELP**
+- Hjelpemidler som finnes
+- Rettigheter i helsevesenet
+- Hvor få mer informasjon
+
+SPRÅKNIVÅ: Enkelt, klart norsk
+UNNGÅ: Faguttrykk, lange setninger
+INKLUDER: Oppmuntrende budskap om livskvalitet
+```
+
+---
+
+## 7. Pediatric Parent Education
+
+```
+CONTEXT: Explaining a child's diagnosis to parents
+
+DIAGNOSIS: Asthma in a 6-year-old
+AUDIENCE: Parents, first-time dealing with chronic condition
+
+Create parent guide:
+
+**UNDERSTANDING ASTHMA**
+- What's happening in your child's lungs (child-friendly analogy)
+- This is manageable - many kids with asthma live normal lives
+
+**DAILY MANAGEMENT**
+- Medications explained (preventer vs. reliever)
+- Inhaler technique (step by step)
+- Avoiding triggers at home and school
+
+**AT SCHOOL**
+- Action plan for teachers
+- Sports participation
+- What to tell your child's friends
+
+**EMERGENCY SITUATIONS**
+- How to recognize an asthma attack
+- Step-by-step what to do
+- When to call emergency services
+
+**EMOTIONAL SUPPORT**
+- Helping your child cope
+- Not making them feel "different"
+- Building independence as they grow
+
+INCLUDE: Resources for Norwegian asthma support groups
+```
+
+---
+
+## 8. Shared Decision-Making Aid
+
+```
+SCENARIO: Treatment options discussion
+CONDITION: Early-stage prostate cancer
+
+Create a decision aid for patient and family:
+
+**YOUR OPTIONS**
+
+| Option | What it involves | Potential benefits | Potential risks |
+|--------|------------------|-------------------|-----------------|
+| Active surveillance | | | |
+| Surgery | | | |
+| Radiation | | | |
+
+**QUESTIONS TO CONSIDER**
+- What matters most to you?
+- How do you feel about the trade-offs?
+- What are your concerns about each option?
+
+**WHAT RESEARCH SHOWS**
+- Outcomes comparison (simple terms)
+- Quality of life considerations
+
+**THERE'S NO WRONG ANSWER**
+- Different choices suit different people
+- Take time if you need it
+- You can ask more questions
+
+**PREPARING FOR YOUR NEXT APPOINTMENT**
+- Write down your questions
+- Bring a family member if helpful
+- It's okay to ask for more time
+```
+
+---
+
+## Discussion Questions for Students
+
+1. How can AI help bridge health literacy gaps?
+2. What are the risks of AI-generated patient education materials?
+3. How should cultural sensitivity be incorporated into AI prompts?
+4. What role should patients have in co-creating their education materials?
+5. How might AI patient education differ from human-delivered education?
