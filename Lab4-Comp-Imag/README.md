@@ -21,12 +21,14 @@ If you have a subscription to [ChatGPT Plus](https://openai.com/blog/chatgpt-plu
 ------
 ## Notebooks
 
+> **Note:** The first three notebooks use [nbviewer](https://nbviewer.jupyter.org) for rendering (due to large file sizes). If nbviewer is unavailable (502/504 errors), use the Google Colab links instead.
+
 | Notebook    |      1-Click Notebook      |
 |:----------|------|
 |  [00-test-installation.ipynb](https://nbviewer.jupyter.org/github/arvidl/BMED365-2026/blob/main/Lab4-Comp-Imag/00-test-installation.ipynb)<br> Test your installation   | [![Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/arvidl/BMED365-2026/blob/main/Lab4-Comp-Imag/00-test-installation.ipynb)|
 |  [01-imaging-intro.ipynb](https://nbviewer.jupyter.org/github/arvidl/BMED365-2026/blob/main/Lab4-Comp-Imag/01-imaging-intro.ipynb)<br> Illustration of basic concepts and methods in imaging   | [![Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/arvidl/BMED365-2026/blob/main/Lab4-Comp-Imag/01-imaging-intro.ipynb)|
 |  [02-mri-intro.ipynb](https://nbviewer.jupyter.org/github/arvidl/BMED365-2026/blob/main/Lab4-Comp-Imag/02-mri-intro.ipynb)<br> Introduction to Magnetic Resonance Imaging   | [![Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/arvidl/BMED365-2026/blob/main/Lab4-Comp-Imag/02-mri-intro.ipynb)|
-|  [03-imc-intro.ipynb](https://nbviewer.jupyter.org/github/arvidl/BMED365-2026/blob/main/Lab4-Comp-Imag/03-imc-intro.ipynb)<br> Introduction to Imaging Mass Cytometry   | [![Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/arvidl/BMED365-2026/blob/main/Lab4-Comp-Imag/03-imc-intro.ipynb)|
+|  [03-imc-intro.ipynb](https://github.com/arvidl/BMED365-2026/blob/main/Lab4-Comp-Imag/03-imc-intro.ipynb)<br> Introduction to Imaging Mass Cytometry   | [![Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/arvidl/BMED365-2026/blob/main/Lab4-Comp-Imag/03-imc-intro.ipynb)|
 
 ---
 
