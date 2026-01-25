@@ -79,7 +79,7 @@ All course material is openly available at [this](https://github.com/arvidl/BMED
 | 4    | Tue 20.01.2026 | 08:15–12:00    | [Lab 3](./Lab3-GenAI-LLM) (Generative AI + Large Language Models) <br> [[beamer slides](https://github.com/arvidl/BMED365-2026/blob/main/Course-description-topics/Beamer/G-GenerativeAI/main.pdf)] [[google  slides](https://docs.google.com/presentation/d/e/2PACX-1vRj03HAo4CfsxUD9l9JgzbXXiGvmEqgKoMZdmEBtMuR0hl46fMINr2noPaUJnSmNS9wRknTfGiqyWh1/pub?start=false&loop=false&delayms=3000)]               | AL       | Hist 1   |    E/B        |
 | 4    | Tue 20.01.2026 | 13:15–16:00    | Meet-up for [Team Project](./Team-project) – brainstorming and coaching           | AL       | Hist 1   |    E/B        |
 | 5    | Mon 26 - Sat 31 |                | INDIVIDUAL PROJECT (on your own during the week)                |          |          |     B         |
-| 5    | Mon 26.01.2026 | 10:15–12:00    | Motivation, demonstration - image processing                           | AL       | Hist 1   |     B         |
+| 5    | Mon 26.01.2026 | 10:15–12:00    | Motivation, demonstration<br> - image processing [[slides](https://docs.google.com/presentation/d/e/2PACX-1vQCte3ePgPi9Yu-BQ_P5Zg8oUlKqGwol6tCU0Zd0W0e4sYp69fcVJkgFD_SgRv8cbIX-Vi7_dZYUWr2/pub?start=false&loop=false&delayms=3000)]                          | AL       | Hist 1   |     B         |
 | 5    | Tue 27.01.2026 | 08:15–10:00    | [TEAM PROJECT](./Team-project) – group presentations                       | AL       | Hist 1   |    E/B        |
 | 5    | Fri 30.01.2026 | 11:00–13:00    | HOME EXAM (Inspera)                                     |          |          |  ELMED219     |
 | 6    | Mon 02 - Sat 07 |                | INDIVIDUAL PROJECT (on your own during the week)                | AL       |          |     B         |
@@ -195,4 +195,4 @@ _"In Vivo Imaging and Physiological Modelling"_
 |2021 |https://github.com/computational-medicine/BMED360-2021 |
 |2020 |https://github.com/computational-medicine/BMED360-2020 |
 
-Updated: 2026-01-19
+Updated: 2026-01-25
