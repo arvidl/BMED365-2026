@@ -84,7 +84,7 @@ All course material is openly available at [this](https://github.com/arvidl/BMED
 | 5    | Fri 30.01.2026 | 11:00–13:00    | HOME EXAM (Inspera)                                     |          |          |  ELMED219     |
 | 6    | Mon 02 - Sat 07 |                | INDIVIDUAL PROJECT (on your own during the week)                | AL       |          |     B         |
 | 7    | Mon 09 - Sat 14 |                | INDIVIDUAL PROJECT (on your own during the week)                | AL       |          |     B         |
-| 7    | Mon 09.02.2026 | 08:15–10:00    | [Lab 4](./Lab4-Comp-Imag) (Computational Imaging) [[slides](https://github.com/arvidl/BMED365-2026/blob/main/Course-description-topics/Beamer/Y-ComputationalImaging/main.pdf)]                                 | AL       | Hist 1   |     B         |
+| 7    | Mon 09.02.2026 | 08:15–10:00    | [Lab 4](./Lab4-Comp-Imag) (Computational Imaging) [[beamer slides](https://github.com/arvidl/BMED365-2026/blob/main/Course-description-topics/Beamer/Y-ComputationalImaging/main.pdf)]                                 | AL       | Hist 1   |     B         |
 | 7    | Wed 11.02.2026 | 08:15–12:00    | INDIVIDUAL PROJECT - speed poster presentations      | AL       | Hist 1   |     B         |
 | 8    | Mon 16.02.2026 | 08:15–10:00    | Motivation, demonstration - modeling                          | AL       | Hist 1   |     B         |
 | 8    | Fri 20.02.2026 | 08:15–10:00    | [Lab 5](./Lab5-Comp-Mod) (Computational Modeling)  [[slides](https://github.com/arvidl/BMED365-2026/blob/main/Course-description-topics/Beamer/Z-ComputationalModeling/main.pdf)]                               | AL       | Hist 1   |     B         |
