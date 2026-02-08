@@ -178,6 +178,7 @@ _"Artificial intelligence and computational medicine"_
 
 | **Year**                    | Link             |
 | --------------------------- |  --              | 
+|2026 |https://github.com/arvidl/ELMED219-2026   |
 |2025 |https://github.com/MMIV-ML/ELMED219-2025  |
 |2024 |https://github.com/MMIV-ML/ELMED219-2024  |
 |2023 |https://github.com/MMIV-ML/ELMED219-2023  |
@@ -195,4 +196,4 @@ _"In Vivo Imaging and Physiological Modelling"_
 |2021 |https://github.com/computational-medicine/BMED360-2021 |
 |2020 |https://github.com/computational-medicine/BMED360-2020 |
 
-Updated: 2026-01-25
+Updated: 2026-02-08
