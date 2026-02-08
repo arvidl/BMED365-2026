@@ -36,6 +36,7 @@ dependencies:
   - jupyter>=1.0.0       # Jupyter Notebook/Lab core package
   - jupyter-book>=0.15.0 # Publish notebooks as book/website
   - ipywidgets>=8.0.0    # Interactive widgets in notebooks (sliders, buttons)
+  - ipympl>=0.9.0        # Interactive matplotlib backend for Jupyter (%matplotlib widget)
   - nbconvert>=7.0.0     # Convert notebooks to HTML, PDF, etc.
 
   # ─────────────────────────────────────────────────────────────────────────
