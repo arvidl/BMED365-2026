@@ -90,6 +90,7 @@ dependencies:
       - shap>=0.44.0             # SHAP values for model interpretation
       - catboost>=1.2.0          # Baseline: Gradient boosting
       - xgboost>=2.0.0           # Baseline: Gradient boosting
+      - pingouin>=0.5.0          # Statistical tests (t-test, ANOVA, correlations)
       
       - plotly>=5.15.0         # Interactive graphs (zoom, hover)
       - pydicom>=2.4.0         # Read DICOM files (X-ray, CT, MR)
