@@ -55,6 +55,7 @@ dependencies:
   # ─────────────────────────────────────────────────────────────────────────
   - nibabel>=5.1.0       # Read/write NIfTI, ANALYZE (MR, CT brain images)
   - nilearn>=0.10.0      # Neuroimaging analysis (fMRI, statistical maps)
+  - templateflow>=24.2   # Standard neuroimaging templates (MNI, FSL, etc.)
   - SimpleITK>=2.3.0     # Image registration and segmentation (ITK wrapper)
   - scikit-image>=0.21.0 # General image processing (filters, morphology)
 
