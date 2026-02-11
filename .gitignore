@@ -69,6 +69,10 @@ Lab2-DL/modeller/
 Lab2-DL/notebooks/tmp/
 Lab2-DL/notebooks/modeller/
 
+# Lab5 fine-tuning outputs (LoRA adapters and fused models)
+Lab5-Comp-Mod/**/adapters/
+Lab5-Comp-Mod/**/fused_model/
+
 # Lab2-DL large media files (can be streamed from YouTube)
 Lab2-DL/assets/*.mp4
 
