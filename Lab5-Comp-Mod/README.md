@@ -34,6 +34,19 @@ If you have a subscription to [ChatGPT Plus](https://openai.com/blog/chatgpt-plu
 
 ---
 
+## MLX-Bio-Qwen: LLM-Assisted Computational Modeling on Apple Silicon
+
+The [`MLX-Bio-Qwen/`](MLX-Bio-Qwen/) subfolder contains notebooks that use a **local Large Language Model** ([Qwen 2.5 72B](https://huggingface.co/mlx-community/Qwen2.5-72B-Instruct-4bit)) running on Apple Silicon via [MLX](https://github.com/ml-explore/mlx) as a "Senior Computational Colleague" for formulating and implementing computational models. The notebooks are **Colab-compatible** — on machines without Apple Silicon, the LLM cells are skipped and pre-generated responses are shown in markdown, while all standard Python code (NumPy, SciPy, Matplotlib) runs normally.
+
+**Environment:** `mlx-bio` (Conda) &nbsp;|&nbsp; **Hardware:** Apple M-series (M1–M4) with Metal Performance Shaders
+
+| Notebook    |      1-Click Notebook      |
+|:----------|------|
+|  [01-compmod-intro.ipynb](https://nbviewer.jupyter.org/github/arvidl/BMED365-2026/blob/main/Lab5-Comp-Mod/MLX-Bio-Qwen/notebooks/01-compmod-intro.ipynb)<br> Introduction to computational neuroscience & medical physics — FitzHugh-Nagumo model, Hodgkin-Huxley model, Ornstein-Uhlenbeck membrane noise, and MRI Bloch equations | [![Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/arvidl/BMED365-2026/blob/main/Lab5-Comp-Mod/MLX-Bio-Qwen/notebooks/01-compmod-intro.ipynb)|
+
+
+---
+
 
 ## Your turn!
 
