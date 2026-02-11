@@ -1,6 +1,8 @@
 # Lab 5: Computational modeling
 
-This lab is part of our journey through computational modeling techniques, and the use of AI in biomedical applications. It is designed to give you a comprehensive understanding of how computational modelinhg is transforming society in general and biomedicine in particular and the role it will play in the future of biomedical research.<br>  _update: 2025-12-15_
+This lab is part of our journey through computational modeling techniques, and the use of AI in biomedical applications. It is designed to give you a comprehensive understanding of how computational modelinhg is transforming society in general and biomedicine in particular and the role it will play in the future of biomedical research.<br>  
+
+Arvid Lundervold, 2026-02-11 
 
 
 <!-- ![img](../assets/GPT-MedAI.png)<br> -->
@@ -36,14 +38,19 @@ If you have a subscription to [ChatGPT Plus](https://openai.com/blog/chatgpt-plu
 
 ## MLX-Bio-Qwen: LLM-Assisted Computational Modeling on Apple Silicon
 
-The [`MLX-Bio-Qwen/`](MLX-Bio-Qwen/) subfolder contains notebooks that use a **local Large Language Model** ([Qwen 2.5 72B](https://huggingface.co/mlx-community/Qwen2.5-72B-Instruct-4bit)) running on Apple Silicon via [MLX](https://github.com/ml-explore/mlx) as a "Senior Computational Colleague" for formulating and implementing computational models. The notebooks are **Colab-compatible** — on machines without Apple Silicon, the LLM cells are skipped and pre-generated responses are shown in markdown, while all standard Python code (NumPy, SciPy, Matplotlib) runs normally.
+The [`MLX-Bio-Qwen/`](MLX-Bio-Qwen/) subfolder contains notebooks that use **Large Language Models** as a "Senior Computational Colleague" for formulating and implementing computational models. The notebooks support **two backends** that are auto-detected at runtime:
 
-**Environment:** `mlx-bio` (Conda) &nbsp;|&nbsp; **Hardware:** Apple M-series (M1–M4) with Metal Performance Shaders
+| Platform | Backend | Model | Setup |
+|:---|:---|:---|:---|
+| **Apple Silicon** (M1–M4) | [MLX](https://github.com/ml-explore/mlx) (local) | [Qwen 2.5 72B Instruct](https://huggingface.co/mlx-community/Qwen2.5-72B-Instruct-4bit) | `mlx-bio` Conda env |
+| **Google Colab** (free tier) | [`google.colab.ai`](https://medium.com/google-colab/all-colab-users-now-get-access-to-gemini-and-gemma-models-via-colab-python-library-at-no-cost-a392599977c4) | Gemini 2.5 Flash | No API key, no billing — zero config |
+
+On Apple Silicon the full 72B-parameter model runs locally. On Colab, the notebook seamlessly falls back to Google's free Gemini API — all features (personas, controls, conversation history, LaTeX post-processing) work identically on both backends. Standard Python code (NumPy, SciPy, Matplotlib) always runs regardless of backend.
 
 | Notebook    |      1-Click Notebook      |
 |:----------|------|
 |  [01-compmod-intro.ipynb](https://nbviewer.jupyter.org/github/arvidl/BMED365-2026/blob/main/Lab5-Comp-Mod/MLX-Bio-Qwen/notebooks/01-compmod-intro.ipynb)<br> Introduction to computational neuroscience & medical physics — FitzHugh-Nagumo model, Hodgkin-Huxley model, Ornstein-Uhlenbeck membrane noise, and MRI Bloch equations | [![Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/arvidl/BMED365-2026/blob/main/Lab5-Comp-Mod/MLX-Bio-Qwen/notebooks/01-compmod-intro.ipynb)|
-|  [02-compmod-Q-and-A.ipynb](https://nbviewer.jupyter.org/github/arvidl/BMED365-2026/blob/main/Lab5-Comp-Mod/MLX-Bio-Qwen/notebooks/02-compmod-Q-and-A.ipynb)<br> Interactive Q&A interface — ask Qwen 2.5 72B free-text questions about computational modeling, neuroscience, medical physics, and Python programming via an ipywidgets GUI with multiple expert personas | [![Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/arvidl/BMED365-2026/blob/main/Lab5-Comp-Mod/MLX-Bio-Qwen/notebooks/02-compmod-Q-and-A.ipynb)|
+|  [02-compmod-Q-and-A.ipynb](https://nbviewer.jupyter.org/github/arvidl/BMED365-2026/blob/main/Lab5-Comp-Mod/MLX-Bio-Qwen/notebooks/02-compmod-Q-and-A.ipynb)<br> Interactive Q&A interface with ipywidgets GUI, multiple expert personas, temperature/max-token controls, conversation history, and LaTeX rendering. **Two backends:** locally via Qwen 2.5 72B on Apple Silicon, or via **Gemini 2.5 Flash** on Google Colab (free tier — no API key, no billing setup; monthly usage limits apply per [Google's free tier policy](https://ai.google.dev/gemini-api/docs/pricing)) | [![Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/arvidl/BMED365-2026/blob/main/Lab5-Comp-Mod/MLX-Bio-Qwen/notebooks/02-compmod-Q-and-A.ipynb)|
 
 
 ---
