@@ -43,6 +43,7 @@ The [`MLX-Bio-Qwen/`](MLX-Bio-Qwen/) subfolder contains notebooks that use a **l
 | Notebook    |      1-Click Notebook      |
 |:----------|------|
 |  [01-compmod-intro.ipynb](https://nbviewer.jupyter.org/github/arvidl/BMED365-2026/blob/main/Lab5-Comp-Mod/MLX-Bio-Qwen/notebooks/01-compmod-intro.ipynb)<br> Introduction to computational neuroscience & medical physics — FitzHugh-Nagumo model, Hodgkin-Huxley model, Ornstein-Uhlenbeck membrane noise, and MRI Bloch equations | [![Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/arvidl/BMED365-2026/blob/main/Lab5-Comp-Mod/MLX-Bio-Qwen/notebooks/01-compmod-intro.ipynb)|
+|  [02-compmod-Q-and-A.ipynb](https://nbviewer.jupyter.org/github/arvidl/BMED365-2026/blob/main/Lab5-Comp-Mod/MLX-Bio-Qwen/notebooks/02-compmod-Q-and-A.ipynb)<br> Interactive Q&A interface — ask Qwen 2.5 72B free-text questions about computational modeling, neuroscience, medical physics, and Python programming via an ipywidgets GUI with multiple expert personas | [![Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/arvidl/BMED365-2026/blob/main/Lab5-Comp-Mod/MLX-Bio-Qwen/notebooks/02-compmod-Q-and-A.ipynb)|
 
 
 ---
