@@ -8,6 +8,7 @@ dependencies:
   - pip
   - jupyterlab
   - ipykernel
+  - ipywidgets
 
   # Scientific Computing & Visualization (ARM64 Optimized)
   - numpy
