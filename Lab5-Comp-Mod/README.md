@@ -13,7 +13,7 @@ If you have a subscription to [ChatGPT Plus](https://openai.com/blog/chatgpt-plu
 
 ## Slides modeling
 
-<a href="https://docs.google.com/presentation/d/e/2PACX-1vTM1NY3r8nyZgdfhkJgsdTZDpANGwPscmXWB49cw5SHZgS20MsI6abjUzog0Ez6h_RR3e6F5qadZutD/pub?start=false&loop=false&delayms=3000"><img src="../assets/Lab5-slide-0.png"></a>
+<a href="https://docs.google.com/presentation/d/e/2PACX-1vR4T7aMjdpnmoF7jz4hc72O_-deTlQv89-oAbhYxJg8s5Avn1VrZ1_MUR77O5WOB3Ppk2Wsryh6NF5q/pub?start=false&loop=false&delayms=3000"><img src="../assets/Lab5-slide-0.png"></a>
 
 
 <!--
