@@ -69,6 +69,10 @@ Lab2-DL/modeller/
 Lab2-DL/notebooks/tmp/
 Lab2-DL/notebooks/modeller/
 
+# Lab5 DCE-MRI data (downloaded at runtime via gdown)
+Lab5-Comp-Mod/notebooks/data/
+Lab5-Comp-Mod/notebooks/assets/
+
 # Lab5 fine-tuning outputs (LoRA adapters and fused models)
 Lab5-Comp-Mod/**/adapters/
 Lab5-Comp-Mod/**/fused_model/
