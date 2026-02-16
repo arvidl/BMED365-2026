@@ -1,6 +1,6 @@
 # BMED365: Computational Imaging, Modeling and AI in Biomedicine (2026)
 
-_NOTE: Content for Spring 2026 is under ongoing revision and updates until course start..._
+_NOTE: Content for Spring 2026 is under ongoing revision and updates until the course ~~starts~~... ends ..._
 
 <img src="./assets/GPT-MedAI.png" width="500"> <br>
 If you have a subscription to [ChatGPT Plus](https://openai.com/blog/chatgpt-plus), you can also try [**Medical AI Assistant (UiBmed - ELMED219 & BMED365)**](https://chat.openai.com/g/g-d90dfN17H-medical-ai-assistant-uibmed-elmed219-bmed365) and see if you can get answers to some of your questions.
