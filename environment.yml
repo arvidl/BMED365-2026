@@ -126,6 +126,7 @@ dependencies:
       - openai>=1.0.0          # OpenAI API (ChatGPT)
       - anthropic>=0.18.0      # Anthropic API (Claude)
       - python-dotenv>=1.0.0   # Environment variables from .env file
+      - rise>=5.7.0            # RISE: live reveal.js slideshows from Jupyter notebooks
 
 # =============================================================================
 # PLATFORM-SPECIFIC NOTES

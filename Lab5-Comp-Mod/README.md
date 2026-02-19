@@ -2,7 +2,7 @@
 
 This lab is part of our journey through computational modeling techniques, and the use of AI in biomedical applications. It is designed to give you a comprehensive understanding of how computational modeling is transforming society in general and biomedicine in particular and the role it will play in the future of biomedical research.<br>  
 
-Arvid Lundervold, 2026-02-11 (updated 2026-02-15)
+Arvid Lundervold, 2026-02-11 (updated 2026-02-19)
 
 
 <!-- ![img](../assets/GPT-MedAI.png)<br> -->
@@ -34,6 +34,7 @@ If you have a subscription to [ChatGPT Plus](https://openai.com/blog/chatgpt-plu
 |  [06-kidney-filtration.ipynb](https://nbviewer.jupyter.org/github/arvidl/BMED365-2026/blob/main/Lab5-Comp-Mod/notebooks/06-kidney-filtration.ipynb)<br> Kidney filtration — computational physiology of glomerular filtration rate (GFR), tubular reabsorption, Starling forces, and clinical assessment of renal function | [![Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/arvidl/BMED365-2026/blob/main/Lab5-Comp-Mod/notebooks/06-kidney-filtration.ipynb)|
 |  [07-dce-mri-kidney-explore.ipynb](https://nbviewer.jupyter.org/github/arvidl/BMED365-2026/blob/main/Lab5-Comp-Mod/notebooks/07-dce-mri-kidney-explore.ipynb)<br> DCE-MRI of the kidney — dynamic contrast-enhanced MRI, pharmacokinetic modeling, tracer kinetics, and computational imaging for GFR estimation | [![Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/arvidl/BMED365-2026/blob/main/Lab5-Comp-Mod/notebooks/07-dce-mri-kidney-explore.ipynb)|
 |  [08-cybernetics-of-wound-healing.ipynb](https://nbviewer.jupyter.org/github/arvidl/BMED365-2026/blob/main/Lab5-Comp-Mod/notebooks/08-cybernetics-of-wound-healing.ipynb)<br> Cybernetics of wound healing — feedback control theory applied to tissue repair, four healing phases, ODE models (simple to inflammatory dynamics), acute vs. chronic wounds, spatial PDE models (Fisher-KPP with growth factor and ECM coupling), parameter sensitivity, bioelectronic interventions, and synthetic biology controllers. Includes interactive Q&A and DIY exercises | [![Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/arvidl/BMED365-2026/blob/main/Lab5-Comp-Mod/notebooks/08-cybernetics-of-wound-healing.ipynb)|
+|  [09-computational-consciousness-in-LLMs.ipynb](https://nbviewer.jupyter.org/github/arvidl/BMED365-2026/blob/main/Lab5-Comp-Mod/notebooks/09-computational-consciousness-in-LLMs.ipynb)<br> **[Speculative]** Is AI conscious according to current criteria? — Assessing frontier LLMs against 15 theory-derived consciousness indicators (Butlin et al. 2025 + Gray's Comparator). Computational models (Global Workspace, comparator ODE), radar chart visualization, mechanistic interpretability (sparse autoencoders), and key findings from Oct 2025 – Feb 2026. Also serves as a [RISE](https://rise.readthedocs.io) slideshow for [HBF 2026](https://glia.ca/2026/hbf/iac/). Based on [David Jhave Johnston's talk](https://glia.ca/2026/hbf/) | [![Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/arvidl/BMED365-2026/blob/main/Lab5-Comp-Mod/notebooks/09-computational-consciousness-in-LLMs.ipynb)|
 
 
 ---
