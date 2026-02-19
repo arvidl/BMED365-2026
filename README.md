@@ -111,7 +111,7 @@ All course material is openly available at [this](https://github.com/arvidl/BMED
 | Activity | Topic | Description |
 |:---------|:------|:------------|
 | [**Lab 4**](./Lab4-Comp-Imag) | Computational Imaging | MRI analysis, image classification, segmentation, and imaging mass cytometry (IMC) |
-| [**Lab 5**](./Lab5-Comp-Mod) | Computational Modeling | Biomedical modeling: action potentials, tumor growth, cardiovascular flow |
+| [**Lab 5**](./Lab5-Comp-Mod) | Computational Modeling | Biomedical modeling: action potentials, tumor growth, cardiovascular flow, muscle force, cell signaling, kidney filtration, DCE-MRI, wound healing, and computational consciousness in LLMs |
 | [**Individual Project**](./Individual-project) | Student-defined | Personal project within the scope of the course, presented as a digital speed poster |
 
 ---
@@ -196,4 +196,4 @@ _"In Vivo Imaging and Physiological Modelling"_
 |2021 |https://github.com/computational-medicine/BMED360-2021 |
 |2020 |https://github.com/computational-medicine/BMED360-2020 |
 
-Updated: 2026-02-16
+Updated: 2026-02-19
