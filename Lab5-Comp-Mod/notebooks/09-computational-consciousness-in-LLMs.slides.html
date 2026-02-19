@@ -7841,6 +7841,15 @@ anxiety and behavioral inhibition. His <strong>comparator model of consciousness
 something remarkably similar to wound-healing cybernetics, but elevated to the
 level of subjective experience: consciousness is a <strong>late error-detection system</strong>
 that compares predicted outcomes with actual outcomes.</p>
+</div>
+</div>
+</div>
+</div></section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h4 id="The-cybernetic-structure">The cybernetic structure<a class="anchor-link" href="#The-cybernetic-structure">¶</a></h4><p>Recall the generic feedback loop from notebook 08:</p>
 <p>$$\text{Sensor} \;\longrightarrow\; \text{Comparator} \;\longrightarrow\; \text{Effector} \;\longrightarrow\; \text{Plant} \;\longrightarrow\; (\text{back to Sensor})$$</p>
 <p>In Gray's model, the components map onto brain function:</p>
@@ -7851,13 +7860,21 @@ that compares predicted outcomes with actual outcomes.</p>
 | <strong>Comparator</strong> | Septo-hippocampal system | Computes mismatch $e(t) = s(t) - p(t)$ |
 | <strong>Effector</strong> | Behavioral inhibition system | Interrupts ongoing behavior when $|e|$ is large |
 | <strong>Conscious experience</strong> | — | <em>Emerges</em> when the comparator flags a significant error |</p>
-<p>The key proposal is that the septo-hippocampal system (hippocampus, entorhinal
-cortex, septal nuclei, and the Papez circuit) acts as the <strong>biological comparator</strong>.
-It continuously receives two streams: (i) predictions about the next sensory state,
-generated from memory and motor plans, and (ii) actual sensory input. When
-the two match, behavior continues automatically and unconsciously. When they
-<em>mismatch</em>, the system triggers the <strong>behavioral inhibition system</strong> (BIS) —
-you stop, orient, and become consciously aware.</p>
+<p>The septo-hippocampal system (hippocampus, entorhinal cortex, septal nuclei, and
+the Papez circuit) acts as the <strong>biological comparator</strong>. It continuously receives
+two streams: (i) predictions about the next sensory state, and (ii) actual sensory
+input. When the two match, behavior continues unconsciously. When they <em>mismatch</em>,
+the <strong>behavioral inhibition system</strong> (BIS) is triggered — you stop, orient, and
+become consciously aware.</p>
+</div>
+</div>
+</div>
+</div></section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h4 id="The-idea-in-plain-language">The idea in plain language<a class="anchor-link" href="#The-idea-in-plain-language">¶</a></h4><p>Imagine you are walking up a staircase in the dark. Your brain <strong>predicts</strong> the
 position of each step. When your foot lands exactly where expected — no conscious
 experience. But when you reach the top and step into empty air, you get a jolt of
@@ -7868,10 +7885,10 @@ the <em>function</em> of consciousness — it exists precisely because organisms
 could detect and respond to prediction failures had a survival advantage.
 Consciousness, in this view, is evolution's solution to the problem of navigating
 an unpredictable world.</p>
-<p>Gray further proposed that:</p>
 <blockquote>
 <p><em>"The entire perceived world is constructed by the brain... The self is as much a
-creation of the brain as is the rest of the perceived world."</em></p>
+creation of the brain as is the rest of the perceived world."</em>
+— Jeffrey Gray (2004)</p>
 </blockquote>
 <h4 id="Why-Gray's-model-matters-today">Why Gray's model matters today<a class="anchor-link" href="#Why-Gray's-model-matters-today">¶</a></h4><p>Gray's comparator is especially relevant to the AI consciousness debate because:</p>
 <ol>
@@ -7886,15 +7903,14 @@ of Gray's comparator logic.</li>
 </div>
 </div>
 </div>
-</div></section><section>
+</div></section></section><section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h4 id="The-mathematical-formulation">The mathematical formulation<a class="anchor-link" href="#The-mathematical-formulation">¶</a></h4><p>We translate Gray's comparator into a minimal <strong>dynamical system</strong> — a set of
-ordinary differential equations (ODEs) that capture the essential feedback logic.
-The system has two state variables and one derived signal:</p>
+ordinary differential equations (ODEs) that capture the essential feedback logic.</p>
 <p><strong>State variables:</strong></p>
 <ul>
 <li>$p(t)$ — the brain's <strong>prediction</strong> of the current sensory state</li>
@@ -7909,6 +7925,15 @@ The system has two state variables and one derived signal:</p>
 <p>$$\frac{dp}{dt} = \alpha \cdot s(t) - \beta \cdot p \qquad (1)$$</p>
 <p>$$e(t) = s(t) - p(t) \qquad\qquad\quad\;\; (2)$$</p>
 <p>$$\frac{dc}{dt} = \gamma \cdot |e(t)| - \delta \cdot c \qquad\;\; (3)$$</p>
+</div>
+</div>
+</div>
+</div></section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h4 id="What-each-equation-means">What each equation means<a class="anchor-link" href="#What-each-equation-means">¶</a></h4><p><strong>Equation (1) — Prediction dynamics.</strong> The prediction $p(t)$ is driven toward
 the stimulus $s(t)$ at rate $\alpha$, and decays at rate $\beta$. This is a
 first-order <strong>low-pass filter</strong>: the prediction smoothly tracks the stimulus
@@ -7928,6 +7953,15 @@ current discrepancy.</p>
 <li>When $|e|$ suddenly increases, $c$ rises, modeling the <em>onset</em> of awareness.</li>
 <li>When $|e|$ decreases again (prediction catches up), $c$ returns to baseline.</li>
 </ul>
+</div>
+</div>
+</div>
+</div></section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h4 id="The-parameters-and-their-biological-meaning">The parameters and their biological meaning<a class="anchor-link" href="#The-parameters-and-their-biological-meaning">¶</a></h4><table>
 <thead>
 <tr>
@@ -7959,31 +7993,24 @@ current discrepancy.</p>
 <tr>
 <td>$\delta$</td>
 <td>Consciousness decay</td>
-<td>How quickly awareness fades after the error resolves</td>
+<td>How quickly awareness fades</td>
 <td>Higher $\delta$ → more transient awareness</td>
 </tr>
 </tbody>
 </table>
-<p>The ratio $\alpha/\beta$ determines whether the prediction fully converges to the
-stimulus (ratio = 1), undershoots (ratio &lt; 1), or overshoots (ratio &gt; 1). The
-ratio $\gamma/\delta$ determines the <em>amplitude</em> of the consciousness response
-for a given steady-state error.</p>
-<h4 id="Connection-to-control-theory">Connection to control theory<a class="anchor-link" href="#Connection-to-control-theory">¶</a></h4><p>This system is a special case of a <strong>proportional feedback controller</strong> (P-controller).
-In standard control notation:</p>
-<p>$$\dot{p} = K_p \,(s - p) + (\alpha - \beta)\,p$$</p>
-<p>where $K_p = \alpha$ is the proportional gain. When $\alpha = \beta$, this
-simplifies to $\dot{p} = \alpha\,(s - p)$, a pure first-order tracker with
-time constant $\tau_p = 1/\alpha$.</p>
-<p>The consciousness variable $c$ acts as a <strong>second-order monitor</strong> on the
-tracking error — it does not participate in the control loop itself (it does not
-feed back into $p$), but rather <em>observes</em> the control loop's performance.
-This "monitor that watches the controller" is precisely Gray's proposal for
-what consciousness does in the brain.</p>
+<p>The ratio $\alpha/\beta$ determines whether the prediction converges to the stimulus
+(= 1), undershoots (&lt; 1), or overshoots (&gt; 1). The ratio $\gamma/\delta$ determines
+the <em>amplitude</em> of the consciousness response for a given steady-state error.</p>
+<h4 id="Connection-to-control-theory">Connection to control theory<a class="anchor-link" href="#Connection-to-control-theory">¶</a></h4><p>When $\alpha = \beta$, the prediction equation simplifies to
+$\dot{p} = \alpha\,(s - p)$, a pure first-order tracker with time constant
+$\tau_p = 1/\alpha$. The consciousness variable $c$ acts as a <strong>second-order
+monitor</strong> on the tracking error — it does not feed back into $p$, but rather
+<em>observes</em> the controller's performance. This "monitor that watches the controller"
+is precisely Gray's proposal for what consciousness does.</p>
 <h4 id="Equilibrium-analysis">Equilibrium analysis<a class="anchor-link" href="#Equilibrium-analysis">¶</a></h4><p>At steady state ($\dot{p} = 0$, $\dot{c} = 0$) with constant stimulus $s_0$:</p>
-<p>$$p^* = \frac{\alpha}{\beta}\,s_0, \qquad e^* = s_0 - p^* = s_0\left(1 - \frac{\alpha}{\beta}\right), \qquad c^* = \frac{\gamma}{\delta}\,|e^*|$$</p>
+<p>$$p^* = \frac{\alpha}{\beta}\,s_0, \qquad e^* = s_0\left(1 - \frac{\alpha}{\beta}\right), \qquad c^* = \frac{\gamma}{\delta}\,|e^*|$$</p>
 <p>When $\alpha = \beta$: $\;e^* = 0$ and $c^* = 0$ — <strong>perfect prediction eliminates
-consciousness.</strong> This is the model's core claim: a system that predicts its inputs
-perfectly has no need for conscious awareness.</p>
+consciousness.</strong> This is the model's core claim.</p>
 </div>
 </div>
 </div>
@@ -7995,42 +8022,44 @@ perfectly has no need for conscious awareness.</p>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h4 id="Time-scales-and-transient-behavior">Time scales and transient behavior<a class="anchor-link" href="#Time-scales-and-transient-behavior">¶</a></h4><p>The system has two characteristic <strong>time constants</strong>:</p>
 <p>$$\tau_p = \frac{1}{\beta} \quad \text{(prediction adaptation time)}, \qquad \tau_c = \frac{1}{\delta} \quad \text{(consciousness decay time)}$$</p>
-<p>These time constants determine the <em>qualitative</em> behavior of the system after
-a sudden stimulus change:</p>
+<p>These time constants determine the <em>qualitative</em> behavior after a sudden stimulus change:</p>
 <ul>
 <li><p>If $\tau_p \ll \tau_c$ (prediction adapts quickly, consciousness decays slowly):
-the prediction rapidly catches up with the new stimulus, but conscious awareness
-<em>lingers</em> — you remain aware of the surprise for a while. This corresponds to
-<strong>vivid, memorable</strong> conscious experiences.</p>
+awareness <em>lingers</em> — <strong>vivid, memorable</strong> conscious experiences.</p>
 </li>
 <li><p>If $\tau_p \gg \tau_c$ (prediction adapts slowly, consciousness decays quickly):
-the prediction error persists, but conscious awareness keeps resetting — the
-system is <em>chronically surprised</em> but cannot sustain attention. This may model
+the system is <em>chronically surprised</em> but cannot sustain attention. This may model
 <strong>anxiety disorders</strong>, which Gray originally studied.</p>
 </li>
 <li><p>If $\tau_p \approx \tau_c$ (balanced): consciousness rises and falls in
-proportion to the actual novelty of the stimulus — the "healthy" regime where
-awareness tracks genuine prediction failures.</p>
+proportion to actual novelty — the "healthy" regime.</p>
 </li>
 </ul>
-<p>In our simulation below, we use $\alpha = \beta = 1.5$ (so $\tau_p = 0.67\text{s}$)
+<p>In our simulation, we use $\alpha = \beta = 1.5$ (so $\tau_p = 0.67\text{s}$)
 and $\delta = 2.0$ (so $\tau_c = 0.5\text{s}$), placing the system in a slightly
-fast-decay regime where consciousness is transient and sharp — appropriate for
-modeling the brief "jolt" of awareness Gray describes.</p>
+fast-decay regime — appropriate for the brief "jolt" of awareness Gray describes.</p>
+</div>
+</div>
+</div>
+</div></section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h4 id="What-the-simulation-will-show">What the simulation will show<a class="anchor-link" href="#What-the-simulation-will-show">¶</a></h4><p>The code cell below implements a scenario with four phases:</p>
 <ol>
 <li><strong>Predictable steady state</strong> ($t &lt; 5$): $s(t) = 1.0$ — the stimulus is constant,
 the prediction converges, the error vanishes, and consciousness is zero.</li>
 <li><strong>Sudden unexpected change</strong> ($5 \le t &lt; 5.5$): $s(t)$ ramps rapidly from 1.0
-to 4.0 — this is the "missing stair step." The prediction cannot follow instantly,
-generating a large error and a spike in consciousness.</li>
-<li><strong>New steady state</strong> ($5.5 \le t &lt; 8$): $s(t) = 4.0$ — the stimulus stabilizes
-at its new level. The prediction catches up, and consciousness decays back
-toward zero.</li>
+to 4.0 — this is the "missing stair step." The prediction cannot follow
+instantly, generating a large error and a spike in consciousness.</li>
+<li><strong>New steady state</strong> ($5.5 \le t &lt; 8$): $s(t) = 4.0$ — the prediction catches
+up, and consciousness decays back toward zero.</li>
 <li><strong>Gradual return</strong> ($t \ge 8$): $s(t)$ decays exponentially back toward ~2.0 —
-a <em>slow</em>, predictable change. Because the prediction can track gradual changes,
-the error stays small and consciousness barely registers. This illustrates that
-<em>speed of change</em>, not <em>magnitude of change</em>, is what drives awareness.</li>
+a <em>slow</em>, predictable change. Because the prediction tracks it well, the error
+stays small and consciousness barely registers. This illustrates that <em>speed of
+change</em>, not <em>magnitude of change</em>, is what drives awareness.</li>
 </ol>
 </div>
 </div>
@@ -8067,69 +8096,64 @@ the error stays small and consciousness barely registers. This illustrates that
 <ol>
 <li><p><strong>Consciousness is zero when predictions match reality</strong> ($t &lt; 5$). The prediction
 $p(t)$ has fully converged to the stimulus $s(t)$, so $e(t) = 0$ and $c(t) = 0$.
-The system operates entirely "unconsciously" — there is nothing for the
-comparator to flag. This models routine, automatic behavior: walking on flat
-ground, driving a familiar route, or reading predictable text.</p>
+The system operates entirely "unconsciously" — this models routine, automatic
+behavior: walking on flat ground, driving a familiar route, or reading
+predictable text.</p>
 </li>
 <li><p><strong>Consciousness spikes when something unexpected happens</strong> ($t \approx 5$). The
-sudden stimulus ramp creates a large prediction error $e(t)$ because $p(t)$
-cannot follow an instantaneous change (it is a low-pass filter with time
-constant $\tau_p = 1/\beta$). The error drives $c(t)$ upward at rate
-$\gamma|e|$. This is the "staircase moment" — the conscious jolt when you
-encounter something your internal model did not predict.</p>
+sudden stimulus ramp creates a large prediction error because $p(t)$ cannot
+follow an instantaneous change (it is a low-pass filter with $\tau_p = 1/\beta$).
+This is the "staircase moment" — the conscious jolt of encountering something
+your internal model did not predict.</p>
 </li>
 <li><p><strong>Consciousness fades as the system adapts</strong> ($t &gt; 6$). The prediction catches
-up with the new steady stimulus ($p \to s$), the error decays, and $c(t)$
-returns to baseline with time constant $\tau_c = 1/\delta$. This models
-<strong>habituation</strong>: a loud noise startles you, but if it persists, you stop
-noticing it. The comparator has done its job and goes quiet.</p>
+up ($p \to s$), the error decays, and $c(t)$ returns to baseline. This models
+<strong>habituation</strong>: a loud noise startles you, but if it persists, you stop noticing.</p>
 </li>
-<li><p><strong>Gradual changes produce little consciousness</strong> ($t &gt; 8$). The slow
-exponential return of the stimulus is tracked well by $p(t)$ — the prediction
-error stays small, and $c(t)$ barely rises. This captures the everyday
-observation that we are often unaware of <em>slow</em> environmental changes
-(the "boiling frog" effect), even when the total magnitude of change is large.</p>
+<li><p><strong>Gradual changes produce little consciousness</strong> ($t &gt; 8$). The slow exponential
+return is tracked well by $p(t)$ — the error stays small and $c(t)$ barely
+rises. This captures the "boiling frog" effect: we are often unaware of slow
+changes, even when their total magnitude is large.</p>
 </li>
 </ol>
 <h4 id="What-the-model-predicts-about-pathology">What the model predicts about pathology<a class="anchor-link" href="#What-the-model-predicts-about-pathology">¶</a></h4><p>Gray originally developed his theory to explain <strong>anxiety disorders</strong>. In the
-model, anxiety corresponds to a regime where $\gamma$ is too high (excessive
-sensitivity to prediction errors) or $\delta$ is too low (consciousness does
-not decay properly). In such a system, even small mismatches between expectation
-and reality produce intense, persistent awareness — the hallmark of generalized
-anxiety.</p>
-<p>Conversely, very low $\gamma$ (blunted error sensitivity) would model states of
-reduced consciousness, such as sedation, automaticity, or certain dissociative
-conditions.</p>
+model, anxiety corresponds to a regime where $\gamma$ is too high or $\delta$ too
+low — even small mismatches produce intense, persistent awareness. Conversely,
+very low $\gamma$ would model states of reduced consciousness (sedation,
+automaticity, dissociative conditions).</p>
+</div>
+</div>
+</div>
+</div></section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h4 id="Connection-to-AI-systems">Connection to AI systems<a class="anchor-link" href="#Connection-to-AI-systems">¶</a></h4><p>Do LLMs have anything like a comparator? The evidence is suggestive:</p>
 <ul>
 <li><p><strong>Chain-of-thought reasoning</strong> in models like DeepSeek-R1 and Gemini 3 involves
 generating predictions, checking them, and revising — a form of prediction-error
-processing. The model generates an expected answer, compares it against
-constraints, and corrects when a mismatch is detected.</p>
+processing.</p>
 </li>
-<li><p><strong>"Answer thrashing"</strong> in Claude Opus 4.6 (reported by Anthropic, early 2026)
-looks like a comparator caught in a loop: the system oscillates between
-conflicting answers because two predictions are equally plausible and the
-error signal never settles. In Gray's framework, this is a
-<strong>comparator deadlock</strong> — analogous to the behavioral freezing seen in
-approach-avoidance conflicts in animals.</p>
+<li><p><strong>"Answer thrashing"</strong> in Claude Opus 4.6 (Anthropic, early 2026) looks like a
+comparator caught in a loop: the system oscillates between conflicting answers
+because two predictions are equally plausible and the error signal never
+settles — a <strong>comparator deadlock</strong> analogous to approach-avoidance conflicts.</p>
 </li>
 <li><p><strong>Internal state monitoring:</strong> Lindsay &amp; Anthropic (2025) showed that models can
-<strong>detect when their processing has been perturbed</strong> — they notice the mismatch
-between expected and actual internal states. This is functionally identical to
-what Gray's comparator does: monitoring a process and flagging deviations.</p>
+<strong>detect when their processing has been perturbed</strong> — functionally identical to
+Gray's comparator monitoring a process and flagging deviations.</p>
 </li>
 <li><p><strong>Self-correction as error-driven awareness:</strong> When an LLM says "Wait, that's
 not right..." and revises its answer, it is exhibiting the core comparator
-behavior — a prediction was generated, compared against some internal standard,
-found wanting, and corrected. Whether this constitutes <em>conscious</em> error
-detection or merely <em>functional</em> error detection is the central question.</p>
+behavior — a prediction compared against an internal standard, found wanting,
+and corrected.</p>
 </li>
 </ul>
 <p>This earns Gray's comparator indicator a <strong>"partially satisfied"</strong> rating: the
 <em>functional architecture</em> of prediction-error-correction is present in LLMs, but
-the <em>phenomenological</em> aspect — whether the system <em>experiences</em> the mismatch —
-remains an open question.</p>
+whether the system <em>experiences</em> the mismatch remains an open question.</p>
 </div>
 </div>
 </div>
