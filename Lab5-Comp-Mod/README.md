@@ -2,7 +2,7 @@
 
 This lab is part of our journey through computational modeling techniques, and the use of AI in biomedical applications. It is designed to give you a comprehensive understanding of how computational modeling is transforming society in general and biomedicine in particular and the role it will play in the future of biomedical research.<br>  
 
-Arvid Lundervold, 2026-02-11 (updated 2026-02-19)
+Arvid Lundervold, 2026-02-11 (updated 2026-02-20)
 
 
 <!-- ![img](../assets/GPT-MedAI.png)<br> -->
@@ -41,6 +41,24 @@ If you have a subscription to [ChatGPT Plus](https://openai.com/blog/chatgpt-plu
 > missing packages (`ipywidgets`, `nilearn`, `nibabel`, etc.) and downloads required
 > asset files when running on Google Colab. Locally, these cells are skipped.
 > All notebooks set `%matplotlib inline` and `np.random.seed(42)` for reproducibility.
+
+---
+
+## PDF Exports
+
+Pre-rendered PDF versions of all notebooks are available in the [`PDFs/`](PDFs/) folder for offline reading and printing. Interactive widgets and animations are represented by static snapshot figures showing representative parameter settings or key simulation phases.
+
+| PDF | Snapshots included |
+|:----|:-------------------|
+| [01-action-potentials.pdf](PDFs/01-action-potentials.pdf) | Channel gating viewer (4 phases), Hodgkin-Huxley parameter explorer |
+| [02-tumor-growth.pdf](PDFs/02-tumor-growth.pdf) | All plots static — no additional snapshots needed |
+| [03-cardiovascular-flow.pdf](PDFs/03-cardiovascular-flow.pdf) | All plots static — no additional snapshots needed |
+| [04-muscle-force.pdf](PDFs/04-muscle-force.pdf) | Cross-bridge power stroke cycle (4 phases), ODE-driven cross-bridge dynamics |
+| [05-cell-signaling.pdf](PDFs/05-cell-signaling.pdf) | Gene expression simulator (3 transcription rates) |
+| [06-kidney-filtration.pdf](PDFs/06-kidney-filtration.pdf) | Glomerular filtration simulator (4 clinical scenarios) |
+| [07-dce-mri-kidney-explore.pdf](PDFs/07-dce-mri-kidney-explore.pdf) | All plots static — no additional snapshots needed |
+| [08-cybernetics-of-wound-healing.pdf](PDFs/08-cybernetics-of-wound-healing.pdf) | ODE wound healing model, spatial PDE wound healing model |
+| [09-computational-consciousness-in-LLMs.pdf](PDFs/09-computational-consciousness-in-LLMs.pdf) | Gray's Comparator model (6 regimes overview) |
 
 ---
 
