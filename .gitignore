@@ -74,6 +74,7 @@ Lab5-Comp-Mod/notebooks/data/
 Lab5-Comp-Mod/notebooks/assets/*
 !Lab5-Comp-Mod/notebooks/assets/william_harvey.jpg
 !Lab5-Comp-Mod/notebooks/assets/windkessel_model.svg
+!Lab5-Comp-Mod/notebooks/assets/kidney_anatomy.png
 
 # Lab5 fine-tuning outputs (LoRA adapters and fused models)
 Lab5-Comp-Mod/**/adapters/
